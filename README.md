@@ -1,6 +1,6 @@
 # SuperNova1.0
 
-All commits should be in dev branch under the main SuperNova folder
+All commits should be made in dev branch whilst incomplete code can be pushed in your own branch. 
 
 
 
