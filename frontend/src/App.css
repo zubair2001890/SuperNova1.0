@@ -36,7 +36,7 @@
   font-family: "Montserrat Bold";
 }
 
-#q-and-a-s {
+#main {
     display: flex;
     flex-direction: column;
 }
