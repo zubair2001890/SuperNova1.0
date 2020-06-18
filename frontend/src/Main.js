@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { Button, Typography, Box } from '@material-ui/core';
 
 export default function Main() {
