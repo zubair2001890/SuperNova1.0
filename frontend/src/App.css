@@ -22,18 +22,66 @@
     text-align: center;
 }
 
-#header-container {
+/* #header-container {
+    //background-image: ;
     background-color: blue;
     width: 100%;
     height: 200px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center
+    align-items: center;
+}
+
+#header-logo {
+    position: relative;
+    width: 10%;
+}
+
+#logo {
+    position: relative;
+    width: 100%;
+    height: 100%;
+} */
+
+#header-container {
+    background-color: blue;
+    display: grid;
+    grid-template-areas:
+    "menu logo logo links"
+    ". title title ."
+    ". . . .";
+    grid-auto-rows: 1fr;
+    grid-auto-columns: 1fr;
+}
+
+#menu-icon {
+    background-color: yellow;
+    grid-area: menu;
+}
+
+#header-logo {
+    grid-area: logo;
+    max-width: 100px;
+    justify-self: center;
+    align-self: end;
+}
+
+#logo {
+    width: 100%;
+}
+
+#header-links {
+    background-color: green;
+    grid-area: links;
 }
 
 #title {
   color: white;
   font-family: "Montserrat Bold";
+  grid-area: title;
+  justify-self: center;
+  align-self: center;
 }
 
 #main {
