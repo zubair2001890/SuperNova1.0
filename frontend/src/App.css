@@ -3,20 +3,20 @@
     src: url("fonts/AvaMeridian.otf")format("opentype");
   }
 
-  @font-face {
+@font-face {
     font-family: 'Montserrat Bold';
     src: url("fonts/Montserrat-Bold.otf")format("opentype");
-  }
+}
 
-  @font-face {
+@font-face {
     font-family: 'Montserrat Medium';
     src: url("fonts/Montserrat-Medium.otf")format("opentype");
-  }
+}
 
-  @font-face {
+@font-face {
     font-family: 'Montserrat Light';
     src: url("fonts/Montserrat-Light.otf")format("opentype");
-  }
+}
 
 #root {
     text-align: center;

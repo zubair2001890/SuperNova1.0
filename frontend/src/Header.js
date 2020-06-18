@@ -1,17 +1,24 @@
 import React from 'react'
-import logo from "./images/Stellated-Dodecahedron-white.png"
+import { Button, Typography, Box, Link } from '@material-ui/core';
+import { makeStyles } from "@material-ui/core/styles"
+import { positions, flexbox } from "@material-ui/system";
+import MenuIcon from '@material-ui/icons/Menu';
+import logo from "./images/Stellated-Dodecahedron-white.png";
 
 export default function Header() {
     return (
-        <div>
-            <header id="header-container">
-                <div id="menu-icon"></div>
-                <div id="header-logo"><a href="http://supernova.ac/"><img src={logo} id="logo"/></a></div>
-                <div id="header-links"></div>
-                <div id="title">
-                    <h1>FREQUENTLY ASKED QUESTIONS</h1>
-                </div>
-            </header>
-        </div>
+        <header>
+            <Box mx="auto" position="relative" display="flex" top={30} width="95%" justifyContent="space-between">
+                <MenuIcon></MenuIcon>
+                <Box>
+                    <Button variant="text" component={Link || "a"}>
+                        EXPLORE
+                    </Button>
+                    <Button variant="text" component={Link || "a"}>
+                        LOG IN
+                    </Button>
+                </Box>
+            </Box>
+        </header>
     )
 }
