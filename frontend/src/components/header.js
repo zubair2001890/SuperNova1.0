@@ -2,7 +2,7 @@ import React from 'react';
 import { AppBar, Typography, IconButton, Button, Toolbar, Box, Link, Avatar } from '@material-ui/core';
 import { makeStyles, } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
-import logo from "../images/Stellated-Dodecahedron-white.png"
+import logo from "../images/Stellated-Dodecahedron-white.png";
 
 const useStyles = makeStyles((theme) => ({
     root: {
