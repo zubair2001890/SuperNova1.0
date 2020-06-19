@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "./logo.svg";
 import { Counter } from "./features/counter/Counter";
-import LoginComponent from "./components/LoginComponent";
+//import LoginComponent from "./components/LoginComponent";
 import "./App.css";
 import {
   BrowserRouter as Router,
@@ -26,9 +26,7 @@ function App() {
         </ul>
 
         <Switch>
-          <Route path="/login">
-            <LoginComponent />
-          </Route>
+          <Route path="/login">{/* <LoginComponent /> */}</Route>
           <Route path="/">
             <div className="App">
               <header className="App-header">
