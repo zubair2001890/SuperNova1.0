@@ -1,26 +1,37 @@
 import React from "react";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { ThemeProvider } from "@material-ui/core/styles";
+import Layout from "./Layout";
 import Homepage from "./pages/Homepage";
 import Login from "./pages/Login";
 import Error404 from "./pages/Error404";
+import Faq from "./pages/Faq";
 import paths from "./constants/paths";
+import theme from "./theme";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Switch>
-        <Route path={paths.login}>
-          <Login />
-        </Route>
-        <Route path={paths.home} exact>
-          <Homepage />
-        </Route>
-        <Route path={paths.error404}>
-          <Error404 />
-        </Route>
-        <Redirect to={paths.error404} />
-      </Switch>
-    </BrowserRouter>
+    <ThemeProvider theme={theme}>
+      <BrowserRouter>
+        <Layout>
+          <Switch>
+            <Route path={paths.login}>
+              <Login />
+            </Route>
+            <Route path={paths.faq}>
+              <Faq />
+            </Route>
+            <Route path={paths.home} exact>
+              <Homepage />
+            </Route>
+            <Route path={paths.error404}>
+              <Error404 />
+            </Route>
+            <Redirect to={paths.error404} />
+          </Switch>
+        </Layout>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }
 

@@ -12,7 +12,7 @@ export default function Links() {
         Page not found
       </Typography>
       <Typography>
-        <MaterialLink component={Link} to={paths.login}>
+        <MaterialLink component={Link} to={paths.home}>
           Homepage
         </MaterialLink>
       </Typography>
