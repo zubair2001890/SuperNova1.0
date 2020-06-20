@@ -7,7 +7,6 @@ import {
     Toolbar,
     Link,
     Avatar,
-    Box,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import MenuIcon from "@material-ui/icons/Menu";
@@ -53,41 +52,39 @@ export default function Header() {
     const classes = useStyles();
 
     return (
-        <header>
         <AppBar position="static" className={classes.appBar}>
             <Toolbar>
-                <Box className={classes.flexHeader}>
-                    <Box className={classes.menuButton}>
+                <div className={classes.flexHeader}>
+                    <div className={classes.menuButton}>
                         <IconButton className={classes.menuIcon} aria-label="menu">
                             <MenuIcon />
                         </IconButton>
-                    </Box>
-                    <Box className={classes.logo}>
+                    </div>
+                    <div className={classes.logo}>
                         <IconButton aria-label="logo">
                             <Avatar src={logo}/>
                         </IconButton>
-                    </Box>
-                    <Box className={classes.rightToolbar}>
+                    </div>
+                    <div className={classes.rightToolbar}>
                         <Typography >
                             <Link
-                            component={RouterLink}
-                            to={paths.explore}
-                            className={classes.link}
+                                component={RouterLink}
+                                to={paths.explore}
+                                className={classes.link}
                             >
                             EXPLORE
                             </Link>
                             <Link
-                            component={RouterLink}
-                            to={paths.login}
-                            className={classes.link}
+                                component={RouterLink}
+                                to={paths.login}
+                                className={classes.link}
                             >
                             LOG IN
                             </Link>
                         </Typography>
-                    </Box>
-                </Box>
+                    </div>
+                </div>
             </Toolbar>
         </AppBar>
-        </header>
     );
 }
