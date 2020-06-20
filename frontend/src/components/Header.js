@@ -142,7 +142,7 @@ export default function Header() {
             <CloseIcon fontSize="large" />
           </IconButton>
         </div>
-        <List component="nav" aria-label="secondary mailbox folders">
+        <List component="nav" aria-label="secondary navigation menu">
           <ListItem button component={RouterLink} to="/">
             <ListItemText primary="BROWSE PROJECTS" />
           </ListItem>
