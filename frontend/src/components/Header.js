@@ -52,10 +52,10 @@ const useStyles = makeStyles((theme) => ({
     flex: 1,
   },
   paperAnchorLeft: {
-    width: 400,
+    width: 412,
     paddingLeft: theme.spacing(2),
-    background:
-      "linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(255,59,0,1) 100%)",
+    background: 'transparent linear-gradient(180deg, #FF0000 0%, #650000 100%) 0% 0% no-repeat padding-box',
+    border: '1px solid #707070',
     "clip-path": "polygon(0 0, 100% 0, 50% 100%, 0% 100%)",
   },
   closeLeftDrawerButtonContainer: {
