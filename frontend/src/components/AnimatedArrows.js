@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
 
@@ -6,7 +6,9 @@ import clsx from "clsx";
 const containerHeight = 60;
 const arrowBorderWidth = 5;
 const arrowWidth = 7.5;
-const arrowColor = '#ff3b00' // to be taken from theme.palette!
+const arrowColor = "#ff3b00"; // TODO: to be taken from theme.palette!
+
+// TODO: fadeIn effect to be added in theme.mixins in relation to other elements of Homepage
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -46,9 +48,20 @@ const useStyles = makeStyles((theme) => ({
 
 export default ({ className }) => {
   const classes = useStyles();
+  const containerRef = useRef();
+
+  // copy of the code to fade out this element on scroll translated in javascript
+  // TODO: improve it or move it to a parent container (in this case use forwardRef)
+  /*
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      containerRef.current.style.opacity = 1 - window.pageYOffset / 250;
+    });
+  }, []);
+  */
 
   return (
-    <div className={clsx(classes.container, className)}>
+    <div ref={containerRef} className={clsx(classes.container, className)}>
       <span className={classes.arrow}></span>
       <span className={classes.arrow}></span>
       <span className={classes.arrow}></span>
