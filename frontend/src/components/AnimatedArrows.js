@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     borderBottom: `${arrowBorderWidth}px solid ${arrowColor}`,
     borderRight: `${arrowBorderWidth}px solid ${arrowColor}`,
     transform: "rotate(45deg) translateY(-50%)",
-    animation: `$arrowanimate 2s infinite`,
+    animation: `$animatedArrow 2s infinite`,
     "&:nth-of-type(2)": {
       animationDelay: ".2s",
     },
@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
       animationDelay: ".4s",
     },
   },
-  "@keyframes arrowanimate": {
+  "@keyframes animatedArrow": {
     "0%": {
       opacity: "0",
       top: "0",
