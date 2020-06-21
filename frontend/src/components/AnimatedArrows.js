@@ -6,6 +6,7 @@ import clsx from "clsx";
 const containerHeight = 60;
 const arrowBorderWidth = 5;
 const arrowWidth = 7.5;
+const arrowColor = '#ff3b00' // to be taken from theme.palette!
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -17,8 +18,8 @@ const useStyles = makeStyles((theme) => ({
     left: "50%",
     width: arrowWidth,
     height: arrowWidth,
-    borderBottom: `${arrowBorderWidth}px solid #ff3b00`,
-    borderRight: `${arrowBorderWidth}px solid #ff3b00`,
+    borderBottom: `${arrowBorderWidth}px solid ${arrowColor}`,
+    borderRight: `${arrowBorderWidth}px solid ${arrowColor}`,
     transform: "rotate(45deg) translateY(-50%)",
     animation: `$arrowanimate 2s infinite`,
     "&:nth-of-type(2)": {
