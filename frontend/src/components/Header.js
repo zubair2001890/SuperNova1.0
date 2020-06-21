@@ -13,7 +13,7 @@ import {
   Avatar,
   Drawer,
 } from "@material-ui/core";
-import { MenuIcon, CloseIcon } from "@material-ui/icons";
+import { Menu as MenuIcon, Close as CloseIcon } from "@material-ui/icons";
 import paths from "../constants/paths";
 import logo from "../images/Stellated-Dodecahedron-white.png";
 
