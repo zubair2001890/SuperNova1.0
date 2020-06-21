@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
 
@@ -46,25 +46,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default ({ className }) => {
+/* React.forwardRef is used here to be able to handle imperatively from a parent component the div container inside this component, for fade-in/out effect etc. */
+export default React.forwardRef(({ className }, ref) => {
   const classes = useStyles();
-  const containerRef = useRef();
-
-  // copy of the code to fade out this element on scroll translated in javascript
-  // TODO: improve it or move it to a parent container (in this case use forwardRef)
-  /*
-  useEffect(() => {
-    window.addEventListener("scroll", () => {
-      containerRef.current.style.opacity = 1 - window.pageYOffset / 250;
-    });
-  }, []);
-  */
 
   return (
-    <div ref={containerRef} className={clsx(classes.container, className)}>
+    <div ref={ref} className={clsx(classes.container, className)}>
       <span className={classes.arrow}></span>
       <span className={classes.arrow}></span>
       <span className={classes.arrow}></span>
     </div>
   );
-};
+});
