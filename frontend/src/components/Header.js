@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
+import { makeStyles } from "@material-ui/core/styles";
 import {
   AppBar,
   Typography,
@@ -12,11 +13,9 @@ import {
   Avatar,
   Drawer,
 } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
-import MenuIcon from "@material-ui/icons/Menu";
+import { MenuIcon, CloseIcon } from "@material-ui/icons/Menu";
 import paths from "../constants/paths";
 import logo from "../images/Stellated-Dodecahedron-white.png";
-import CloseIcon from "@material-ui/icons/Close";
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -54,8 +53,9 @@ const useStyles = makeStyles((theme) => ({
   paperAnchorLeft: {
     width: 412,
     paddingLeft: theme.spacing(2),
-    background: 'transparent linear-gradient(180deg, #FF0000 0%, #650000 100%) 0% 0% no-repeat padding-box',
-    border: '1px solid #707070',
+    background:
+      "transparent linear-gradient(180deg, #FF0000 0%, #650000 100%) 0% 0% no-repeat padding-box",
+    border: "1px solid #707070",
     "clip-path": "polygon(0 0, 100% 0, 50% 100%, 0% 100%)",
   },
   closeLeftDrawerButtonContainer: {
