@@ -2,7 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
 
-// We can turn these and more into a props
+// We can turn these into props
 const containerHeight = 60;
 const arrowBorderWidth = 5;
 const arrowWidth = 7.5;
