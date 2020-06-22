@@ -7,15 +7,12 @@ import {
   IconButton,
   Toolbar,
   Link,
-  List,
-  ListItem,
-  ListItemText,
   Avatar,
-  Drawer,
 } from "@material-ui/core";
-import { Menu as MenuIcon, Close as CloseIcon } from "@material-ui/icons";
-import paths from "../constants/paths";
-import logo from "../images/Stellated-Dodecahedron-white.png";
+import { Menu as MenuIcon } from "@material-ui/icons";
+import LeftDrawer from "./components/LeftDrawer";
+import paths from "../../constants/paths";
+import logo from "../../images/Stellated-Dodecahedron-white.png";
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -122,41 +119,11 @@ export default function Header() {
           </div>
         </Toolbar>
       </AppBar>
-      <Drawer
-        anchor={"left"}
+      <LeftDrawer
         open={drawerState.left}
-        onClose={toggleDrawer("left", false)}
-        BackdropProps={{ invisible: true }}
-        elevation={0}
-        classes={{
-          paperAnchorLeft: classes.paperAnchorLeft,
-        }}
-      >
-        <div className={classes.closeLeftDrawerButtonContainer}>
-          <IconButton
-            color="inherit"
-            aria-label="menu"
-            onClick={toggleDrawer("left", false)}
-            size="medium"
-          >
-            <CloseIcon fontSize="large" />
-          </IconButton>
-        </div>
-        <List component="nav" aria-label="secondary navigation menu">
-          <ListItem button component={RouterLink} to="/">
-            <ListItemText primary="BROWSE PROJECTS" />
-          </ListItem>
-          <ListItem button component={RouterLink} to="/">
-            <ListItemText primary="UPLOAD PROJECT" />
-          </ListItem>
-          <ListItem button component={RouterLink} to="/">
-            <ListItemText primary="CONTACT US" />
-          </ListItem>
-          <ListItem button component={RouterLink} to="/">
-            <ListItemText primary="MY PROFILE" />
-          </ListItem>
-        </List>
-      </Drawer>
+        onDrawerClose={toggleDrawer("left", false)}
+        onCloseBtnClick={toggleDrawer("left", false)}
+      />
     </>
   );
 }
