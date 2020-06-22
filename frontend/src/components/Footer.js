@@ -1,11 +1,11 @@
 import React from "react";
 import { BottomNavigation, BottomNavigationAction } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-// import { FacebookIcon, TwitterIcon, InstagramIcon, LinkedInIcon } from "@material-ui/icons";
-import FacebookIcon from '@material-ui/icons/Facebook';
-import TwitterIcon from '@material-ui/icons/Twitter';
-import InstagramIcon from '@material-ui/icons/Instagram';
-import LinkedInIcon from '@material-ui/icons/LinkedIn';
+import {
+    Facebook as FacebookIcon,
+    Twitter as TwitterIcon,
+    Instagram as InstagramIcon,
+    LinkedIn as LinkedInIcon } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
     icon: {
@@ -13,8 +13,9 @@ const useStyles = makeStyles((theme) => ({
     },
     bottomNavBar: {
         backgroundColor: "black",
+        // TODO: Import colour from palette
     },
-    footer: { // This will eventually contain the entire footer, including "SUPERNOVA" and the 12 site links
+    footer: { // TODO: This will eventually contain the entire footer, including "SUPERNOVA" and the 12 site links
         width: "100%",
         position: "absolute",
         bottom: "0",
