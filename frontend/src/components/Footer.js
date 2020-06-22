@@ -5,7 +5,8 @@ import {
     Facebook as FacebookIcon,
     Twitter as TwitterIcon,
     Instagram as InstagramIcon,
-    LinkedIn as LinkedInIcon } from "@material-ui/icons";
+    LinkedIn as LinkedInIcon
+} from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
     icon: {
