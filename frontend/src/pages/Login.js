@@ -3,7 +3,7 @@ import { Link as MaterialLink } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import { Link } from "react-router-dom";
 import paths from "../constants/paths";
-import LoginComponent from "../components/LoginComponent";
+import LoginComponent from "../components/LoginForm";
 
 export default function Links() {
   return (
