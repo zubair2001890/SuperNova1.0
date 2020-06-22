@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     bottomNavBar: {
         backgroundColor: "black",
     },
-    footer: {
+    footer: { // This will eventually contain the entire footer, including "SUPERNOVA" and the 12 site links
         width: "100%",
         position: "absolute",
         bottom: "0",
