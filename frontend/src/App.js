@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import { ThemeProvider } from "@material-ui/core/styles";
-import Layout from "./Layout";
+import Layout from "./components/Layout";
 import Homepage from "./pages/Homepage";
 import Login from "./pages/Login";
 import Error404 from "./pages/Error404";
