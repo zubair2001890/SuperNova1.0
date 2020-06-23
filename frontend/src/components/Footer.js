@@ -63,7 +63,6 @@ const useStyles = makeStyles((theme) => ({
   whiteLineContainer: {
     display: "flex",
     justifyContent: "center",
-    width: "25%",
   },
 }));
 
