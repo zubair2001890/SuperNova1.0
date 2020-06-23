@@ -3,8 +3,9 @@ import {
     BottomNavigation,
     BottomNavigationAction,
     Grid,
-    Divider,
+    Box,
     Link,
+    Typography,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import {
@@ -13,6 +14,7 @@ import {
     Instagram as InstagramIcon,
     LinkedIn as LinkedInIcon
 } from "@material-ui/icons";
+import clsx from "clsx";
 
 const useStyles = makeStyles((theme) => ({
     icon: {
@@ -33,9 +35,35 @@ const useStyles = makeStyles((theme) => ({
     },
     boldLink: {
         color: "white",
+        fontWeight: "bold",
     },
     gridItem: {
         textAlign: "center",
+    },
+    boldGrid: {
+        paddingBottom: "3%",
+        paddingTop: "3%",
+    },
+    regularGrid: {
+        paddingBottom: "2%",
+    },
+    topRow: {
+        alignItems: "center",
+        paddingTop: "3%",
+    },
+    footerTitle: {
+        color: "white",
+        fontWeight: "bold",
+    },
+    whiteLine: {
+        position: "relative",
+        width: "50%",
+        height: "2px",
+        backgroundColor: "white",
+    },
+    whiteLineContainer: {
+        display: "flex",
+        justifyContent: "center",
     },
 }));
 
@@ -44,7 +72,18 @@ export default function Footer() {
 
     return (
         <div className={classes.footer}>
-            <Grid container style={{ paddingBottom: "3%", paddingTop: "3%"}}>
+            <Grid container className={classes.topRow}>
+                <Grid item xs={4} className={classes.whiteLineContainer}>
+                    <Box className={classes.whiteLine}></Box>
+                </Grid>
+                <Grid item xs={4}>
+                    <Typography className={ clsx(classes.footerTitle, classes.gridItem) }>SUPERNOVA</Typography>
+                </Grid>
+                <Grid item xs={4} className={classes.whiteLineContainer}>
+                    <Box className={classes.whiteLine}></Box>
+                </Grid>
+            </Grid>
+            <Grid container className={classes.boldGrid}>
                 <Grid item xs={4} className={classes.gridItem}>
                     <Link className={classes.boldLink} className={classes.boldLink}>ABOUT</Link>
                 </Grid>
@@ -55,7 +94,7 @@ export default function Footer() {
                     <Link className={classes.boldLink}>EXPLORE</Link>
                 </Grid>
             </Grid>
-            <Grid container spacing={2} style={{ paddingBottom: "2%"}}>
+            <Grid container spacing={2} className={classes.regularGrid}>
                 <Grid item xs={4} className={classes.gridItem} className={classes.gridItem}>
                     <Link className={classes.regularLink} className={classes.regularLink}>Our Mission</Link>
                 </Grid>
