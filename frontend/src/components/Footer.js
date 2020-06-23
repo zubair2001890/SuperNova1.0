@@ -44,7 +44,7 @@ export default function Footer() {
 
     return (
         <div className={classes.footer}>
-            <Grid container style={{ paddingBottom: "3%"}}>
+            <Grid container style={{ paddingBottom: "3%", paddingTop: "3%"}}>
                 <Grid item xs={4} className={classes.gridItem}>
                     <Link className={classes.boldLink} className={classes.boldLink}>ABOUT</Link>
                 </Grid>
