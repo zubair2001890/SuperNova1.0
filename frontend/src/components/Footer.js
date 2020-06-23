@@ -1,4 +1,5 @@
 import React from "react";
+import { Link as RouterLink } from "react-router-dom";
 import {
     BottomNavigation,
     BottomNavigationAction,
@@ -23,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
     bottomNavBar: {
         backgroundColor: "black",
         // TODO: Import colour from palette
+        paddingTop: "1%",
     },
     footer: { // TODO: This will eventually contain the entire footer, including "SUPERNOVA" and the 12 site links
         width: "100%",
@@ -32,32 +34,30 @@ const useStyles = makeStyles((theme) => ({
     },
     regularLink: {
         color: "white",
+        fontSize: "18px",
     },
     boldLink: {
         color: "white",
         fontWeight: "bold",
+        fontSize: "20px",
     },
     gridItem: {
         textAlign: "center",
     },
-    boldGrid: {
-        paddingBottom: "3%",
-        paddingTop: "3%",
-    },
-    regularGrid: {
-        paddingBottom: "2%",
-    },
-    topRow: {
+    gridRow: {
         alignItems: "center",
-        paddingTop: "3%",
+        paddingTop: "2%",
+        paddingBottom: "1%",
     },
     footerTitle: {
         color: "white",
         fontWeight: "bold",
+        fontSize: "33px",
+        fontFamily: "Roboto",
     },
     whiteLine: {
         position: "relative",
-        width: "50%",
+        width: "70%",
         height: "2px",
         backgroundColor: "white",
     },
@@ -72,7 +72,7 @@ export default function Footer() {
 
     return (
         <div className={classes.footer}>
-            <Grid container className={classes.topRow}>
+            <Grid container className={classes.gridRow}>
                 <Grid item xs={4} className={classes.whiteLineContainer}>
                     <Box className={classes.whiteLine}></Box>
                 </Grid>
@@ -83,44 +83,116 @@ export default function Footer() {
                     <Box className={classes.whiteLine}></Box>
                 </Grid>
             </Grid>
-            <Grid container className={classes.boldGrid}>
+            <Grid container className={classes.gridRow}>
                 <Grid item xs={4} className={classes.gridItem}>
-                    <Link className={classes.boldLink} className={classes.boldLink}>ABOUT</Link>
+                    <Link
+                        component={RouterLink}
+                        to="/"
+                        className={classes.boldLink}
+                    >
+                        ABOUT
+                    </Link>
                 </Grid>
                 <Grid item xs={4} className={classes.gridItem}>
-                    <Link className={classes.boldLink}>CREATE</Link>
+                    <Link
+                        component={RouterLink}
+                        to="/"
+                        className={classes.boldLink}
+                    >
+                        CREATE
+                    </Link>
                 </Grid>
                 <Grid item xs={4} className={classes.gridItem}>
-                    <Link className={classes.boldLink}>EXPLORE</Link>
+                    <Link
+                        component={RouterLink}
+                        to="/"
+                        className={classes.boldLink}
+                    >
+                        EXPLORE
+                    </Link>
                 </Grid>
             </Grid>
-            <Grid container spacing={2} className={classes.regularGrid}>
-                <Grid item xs={4} className={classes.gridItem} className={classes.gridItem}>
-                    <Link className={classes.regularLink} className={classes.regularLink}>Our Mission</Link>
+            <Grid container spacing={2} className={classes.gridRow}>
+                <Grid item xs={4} className={classes.gridItem}>
+                    <Link
+                        component={RouterLink}
+                        to="/"
+                        className={classes.regularLink}
+                    >
+                        Our Mission
+                    </Link>
                 </Grid>
                 <Grid item xs={4} className={classes.gridItem}>
-                    <Link className={classes.regularLink}>Upload a Project</Link>
+                    <Link
+                        component={RouterLink}
+                        to="/"
+                        className={classes.regularLink}
+                    >
+                        Upload a Project
+                    </Link>
                 </Grid>
                 <Grid item xs={4} className={classes.gridItem}>
-                    <Link className={classes.regularLink}>Browse Projects</Link>
+                    <Link
+                        component={RouterLink}
+                        to="/"
+                        className={classes.regularLink}
+                    >
+                        Browse Projects
+                    </Link>
                 </Grid>
                 <Grid item xs={4} className={classes.gridItem}>
-                    <Link className={classes.regularLink}>T&Cs</Link>
+                    <Link
+                        component={RouterLink}
+                        to="/"
+                        className={classes.regularLink}
+                    >
+                        T&Cs
+                    </Link>
                 </Grid>
                 <Grid item xs={4} className={classes.gridItem}>
-                    <Link className={classes.regularLink}>Create Account</Link>
+                    <Link
+                        component={RouterLink}
+                        to="/"
+                        className={classes.regularLink}
+                    >
+                        Create Account
+                    </Link>
                 </Grid>
                 <Grid item xs={4} className={classes.gridItem}>
-                    <Link className={classes.regularLink}>Funded Projects</Link>
+                    <Link
+                        component={RouterLink}
+                        to="/"
+                        className={classes.regularLink}
+                    >
+                        Funded Projects
+                    </Link>
                 </Grid>
                 <Grid item xs={4} className={classes.gridItem}>
-                    <Link className={classes.regularLink}>Our Model</Link>
+                    <Link
+                        component={RouterLink}
+                        to="/"
+                        className={classes.regularLink}
+                    >
+                        Our Model
+                    </Link>
                 </Grid>
                 <Grid item xs={4} className={classes.gridItem}>
-                    <Link className={classes.regularLink}>Contact Us</Link>
+                    <Link
+                        component={RouterLink}
+                        to="/"
+                        className={classes.regularLink}
+                    >
+                        Contact Us
+                    </Link>
                 </Grid>
                 <Grid item xs={4} className={classes.gridItem}>
-                    <Link className={classes.regularLink}>FAQ</Link>
+                    <Link
+                        component={RouterLink}
+                        to="/"
+                        className={classes.regularLink}
+                    >
+                        FAQ
+                    </Link>
                 </Grid>
             </Grid>
             <BottomNavigation className={classes.bottomNavBar}>
