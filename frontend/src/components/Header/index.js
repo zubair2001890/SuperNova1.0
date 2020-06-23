@@ -19,6 +19,9 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "black",
     opacity: 1, // Change to zero once background image is added
   },
+  toolBar: {
+    height: 160,
+  },
   flexHeader: {
     display: "flex",
     width: "100%",
@@ -82,7 +85,7 @@ export default function Header() {
   return (
     <>
       <AppBar position="static" className={classes.appBar}>
-        <Toolbar>
+        <Toolbar className={classes.toolBar}>
           <div className={classes.flexHeader}>
             <div className={classes.menuButton}>
               <IconButton
