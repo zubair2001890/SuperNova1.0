@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     opacity: 1, // Change to zero once background image is added
   },
   toolBar: {
-    height: 160,
+    ...theme.mixins.appBar,
   },
   flexHeader: {
     display: "flex",
