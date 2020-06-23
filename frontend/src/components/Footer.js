@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
   footerTitle: {
     color: "white",
     fontWeight: "bold",
-    fontSize: 33,
+    fontSize: 33, // TODO: Resize when window gets small and text overflows container
     fontFamily: "Roboto",
   },
   whiteLine: {
