@@ -84,7 +84,7 @@ export default function Header() {
 
   return (
     <>
-      <AppBar position="static" className={classes.appBar}>
+      <AppBar position="fixed" elevation={0} className={classes.appBar}>
         <Toolbar className={classes.toolBar}>
           <div className={classes.flexHeader}>
             <div className={classes.menuButton}>
