@@ -27,7 +27,6 @@ const useStyles = makeStyles((theme) => ({
   },
   footer: {
     width: "100%",
-    position: "absolute",
     bottom: 0,
     backgroundColor: "black",
   },
