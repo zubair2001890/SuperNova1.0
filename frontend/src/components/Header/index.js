@@ -19,6 +19,9 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "black",
     opacity: 1, // Change to zero once background image is added
   },
+  toolBar: {
+    ...theme.mixins.appBar,
+  },
   flexHeader: {
     display: "flex",
     width: "100%",
@@ -81,8 +84,8 @@ export default function Header() {
 
   return (
     <>
-      <AppBar position="static" className={classes.appBar}>
-        <Toolbar>
+      <AppBar position="fixed" elevation={0} className={classes.appBar}>
+        <Toolbar className={classes.toolBar}>
           <div className={classes.flexHeader}>
             <div className={classes.menuButton}>
               <IconButton
