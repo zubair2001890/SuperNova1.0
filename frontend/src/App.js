@@ -26,11 +26,11 @@ function App() {
             <Route path={paths.faq}>
               <Faq />
             </Route>
-            <Route path="/mission" component={Mission} />
-            <Route path="/terms" component={Terms} />
-            <Route path="/model" component={Model} />
-            <Route path="/contact" component={Contact} />
-            <Route path="/team" component={Team} />
+            <Route path="/ourmission" component={Mission} />
+            <Route path="/termsandconditions" component={Terms} />
+            <Route path="/ourmodel" component={Model} />
+            <Route path="/contactus" component={Contact} />
+            <Route path="/ourteam" component={Team} />
             <Route path={paths.home} exact>
               <Homepage />
             </Route>
