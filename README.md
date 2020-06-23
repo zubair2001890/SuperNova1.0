@@ -11,9 +11,11 @@ Note that all the issues relate to a section on the Mockup so revert back to rel
 
 Mockups and Wireframes are available below:
 
+
 SuperNova Main (Note pages are scrollable). To see full interactive version, download XD and check your email for invite to collaborate.
 
 https://xd.adobe.com/view/437dec37-4680-40bb-77cb-e6d1602e8674-354c/
+
 
 
 Priority of tasks is based on following key:
