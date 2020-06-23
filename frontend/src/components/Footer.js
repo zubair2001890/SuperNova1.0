@@ -71,7 +71,7 @@ export default function Footer() {
 
   return (
     <div className={classes.footer}>
-      <Grid container spacing={2} className={classes.gridRow}>
+      <Grid container className={classes.gridRow}>
         <Grid item xs={3} className={classes.whiteLineContainer}>
           <div className={classes.whiteLine}></div>
         </Grid>
