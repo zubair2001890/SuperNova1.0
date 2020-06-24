@@ -1,75 +1,61 @@
 import React, { useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
-import {
-  AppBar,
-  Typography,
-  IconButton,
-  Toolbar,
-  Link,
-  Avatar,
-} from "@material-ui/core";
+import { AppBar, IconButton, Toolbar, Button } from "@material-ui/core";
 import { Menu as MenuIcon } from "@material-ui/icons";
 import LeftDrawer from "./components/LeftDrawer";
 import paths from "../../constants/paths";
-import logo from "../../images/Stellated-Dodecahedron-white.png";
+import logoBgDark from "../../images/logo-bg-dark.png";
+import logoBgLight from "../../images/logo-bg-light.png";
+import logoOrange from "../../images/logo-orange.png";
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
-    backgroundColor: "black",
-    opacity: 1, // Change to zero once background image is added
+    backgroundColor: "transparent",
+    color: (props) =>
+      props.darkTheme ? theme.palette.common.white : theme.palette.common.black,
   },
   toolBar: {
     ...theme.mixins.appBar,
+    position: "relative",
   },
-  flexHeader: {
-    display: "flex",
-    width: "100%",
-  },
-  menuButton: {
-    color: "white",
-    alignSelf: "center",
-    flex: 1,
-  },
-  menuIcon: {
-    color: "white",
-  },
-  link: {
-    marginLeft: theme.spacing(2),
-    marginRight: theme.spacing(2),
-    color: "white",
-  },
-  rightToolbar: {
-    alignSelf: "center",
-    display: "flex",
-    justifyContent: "flex-end",
-    flex: 1,
+  logoContainer: {
+    height: "80%",
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
   },
   logo: {
-    display: "flex",
-    justifyContent: "center",
-    flex: 1,
+    marginRight: "auto",
+    height: "100%",
+    "&:hover": {
+      animation: "$rotate 3s infinite linear",
+    },
   },
-  paperAnchorLeft: {
-    width: 412,
-    paddingLeft: theme.spacing(2),
-    background:
-      "transparent linear-gradient(180deg, #FF0000 0%, #650000 100%) 0% 0% no-repeat padding-box",
-    border: "1px solid #707070",
-    "clip-path": "polygon(0 0, 100% 0, 50% 100%, 0% 100%)",
+  appBarRight: {
+    marginLeft: "auto",
+    "& > *:not(:last-child)": {
+      marginRight: theme.spacing(4),
+    },
   },
-  closeLeftDrawerButtonContainer: {
-    display: "flex",
-    width: "100%",
-    alignItems: "center",
+  "@keyframes rotate": {
+    from: {
+      transform: "rotate(0deg)",
+    },
+    to: {
+      transform: "rotate(360deg)",
+    },
   },
 }));
 
-export default function Header() {
-  const classes = useStyles();
+export default function Header({ darkTheme = true }) {
+  const classes = useStyles({ darkTheme });
   const [drawerState, setDrawerState] = useState({
     left: false,
   });
+
+  const [logoSrc, setLogoSrc] = useState(darkTheme ? logoBgDark : logoBgLight);
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (
@@ -86,39 +72,45 @@ export default function Header() {
     <>
       <AppBar position="fixed" elevation={0} className={classes.appBar}>
         <Toolbar className={classes.toolBar}>
-          <div className={classes.flexHeader}>
-            <div className={classes.menuButton}>
-              <IconButton
-                className={classes.menuIcon}
-                aria-label="menu"
-                onClick={toggleDrawer("left", true)}
-              >
-                <MenuIcon />
-              </IconButton>
-            </div>
-            <div className={classes.logo}>
-              <IconButton aria-label="logo">
-                <Avatar src={logo} />
-              </IconButton>
-            </div>
-            <div className={classes.rightToolbar}>
-              <Typography>
-                <Link
-                  component={RouterLink}
-                  to={paths.explore}
-                  className={classes.link}
-                >
-                  EXPLORE
-                </Link>
-                <Link
-                  component={RouterLink}
-                  to={paths.login}
-                  className={classes.link}
-                >
-                  LOG IN
-                </Link>
-              </Typography>
-            </div>
+          <IconButton
+            edge="start"
+            aria-label="menu button"
+            onClick={toggleDrawer("left", true)}
+            size="medium"
+            color="inherit"
+          >
+            <MenuIcon fontSize="large" color="inherit" />
+          </IconButton>
+          <RouterLink className={classes.logoContainer} to={paths.home}>
+            <img
+              src={logoSrc}
+              onMouseOver={() => {
+                setLogoSrc(logoOrange);
+              }}
+              onMouseOut={() => {
+                setLogoSrc(darkTheme ? logoBgDark : logoBgLight);
+              }}
+              alt="supernova logo"
+              className={classes.logo}
+            />
+          </RouterLink>
+          <div className={classes.appBarRight}>
+            <Button
+              color="inherit"
+              component={RouterLink}
+              to={paths.explore}
+              size="large"
+            >
+              EXPLORE
+            </Button>
+            <Button
+              color="inherit"
+              component={RouterLink}
+              to={paths.login}
+              size="large"
+            >
+              LOG IN
+            </Button>
           </div>
         </Toolbar>
       </AppBar>
