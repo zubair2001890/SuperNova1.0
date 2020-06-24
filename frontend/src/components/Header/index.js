@@ -38,6 +38,7 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: theme.spacing(2),
     marginRight: theme.spacing(2),
     color: "white",
+    ...theme.typography.subtitle1,
   },
   rightToolbar: {
     alignSelf: "center",
