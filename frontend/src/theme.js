@@ -23,6 +23,12 @@ export default createMuiTheme({
     },
   },
   palette: {
+    common: {
+      red: appColors.red,
+      blue: appColors.blue,
+      black: appColors.black,
+      white: appColors.white,
+    },
     primary: {
       main: appColors.blue,
     },
