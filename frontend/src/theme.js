@@ -12,6 +12,7 @@ const appColors = {
 const appFonts = {
   montserrat: "'Montserrat', sans-serif",
   avertaDemo: "'AvertaDemo', sans-serif",
+  avaMeridian: "'AvaMeridian', sans-serif",
 };
 
 export default createMuiTheme({
@@ -80,6 +81,9 @@ export default createMuiTheme({
     },
     overline: {
       fontFamily: appFonts.avertaDemo,
+    },
+    title: {
+      fontFamily: appFonts.avaMeridian,
     },
   },
 });

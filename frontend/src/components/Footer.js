@@ -33,11 +33,13 @@ const useStyles = makeStyles((theme) => ({
   regularLink: {
     color: "white",
     fontSize: 18,
+    ...theme.typography.subtitle2,
   },
   boldLink: {
     color: "white",
-    fontWeight: "bold",
     fontSize: 20,
+    ...theme.typography.subtitle1,
+    fontWeight: "bold",
   },
   gridItem: {
     textAlign: "center",
@@ -50,9 +52,8 @@ const useStyles = makeStyles((theme) => ({
   },
   footerTitle: {
     color: "white",
-    fontWeight: "bold",
     fontSize: 33, // TODO: Resize when window gets small and text overflows container
-    fontFamily: "Roboto",
+    ...theme.typography.title,
   },
   whiteLine: {
     width: "100%",
