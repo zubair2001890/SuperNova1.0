@@ -7,6 +7,7 @@ import {
   ListItem,
   ListItemText,
   Drawer,
+  Typography,
 } from "@material-ui/core";
 import { Close as CloseIcon } from "@material-ui/icons";
 
@@ -23,6 +24,9 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     width: "100%",
     alignItems: "center",
+  },
+  drawerLinks: {
+    ...theme.mixins.navBarLink,
   },
 }));
 
@@ -60,16 +64,28 @@ export default function Header({
       </div>
       <List component="nav" aria-label="secondary navigation menu">
         <ListItem button component={RouterLink} to="/">
-          <ListItemText primary="BROWSE PROJECTS" />
+          <ListItemText>
+            <Typography className={classes.drawerLinks}>
+              BROWSE PROJECTS
+            </Typography>
+          </ListItemText>
         </ListItem>
         <ListItem button component={RouterLink} to="/">
-          <ListItemText primary="UPLOAD PROJECT" />
+          <ListItemText>
+            <Typography className={classes.drawerLinks}>
+              UPLOAD A PROJECT
+            </Typography>
+          </ListItemText>
         </ListItem>
         <ListItem button component={RouterLink} to="/">
-          <ListItemText primary="CONTACT US" />
+          <ListItemText>
+            <Typography className={classes.drawerLinks}>CONTACT US</Typography>
+          </ListItemText>
         </ListItem>
         <ListItem button component={RouterLink} to="/">
-          <ListItemText primary="MY PROFILE" />
+          <ListItemText>
+            <Typography className={classes.drawerLinks}>MY PROFILE</Typography>
+          </ListItemText>
         </ListItem>
       </List>
     </Drawer>
