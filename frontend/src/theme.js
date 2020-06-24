@@ -17,6 +17,11 @@ const appFonts = {
 export default createMuiTheme({
   // Customize MU theme properties here;
   // check default theme here https://material-ui.com/customization/default-theme/#default-theme;
+  mixins: {
+    appBar: {
+      height: 80,
+    },
+  },
   palette: {
     primary: {
       main: appColors.blue,

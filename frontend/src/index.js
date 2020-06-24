@@ -7,11 +7,11 @@ import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-  <React.Fragment>
+  <>
     <Provider store={store}>
       <App />
     </Provider>
-  </React.Fragment>,
+  </>,
   document.getElementById('root')
 );
 
