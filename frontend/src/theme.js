@@ -4,8 +4,8 @@ import { createMuiTheme } from "@material-ui/core/styles";
 const appColors = {
   red: "#FF0000",
   blue: "#000647",
-  black: "#FFFFFF",
-  white: "#000000",
+  black: "#000",
+  white: "#fff",
 };
 
 // fonts
