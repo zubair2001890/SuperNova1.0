@@ -5,8 +5,9 @@ import FormControl from "@material-ui/core/FormControl";
 import TextField from "@material-ui/core/TextField";
 
 import {
-  Container,
   Button,
+  Container,
+  Grid,
   Input,
   InputLabel,
   IconButton,
@@ -21,31 +22,19 @@ import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    position: "relative",
-    maxWidth: "100%",
-    padding: "50px",
-    alignContent: "center",
-    flexDirection: "columns",
-  },
-
   content: {
-    position: "relative",
     width: "40%",
     backgroundColor: "black",
     color: "white",
     margin: "auto auto",
     transform: "translate(0px, -30px)",
-    flexDirection: "column",
-    alignContent: "center",
-    zIndex: 3,
   },
   margin: {
-    margin: "20px 2px",
+    marginBottom: "20px",
   },
 
-  pos: {
-    marginTop: "25%",
+  position: {
+    marginTop: "20%",
   },
 }));
 
@@ -70,18 +59,28 @@ export default function LoginForm() {
 
   return (
     <>
-      <Paper className={classes.pos} variant="outlined" square elevation={3}>
-        <Paper className={classes.content}>
-          <Typography variant="h3">Login</Typography>
-          <IconButton aria-label="settings">
-            <FacebookIcon style={{ color: "white" }} />
-          </IconButton>
-          <IconButton aria-label="settings">
-            <FacebookIcon style={{ color: "white" }} />
-          </IconButton>
-          <IconButton aria-label="settings">
-            <FacebookIcon style={{ color: "white" }} />
-          </IconButton>
+      <Paper
+        className={classes.position}
+        variant="elevation"
+        square
+        elevation={5}
+      >
+        <Paper variant="elevation" elevation={8} className={classes.content}>
+          <Typography gutterBottom align="center" variant="h3">
+            Login
+          </Typography>
+
+          <Grid container direction="row" justify="center" alignItems="center">
+            <IconButton aria-label="settings">
+              <FacebookIcon style={{ color: "white" }} />
+            </IconButton>
+            <IconButton aria-label="settings">
+              <FacebookIcon style={{ color: "white" }} />
+            </IconButton>
+            <IconButton aria-label="settings">
+              <FacebookIcon style={{ color: "white" }} />
+            </IconButton>
+          </Grid>
         </Paper>
         <Container>
           <TextField
@@ -124,10 +123,19 @@ export default function LoginForm() {
           </FormControl>
         </Container>
 
-        <Container>
-          <Button size="large">Log In</Button>
-          <Button size="large">Forgot Password</Button>
-        </Container>
+        <Grid
+          container
+          direction="row"
+          justify="space-around"
+          alignItems="center"
+        >
+          <Button className={classes.margin} variant="outlined" size="large">
+            Log In
+          </Button>
+          <Button className={classes.margin} variant="outlined" size="large">
+            Forgot Password
+          </Button>
+        </Grid>
       </Paper>
     </>
   );
