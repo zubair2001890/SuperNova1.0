@@ -10,7 +10,7 @@ const appColors = {
 
 // fonts
 const appFonts = {
-  monteserrat: "font-family: 'Montserrat', sans-serif;",
+  montserrat: "font-family: 'Montserrat', sans-serif;",
   avertaDemo: "font-family: 'AvertaDemo', sans-serif;",
 };
 
@@ -32,28 +32,28 @@ export default createMuiTheme({
   typography: {
     fontFamily: appFonts.avertaDemo,
     h1: {
-      fontFamily: appFonts.monteserrat,
+      fontFamily: appFonts.montserrat,
     },
     h2: {
-      fontFamily: appFonts.monteserrat,
+      fontFamily: appFonts.montserrat,
     },
     h3: {
-      fontFamily: appFonts.monteserrat,
+      fontFamily: appFonts.montserrat,
     },
     h4: {
-      fontFamily: appFonts.monteserrat,
+      fontFamily: appFonts.montserrat,
     },
     h5: {
-      fontFamily: appFonts.monteserrat,
+      fontFamily: appFonts.montserrat,
     },
     h6: {
-      fontFamily: appFonts.monteserrat,
+      fontFamily: appFonts.montserrat,
     },
     subtitle1: {
-      fontFamily: appFonts.monteserrat,
+      fontFamily: appFonts.montserrat,
     },
     subtitle2: {
-      fontFamily: appFonts.monteserrat,
+      fontFamily: appFonts.montserrat,
     },
     body1: {
       fontFamily: appFonts.avertaDemo,
