@@ -22,31 +22,6 @@ export default createMuiTheme({
     appBar: {
       height: 80,
     },
-    navBarLink: {
-      fontFamily: appFonts.montserrat,
-      fontWeight: "bold",
-      fontSize: 20,
-      letterSpacing: 1.8,
-    },
-    footerTitle: {
-      color: appColors.white,
-      fontFamily: appFonts.avaMeridian,
-      fontSize: "2vw",
-      letterSpacing: 2.97,
-    },
-    footerBoldLink: {
-      fontFamily: appFonts.montserrat,
-      color: appColors.white,
-      fontWeight: "bold",
-      fontSize: 20,
-      letterSpacing: 1.8,
-    },
-    footerRegularLink: {
-      fontFamily: appFonts.montserrat,
-      color: appColors.white,
-      fontSize: 18,
-      letterSpacing: 1.62,
-    },
   },
   palette: {
     common: {

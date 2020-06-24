@@ -21,7 +21,6 @@ const useStyles = makeStyles((theme) => ({
     color: "white",
   },
   bottomNavBar: {
-    // backgroundColor: "black",
     backgroundColor: theme.palette.common.black,
     paddingTop: theme.spacing(2),
   },
@@ -31,10 +30,10 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.common.black,
   },
   regularLink: {
-    ...theme.mixins.footerRegularLink,
+    color: "white",
   },
   boldLink: {
-    ...theme.mixins.footerBoldLink,
+    color: "white",
   },
   gridItem: {
     textAlign: "center",
@@ -46,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-around",
   },
   footerTitle: {
-    ...theme.mixins.footerTitle,
+    color: "white",
   },
   whiteLine: {
     width: "100%",
