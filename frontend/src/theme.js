@@ -107,8 +107,5 @@ export default createMuiTheme({
     overline: {
       fontFamily: appFonts.avertaDemo,
     },
-    title: {
-      fontFamily: appFonts.avaMeridian,
-    },
   },
 });
