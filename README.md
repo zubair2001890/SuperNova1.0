@@ -16,9 +16,6 @@ SuperNova Main (Note pages are scrollable). To see full interactive version, dow
 
 https://xd.adobe.com/view/437dec37-4680-40bb-77cb-e6d1602e8674-354c/
 
-Database Schema 
-https://my.vertabelo.com/doc/SWHlQAr1nuHQ4fMDdfF33PNOYoHDwsMd
-NOTE: you need to create free account to view database schema 
 
 
 Priority of tasks is based on following key:

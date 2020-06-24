@@ -21,23 +21,19 @@ const useStyles = makeStyles((theme) => ({
     color: "white",
   },
   bottomNavBar: {
-    backgroundColor: "black",
-    // TODO: Import colour from palette
+    backgroundColor: theme.palette.common.black,
     paddingTop: theme.spacing(2),
   },
   footer: {
     width: "100%",
     bottom: 0,
-    backgroundColor: "black",
+    backgroundColor: theme.palette.common.black,
   },
   regularLink: {
     color: "white",
-    fontSize: 18,
   },
   boldLink: {
     color: "white",
-    fontWeight: "bold",
-    fontSize: 20,
   },
   gridItem: {
     textAlign: "center",
@@ -50,14 +46,11 @@ const useStyles = makeStyles((theme) => ({
   },
   footerTitle: {
     color: "white",
-    fontWeight: "bold",
-    fontSize: 33, // TODO: Resize when window gets small and text overflows container
-    fontFamily: "Roboto",
   },
   whiteLine: {
     width: "100%",
     height: 2,
-    backgroundColor: "white",
+    backgroundColor: theme.palette.common.white,
   },
   whiteLineContainer: {
     display: "flex",

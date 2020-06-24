@@ -24,6 +24,9 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     alignItems: "center",
   },
+  drawerLinks: {
+    ...theme.mixins.navLinkPrimary,
+  },
 }));
 
 export default function Header({
@@ -60,16 +63,28 @@ export default function Header({
       </div>
       <List component="nav" aria-label="secondary navigation menu">
         <ListItem button component={RouterLink} to="/">
-          <ListItemText primary="BROWSE PROJECTS" />
+          <ListItemText
+            classes={{ primary: classes.drawerLinks }}
+            primary="BROWSE PROJECTS"
+          />
         </ListItem>
         <ListItem button component={RouterLink} to="/">
-          <ListItemText primary="UPLOAD PROJECT" />
+          <ListItemText
+            classes={{ primary: classes.drawerLinks }}
+            primary="UPLOAD A PROJECT"
+          />
         </ListItem>
         <ListItem button component={RouterLink} to="/">
-          <ListItemText primary="CONTACT US" />
+          <ListItemText
+            classes={{ primary: classes.drawerLinks }}
+            primary="CONTACT US"
+          />
         </ListItem>
         <ListItem button component={RouterLink} to="/">
-          <ListItemText primary="MY PROFILE" />
+          <ListItemText
+            classes={{ primary: classes.drawerLinks }}
+            primary="MY PROFILE"
+          />
         </ListItem>
       </List>
     </Drawer>

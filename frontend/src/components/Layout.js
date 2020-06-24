@@ -17,7 +17,7 @@ export default ({ children }) => {
 
   return (
     <>
-      <Header />
+      <Header darkTheme={false} />
       <div className={classes.mainContainer}>
         <div className={classes.mockAppBarLayout}></div>
         {children}
