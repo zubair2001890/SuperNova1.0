@@ -5,13 +5,14 @@ const appColors = {
   red: "#FF0000",
   blue: "#000647",
   black: "#000",
-  white: "#fff",
+  white: "#FFF",
 };
 
 // fonts
 const appFonts = {
   montserrat: "'Montserrat', sans-serif",
   avertaDemo: "'AvertaDemo', sans-serif",
+  avaMeridian: "'AvaMeridian', sans-serif",
 };
 
 export default createMuiTheme({
@@ -21,6 +22,8 @@ export default createMuiTheme({
     appBar: {
       height: 80,
     },
+    navLinkPrimary: {},
+    navLinkSecondary: {},
   },
   palette: {
     common: {

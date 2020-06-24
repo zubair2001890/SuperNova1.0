@@ -3,3 +3,8 @@
   src: local("AvertaDemo"),
     url(./fonts/AvertaDemoPE-Regular.otf) format("opentype");
 }
+
+@font-face {
+  font-family: "AvaMeridian";
+  src: local("AvaMeridian"), url(./fonts/AvaMeridian.otf) format("opentype");
+}

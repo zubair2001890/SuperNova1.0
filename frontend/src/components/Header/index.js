@@ -39,6 +39,9 @@ const useStyles = makeStyles((theme) => ({
       marginRight: theme.spacing(4),
     },
   },
+  appBarRightLink: {
+    ...theme.mixins.navLinkPrimary,
+  },
   "@keyframes rotate": {
     from: {
       transform: "rotate(0deg)",
@@ -100,6 +103,7 @@ export default function Header({ darkTheme = true }) {
               component={RouterLink}
               to={paths.explore}
               size="large"
+              className={classes.appBarRightLink}
             >
               EXPLORE
             </Button>
@@ -108,6 +112,7 @@ export default function Header({ darkTheme = true }) {
               component={RouterLink}
               to={paths.login}
               size="large"
+              className={classes.appBarRightLink}
             >
               LOG IN
             </Button>
