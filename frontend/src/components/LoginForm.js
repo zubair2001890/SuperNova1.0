@@ -90,7 +90,7 @@ export default function LoginForm() {
             id="input-with-icon-textfield"
             label="Email"
             InputProps={{
-              startAdornment: (
+              endAdornment: (
                 <InputAdornment position="end">
                   <AccountCircle />
                 </InputAdornment>
