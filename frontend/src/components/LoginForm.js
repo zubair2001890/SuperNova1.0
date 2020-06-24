@@ -100,7 +100,7 @@ export default function LoginForm() {
           label="Email"
           InputProps={{
             startAdornment: (
-              <InputAdornment position="start">
+              <InputAdornment position="end">
                 <AccountCircle />
               </InputAdornment>
             ),
