@@ -7,7 +7,6 @@ import {
   ListItem,
   ListItemText,
   Drawer,
-  Typography,
 } from "@material-ui/core";
 import { Close as CloseIcon } from "@material-ui/icons";
 
@@ -64,28 +63,28 @@ export default function Header({
       </div>
       <List component="nav" aria-label="secondary navigation menu">
         <ListItem button component={RouterLink} to="/">
-          <ListItemText>
-            <Typography className={classes.drawerLinks}>
-              BROWSE PROJECTS
-            </Typography>
-          </ListItemText>
+          <ListItemText
+            classes={{ primary: classes.drawerLinks }}
+            primary="BROWSE PROJECTS"
+          />
         </ListItem>
         <ListItem button component={RouterLink} to="/">
-          <ListItemText>
-            <Typography className={classes.drawerLinks}>
-              UPLOAD A PROJECT
-            </Typography>
-          </ListItemText>
+          <ListItemText
+            classes={{ primary: classes.drawerLinks }}
+            primary="UPLOAD A PROJECT"
+          />
         </ListItem>
         <ListItem button component={RouterLink} to="/">
-          <ListItemText>
-            <Typography className={classes.drawerLinks}>CONTACT US</Typography>
-          </ListItemText>
+          <ListItemText
+            classes={{ primary: classes.drawerLinks }}
+            primary="CONTACT US"
+          />
         </ListItem>
         <ListItem button component={RouterLink} to="/">
-          <ListItemText>
-            <Typography className={classes.drawerLinks}>MY PROFILE</Typography>
-          </ListItemText>
+          <ListItemText
+            classes={{ primary: classes.drawerLinks }}
+            primary="MY PROFILE"
+          />
         </ListItem>
       </List>
     </Drawer>
