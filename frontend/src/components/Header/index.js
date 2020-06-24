@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   appBarRightLink: {
-    ...theme.mixins.navBarLink,
+    ...theme.mixins.navLinkPrimary,
   },
   "@keyframes rotate": {
     from: {

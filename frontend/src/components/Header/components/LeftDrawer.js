@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
   },
   drawerLinks: {
-    ...theme.mixins.navBarLink,
+    ...theme.mixins.navLinkPrimary,
   },
 }));
 

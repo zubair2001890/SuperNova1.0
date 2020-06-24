@@ -22,6 +22,8 @@ export default createMuiTheme({
     appBar: {
       height: 80,
     },
+    navLinkPrimary: {},
+    navLinkSecondary: {},
   },
   palette: {
     common: {
