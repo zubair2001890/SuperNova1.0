@@ -2,13 +2,11 @@ import React from "react";
 import { Link as RouterLink } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import {
-  IconButton,
   List,
   ListItem,
   ListItemText,
   Drawer,
 } from "@material-ui/core";
-import { Close as CloseIcon } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
   paperAnchorLeft: {
@@ -18,6 +16,9 @@ const useStyles = makeStyles((theme) => ({
       "transparent linear-gradient(180deg, #FF0000 0%, #650000 100%) 0% 0% no-repeat padding-box",
     border: "1px solid #707070",
     "clip-path": "polygon(0 0, 100% 0, 50% 100%, 0% 100%)",
+  },
+  mockAppBarLayout: {
+    ...theme.mixins.appBar
   },
   closeLeftDrawerButtonContainer: {
     display: "flex",
@@ -29,13 +30,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Header({
-  className,
-  open,
-  onDrawerClose,
-  onCloseBtnClick,
-  ...otherProps
-}) {
+export default ({ className, open, onDrawerClose, ...otherProps }) => {
   const classes = useStyles();
 
   return (
@@ -51,16 +46,7 @@ export default function Header({
       className={className}
       {...otherProps}
     >
-      <div className={classes.closeLeftDrawerButtonContainer}>
-        <IconButton
-          color="inherit"
-          aria-label="menu"
-          onClick={onCloseBtnClick}
-          size="medium"
-        >
-          <CloseIcon fontSize="large" />
-        </IconButton>
-      </div>
+      <div class={classes.mockAppBarLayout}></div>
       <List component="nav" aria-label="secondary navigation menu">
         <ListItem button component={RouterLink} to="/">
           <ListItemText
@@ -89,4 +75,4 @@ export default function Header({
       </List>
     </Drawer>
   );
-}
+};
