@@ -1,12 +1,8 @@
 import React from "react";
 import { Link as RouterLink } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
-import {
-  List,
-  ListItem,
-  ListItemText,
-  Drawer,
-} from "@material-ui/core";
+import { List, ListItem, ListItemText, Drawer } from "@material-ui/core";
+import DrawerTimeline from "./DrawerTimeline";
 
 const useStyles = makeStyles((theme) => ({
   paperAnchorLeft: {
@@ -18,15 +14,21 @@ const useStyles = makeStyles((theme) => ({
     "clip-path": "polygon(0 0, 100% 0, 50% 100%, 0% 100%)",
   },
   mockAppBarLayout: {
-    ...theme.mixins.appBar
+    ...theme.mixins.appBar,
   },
-  closeLeftDrawerButtonContainer: {
+  drawerContentContainer: {
     display: "flex",
     width: "100%",
-    alignItems: "center",
+    paddingLeft: theme.spacing(2),
   },
-  drawerLinks: {
+  drawerTimeline: {
+    flex: "0 0 auto",
+  },
+  listItemTextPrimary: {
     ...theme.mixins.navLinkPrimary,
+    '&:hover': {
+      color: theme.palette.common.white,
+    }
   },
 }));
 
@@ -46,33 +48,36 @@ export default ({ className, open, onDrawerClose, ...otherProps }) => {
       className={className}
       {...otherProps}
     >
-      <div class={classes.mockAppBarLayout}></div>
-      <List component="nav" aria-label="secondary navigation menu">
-        <ListItem button component={RouterLink} to="/">
-          <ListItemText
-            classes={{ primary: classes.drawerLinks }}
-            primary="BROWSE PROJECTS"
-          />
-        </ListItem>
-        <ListItem button component={RouterLink} to="/">
-          <ListItemText
-            classes={{ primary: classes.drawerLinks }}
-            primary="UPLOAD A PROJECT"
-          />
-        </ListItem>
-        <ListItem button component={RouterLink} to="/">
-          <ListItemText
-            classes={{ primary: classes.drawerLinks }}
-            primary="CONTACT US"
-          />
-        </ListItem>
-        <ListItem button component={RouterLink} to="/">
-          <ListItemText
-            classes={{ primary: classes.drawerLinks }}
-            primary="MY PROFILE"
-          />
-        </ListItem>
-      </List>
+      <div className={classes.mockAppBarLayout}></div>
+      <div className={classes.drawerContentContainer}>
+        <DrawerTimeline className={classes.drawerTimeline} />
+        <List component="nav" aria-label="secondary navigation menu">
+          <ListItem button component={RouterLink} to="/">
+            <ListItemText
+              classes={{ primary: classes.listItemTextPrimary }}
+              primary="BROWSE PROJECTS"
+            />
+          </ListItem>
+          <ListItem button component={RouterLink} to="/">
+            <ListItemText
+              classes={{ primary: classes.listItemTextPrimary }}
+              primary="UPLOAD A PROJECT"
+            />
+          </ListItem>
+          <ListItem button component={RouterLink} to="/">
+            <ListItemText
+              classes={{ primary: classes.listItemTextPrimary }}
+              primary="CONTACT US"
+            />
+          </ListItem>
+          <ListItem button component={RouterLink} to="/">
+            <ListItemText
+              classes={{ primary: classes.listItemTextPrimary }}
+              primary="MY PROFILE"
+            />
+          </ListItem>
+        </List>
+      </div>
     </Drawer>
   );
 };
