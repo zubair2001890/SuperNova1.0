@@ -17,24 +17,32 @@ import {
 } from "@material-ui/core";
 
 import FacebookIcon from "@material-ui/icons/Facebook";
+import TwitterIcon from "@material-ui/icons/Twitter";
+import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 
 const useStyles = makeStyles((theme) => ({
   content: {
-    width: "40%",
+    width: "45%",
     backgroundColor: "black",
     color: "white",
     margin: "auto auto",
     transform: "translate(0px, -30px)",
   },
   margin: {
-    marginBottom: "20px",
+    margin: "20px 0px 20px 0px",
   },
 
   position: {
     marginTop: "20%",
+  },
+  textField: {
+    color: "black",
+  },
+  whiteIcons: {
+    color: "white",
   },
 }));
 
@@ -42,6 +50,7 @@ export default function LoginForm() {
   const classes = useStyles();
   const [values, setValues] = React.useState({
     password: "",
+    email: "",
     showPassword: false,
   });
 
@@ -70,37 +79,51 @@ export default function LoginForm() {
             Login
           </Typography>
 
-          <Grid container direction="row" justify="center" alignItems="center">
+          <Grid container direction="row" justify="center">
             <IconButton aria-label="settings">
-              <FacebookIcon style={{ color: "white" }} />
+              <FacebookIcon className={classes.whiteIcons} />
             </IconButton>
             <IconButton aria-label="settings">
-              <FacebookIcon style={{ color: "white" }} />
+              <TwitterIcon className={classes.whiteIcons} />
             </IconButton>
             <IconButton aria-label="settings">
-              <FacebookIcon style={{ color: "white" }} />
+              <LinkedInIcon className={classes.whiteIcons} />
             </IconButton>
           </Grid>
         </Paper>
+
         <Container>
-          <TextField
-            fullWidth
-            className={classes.margin}
-            id="input-with-icon-textfield"
-            label="Email"
-            InputProps={{
-              endAdornment: (
+          <FormControl
+            margin="normal"
+            fullWidth={true}
+            className={clsx(classes.textField)}
+          >
+            <InputLabel
+              className={clsx(classes.textField)}
+              htmlFor="standard-adornment-email"
+            >
+              Email
+            </InputLabel>
+            <Input
+              id="standard-adornment-email"
+              value={values.email}
+              onChange={handleChange("email")}
+              endAdornment={
                 <InputAdornment position="end">
                   <AccountCircle />
                 </InputAdornment>
-              ),
-            }}
-          />
+              }
+            />
+          </FormControl>
           <FormControl
+            margin="normal"
             fullWidth={true}
-            className={clsx(classes.margin, classes.textField)}
+            className={classes.textField}
           >
-            <InputLabel htmlFor="standard-adornment-password">
+            <InputLabel
+              className={classes.textField}
+              htmlFor="standard-adornment-password"
+            >
               Password
             </InputLabel>
             <Input
