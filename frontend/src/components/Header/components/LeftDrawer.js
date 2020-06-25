@@ -11,12 +11,14 @@ import {
 const useStyles = makeStyles((theme) => ({
   paperAnchorLeft: {
     width: 412,
-    paddingTop: theme.mixins.appBar.height,
     paddingLeft: theme.spacing(2),
     background:
       "transparent linear-gradient(180deg, #FF0000 0%, #650000 100%) 0% 0% no-repeat padding-box",
     border: "1px solid #707070",
     "clip-path": "polygon(0 0, 100% 0, 50% 100%, 0% 100%)",
+  },
+  mockAppBarLayout: {
+    ...theme.mixins.appBar
   },
   closeLeftDrawerButtonContainer: {
     display: "flex",
@@ -44,6 +46,7 @@ export default ({ className, open, onDrawerClose, ...otherProps }) => {
       className={className}
       {...otherProps}
     >
+      <div class={classes.mockAppBarLayout}></div>
       <List component="nav" aria-label="secondary navigation menu">
         <ListItem button component={RouterLink} to="/">
           <ListItemText

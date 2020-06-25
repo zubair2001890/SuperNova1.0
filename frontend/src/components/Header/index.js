@@ -14,17 +14,11 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "transparent",
     color: (props) =>
       props.darkTheme ? theme.palette.common.white : theme.palette.common.black,
+    zIndex: theme.zIndex.snackbar,
   },
   toolBar: {
     ...theme.mixins.appBar,
     position: "relative",
-  },
-  toggleLeftDrawerBtnContainer: {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    ...theme.mixins.appBar,
-    zIndex: theme.zIndex.snackbar,
   },
   logoContainer: {
     height: "80%",
@@ -86,8 +80,25 @@ export default function Header({ darkTheme = true }) {
 
   return (
     <>
+      <LeftDrawer
+        open={drawerState.left}
+        onDrawerClose={toggleDrawer("left", false)}
+      />
       <AppBar position="absolute" elevation={0} className={classes.appBar}>
         <Toolbar className={classes.toolBar}>
+          <IconButton
+            edge="start"
+            aria-label="menu button"
+            onClick={toggleDrawer("left", !drawerState.left)}
+            size="medium"
+            color="inherit"
+          >
+            {drawerState.left ? (
+              <CloseIcon fontSize="large" color="inherit" />
+            ) : (
+              <MenuIcon fontSize="large" color="inherit" />
+            )}
+          </IconButton>
           <RouterLink className={classes.logoContainer} to={paths.home}>
             <img
               src={logoSrc}
@@ -123,25 +134,6 @@ export default function Header({ darkTheme = true }) {
           </div>
         </Toolbar>
       </AppBar>
-      <LeftDrawer
-        open={drawerState.left}
-        onDrawerClose={toggleDrawer("left", false)}
-      />
-      <div className={classes.toggleLeftDrawerBtnContainer}>
-        <IconButton
-          edge="start"
-          aria-label="menu button"
-          onClick={toggleDrawer("left", !drawerState.left)}
-          size="medium"
-          color="inherit"
-        >
-          {drawerState.left ? (
-            <CloseIcon fontSize="large" color="inherit" />
-          ) : (
-            <MenuIcon fontSize="large" color="inherit" />
-          )}
-        </IconButton>
-      </div>
     </>
   );
 }
