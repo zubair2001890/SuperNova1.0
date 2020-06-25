@@ -2,17 +2,16 @@ import React from "react";
 import { Link as RouterLink } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import {
-  IconButton,
   List,
   ListItem,
   ListItemText,
   Drawer,
 } from "@material-ui/core";
-import { Close as CloseIcon } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
   paperAnchorLeft: {
     width: 412,
+    paddingTop: theme.mixins.appBar.height,
     paddingLeft: theme.spacing(2),
     background:
       "transparent linear-gradient(180deg, #FF0000 0%, #650000 100%) 0% 0% no-repeat padding-box",
@@ -29,13 +28,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Header({
-  className,
-  open,
-  onDrawerClose,
-  onCloseBtnClick,
-  ...otherProps
-}) {
+export default ({ className, open, onDrawerClose, ...otherProps }) => {
   const classes = useStyles();
 
   return (
@@ -51,16 +44,6 @@ export default function Header({
       className={className}
       {...otherProps}
     >
-      <div className={classes.closeLeftDrawerButtonContainer}>
-        <IconButton
-          color="inherit"
-          aria-label="menu"
-          onClick={onCloseBtnClick}
-          size="medium"
-        >
-          <CloseIcon fontSize="large" />
-        </IconButton>
-      </div>
       <List component="nav" aria-label="secondary navigation menu">
         <ListItem button component={RouterLink} to="/">
           <ListItemText
@@ -89,4 +72,4 @@ export default function Header({
       </List>
     </Drawer>
   );
-}
+};
