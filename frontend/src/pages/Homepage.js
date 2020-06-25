@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import Typography from "@material-ui/core/Typography";
 import AnimatedArrows from "../components/AnimatedArrows";
 import GrowVerticalBar from "../components/GrowVerticalBar";
+import HomepageTitle from "../components/HomepageTitle";
 import { useDispatch } from "react-redux";
 import { setDarkTheme as setHeaderDarkTheme } from "../store/slices/header";
 
@@ -18,6 +19,7 @@ export default function Links() {
       <Typography variant="h1" gutterBottom>
         Homepage
       </Typography>
+      <HomepageTitle />
       <AnimatedArrows />
       <GrowVerticalBar />
     </>
