@@ -2,7 +2,6 @@ import React from "react";
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import FormControl from "@material-ui/core/FormControl";
-import TextField from "@material-ui/core/TextField";
 
 import {
   Button,
@@ -25,8 +24,9 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 
 const useStyles = makeStyles((theme) => ({
   content: {
+    fontFamily: theme.typography.h3,
+    backgroundColor: theme.palette.common.black,
     width: "45%",
-    backgroundColor: "black",
     color: "white",
     margin: "auto auto",
     transform: "translate(0px, -30px)",
@@ -34,15 +34,14 @@ const useStyles = makeStyles((theme) => ({
   margin: {
     margin: "20px 0px 20px 0px",
   },
-
   position: {
     marginTop: "20%",
   },
   textField: {
-    color: "black",
+    color: theme.palette.common.black,
   },
-  whiteIcons: {
-    color: "white",
+  iconsColor: {
+    color: theme.palette.common.white,
   },
 }));
 
@@ -81,13 +80,13 @@ export default function LoginForm() {
 
           <Grid container direction="row" justify="center">
             <IconButton aria-label="settings">
-              <FacebookIcon className={classes.whiteIcons} />
+              <FacebookIcon className={classes.iconsColor} />
             </IconButton>
             <IconButton aria-label="settings">
-              <TwitterIcon className={classes.whiteIcons} />
+              <TwitterIcon className={classes.iconsColor} />
             </IconButton>
             <IconButton aria-label="settings">
-              <LinkedInIcon className={classes.whiteIcons} />
+              <LinkedInIcon className={classes.iconsColor} />
             </IconButton>
           </Grid>
         </Paper>
@@ -152,7 +151,11 @@ export default function LoginForm() {
           justify="space-around"
           alignItems="center"
         >
-          <Button className={classes.margin} variant="outlined" size="large">
+          <Button
+            className={clsx(classes.margin, classes.label)}
+            variant="outlined"
+            size="large"
+          >
             Log In
           </Button>
           <Button className={classes.margin} variant="outlined" size="large">
