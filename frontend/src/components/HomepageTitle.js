@@ -1,5 +1,5 @@
 import React from "react";
-import { Typography, Fade } from "@material-ui/core";
+import { Typography, Fade, Slide } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
@@ -9,6 +9,10 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "7.45vw",
     letterSpacing: 10.01,
   },
+  fadeAnimation: {
+    in: true,
+    timeout: 1500,
+  },
 }));
 
 export default function HomepageTitle() {
@@ -16,9 +20,13 @@ export default function HomepageTitle() {
 
   return (
     <>
-      <Fade in={true} timeout={1500}>
-        <Typography className={classes.title}>SUPERNOVA</Typography>
-      </Fade>
+      <Slide in={true} timeout={1000} direction="up">
+        <div>
+          <Fade in={true} timeout={1500}>
+            <Typography className={classes.title}>SUPERNOVA</Typography>
+          </Fade>
+        </div>
+      </Slide>
     </>
   );
 }
