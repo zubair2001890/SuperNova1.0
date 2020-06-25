@@ -1,19 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import { AppBar, IconButton, Toolbar, Button } from "@material-ui/core";
-import { Menu as MenuIcon } from "@material-ui/icons";
+import { Menu as MenuIcon, Close as CloseIcon } from "@material-ui/icons";
 import LeftDrawer from "./components/LeftDrawer";
 import paths from "../../constants/paths";
-import logoBgDark from "../../images/logo-bg-dark.png";
-import logoBgLight from "../../images/logo-bg-light.png";
 import logoOrange from "../../images/logo-orange.png";
+import logoBlack from "../../images/logo-black.png";
+import logoWhite from "../../images/logo-white.png";
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
     backgroundColor: "transparent",
     color: (props) =>
       props.darkTheme ? theme.palette.common.white : theme.palette.common.black,
+    zIndex: theme.zIndex.snackbar,
   },
   toolBar: {
     ...theme.mixins.appBar,
@@ -52,13 +53,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const getLogoSrc = (darkTheme) => (darkTheme ? logoWhite : logoBlack);
+
 export default function Header({ darkTheme = true }) {
   const classes = useStyles({ darkTheme });
   const [drawerState, setDrawerState] = useState({
     left: false,
   });
 
-  const [logoSrc, setLogoSrc] = useState(darkTheme ? logoBgDark : logoBgLight);
+  const [logoSrc, setLogoSrc] = useState(getLogoSrc(darkTheme));
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (
@@ -71,18 +74,30 @@ export default function Header({ darkTheme = true }) {
     setDrawerState({ ...drawerState, [anchor]: open });
   };
 
+  useEffect(() => {
+    setLogoSrc(getLogoSrc(darkTheme));
+  }, [darkTheme]);
+
   return (
     <>
-      <AppBar position="fixed" elevation={0} className={classes.appBar}>
+      <LeftDrawer
+        open={drawerState.left}
+        onDrawerClose={toggleDrawer("left", false)}
+      />
+      <AppBar position="absolute" elevation={0} className={classes.appBar}>
         <Toolbar className={classes.toolBar}>
           <IconButton
             edge="start"
             aria-label="menu button"
-            onClick={toggleDrawer("left", true)}
+            onClick={toggleDrawer("left", !drawerState.left)}
             size="medium"
             color="inherit"
           >
-            <MenuIcon fontSize="large" color="inherit" />
+            {drawerState.left ? (
+              <CloseIcon fontSize="large" color="inherit" />
+            ) : (
+              <MenuIcon fontSize="large" color="inherit" />
+            )}
           </IconButton>
           <RouterLink className={classes.logoContainer} to={paths.home}>
             <img
@@ -91,7 +106,7 @@ export default function Header({ darkTheme = true }) {
                 setLogoSrc(logoOrange);
               }}
               onMouseOut={() => {
-                setLogoSrc(darkTheme ? logoBgDark : logoBgLight);
+                setLogoSrc(getLogoSrc(darkTheme));
               }}
               alt="supernova logo"
               className={classes.logo}
@@ -119,11 +134,6 @@ export default function Header({ darkTheme = true }) {
           </div>
         </Toolbar>
       </AppBar>
-      <LeftDrawer
-        open={drawerState.left}
-        onDrawerClose={toggleDrawer("left", false)}
-        onCloseBtnClick={toggleDrawer("left", false)}
-      />
     </>
   );
 }

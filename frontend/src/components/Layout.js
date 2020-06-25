@@ -1,7 +1,9 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { makeStyles } from "@material-ui/core";
 import Header from "./Header";
 import Footer from "./Footer";
-import { makeStyles } from "@material-ui/core";
+import { selectDarkTheme } from "../store/slices/header";
 
 const useStyles = makeStyles((theme) => ({
   mainContainer: {
@@ -14,10 +16,11 @@ const useStyles = makeStyles((theme) => ({
 
 export default ({ children }) => {
   const classes = useStyles();
+  const headerDarkTheme = useSelector(selectDarkTheme);
 
   return (
     <>
-      <Header darkTheme={false} />
+      <Header darkTheme={headerDarkTheme} />
       <div className={classes.mainContainer}>
         <div className={classes.mockAppBarLayout}></div>
         {children}
