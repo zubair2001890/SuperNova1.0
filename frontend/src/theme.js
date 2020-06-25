@@ -21,6 +21,8 @@ export default createMuiTheme({
   mixins: {
     appBar: {
       height: 80,
+      paddingLeft: 24,
+      paddingRight: 24,
     },
     navLinkPrimary: {},
     navLinkSecondary: {},
