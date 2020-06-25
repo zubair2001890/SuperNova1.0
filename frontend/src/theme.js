@@ -24,8 +24,17 @@ export default createMuiTheme({
       paddingLeft: 24,
       paddingRight: 24,
     },
-    navLinkPrimary: {},
-    navLinkSecondary: {},
+    navLinkPrimary: {
+      fontFamily: appFonts.montserrat,
+      fontWeight: "bold",
+      fontSize: 20,
+      letterSpacing: 1.8,
+    },
+    navLinkSecondary: {
+      fontFamily: appFonts.montserrat,
+      fontSize: 18,
+      letterSpacing: 1.62,
+    },
   },
   palette: {
     common: {

@@ -30,10 +30,12 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.common.black,
   },
   regularLink: {
+    ...theme.mixins.navLinkSecondary,
     color: "white",
   },
   boldLink: {
     color: "white",
+    ...theme.mixins.navLinkPrimary,
   },
   gridItem: {
     textAlign: "center",
@@ -46,6 +48,9 @@ const useStyles = makeStyles((theme) => ({
   },
   footerTitle: {
     color: "white",
+    fontFamily: "avaMeridian",
+    fontSize: "2vw",
+    letterSpacing: 2.97,
   },
   whiteLine: {
     width: "100%",
