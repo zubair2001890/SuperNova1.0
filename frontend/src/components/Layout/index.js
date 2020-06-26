@@ -1,11 +1,10 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { makeStyles } from "@material-ui/core";
-import Header from "./Header";
-import Footer from "./Footer";
-import { selectDarkTheme } from "../store/slices/header";
-import Particles from "react-particles-js";
-import particlesParams from "./particlesParams";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import { selectDarkTheme } from "../../store/slices/header";
+import Particles from "./components/Particles";
 
 const useStyles = makeStyles((theme) => ({
   layoutTopContainer: {
@@ -31,7 +30,7 @@ export default ({ children }) => {
   return (
     <>
       <div className={classes.layoutTopContainer}>
-        <Particles params={particlesParams} className={classes.particles} />
+        <Particles darkTheme={headerDarkTheme} className={classes.particles} />
         <Header darkTheme={headerDarkTheme} />
         {children}
       </div>
