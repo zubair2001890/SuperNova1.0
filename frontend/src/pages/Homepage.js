@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect } from "react";
-import { makeStyles, CssBaseline } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import AnimatedArrows from "../components/AnimatedArrows";
 import GrowVerticalBar from "../components/GrowVerticalBar";
