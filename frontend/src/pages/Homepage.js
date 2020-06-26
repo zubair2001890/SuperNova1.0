@@ -10,7 +10,7 @@ export default function Links() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(setHeaderDarkTheme(false));
+    dispatch(setHeaderDarkTheme(true));
   }, [dispatch]);
 
   return (

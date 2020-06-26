@@ -4,13 +4,23 @@ import { makeStyles } from "@material-ui/core";
 import Header from "./Header";
 import Footer from "./Footer";
 import { selectDarkTheme } from "../store/slices/header";
+import Particles from "react-particles-js";
+import particlesParams from "./particlesParams";
 
 const useStyles = makeStyles((theme) => ({
-  mainContainer: {
-    minHeight: "100vh",
+  layoutTopContainer: {
+    position: "relative",
+    width: "100%",
+    height: "100vh",
+    backgroundColor: "black",
+    overflowY: "scroll",
   },
-  mockAppBarLayout: {
-    ...theme.mixins.appBar,
+  particles: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    height: "100%",
+    width: "100%",
   },
 }));
 
@@ -20,9 +30,9 @@ export default ({ children }) => {
 
   return (
     <>
-      <Header darkTheme={headerDarkTheme} />
-      <div className={classes.mainContainer}>
-        <div className={classes.mockAppBarLayout}></div>
+      <div className={classes.layoutTopContainer}>
+        <Particles params={particlesParams} className={classes.particles} />
+        <Header darkTheme={headerDarkTheme} />
         {children}
       </div>
       <Footer />
