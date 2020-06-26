@@ -11,7 +11,9 @@ const useStyles = makeStyles((theme) => ({
   pageContainer: {
     backgroundColor: "white",
     minHeight: "100vh",
-    paddingTop: 150,
+  },
+  mockAppBarLayout: {
+    ...theme.mixins.appBar,
   },
 }));
 
@@ -25,6 +27,7 @@ export default () => {
 
   return (
     <div className={classes.pageContainer}>
+      <div className={classes.mockAppBarLayout}></div>
       <Typography variant="h1" gutterBottom style={{ color: "black" }}>
         Homepage
       </Typography>
