@@ -19,8 +19,7 @@ const useStyles = makeStyles((theme) => ({
   title: {
     fontFamily: "avaMeridian",
     textAlign: "center",
-    fontSize: "7.45vw",
-    letterSpacing: 10.01,
+    letterSpacing: 10,
     color: "white",
   },
 }));
@@ -37,8 +36,8 @@ export default () => {
     <div className={classes.pageContainer}>
       <div className={classes.mockAppBarLayout}></div>
       <SlideFadeIn
-        isIn={true}
-        children={<Typography className={classes.title}>SUPERNOVA</Typography>}
+        transitionIn={true}
+        children={<Typography variant="h1" className={classes.title}>SUPERNOVA</Typography>}
         slideTimeout={1000}
         fadeTimeout={1500}
         slideDirection="up"
