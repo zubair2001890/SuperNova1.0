@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect } from "react";
-import { makeStyles } from "@material-ui/core";
+import { makeStyles, CssBaseline } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import AnimatedArrows from "../components/AnimatedArrows";
 import GrowVerticalBar from "../components/GrowVerticalBar";
@@ -17,19 +17,11 @@ const useStyles = makeStyles((theme) => ({
   mockAppBarLayout: {
     ...theme.mixins.appBar,
   },
-  title: {
-    fontFamily: "avaMeridian",
-    textAlign: "center",
-    fontSize: "7.45vw",
-    letterSpacing: 10.01,
-  },
 }));
 
-function Title(props) {
-  const classes = useStyles();
-
+function Title({style}) {
   return (
-    <Typography variant="h1" /*className={classes.title}*/>
+    <Typography variant="h1" style={style}>
       SUPERNOVA
     </Typography>
   );
@@ -38,6 +30,12 @@ function Title(props) {
 export default () => {
   const dispatch = useDispatch();
   const classes = useStyles();
+  const title = {
+    fontFamily: "avaMeridian",
+    textAlign: "center",
+    fontSize: "7.45vw",
+    letterSpacing: 10.01,
+  };
 
   useEffect(() => {
     dispatch(setPageDarkTheme(false));
@@ -49,8 +47,11 @@ export default () => {
       <Typography variant="h1" gutterBottom style={{ color: "black" }}>
         Homepage
       </Typography>
-      <HomepageTitle />
-      <SlideFadeIn children={<Title style={classes.title}/>} />
+      <SlideFadeIn
+        children={
+          <Title style={title}/>
+        }
+      />
       <AnimatedArrows />
       <GrowVerticalBar />
     </div>
