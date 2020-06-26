@@ -4,7 +4,6 @@ import { Grid, Typography } from "@material-ui/core";
 import { Link as RouterLink } from "react-router-dom";
 import paths from "../constants/paths";
 import LoginForm from "../components/LoginForm";
-import theme from "../theme";
 
 export default function Links() {
   return (
