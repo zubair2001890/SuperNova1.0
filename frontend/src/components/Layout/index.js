@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { makeStyles } from "@material-ui/core";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import { selectDarkTheme } from "../../store/slices/header";
+import { selectDarkTheme } from "../../store/slices/page";
 import Particles from "./components/Particles";
 
 const useStyles = makeStyles((theme) => ({
@@ -25,13 +25,13 @@ const useStyles = makeStyles((theme) => ({
 
 export default ({ children }) => {
   const classes = useStyles();
-  const headerDarkTheme = useSelector(selectDarkTheme);
+  const pageDarkTheme = useSelector(selectDarkTheme);
 
   return (
     <>
       <div className={classes.layoutTopContainer}>
-        <Particles darkTheme={headerDarkTheme} className={classes.particles} />
-        <Header darkTheme={headerDarkTheme} />
+        <Particles darkTheme={pageDarkTheme} className={classes.particles} />
+        <Header darkTheme={pageDarkTheme} />
         {children}
       </div>
       <Footer />
