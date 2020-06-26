@@ -35,9 +35,6 @@ export default () => {
   return (
     <div className={classes.pageContainer}>
       <div className={classes.mockAppBarLayout}></div>
-      <Typography variant="h1" gutterBottom style={{ color: "black" }}>
-        Homepage
-      </Typography>
       <SlideFadeIn
         children={<Typography className={classes.title}>SUPERNOVA</Typography>}
         slideTimeout={1000}
