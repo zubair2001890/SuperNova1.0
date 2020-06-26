@@ -1,7 +1,7 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 export const pageSlice = createSlice({
-  name: 'page',
+  name: "page",
   initialState: {
     darkTheme: true,
   },
@@ -14,6 +14,6 @@ export const pageSlice = createSlice({
 
 export const { setDarkTheme } = pageSlice.actions;
 
-export const selectDarkTheme = state => state.page.darkTheme;
+export const selectDarkTheme = (state) => state.page.darkTheme;
 
 export default pageSlice.reducer;
