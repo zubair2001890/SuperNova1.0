@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { makeStyles } from "@material-ui/core";
-import { Grid, Typography } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import LoginForm from "../components/LoginForm";
 import { setDarkTheme as setPageDarkTheme } from "../store/slices/page";
 
