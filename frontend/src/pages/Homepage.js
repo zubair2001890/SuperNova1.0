@@ -36,6 +36,7 @@ export default () => {
     <div className={classes.pageContainer}>
       <div className={classes.mockAppBarLayout}></div>
       <SlideFadeIn
+        isIn={true}
         children={<Typography className={classes.title}>SUPERNOVA</Typography>}
         slideTimeout={1000}
         fadeTimeout={1500}
