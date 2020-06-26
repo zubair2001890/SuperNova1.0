@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Title({style}) {
+function Title({ style }) {
   return (
     <Typography variant="h1" style={style}>
       SUPERNOVA
@@ -30,12 +30,6 @@ function Title({style}) {
 export default () => {
   const dispatch = useDispatch();
   const classes = useStyles();
-  const title = {
-    fontFamily: "avaMeridian",
-    textAlign: "center",
-    fontSize: "7.45vw",
-    letterSpacing: 10.01,
-  };
 
   useEffect(() => {
     dispatch(setPageDarkTheme(false));
@@ -49,8 +43,18 @@ export default () => {
       </Typography>
       <SlideFadeIn
         children={
-          <Title style={title}/>
+          <Title
+            style={{
+              fontFamily: "avaMeridian",
+              textAlign: "center",
+              fontSize: "7.45vw",
+              letterSpacing: 10.01,
+            }}
+          />
         }
+        slideTimeout={1000}
+        fadeTimeout={1500}
+        slideDirection="up"
       />
       <AnimatedArrows />
       <GrowVerticalBar />
