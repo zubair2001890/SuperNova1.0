@@ -2,12 +2,12 @@ import React from "react";
 import { Fade, Slide } from "@material-ui/core";
 
 
-export default function SlideFadeIn({children}) {
+export default function SlideFadeIn({children, slideTimeout, fadeTimeout, slideDirection}) {
     return (
         <>
-        <Slide in={true} timeout={1000} direction="up">
+        <Slide in={true} timeout={slideTimeout} direction={slideDirection}>
           <div>
-            <Fade in={true} timeout={1500}>
+            <Fade in={true} timeout={fadeTimeout}>
               <div>{children}</div>
             </Fade>
           </div>
