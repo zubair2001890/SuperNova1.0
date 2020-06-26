@@ -289,7 +289,7 @@ export const particlesLightThemeConfig = (() => {
   const particlesDarkThemeConfigClone = JSON.parse(
     JSON.stringify(particlesDarkThemeConfig)
   );
-  particlesDarkThemeConfigClone.particles.color.value = "#fff";
-  particlesDarkThemeConfigClone.particles.links.color.value = "#fff";
+  particlesDarkThemeConfigClone.particles.color.value = "#9e9e9e";
+  particlesDarkThemeConfigClone.particles.links.color.value = "#9e9e9e";
   return particlesDarkThemeConfigClone;
 })();

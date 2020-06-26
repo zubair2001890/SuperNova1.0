@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { makeStyles } from "@material-ui/core";
 import Header from "./components/Header";
@@ -26,11 +26,19 @@ const useStyles = makeStyles((theme) => ({
 export default ({ children }) => {
   const classes = useStyles();
   const pageDarkTheme = useSelector(selectDarkTheme);
+  const [pageMounted, setPageMounted] = useState(false);
+
+  useEffect(() => {
+    // this is absolutely necessary to render/destroy Particles and pass props to it
+    setPageMounted(true);
+  }, []);
 
   return (
     <>
       <div className={classes.layoutTopContainer}>
-        <Particles darkTheme={pageDarkTheme} className={classes.particles} />
+        {pageMounted && (
+          <Particles darkTheme={pageDarkTheme} className={classes.particles} />
+        )}
         <Header darkTheme={pageDarkTheme} />
         {children}
       </div>
