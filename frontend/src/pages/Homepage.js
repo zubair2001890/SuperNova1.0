@@ -10,7 +10,7 @@ import { setDarkTheme as setPageDarkTheme } from "../store/slices/page";
 
 const useStyles = makeStyles((theme) => ({
   pageContainer: {
-    backgroundColor: "white",
+    backgroundColor: "black",
     minHeight: "100vh",
   },
   mockAppBarLayout: {
@@ -21,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     fontSize: "7.45vw",
     letterSpacing: 10.01,
+    color: "white",
   },
 }));
 
@@ -29,7 +30,7 @@ export default () => {
   const classes = useStyles();
 
   useEffect(() => {
-    dispatch(setPageDarkTheme(false));
+    dispatch(setPageDarkTheme(true));
   }, [dispatch]);
 
   return (
