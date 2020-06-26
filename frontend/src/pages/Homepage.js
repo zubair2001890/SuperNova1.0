@@ -4,7 +4,7 @@ import { makeStyles } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import AnimatedArrows from "../components/AnimatedArrows";
 import GrowVerticalBar from "../components/GrowVerticalBar";
-import HomepageTitle from "../components/HomepageTitle";
+import SlideFadeIn from "../components/SlideFadeIn";
 import { useDispatch } from "react-redux";
 import { setDarkTheme as setPageDarkTheme } from "../store/slices/page";
 
@@ -15,6 +15,12 @@ const useStyles = makeStyles((theme) => ({
   },
   mockAppBarLayout: {
     ...theme.mixins.appBar,
+  },
+  title: {
+    fontFamily: "avaMeridian",
+    textAlign: "center",
+    fontSize: "7.45vw",
+    letterSpacing: 10.01,
   },
 }));
 
@@ -32,7 +38,12 @@ export default () => {
       <Typography variant="h1" gutterBottom style={{ color: "black" }}>
         Homepage
       </Typography>
-      <HomepageTitle />
+      <SlideFadeIn
+        children={<Typography className={classes.title}>SUPERNOVA</Typography>}
+        slideTimeout={1000}
+        fadeTimeout={1500}
+        slideDirection="up"
+      />
       <AnimatedArrows />
       <GrowVerticalBar />
     </div>
