@@ -1,6 +1,5 @@
 import React from "react";
 import { Link as MaterialLink } from "@material-ui/core";
-import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
 import { Grid, Typography } from "@material-ui/core";
 import { Link as RouterLink } from "react-router-dom";
