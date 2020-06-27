@@ -2,7 +2,7 @@ import React from "react";
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import FormControl from "@material-ui/core/FormControl";
-
+import FormCard from "./FormCard";
 import {
   Button,
   Container,
@@ -30,6 +30,8 @@ const useStyles = makeStyles((theme) => ({
     color: "white",
     margin: "auto auto",
     transform: "translate(0px, -30px)",
+    zIndex: "3",
+    position: "relative",
   },
   margin: {
     margin: "20px 0px 20px 0px",
@@ -64,105 +66,99 @@ export default function LoginForm() {
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
+  const header = () => (
+    <>
+      <Typography gutterBottom align="center" variant="h3">
+        Login
+      </Typography>
+      <Grid container direction="row" justify="center">
+        <IconButton aria-label="settings">
+          <FacebookIcon className={classes.iconsColor} />
+        </IconButton>
+        <IconButton aria-label="settings">
+          <TwitterIcon className={classes.iconsColor} />
+        </IconButton>
+        <IconButton aria-label="settings">
+          <LinkedInIcon className={classes.iconsColor} />
+        </IconButton>
+      </Grid>
+    </>
+  );
+
+  const body = () => (
+    <Container>
+      <FormControl
+        margin="normal"
+        fullWidth={true}
+        className={clsx(classes.textField)}
+      >
+        <InputLabel
+          className={clsx(classes.textField)}
+          htmlFor="standard-adornment-email"
+        >
+          Email
+        </InputLabel>
+        <Input
+          id="standard-adornment-email"
+          value={values.email}
+          onChange={handleChange("email")}
+          endAdornment={
+            <InputAdornment position="end">
+              <AccountCircle />
+            </InputAdornment>
+          }
+        />
+      </FormControl>
+      <FormControl
+        margin="normal"
+        fullWidth={true}
+        className={classes.textField}
+      >
+        <InputLabel
+          className={classes.textField}
+          htmlFor="standard-adornment-password"
+        >
+          Password
+        </InputLabel>
+        <Input
+          id="standard-adornment-password"
+          type={values.showPassword ? "text" : "password"}
+          value={values.password}
+          onChange={handleChange("password")}
+          endAdornment={
+            <InputAdornment position="end">
+              <IconButton
+                aria-label="toggle password visibility"
+                onClick={handleClickShowPassword}
+                onMouseDown={handleMouseDownPassword}
+              >
+                {values.showPassword ? <Visibility /> : <VisibilityOff />}
+              </IconButton>
+            </InputAdornment>
+          }
+        />
+      </FormControl>
+    </Container>
+  );
+
+  const footer = () => (
+    <>
+      <Button
+        className={clsx(classes.margin, classes.label)}
+        variant="outlined"
+        size="large"
+      >
+        Log In
+      </Button>
+      <Button className={classes.margin} variant="outlined" size="large">
+        Forgot Password
+      </Button>
+    </>
+  );
 
   return (
     <>
-      <Paper
-        className={classes.position}
-        variant="elevation"
-        square
-        elevation={5}
-      >
-        <Paper variant="elevation" elevation={8} className={classes.content}>
-          <Typography gutterBottom align="center" variant="h3">
-            Login
-          </Typography>
-
-          <Grid container direction="row" justify="center">
-            <IconButton aria-label="settings">
-              <FacebookIcon className={classes.iconsColor} />
-            </IconButton>
-            <IconButton aria-label="settings">
-              <TwitterIcon className={classes.iconsColor} />
-            </IconButton>
-            <IconButton aria-label="settings">
-              <LinkedInIcon className={classes.iconsColor} />
-            </IconButton>
-          </Grid>
-        </Paper>
-
-        <Container>
-          <FormControl
-            margin="normal"
-            fullWidth={true}
-            className={clsx(classes.textField)}
-          >
-            <InputLabel
-              className={clsx(classes.textField)}
-              htmlFor="standard-adornment-email"
-            >
-              Email
-            </InputLabel>
-            <Input
-              id="standard-adornment-email"
-              value={values.email}
-              onChange={handleChange("email")}
-              endAdornment={
-                <InputAdornment position="end">
-                  <AccountCircle />
-                </InputAdornment>
-              }
-            />
-          </FormControl>
-          <FormControl
-            margin="normal"
-            fullWidth={true}
-            className={classes.textField}
-          >
-            <InputLabel
-              className={classes.textField}
-              htmlFor="standard-adornment-password"
-            >
-              Password
-            </InputLabel>
-            <Input
-              id="standard-adornment-password"
-              type={values.showPassword ? "text" : "password"}
-              value={values.password}
-              onChange={handleChange("password")}
-              endAdornment={
-                <InputAdornment position="end">
-                  <IconButton
-                    aria-label="toggle password visibility"
-                    onClick={handleClickShowPassword}
-                    onMouseDown={handleMouseDownPassword}
-                  >
-                    {values.showPassword ? <Visibility /> : <VisibilityOff />}
-                  </IconButton>
-                </InputAdornment>
-              }
-            />
-          </FormControl>
-        </Container>
-
-        <Grid
-          container
-          direction="row"
-          justify="space-around"
-          alignItems="center"
-        >
-          <Button
-            className={clsx(classes.margin, classes.label)}
-            variant="outlined"
-            size="large"
-          >
-            Log In
-          </Button>
-          <Button className={classes.margin} variant="outlined" size="large">
-            Forgot Password
-          </Button>
-        </Grid>
-      </Paper>
+      <FormCard head={header()} body={body()} footer={footer()} />
     </>
   );
 }
