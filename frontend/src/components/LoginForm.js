@@ -11,7 +11,6 @@ import {
   InputLabel,
   IconButton,
   InputAdornment,
-  Paper,
   Typography,
 } from "@material-ui/core";
 
