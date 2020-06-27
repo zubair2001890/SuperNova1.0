@@ -1,34 +1,41 @@
-import React from "react";
-import { Link as MaterialLink } from "@material-ui/core";
-import { createMuiTheme } from "@material-ui/core/styles";
-import { ThemeProvider } from "@material-ui/styles";
-import { Grid, Typography } from "@material-ui/core";
-import { Link as RouterLink } from "react-router-dom";
-import paths from "../constants/paths";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { makeStyles } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import LoginForm from "../components/LoginForm";
-import theme from "../theme";
+import { setDarkTheme as setPageDarkTheme } from "../store/slices/page";
 
-export default function Links() {
+const useStyles = makeStyles((theme) => ({
+  pageContainer: {
+    backgroundColor: theme.palette.common.white,
+    minHeight: "100vh",
+  },
+  mockAppBarLayout: {
+    ...theme.mixins.appBar,
+  },
+}));
+
+export default () => {
+  const dispatch = useDispatch();
+  const classes = useStyles();
+
+  useEffect(() => {
+    dispatch(setPageDarkTheme(false));
+  }, [dispatch]);
+
   return (
-    <>
-      <ThemeProvider theme={theme}>
-        <Grid
-          container
-          style={{ margin: "auto auto" }}
-          item
-          xs={12}
-          sm={6}
-          lg={4}
-        >
-          <LoginForm />
-        </Grid>
-      </ThemeProvider>
-
-      <Typography>
-        <MaterialLink component={RouterLink} to={paths.home}>
-          Homepage
-        </MaterialLink>
-      </Typography>
-    </>
+    <div className={classes.pageContainer}>
+      <div className={classes.mockAppBarLayout}></div>
+      <Grid
+        container
+        style={{ margin: "auto auto" }}
+        item
+        xs={12}
+        sm={6}
+        lg={4}
+      >
+        <LoginForm />
+      </Grid>
+    </div>
   );
-}
+};
