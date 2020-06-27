@@ -23,21 +23,8 @@ import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 
 const useStyles = makeStyles((theme) => ({
-  content: {
-    fontFamily: theme.typography.h3,
-    backgroundColor: theme.palette.common.black,
-    width: "45%",
-    color: "white",
-    margin: "auto auto",
-    transform: "translate(0px, -30px)",
-    zIndex: "3",
-    position: "relative",
-  },
   margin: {
     margin: "20px 0px 20px 0px",
-  },
-  position: {
-    marginTop: "20%",
   },
   textField: {
     color: theme.palette.common.black,
