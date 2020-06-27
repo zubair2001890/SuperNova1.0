@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 import counterReducer from "./slices/counter/counterSlice";
-import headerReducer from "./slices/header";
+import pageReducer from "./slices/page";
 
 export default configureStore({
   reducer: {
     counter: counterReducer,
-    header: headerReducer,
+    page: pageReducer,
   },
 });
