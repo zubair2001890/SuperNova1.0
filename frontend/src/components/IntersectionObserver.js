@@ -6,7 +6,7 @@ import { InView } from "react-intersection-observer";
 
 export default ({
   root,
-  threshold = 0.8,
+  threshold = 0,
   rootMargin = '0px 0px 0px 0px',
   triggerOnce= true,
   render

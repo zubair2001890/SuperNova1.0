@@ -34,14 +34,9 @@ export default ({
       timeout={slideTimeout}
       direction={slideDirection}
     >
-      <div>
-        {/* div is necessary because both transitions change style.transitions
-        property. This issue is avoided by making each transition act on a
-        different element */}
-        <Fade in={startTransition} timeout={fadeTimeout}>
-          <div>{children}</div>
-        </Fade>
-      </div>
+      <Fade in={startTransition} timeout={fadeTimeout}>
+        {children}
+      </Fade>
     </Slide>
   );
 };
