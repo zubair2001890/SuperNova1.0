@@ -1,7 +1,5 @@
 export const particlesDarkThemeConfig = {
-  "background": {
-    color: '#000'
-  },
+  "background": {},
   "backgroundMask": {
     "cover": {
       "color": {
@@ -293,6 +291,5 @@ export const particlesLightThemeConfig = (() => {
   );
   particlesDarkThemeConfigClone.particles.color.value = "#9e9e9e";
   particlesDarkThemeConfigClone.particles.links.color.value = "#9e9e9e";
-  particlesDarkThemeConfigClone.background.color = "#fff";
   return particlesDarkThemeConfigClone;
 })();

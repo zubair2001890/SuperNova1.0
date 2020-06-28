@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect } from "react";
 import { makeStyles } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
@@ -13,6 +12,7 @@ import {
 
 const useStyles = makeStyles((theme) => ({
   pageContainer: {
+    backgroundColor: theme.palette.common.black,
     minHeight: "100vh",
   },
   mockAppBarLayout: {
@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: "avaMeridian",
     textAlign: "center",
     letterSpacing: 10,
-    color: "white",
+    color: theme.palette.common.white,
   },
 }));
 
