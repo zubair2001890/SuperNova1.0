@@ -21,19 +21,19 @@ function App() {
             <Route path={paths.faq}>
               <Faq />
             </Route>
-            <Route path={paths.ourmission}>
+            <Route path={paths.mission}>
               <Mission />
             </Route>
-            <Route path={paths.termsandconditions}>
+            <Route path={paths.terms}>
               <Terms />
             </Route>
-            <Route path={paths.ourmodel}>
+            <Route path={paths.model}>
               <Model />
             </Route>
-            <Route path={paths.contactus}>
+            <Route path={paths.contact}>
               <Contact />
             </Route>
-            <Route path={paths.ourteam}>
+            <Route path={paths.team}>
               <Team />
             </Route>
             <Route path={paths.home} exact>
