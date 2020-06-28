@@ -8,6 +8,11 @@ import Error404 from "./pages/Error404";
 import Faq from "./pages/Faq";
 import paths from "./constants/paths";
 import theme from "./theme";
+import Mission from "./pages/Mission";
+import Terms from "./pages/Terms";
+import Model from "./pages/Model";
+import Contact from "./pages/Contact";
+import Team from "./pages/Team";
 
 function App() {
   return (
