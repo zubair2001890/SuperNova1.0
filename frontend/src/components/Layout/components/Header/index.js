@@ -5,9 +5,9 @@ import { AppBar, IconButton, Toolbar, Button } from "@material-ui/core";
 import { Menu as MenuIcon, Close as CloseIcon } from "@material-ui/icons";
 import LeftDrawer from "./components/LeftDrawer";
 import paths from "../../../../constants/paths";
-import logoOrange from "../../../../images/logo-orange.png";
-import logoBlack from "../../../../images/logo-black.png";
-import logoWhite from "../../../../images/logo-white.png";
+import logoRed from "./assets/logo-red.svg";
+import logoBlack from "./assets/logo-black.svg";
+import logoWhite from "./assets/logo-white.svg";
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -103,7 +103,7 @@ export default function Header({ darkTheme = true }) {
             <img
               src={logoSrc}
               onMouseOver={() => {
-                setLogoSrc(logoOrange);
+                setLogoSrc(logoRed);
               }}
               onMouseOut={() => {
                 setLogoSrc(getLogoSrc(darkTheme));
