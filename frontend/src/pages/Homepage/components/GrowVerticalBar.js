@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => {
   };
 });
 
-export default ({ className, scrollY = 0, maxHeight = Infinity }) => {
+export default ({ className, scrollY = 0, maxHeight = Infinity, style = {} }) => {
   const classes = useStyles();
   const verticalBarRef = useRef(null);
   const initialHeight = useRef(null);
@@ -41,7 +41,7 @@ export default ({ className, scrollY = 0, maxHeight = Infinity }) => {
   }, [scrollY, maxHeight]);
 
   return (
-    <span className={clsx(classes.container, className)}>
+    <span className={clsx(classes.container, className)} style={style}>
       <span className={classes.verticalBar} ref={verticalBarRef}></span>
     </span>
   );

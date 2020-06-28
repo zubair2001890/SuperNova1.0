@@ -46,11 +46,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default ({ className }) => {
+export default ({ className, style = {} }) => {
   const classes = useStyles();
 
   return (
-    <div className={clsx(classes.container, className)}>
+    <div className={clsx(classes.container, className)} style={style}>
       <span className={classes.arrow}></span>
       <span className={classes.arrow}></span>
       <span className={classes.arrow}></span>

@@ -5,6 +5,7 @@ import {
   setDarkTheme as setPageDarkTheme,
   setParticles as setPageParticles,
 } from "../../store/slices/page";
+import useWindowScrollY from "../../hooks/useWindowScrollY";
 import Intro from "./components/Intro";
 
 const useStyles = makeStyles((theme) => ({
@@ -22,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
 export default () => {
   const dispatch = useDispatch();
   const classes = useStyles();
+  const scrollY = useWindowScrollY();
 
   useEffect(() => {
     dispatch(setPageDarkTheme(true));
@@ -34,7 +36,7 @@ export default () => {
 
   return (
     <div className={classes.pageContainer}>
-      <Intro />
+      <Intro scrollY={scrollY} />
     </div>
   );
 };

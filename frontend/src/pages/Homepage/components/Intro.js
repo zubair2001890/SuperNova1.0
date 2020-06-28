@@ -2,6 +2,7 @@ import React from "react";
 import { makeStyles, useTheme } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import GrowVerticalBar from "./GrowVerticalBar";
+import AnimateArrows from "./AnimatedArrows";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -59,6 +60,7 @@ export default ({ scrollY }) => {
         />
         <span style={{ flex: "0 0 50%", textAlign: "left" }}>Explore</span>
       </Typography>
+      <AnimateArrows style={{ opacity: 1 - scrollY / 120 }} />
     </div>
   );
 };
