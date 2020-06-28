@@ -12,12 +12,6 @@ const useStyles = makeStyles((theme) => ({
   pageContainer: {
     backgroundColor: theme.palette.common.black,
   },
-  title: {
-    fontFamily: "avaMeridian",
-    textAlign: "center",
-    letterSpacing: 10,
-    color: theme.palette.common.white,
-  },
 }));
 
 export default () => {
