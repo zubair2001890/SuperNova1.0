@@ -13,6 +13,7 @@ import {
 
 const useStyles = makeStyles((theme) => ({
   pageContainer: {
+    backgroundColor: theme.palette.common.black,
     minHeight: "100vh",
   },
   mockAppBarLayout: {
@@ -22,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: "avaMeridian",
     textAlign: "center",
     letterSpacing: 10,
-    color: "white",
+    color: theme.palette.common.white,
   },
 }));
 
