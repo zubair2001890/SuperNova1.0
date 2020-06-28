@@ -1,6 +1,8 @@
 import React from "react";
 import { makeStyles, useTheme } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
+import AnimatedArrows from "./AnimatedArrows";
+import GrowVerticalBar from "./GrowVerticalBar";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -15,6 +17,13 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     letterSpacing: 10,
     color: theme.palette.common.white,
+  },
+  createExploreContainer: {
+    display: "flex",
+    width: "100%",
+    flexFlow: "row nowrap",
+    justifyContent: "center",
+    alignItems: "center",
   },
 }));
 
@@ -34,6 +43,16 @@ export default () => {
             POWERED BY YOU.
           </span>
         </>
+      </Typography>
+      <Typography
+        variant="h3"
+        gutterBottom
+        style={{ color: "white", textAlign: "right" }}
+        className={classes.createExploreContainer}
+      >
+        <span style={{ flex: "0 0 50%", textAlign: "right" }}>Create</span>
+        <span style={{ flex: "0 0 50px", textAlign: "center" }}>|</span>
+        <span style={{ flex: "0 0 50%", textAlign: "left" }}>Explore</span>
       </Typography>
     </div>
   );
