@@ -1,15 +1,23 @@
-import React from 'react';
-import { Typography, Box } from '@material-ui/core';
+import React from "react";
+import { Typography, makeStyles } from "@material-ui/core";
+
+const useStyles = makeStyles((theme) => ({
+  paragraphText: {
+    margin: "auto",
+    width: "50%",
+  },
+}));
 
 function Faq() {
+  const classes = useStyles();
   return (
     <>
-      <Box>
+      <div>
         <Typography variant="h4" align="center">
           FREQUENTLY ASKED QUESTIONS
         </Typography>
-      </Box>
-      <Box mx="auto" width="50%">
+      </div>
+      <div className={classes.paragraphText}>
         <Typography variant="h5">Who is SuperNova for?</Typography>
         <Typography variant="body1">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
@@ -20,8 +28,8 @@ function Faq() {
           Pellentesque sed neque et ipsum tincidunt volutpat id sit amet erat.
           Nullam eu accumsan justo.
         </Typography>
-      </Box>
-      <Box mx="auto" width="50%">
+      </div>
+      <div className={classes.paragraphText}>
         <Typography variant="h5">Can I refund my donation?</Typography>
         <Typography variant="body1">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
@@ -32,8 +40,8 @@ function Faq() {
           Pellentesque sed neque et ipsum tincidunt volutpat id sit amet erat.
           Nullam eu accumsan justo.
         </Typography>
-      </Box>
-      <Box mx="auto" width="50%">
+      </div>
+      <div className={classes.paragraphText}>
         <Typography variant="h5">
           Can I create more than one project at once?
         </Typography>
@@ -46,8 +54,8 @@ function Faq() {
           Pellentesque sed neque et ipsum tincidunt volutpat id sit amet erat.
           Nullam eu accumsan justo.
         </Typography>
-      </Box>
-      <Box mx="auto" width="50%">
+      </div>
+      <div className={classes.paragraphText}>
         <Typography variant="h5">Question question question?</Typography>
         <Typography variant="body1">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
@@ -58,8 +66,8 @@ function Faq() {
           Pellentesque sed neque et ipsum tincidunt volutpat id sit amet erat.
           Nullam eu accumsan justo.
         </Typography>
-      </Box>
-      <Box mx="auto" width="50%">
+      </div>
+      <div className={classes.paragraphText}>
         <Typography variant="h5">Question question question?</Typography>
         <Typography variant="body1">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
@@ -70,7 +78,7 @@ function Faq() {
           Pellentesque sed neque et ipsum tincidunt volutpat id sit amet erat.
           Nullam eu accumsan justo.
         </Typography>
-      </Box>
+      </div>
     </>
   );
 }

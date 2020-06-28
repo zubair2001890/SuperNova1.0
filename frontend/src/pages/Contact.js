@@ -1,23 +1,31 @@
-import React from 'react';
-import { Typography, Box } from '@material-ui/core';
+import React from "react";
+import { Typography, makeStyles } from "@material-ui/core";
+
+const useStyles = makeStyles((theme) => ({
+  paragraphText: {
+    margin: "auto",
+    width: "50%",
+  },
+}));
 
 function Model() {
+  const classes = useStyles();
   return (
     <>
-      <Box mx="auto" width="50%">
+      <div className={classes.paragraphText}>
         <Typography variant="body1">
           You can reach us at the following addresses:
         </Typography>
-      </Box>
-      <Box mx="auto" width="50%">
+      </div>
+      <div className={classes.paragraphText}>
         <Typography variant="body1">research@supernova.ac</Typography>
-      </Box>
-      <Box mx="auto" width="50%">
+      </div>
+      <div className={classes.paragraphText}>
         <Typography variant="body1">wyf@supernova.ac</Typography>
-      </Box>
-      <Box mx="auto" width="50%">
+      </div>
+      <div className={classes.paragraphText}>
         <Typography variant="body1">zm@supernova.ac</Typography>
-      </Box>
+      </div>
     </>
   );
 }
