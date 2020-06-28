@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     height: "100vh",
-    backgroundColor: 'transparent',
+    backgroundColor: "transparent",
     paddingRight: theme.spacing(4),
     paddingLeft: theme.spacing(4),
     display: "flex",
