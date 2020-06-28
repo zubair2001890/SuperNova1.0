@@ -6,7 +6,10 @@ import AnimatedArrows from "../components/AnimatedArrows";
 import GrowVerticalBar from "../components/GrowVerticalBar";
 import SlideFadeIn from "../components/SlideFadeIn";
 import { useDispatch } from "react-redux";
-import { setDarkTheme as setPageDarkTheme } from "../store/slices/page";
+import {
+  setDarkTheme as setPageDarkTheme,
+  setParticles as setPageParticles,
+} from "../store/slices/page";
 
 const useStyles = makeStyles((theme) => ({
   pageContainer: {
@@ -30,6 +33,11 @@ export default () => {
 
   useEffect(() => {
     dispatch(setPageDarkTheme(true));
+    dispatch(setPageParticles(true));
+    return () => {
+      dispatch(setPageDarkTheme(false));
+      dispatch(setPageParticles(false));
+    };
   }, [dispatch]);
 
   return (
@@ -37,7 +45,11 @@ export default () => {
       <div className={classes.mockAppBarLayout}></div>
       <SlideFadeIn
         transitionIn={true}
-        children={<Typography variant="h1" className={classes.title}>SUPERNOVA</Typography>}
+        children={
+          <Typography variant="h1" className={classes.title}>
+            SUPERNOVA
+          </Typography>
+        }
         slideTimeout={1000}
         fadeTimeout={1500}
         slideDirection="up"
