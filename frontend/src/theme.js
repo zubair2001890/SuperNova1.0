@@ -58,9 +58,16 @@ export default createMuiTheme({
     fontFamily: appFonts.avertaDemo,
     h1: {
       fontFamily: appFonts.montserrat,
+      fontWeight: "700",
+      fontSize: "51px",
+      lineHeight: "60px",
     },
     h2: {
       fontFamily: appFonts.montserrat,
+      fontSize: "40px",
+      fontWeight: "700",
+      lineHeight: "48px",
+      letterSpacing: "3.6px",
     },
     h3: {
       fontFamily: appFonts.montserrat,
