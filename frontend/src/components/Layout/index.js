@@ -8,9 +8,8 @@ import Particles from "./components/Particles";
 
 const useStyles = makeStyles((theme) => ({
   particles: {
-    position: "absolute",
+    position: "fixed",
     top: 0,
-    left: 0,
     height: "100vh",
     width: "100vw",
   },
