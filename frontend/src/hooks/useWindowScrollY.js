@@ -8,6 +8,7 @@ export default () => {
   };
 
   useEffect(() => {
+    updateScrollY();
     window.addEventListener("scroll", updateScrollY);
     return () => {
       window.removeEventListener("scroll", updateScrollY);
