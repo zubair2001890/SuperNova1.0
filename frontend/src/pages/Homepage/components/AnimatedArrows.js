@@ -46,14 +46,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default ({ className, style = {} }) => {
+export default React.forwardRef(({ className, style = {} }, ref) => {
   const classes = useStyles();
 
   return (
-    <div className={clsx(classes.container, className)} style={style}>
+    <div className={clsx(classes.container, className)} style={style} ref={ref}>
       <span className={classes.arrow}></span>
       <span className={classes.arrow}></span>
       <span className={classes.arrow}></span>
     </div>
   );
-};
+});
