@@ -4,6 +4,8 @@ import Typography from "@material-ui/core/Typography";
 import GrowVerticalBar from "./GrowVerticalBar";
 import AnimateArrows from "./AnimatedArrows";
 
+const createExploreMarginBottom = 50;
+
 const useStyles = makeStyles((theme) => ({
   container: {
     minHeight: "100vh",
@@ -49,18 +51,23 @@ export default ({ scrollY }) => {
       </Typography>
       <Typography
         variant="h3"
-        gutterBottom
-        style={{ color: "white", textAlign: "right" }}
+        style={{
+          color: "white",
+          textAlign: "right",
+          marginBottom: createExploreMarginBottom,
+        }}
         className={classes.createExploreContainer}
       >
-        <span style={{ flex: "0 0 50%", textAlign: "right" }}>Create</span>
+        <span style={{ flex: "0 0 50%", textAlign: "right" }}>CREATE</span>
         <GrowVerticalBar
           scrollY={scrollY}
           className={classes.growVerticalBar}
         />
-        <span style={{ flex: "0 0 50%", textAlign: "left" }}>Explore</span>
+        <span style={{ flex: "0 0 50%", textAlign: "left" }}>EXPLORE</span>
       </Typography>
-      <AnimateArrows style={{ opacity: 1 - scrollY / 120 }} />
+      <AnimateArrows
+        style={{ opacity: 1 - scrollY / createExploreMarginBottom }}
+      />
     </div>
   );
 };
