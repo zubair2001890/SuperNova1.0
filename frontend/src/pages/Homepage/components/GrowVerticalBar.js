@@ -5,48 +5,44 @@ import clsx from "clsx";
 const useStyles = makeStyles((theme) => {
   return {
     container: {
+      display: "inline-block",
+      height: 60,
+      width: 50,
       position: "relative",
-      height: 0,
     },
     verticalBar: {
       position: "absolute",
       width: 4,
-      backgroundColor: "#ff3b00", // TODO: import red from theme.palette
+      backgroundColor: theme.palette.common.red,
       top: 0,
       left: "50%",
       transform: "translateX(-50%)",
-      minHeight: (props) => props.initialHeight,
+      height: "100%",
       transition: "height", // TODO: add proper transition ?
     },
   };
 });
 
-export default ({
-  className,
-  initialHeight = 50,
-  scrollYGrowStart = 0,
-  scrollYGrowEnd = Infinity,
-}) => {
-  const classes = useStyles({ initialHeight });
+export default ({ className, scrollY = 0, maxHeight = Infinity }) => {
+  const classes = useStyles();
   const verticalBarRef = useRef(null);
+  const initialHeight = useRef(null);
+
+  useEffect(() => {
+    initialHeight.current = verticalBarRef.current.clientHeight;
+  }, []);
 
   useEffect(() => {
     const setVerticalBarHeight = () => {
-      if (window.scrollY < scrollYGrowEnd) {
-        verticalBarRef.current.style.height =
-          Math.max(initialHeight, window.scrollY - scrollYGrowStart) + "px";
-      }
+      verticalBarRef.current.style.height =
+        Math.min(maxHeight, initialHeight.current + scrollY) + "px";
     };
     setVerticalBarHeight();
-    window.addEventListener("scroll", setVerticalBarHeight);
-    return () => {
-      window.removeEventListener("scroll", setVerticalBarHeight);
-    };
-  }, [initialHeight, scrollYGrowStart, scrollYGrowEnd]);
+  }, [scrollY, maxHeight]);
 
   return (
-    <div className={clsx(classes.container, className)}>
+    <span className={clsx(classes.container, className)}>
       <span className={classes.verticalBar} ref={verticalBarRef}></span>
-    </div>
+    </span>
   );
 };

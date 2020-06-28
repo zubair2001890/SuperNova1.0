@@ -1,7 +1,6 @@
 import React from "react";
 import { makeStyles, useTheme } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
-import AnimatedArrows from "./AnimatedArrows";
 import GrowVerticalBar from "./GrowVerticalBar";
 
 const useStyles = makeStyles((theme) => ({
@@ -25,9 +24,12 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     alignItems: "center",
   },
+  growVerticalBar: {
+    flex: "0 0 auto",
+  },
 }));
 
-export default () => {
+export default ({ scrollY }) => {
   const classes = useStyles();
   const theme = useTheme();
 
@@ -51,7 +53,10 @@ export default () => {
         className={classes.createExploreContainer}
       >
         <span style={{ flex: "0 0 50%", textAlign: "right" }}>Create</span>
-        <span style={{ flex: "0 0 50px", textAlign: "center" }}>|</span>
+        <GrowVerticalBar
+          scrollY={scrollY}
+          className={classes.growVerticalBar}
+        />
         <span style={{ flex: "0 0 50%", textAlign: "left" }}>Explore</span>
       </Typography>
     </div>
