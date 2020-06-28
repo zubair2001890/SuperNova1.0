@@ -1,6 +1,5 @@
 import React from "react";
-import { makeStyles, useTheme } from "@material-ui/core";
-import Typography from "@material-ui/core/Typography";
+import { makeStyles, useTheme, Typography } from "@material-ui/core";
 import GrowVerticalBar from "./GrowVerticalBar";
 import AnimateArrows from "./AnimatedArrows";
 
