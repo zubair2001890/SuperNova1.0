@@ -8,8 +8,6 @@ const arrowBorderWidth = 5;
 const arrowWidth = 7.5;
 const arrowColor = "#ff3b00"; // TODO: to be taken from theme.palette!
 
-// TODO: fadeIn effect to be added in theme.mixins in relation to other elements of Homepage
-
 const useStyles = makeStyles((theme) => ({
   container: {
     position: "relative",
@@ -22,7 +20,9 @@ const useStyles = makeStyles((theme) => ({
     height: arrowWidth,
     borderBottom: `${arrowBorderWidth}px solid ${arrowColor}`,
     borderRight: `${arrowBorderWidth}px solid ${arrowColor}`,
-    transform: "rotate(45deg) translateY(-50%)",
+    transform: `rotate(45deg) translateX(calc(-50% - ${
+      arrowWidth - (arrowWidth * Math.sqrt(2)) / 2
+    }px))`,
     animation: `$animatedArrow 2s infinite`,
     "&:nth-of-type(2)": {
       animationDelay: ".2s",
@@ -46,15 +46,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-/* React.forwardRef is used here to be able to handle imperatively from a parent component the div container inside this component, for fade-in/out effect etc. */
-export default React.forwardRef(({ className }, ref) => {
+export default ({ className, style = {} }) => {
   const classes = useStyles();
 
   return (
-    <div ref={ref} className={clsx(classes.container, className)}>
+    <div className={clsx(classes.container, className)} style={style}>
       <span className={classes.arrow}></span>
       <span className={classes.arrow}></span>
       <span className={classes.arrow}></span>
     </div>
   );
-});
+};
