@@ -13,7 +13,6 @@ import {
 
 const useStyles = makeStyles((theme) => ({
   pageContainer: {
-    backgroundColor: "black",
     minHeight: "100vh",
   },
   mockAppBarLayout: {
