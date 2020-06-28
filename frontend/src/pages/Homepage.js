@@ -14,6 +14,7 @@ import {
 const useStyles = makeStyles((theme) => ({
   pageContainer: {
     minHeight: "100vh",
+    backgroundColor: theme.palette.common.black,
   },
   mockAppBarLayout: {
     ...theme.mixins.appBar,
@@ -22,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: "avaMeridian",
     textAlign: "center",
     letterSpacing: 10,
-    color: "white",
+    color: theme.palette.common.white,
   },
 }));
 
