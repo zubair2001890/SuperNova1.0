@@ -23,7 +23,12 @@ const useStyles = makeStyles((theme) => {
   };
 });
 
-export default ({ className, scrollY = 0, maxHeight = Infinity, style = {} }) => {
+export default ({
+  className,
+  scrollY = 0,
+  maxHeight = Infinity,
+  style = {},
+}) => {
   const classes = useStyles();
   const verticalBarRef = useRef(null);
   const initialHeight = useRef(null);
