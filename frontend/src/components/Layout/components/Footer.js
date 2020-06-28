@@ -26,6 +26,8 @@ const useStyles = makeStyles((theme) => ({
   },
   footer: {
     width: "100%",
+    // must be positioned to not be covered by particles
+    position: 'relative',
     bottom: 0,
     backgroundColor: theme.palette.common.black,
   },
