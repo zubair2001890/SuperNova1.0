@@ -9,10 +9,11 @@ const createExploreMarginBottom = 50;
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    minHeight: "100vh",
+    minHeight: "75vh",
+    paddingTop: "25vh",
     display: "flex",
     flexFlow: "column nowrap",
-    justifyContent: "center",
+    justifyContent: "space-evenly",
     alignItems: "center",
   },
   title: {
@@ -45,7 +46,7 @@ export default ({ scrollY, className }) => {
         </Typography>
       </SlideFadeIn>
       <SlideFadeIn delay={2000} slideDirection="up">
-        <Typography variant="h2" gutterBottom>
+        <Typography variant="h4" gutterBottom>
           <>
             <span style={{ color: theme.palette.common.red }}>SCIENCE.</span>{" "}
             <span style={{ color: theme.palette.common.white }}>
@@ -56,7 +57,7 @@ export default ({ scrollY, className }) => {
       </SlideFadeIn>
       <SlideFadeIn delay={2000} slideDirection="up">
         <Typography
-          variant="h3"
+          variant="h5"
           style={{
             color: "white",
             textAlign: "right",
