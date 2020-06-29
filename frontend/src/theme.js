@@ -20,9 +20,9 @@ export default createMuiTheme({
   // check default theme here https://material-ui.com/customization/default-theme/#default-theme;
   mixins: {
     appBar: {
-      height: 100,
-      paddingLeft: 24,
-      paddingRight: 24,
+      height: 140,
+      paddingLeft: 48,
+      paddingRight: 48,
     },
     navLinkPrimary: {
       fontFamily: appFonts.montserrat,
@@ -67,9 +67,13 @@ export default createMuiTheme({
     },
     h4: {
       fontFamily: appFonts.montserrat,
+      fontWeight: 600,
+      letterSpacing: "0.2rem",
     },
     h5: {
       fontFamily: appFonts.montserrat,
+      fontWeight: 600,
+      letterSpacing: "0.2rem",
     },
     h6: {
       fontFamily: appFonts.montserrat,

@@ -3,11 +3,12 @@ import { Link as RouterLink } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import { AppBar, IconButton, Toolbar, Button } from "@material-ui/core";
 import { Menu as MenuIcon, Close as CloseIcon } from "@material-ui/icons";
+import SlideFadeIn from "../../../SlideFadeIn";
 import LeftDrawer from "./components/LeftDrawer";
 import paths from "../../../../constants/paths";
-import logoOrange from "../../../../images/logo-orange.png";
-import logoBlack from "../../../../images/logo-black.png";
-import logoWhite from "../../../../images/logo-white.png";
+import logoRed from "./assets/logo-red.svg";
+import logoBlack from "./assets/logo-black.svg";
+import logoWhite from "./assets/logo-white.svg";
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -86,52 +87,58 @@ export default function Header({ darkTheme = true }) {
       />
       <AppBar position="absolute" elevation={0} className={classes.appBar}>
         <Toolbar className={classes.toolBar}>
-          <IconButton
-            edge="start"
-            aria-label="menu button"
-            onClick={toggleDrawer("left", !drawerState.left)}
-            size="medium"
-            color="inherit"
-          >
-            {drawerState.left ? (
-              <CloseIcon fontSize="large" color="inherit" />
-            ) : (
-              <MenuIcon fontSize="large" color="inherit" />
-            )}
-          </IconButton>
+          <SlideFadeIn delay={2000} slideDirection="down">
+            <IconButton
+              edge="start"
+              aria-label="menu button"
+              onClick={toggleDrawer("left", !drawerState.left)}
+              size="medium"
+              color="inherit"
+            >
+              {drawerState.left ? (
+                <CloseIcon fontSize="large" color="inherit" />
+              ) : (
+                <MenuIcon fontSize="large" color="inherit" />
+              )}
+            </IconButton>
+          </SlideFadeIn>
           <RouterLink className={classes.logoContainer} to={paths.home}>
-            <img
-              src={logoSrc}
-              onMouseOver={() => {
-                setLogoSrc(logoOrange);
-              }}
-              onMouseOut={() => {
-                setLogoSrc(getLogoSrc(darkTheme));
-              }}
-              alt="supernova logo"
-              className={classes.logo}
-            />
+            <SlideFadeIn delay={500} slideDirection="down">
+              <img
+                src={logoSrc}
+                onMouseOver={() => {
+                  setLogoSrc(logoRed);
+                }}
+                onMouseOut={() => {
+                  setLogoSrc(getLogoSrc(darkTheme));
+                }}
+                alt="supernova logo"
+                className={classes.logo}
+              />
+            </SlideFadeIn>
           </RouterLink>
-          <div className={classes.appBarRight}>
-            <Button
-              color="inherit"
-              component={RouterLink}
-              to={paths.explore}
-              size="large"
-              className={classes.appBarRightLink}
-            >
-              EXPLORE
-            </Button>
-            <Button
-              color="inherit"
-              component={RouterLink}
-              to={paths.login}
-              size="large"
-              className={classes.appBarRightLink}
-            >
-              LOG IN
-            </Button>
-          </div>
+          <SlideFadeIn delay={2000} slideDirection="down">
+            <div className={classes.appBarRight}>
+              <Button
+                color="inherit"
+                component={RouterLink}
+                to={paths.explore}
+                size="large"
+                className={classes.appBarRightLink}
+              >
+                EXPLORE
+              </Button>
+              <Button
+                color="inherit"
+                component={RouterLink}
+                to={paths.login}
+                size="large"
+                className={classes.appBarRightLink}
+              >
+                LOG IN
+              </Button>
+            </div>
+          </SlideFadeIn>
         </Toolbar>
       </AppBar>
     </>
