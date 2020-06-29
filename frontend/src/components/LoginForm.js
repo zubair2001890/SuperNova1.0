@@ -24,5 +24,6 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 const useStyles = makeStyles((theme) => ({}));
 
 export default function LoginForm() {
-  return <></>;
+  return;
+  <></>;
 }
