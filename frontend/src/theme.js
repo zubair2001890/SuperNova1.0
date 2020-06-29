@@ -58,25 +58,29 @@ export default createMuiTheme({
     fontFamily: appFonts.avertaDemo,
     h1: {
       fontFamily: appFonts.montserrat,
-      fontWeight: "700",
-      fontSize: "51px",
+      fontWeight: 700,
+      fontSize: 50,
       lineHeight: "60px",
     },
     h2: {
       fontFamily: appFonts.montserrat,
-      fontSize: "40px",
-      fontWeight: "700",
+      fontSize: 40,
+      fontWeight: 700,
       lineHeight: "48px",
-      letterSpacing: "3.6px",
+      letterSpacing: 1.8,
     },
     h3: {
       fontFamily: appFonts.montserrat,
     },
     h4: {
       fontFamily: appFonts.montserrat,
+      fontWeight: 600,
+      letterSpacing: "0.2rem",
     },
     h5: {
       fontFamily: appFonts.montserrat,
+      fontWeight: 600,
+      letterSpacing: "0.2rem",
     },
     h6: {
       fontFamily: appFonts.montserrat,
@@ -89,6 +93,9 @@ export default createMuiTheme({
     },
     body1: {
       fontFamily: appFonts.avertaDemo,
+      fontSize: 20,
+      lineHeight: "24px",
+      fontWeight: 400,
     },
     body2: {
       fontFamily: appFonts.avertaDemo,

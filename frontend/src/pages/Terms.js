@@ -1,27 +1,63 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Typography, makeStyles } from "@material-ui/core";
+import { useDispatch } from "react-redux";
+import { setDarkTheme as setPageDarkTheme } from "../store/slices/page";
 
 const useStyles = makeStyles((theme) => ({
-  paragraphText: {
-    margin: "auto",
-    width: "50%",
+  center: {
+    margin: "0 auto",
+    maxWidth: 966,
+    paddingLeft: theme.spacing(2),
+    paddingRight: theme.spacing(2),
+    paddingTop: 92,
+    paddingBottom: 92,
+  },
+  mockAppBarLayout: {
+    ...theme.mixins.appBar,
+  },
+  pageHeader: {
+    height: 370,
+    backgroundImage: "url(" + require("./assets/terms.png") + ")",
+  },
+  pageTitle: {
+    position: "relative",
+    top: 20,
+    color: "white",
+  },
+  subheadingVerticalMargin: {
+    margin: "68px 0",
+  },
+  subheadingTextVerticalMargin: {
+    paddingBottom: 48,
   },
 }));
 
 function Terms() {
   const classes = useStyles();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setPageDarkTheme(true));
+    return () => {
+      dispatch(setPageDarkTheme(false));
+    };
+  }, [dispatch]);
   return (
     <>
-      <div>
-        <Typography variant="h4" align="center">
+      <div className={classes.pageHeader}>
+        <div className={classes.mockAppBarLayout} />
+        <Typography variant="h1" align="center" className={classes.pageTitle}>
           TERMS AND CONDITIONS
         </Typography>
       </div>
-      <div className={classes.paragraphText}>
-        <Typography variant="h5">Terms:</Typography>
-      </div>
-      <div className={classes.paragraphText}>
-        <Typography variant="body1">
+      <div className={classes.center}>
+        <Typography variant="h2" className={classes.subheadingVerticalMargin}>
+          Terms:
+        </Typography>
+        <Typography
+          variant="body1"
+          className={classes.subheadingTextVerticalMargin}
+        >
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
           minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -30,9 +66,10 @@ function Terms() {
           pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
           culpa qui officia deserunt mollit anim id est laborum."
         </Typography>
-      </div>
-      <div className={classes.paragraphText}>
-        <Typography variant="body1">
+        <Typography
+          variant="body1"
+          className={classes.subheadingTextVerticalMargin}
+        >
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
           minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -41,12 +78,13 @@ function Terms() {
           pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
           culpa qui officia deserunt mollit anim id est laborum."
         </Typography>
-      </div>
-      <div className={classes.paragraphText}>
-        <Typography variant="h5">Conditions:</Typography>
-      </div>
-      <div className={classes.paragraphText}>
-        <Typography variant="body1">
+        <Typography variant="h2" className={classes.subheadingVerticalMargin}>
+          Conditions:
+        </Typography>
+        <Typography
+          variant="body1"
+          className={classes.subheadingTextVerticalMargin}
+        >
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
           minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -55,9 +93,10 @@ function Terms() {
           pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
           culpa qui officia deserunt mollit anim id est laborum."
         </Typography>
-      </div>
-      <div className={classes.paragraphText}>
-        <Typography variant="body1">
+        <Typography
+          variant="body1"
+          className={classes.subheadingTextVerticalMargin}
+        >
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
           minim veniam, quis nostrud exercitation ullamco laboris nisi ut

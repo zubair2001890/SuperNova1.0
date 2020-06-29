@@ -1,74 +1,114 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Typography, makeStyles } from "@material-ui/core";
+import { useDispatch } from "react-redux";
+import { setDarkTheme as setPageDarkTheme } from "../store/slices/page";
 
 const useStyles = makeStyles((theme) => ({
-  paragraphText: {
-    margin: "auto",
-    width: "50%",
+  center: {
+    margin: "0 auto",
+    maxWidth: 966,
+    paddingLeft: theme.spacing(2),
+    paddingRight: theme.spacing(2),
+    paddingTop: 92,
+    paddingBottom: 92,
+  },
+  mockAppBarLayout: {
+    ...theme.mixins.appBar,
+  },
+  pageHeader: {
+    height: 370,
+    backgroundImage: "url(" + require("./assets/mission.png") + ")",
+  },
+  pageTitle: {
+    position: "relative",
+    top: 20,
+    color: "white",
+  },
+  subheadingVerticalMargin: {
+    margin: "68px 0",
+  },
+  subheadingTextVerticalMargin: {
+    paddingBottom: 48,
   },
 }));
 
 function Mission() {
   const classes = useStyles();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setPageDarkTheme(true));
+    return () => {
+      dispatch(setPageDarkTheme(false));
+    };
+  }, [dispatch]);
   return (
     <>
-      <div>
-        <Typography variant="h4" align="center">
+      <div className={classes.pageHeader}>
+        <div className={classes.mockAppBarLayout} />
+        <Typography variant="h1" align="center" className={classes.pageTitle}>
           OUR MISSION
         </Typography>
       </div>
-      <div className={classes.paragraphText}>
-        <Typography variant="h5">SuperNova's Mission:</Typography>
-      </div>
-      <div className={classes.paragraphText}>
-        <Typography variant="body1">
+      <div className={classes.center}>
+        <Typography variant="h2" className={classes.subheadingVerticalMargin}>
+          SuperNova's Mission:
+        </Typography>
+        <Typography
+          variant="body1"
+          className={classes.subheadingTextVerticalMargin}
+        >
           At its core, SuperNova is a unique crowdfunding website for Scientific
           Research Projects providing the world's Scientists with an exciting
           new channel to receive the support required to carry out their vital
           research.
         </Typography>
-      </div>
-      <div className={classes.paragraphText}>
-        <Typography variant="body1">
+        <Typography
+          variant="body1"
+          className={classes.subheadingTextVerticalMargin}
+        >
           Unlike most crowdfunding platforms where donations are motivated by
           the promise of material gain, those who back projects on SuperNova
           will be given an exclusive educational opportunity to interact with
           the Scientists, gaining access to first hand commentary on cutting
           edge research.
         </Typography>
-      </div>
-      <div className={classes.paragraphText}>
-        <Typography variant="body1">
+        <Typography
+          variant="body1"
+          className={classes.subheadingTextVerticalMargin}
+        >
           By drawing on the inherent curiosity of the human mind and the
           fascination that Science provides it, SuperNova aims to become a
           thriving community providing a podium for Research to flourish,
           Scientists to collaborate, and for The People to play an active role
           in the advancement of Science itself.
         </Typography>
-      </div>
-
-      <div className={classes.paragraphText}>
-        <Typography variant="h5">More Mission:</Typography>
-      </div>
-      <div className={classes.paragraphText}>
-        <Typography variant="body1">
+        <Typography variant="h2" className={classes.subheadingVerticalMargin}>
+          More Mission:
+        </Typography>
+        <Typography
+          variant="body1"
+          className={classes.subheadingTextVerticalMargin}
+        >
           At its core, SuperNova is a unique crowdfunding website for Scientific
           Research Projects providing the world's Scientists with an exciting
           new channel to receive the support required to carry out their vital
           research.
         </Typography>
-      </div>
-      <div className={classes.paragraphText}>
-        <Typography variant="body1">
+        <Typography
+          variant="body1"
+          className={classes.subheadingTextVerticalMargin}
+        >
           Unlike most crowdfunding platforms where donations are motivated by
           the promise of material gain, those who back projects on SuperNova
           will be given an exclusive educational opportunity to interact with
           the Scientists, gaining access to first hand commentary on cutting
           edge research.
         </Typography>
-      </div>
-      <div className={classes.paragraphText}>
-        <Typography variant="body1">
+        <Typography
+          variant="body1"
+          className={classes.subheadingTextVerticalMargin}
+        >
           By drawing on the inherent curiosity of the human mind and the
           fascination that Science provides it, SuperNova aims to become a
           thriving community providing a podium for Research to flourish,

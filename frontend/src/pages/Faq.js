@@ -9,13 +9,26 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: 966,
     paddingLeft: theme.spacing(2),
     paddingRight: theme.spacing(2),
+    paddingTop: 92,
+    paddingBottom: 92,
   },
   mockAppBarLayout: {
     ...theme.mixins.appBar,
   },
   pageHeader: {
     height: 370,
-    backgroundColor: "blue",
+    backgroundImage: "url(" + require("./assets/faq.png") + ")",
+  },
+  pageTitle: {
+    position: "relative",
+    top: 20,
+    color: "white",
+  },
+  subheadingVerticalMargin: {
+    margin: "68px 0",
+  },
+  subheadingTextVerticalMargin: {
+    paddingBottom: 48,
   },
 }));
 
@@ -34,15 +47,18 @@ function Faq() {
     <>
       <div className={classes.pageHeader}>
         <div className={classes.mockAppBarLayout} />
-        <Typography variant="h1" align="center" style={{ color: "white" }}>
+        <Typography variant="h1" align="center" className={classes.pageTitle}>
           FREQUENTLY ASKED QUESTIONS
         </Typography>
       </div>
       <div className={classes.center}>
-        <Typography variant="h2" gutterBottom>
+        <Typography variant="h2" className={classes.subheadingVerticalMargin}>
           Who is SuperNova for?
         </Typography>
-        <Typography variant="body1" gutterBottom>
+        <Typography
+          variant="body1"
+          className={classes.subheadingTextVerticalMargin}
+        >
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
           sagittis lectus ac aliquet egestas. Aenean turpis risus, aliquet a
           ligula ut, euismod convallis sem. Mauris fermentum felis in nibh
@@ -51,10 +67,13 @@ function Faq() {
           Pellentesque sed neque et ipsum tincidunt volutpat id sit amet erat.
           Nullam eu accumsan justo.
         </Typography>
-        <Typography variant="h5" gutterBottom>
+        <Typography variant="h2" className={classes.subheadingVerticalMargin}>
           Can I refund my donation?
         </Typography>
-        <Typography variant="body1" gutterBottom>
+        <Typography
+          variant="body1"
+          className={classes.subheadingTextVerticalMargin}
+        >
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
           sagittis lectus ac aliquet egestas. Aenean turpis risus, aliquet a
           ligula ut, euismod convallis sem. Mauris fermentum felis in nibh
@@ -63,10 +82,13 @@ function Faq() {
           Pellentesque sed neque et ipsum tincidunt volutpat id sit amet erat.
           Nullam eu accumsan justo.
         </Typography>
-        <Typography variant="h5" gutterBottom>
+        <Typography variant="h2" className={classes.subheadingVerticalMargin}>
           Can I create more than one project at once?
         </Typography>
-        <Typography variant="body1" gutterBottom>
+        <Typography
+          variant="body1"
+          className={classes.subheadingTextVerticalMargin}
+        >
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
           sagittis lectus ac aliquet egestas. Aenean turpis risus, aliquet a
           ligula ut, euismod convallis sem. Mauris fermentum felis in nibh
@@ -75,10 +97,13 @@ function Faq() {
           Pellentesque sed neque et ipsum tincidunt volutpat id sit amet erat.
           Nullam eu accumsan justo.
         </Typography>
-        <Typography variant="h5" gutterBottom>
+        <Typography variant="h2" className={classes.subheadingVerticalMargin}>
           Question question question?
         </Typography>
-        <Typography variant="body1" gutterBottom>
+        <Typography
+          variant="body1"
+          className={classes.subheadingTextVerticalMargin}
+        >
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
           sagittis lectus ac aliquet egestas. Aenean turpis risus, aliquet a
           ligula ut, euismod convallis sem. Mauris fermentum felis in nibh
@@ -87,10 +112,13 @@ function Faq() {
           Pellentesque sed neque et ipsum tincidunt volutpat id sit amet erat.
           Nullam eu accumsan justo.
         </Typography>
-        <Typography variant="h5" gutterBottom>
+        <Typography variant="h2" className={classes.subheadingVerticalMargin}>
           Question question question?
         </Typography>
-        <Typography variant="body1" gutterBottom>
+        <Typography
+          variant="body1"
+          className={classes.subheadingTextVerticalMargin}
+        >
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
           sagittis lectus ac aliquet egestas. Aenean turpis risus, aliquet a
           ligula ut, euismod convallis sem. Mauris fermentum felis in nibh
