@@ -6,8 +6,10 @@ import FormCard from "../../components/FormCard/index";
 import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
 import AccountCircle from "@material-ui/icons/AccountCircle";
+import LoginForm from "./components/LoginForm";
 import {
   Button,
+  Grid,
   Input,
   InputLabel,
   IconButton,
@@ -18,89 +20,43 @@ import {
 import FacebookIcon from "@material-ui/icons/Facebook";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
-import Visibility from "@material-ui/icons/Visibility";
-import VisibilityOff from "@material-ui/icons/VisibilityOff";
 
 const useStyles = makeStyles((theme) => ({
   container: {
     minHeight: "100vh",
-    paddingTop: 200,
+    padding: theme.spacing(40, 0, 0, 0),
+    margin: "auto auto",
+  },
+  socialIcons: {
+    color: "white",
   },
 }));
 
 export default function Links() {
   const classes = useStyles();
 
-  const [values, setValues] = React.useState({
-    password: "",
-    email: "",
-    showPassword: false,
-  });
-  const handleChange = (prop) => (event) => {
-    setValues({ ...values, [prop]: event.target.value });
-  };
-
-  const handleClickShowPassword = () => {
-    setValues({ ...values, showPassword: !values.showPassword });
-  };
-
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
-
   return (
-    <div className={classes.container}>
+    <Grid item xs={12} sm={6} lg={4} className={classes.container}>
       <FormCard
         headerChildren={
-          <Typography variant="h5" component="h1">
-            LOGIN
-          </Typography>
-        }
-        bodyChildren={
           <>
-            <InputLabel
-              className={classes.textField}
-              htmlFor="standard-adornment-email"
-            >
-              Email
-            </InputLabel>
-            <Input
-              onChange={handleChange("email")}
-              id="standard-adornment-email"
-              value={values.email}
-              fullWidth
-              endAdornment={
-                <InputAdornment position="end">
-                  <AccountCircle />
-                </InputAdornment>
-              }
-            />
-            <InputLabel
-              className={classes.textField}
-              htmlFor="standard-adornment-password"
-            >
-              Password
-            </InputLabel>
-            <Input
-              fullWidth
-              onChange={handleChange("password")}
-              id="standard-adornment-password"
-              type={values.showPassword ? "text" : "password"}
-              value={values.password}
-              endAdornment={
-                <InputAdornment>
-                  <IconButton
-                    aria-label="toggle password visibility"
-                    onClick={handleClickShowPassword}
-                    onMouseDown={handleMouseDownPassword}
-                  >
-                    {values.showPassword ? <Visibility /> : <VisibilityOff />}
-                  </IconButton>
-                </InputAdornment>
-              }
-            />
+            <Typography variant="h5" component="h1" align="center">
+              LOGIN
+            </Typography>
+            <Grid container direction="row" justify="center">
+              <IconButton aria-label="settings">
+                <FacebookIcon className={classes.socialIcons} />
+              </IconButton>
+              <IconButton aria-label="settings">
+                <TwitterIcon className={classes.socialIcons} />
+              </IconButton>
+              <IconButton aria-label="settings">
+                <LinkedInIcon className={classes.socialIcons} />
+              </IconButton>
+            </Grid>
           </>
         }
+        bodyChildren={<LoginForm />}
         footerChildren={
           <>
             <Button
@@ -113,6 +69,6 @@ export default function Links() {
           </>
         }
       />
-    </div>
+    </Grid>
   );
 }
