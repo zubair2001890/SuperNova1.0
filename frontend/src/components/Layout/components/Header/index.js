@@ -3,7 +3,6 @@ import { Link as RouterLink } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import { AppBar, IconButton, Toolbar, Button } from "@material-ui/core";
 import { Menu as MenuIcon, Close as CloseIcon } from "@material-ui/icons";
-import SlideFadeIn from "../../../SlideFadeIn";
 import LeftDrawer from "./components/LeftDrawer";
 import paths from "../../../../constants/paths";
 import logoRed from "./assets/logo-red.svg";
@@ -21,6 +20,9 @@ const useStyles = makeStyles((theme) => ({
     ...theme.mixins.appBar,
     position: "relative",
   },
+  toggleBtn: {
+    animation: "slideFadeUp 1.5s ease 2s backwards",
+  },
   logoContainer: {
     height: "80%",
     position: "absolute",
@@ -31,26 +33,20 @@ const useStyles = makeStyles((theme) => ({
   logo: {
     marginRight: "auto",
     height: "100%",
+    animation: "fadeIn 1.5s ease 1s backwards",
     "&:hover": {
-      animation: "$rotate 3s infinite linear",
+      animation: "rotate 3s infinite linear",
     },
   },
   appBarRight: {
     marginLeft: "auto",
+    animation: "slideFadeUp 1.5s ease 2s backwards",
     "& > *:not(:last-child)": {
       marginRight: theme.spacing(4),
     },
   },
   appBarRightLink: {
     ...theme.mixins.navLinkPrimary,
-  },
-  "@keyframes rotate": {
-    from: {
-      transform: "rotate(0deg)",
-    },
-    to: {
-      transform: "rotate(360deg)",
-    },
   },
 }));
 
@@ -87,58 +83,53 @@ export default function Header({ darkTheme = true }) {
       />
       <AppBar position="absolute" elevation={0} className={classes.appBar}>
         <Toolbar className={classes.toolBar}>
-          <SlideFadeIn delay={2000} slideDirection="down">
-            <IconButton
-              edge="start"
-              aria-label="menu button"
-              onClick={toggleDrawer("left", !drawerState.left)}
-              size="medium"
-              color="inherit"
-            >
-              {drawerState.left ? (
-                <CloseIcon fontSize="large" color="inherit" />
-              ) : (
-                <MenuIcon fontSize="large" color="inherit" />
-              )}
-            </IconButton>
-          </SlideFadeIn>
+          <IconButton
+            edge="start"
+            aria-label="menu button"
+            onClick={toggleDrawer("left", !drawerState.left)}
+            size="medium"
+            color="inherit"
+            className={classes.toggleBtn}
+          >
+            {drawerState.left ? (
+              <CloseIcon fontSize="large" color="inherit" />
+            ) : (
+              <MenuIcon fontSize="large" color="inherit" />
+            )}
+          </IconButton>
           <RouterLink className={classes.logoContainer} to={paths.home}>
-            <SlideFadeIn delay={500} slideDirection="down">
-              <img
-                src={logoSrc}
-                onMouseOver={() => {
-                  setLogoSrc(logoRed);
-                }}
-                onMouseOut={() => {
-                  setLogoSrc(getLogoSrc(darkTheme));
-                }}
-                alt="supernova logo"
-                className={classes.logo}
-              />
-            </SlideFadeIn>
+            <img
+              src={logoSrc}
+              onMouseOver={() => {
+                setLogoSrc(logoRed);
+              }}
+              onMouseOut={() => {
+                setLogoSrc(getLogoSrc(darkTheme));
+              }}
+              alt="supernova logo"
+              className={classes.logo}
+            />
           </RouterLink>
-          <SlideFadeIn delay={2000} slideDirection="down">
-            <div className={classes.appBarRight}>
-              <Button
-                color="inherit"
-                component={RouterLink}
-                to={paths.explore}
-                size="large"
-                className={classes.appBarRightLink}
-              >
-                EXPLORE
-              </Button>
-              <Button
-                color="inherit"
-                component={RouterLink}
-                to={paths.login}
-                size="large"
-                className={classes.appBarRightLink}
-              >
-                LOG IN
-              </Button>
-            </div>
-          </SlideFadeIn>
+          <div className={classes.appBarRight}>
+            <Button
+              color="inherit"
+              component={RouterLink}
+              to={paths.explore}
+              size="large"
+              className={classes.appBarRightLink}
+            >
+              EXPLORE
+            </Button>
+            <Button
+              color="inherit"
+              component={RouterLink}
+              to={paths.login}
+              size="large"
+              className={classes.appBarRightLink}
+            >
+              LOG IN
+            </Button>
+          </div>
         </Toolbar>
       </AppBar>
     </>

@@ -1,6 +1,6 @@
 import React from "react";
+import clsx from "clsx";
 import { makeStyles, Grid, Paper, Typography } from "@material-ui/core";
-import SlideFadeIn from "../../../components/SlideFadeIn";
 import IntersectionObserver from "../../../components/IntersectionObserver";
 
 const useStyles = makeStyles((theme) => ({
@@ -21,6 +21,12 @@ const useStyles = makeStyles((theme) => ({
   paragraph: {
     color: theme.palette.common.white,
   },
+  slideFadeLeft: {
+    animation: "slideFadeLeft .8s ease 0s backwards",
+  },
+  slideFadeRight: {
+    animation: "slideFadeRight .8s ease 0s backwards",
+  },
 }));
 
 export default () => {
@@ -35,17 +41,17 @@ export default () => {
           render={({ inView, ref }) => {
             return (
               <Paper elevation={0} className={classes.paper} ref={ref}>
-                <SlideFadeIn transitionIn={inView} slideDirection="left">
+                {inView && (
                   <Typography
                     component="p"
                     variant="h4"
                     gutterBottom
-                    className={classes.paragraph}
+                    className={clsx(classes.paragraph, classes.slideFadeLeft)}
                   >
                     We are a crowdfunding platform for scientific research
                     projects.
                   </Typography>
-                </SlideFadeIn>
+                )}
               </Paper>
             );
           }}
@@ -57,17 +63,17 @@ export default () => {
           render={({ inView, ref }) => {
             return (
               <Paper elevation={0} className={classes.paper} ref={ref}>
-                <SlideFadeIn transitionIn={inView} slideDirection="right">
+                {inView && (
                   <Typography
                     component="p"
                     variant="h4"
                     gutterBottom
-                    className={classes.paragraph}
+                    className={clsx(classes.paragraph, classes.slideFadeRight)}
                   >
                     We aim to bridge the gap between the scientists changing the
                     world and the people living in it.
                   </Typography>
-                </SlideFadeIn>
+                )}
               </Paper>
             );
           }}
@@ -81,17 +87,17 @@ export default () => {
           render={({ inView, ref }) => {
             return (
               <Paper elevation={0} className={classes.paper} ref={ref}>
-                <SlideFadeIn transitionIn={inView} slideDirection="left">
+                {inView && (
                   <Typography
                     component="p"
                     variant="h4"
                     gutterBottom
-                    className={classes.paragraph}
+                    className={clsx(classes.paragraph, classes.slideFadeLeft)}
                   >
                     With thousands of projects to fund, you have the potential
                     to change the way we see the world.
                   </Typography>
-                </SlideFadeIn>
+                )}
               </Paper>
             );
           }}
@@ -103,17 +109,17 @@ export default () => {
           render={({ inView, ref }) => {
             return (
               <Paper elevation={0} className={classes.paper} ref={ref}>
-                <SlideFadeIn transitionIn={inView} slideDirection="right">
+                {inView && (
                   <Typography
                     component="p"
                     variant="h4"
                     gutterBottom
-                    className={classes.paragraph}
+                    className={clsx(classes.paragraph, classes.slideFadeRight)}
                   >
                     Explore Science for yourself and decide where you will make
                     your mark.
                   </Typography>
-                </SlideFadeIn>
+                )}
               </Paper>
             );
           }}
