@@ -8,6 +8,7 @@ import {
 import useWindowScrollY from "../../hooks/useWindowScrollY";
 import Intro from "./components/Intro";
 import SlidingParagraphs from "./components/SlidingParagraphs";
+import Cube from "./components/Cube";
 
 const useStyles = makeStyles((theme) => ({
   pageContainer: {
@@ -33,6 +34,7 @@ export default () => {
     <div className={classes.pageContainer}>
       <Intro scrollY={scrollY} />
       <SlidingParagraphs />
+      {/* <Cube /> */}
     </div>
   );
 };
