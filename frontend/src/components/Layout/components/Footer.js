@@ -15,6 +15,7 @@ import {
 } from "@material-ui/icons";
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
+import paths from "../../../constants/paths";
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -116,7 +117,7 @@ export default function Footer() {
         <Grid item xs={4} className={classes.gridItem}>
           <MaterialLink
             component={RouterLink}
-            to="/"
+            to={paths.mission}
             className={classes.regularLink}
           >
             Our Mission
@@ -143,7 +144,7 @@ export default function Footer() {
         <Grid item xs={4} className={classes.gridItem}>
           <MaterialLink
             component={RouterLink}
-            to="/"
+            to={paths.terms}
             className={classes.regularLink}
           >
             T&Cs
@@ -170,7 +171,7 @@ export default function Footer() {
         <Grid item xs={4} className={classes.gridItem}>
           <MaterialLink
             component={RouterLink}
-            to="/"
+            to={paths.model}
             className={classes.regularLink}
           >
             Our Model
@@ -179,7 +180,7 @@ export default function Footer() {
         <Grid item xs={4} className={classes.gridItem}>
           <MaterialLink
             component={RouterLink}
-            to="/"
+            to={paths.contact}
             className={classes.regularLink}
           >
             Contact Us
@@ -188,7 +189,7 @@ export default function Footer() {
         <Grid item xs={4} className={classes.gridItem}>
           <MaterialLink
             component={RouterLink}
-            to="/"
+            to={paths.faq}
             className={classes.regularLink}
           >
             FAQ
