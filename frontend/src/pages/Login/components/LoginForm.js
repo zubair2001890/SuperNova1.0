@@ -16,7 +16,12 @@ import LockIcon from "@material-ui/icons/Lock";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
 import EmailIcon from "@material-ui/icons/Email";
 
-const useStyles = makeStyles((theme) => ({}));
+const useStyles = makeStyles((theme) => ({
+  textField: {
+    color: "black",
+    margin: theme.spacing(2, 2, 2, 2),
+  },
+}));
 
 export default () => {
   const classes = useStyles();
