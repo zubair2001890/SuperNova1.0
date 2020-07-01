@@ -24,7 +24,7 @@ import LinkedInIcon from "@material-ui/icons/LinkedIn";
 const useStyles = makeStyles((theme) => ({
   container: {
     minHeight: "100vh",
-    padding: theme.spacing(40, 0, 0, 0),
+    padding: theme.spacing(35, 0, 0, 0),
     margin: "auto auto",
   },
   socialIcons: {
@@ -40,10 +40,10 @@ export default function Links() {
       <FormCard
         headerChildren={
           <>
-            <Typography variant="h5" component="h1" align="center">
+            <Typography variant="h4" component="h1" align="center">
               LOGIN
             </Typography>
-            <Grid container direction="row" justify="center">
+            <Grid container wrap="nowrap" direction="row" justify="center">
               <IconButton aria-label="settings">
                 <FacebookIcon className={classes.socialIcons} />
               </IconButton>
@@ -59,11 +59,7 @@ export default function Links() {
         bodyChildren={<LoginForm />}
         footerChildren={
           <>
-            <Button
-              className={clsx(classes.margin, classes.label)}
-              variant="outlined"
-              size="large"
-            >
+            <Button fullWidth size="large">
               SIGN IN
             </Button>
           </>
