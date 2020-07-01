@@ -48,21 +48,21 @@
 }
 
 @keyframes slideFadeLeft {
-  from{
+  from {
     transform: translateX(10vw);
     opacity: 0;
   }
-  to{
+  to {
     opacity: 1;
   }
 }
 
 @keyframes slideFadeRight {
-  from{
+  from {
     transform: translateX(-10vw);
     opacity: 0;
   }
-  to{
+  to {
     opacity: 1;
   }
 }
@@ -70,4 +70,49 @@
 body {
   /* reset userAgent stylesheet */
   margin: 0 0 0 0;
+}
+
+/* CUBE */
+
+.container {
+  perspective: 600px;
+  position: relative;
+  left: 50%;
+}
+
+.cube {
+  position: relative;
+  transform-style: preserve-3d;
+  bottom: 0;
+}
+
+.square {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 1px solid white;
+  background-color: rgba(white);
+}
+
+.back {
+  transform: rotateY(-90deg) translateX(50%) rotateY(90deg);
+}
+.right {
+  transform: rotateY(-270deg) translateX(50%);
+  transform-origin: top right;
+}
+.left {
+  transform: rotateY(270deg) translateX(-50%);
+  transform-origin: center left;
+}
+.top {
+  transform: rotateX(-90deg) translateY(-50%);
+  transform-origin: top center;
+}
+.bottom {
+  transform: rotateX(90deg) translateY(50%);
+  transform-origin: bottom center;
+}
+.front {
+  transform: rotateY(-90deg) translateX(-50%) rotateY(90deg);
 }

@@ -34,7 +34,7 @@ export default () => {
     <div className={classes.pageContainer}>
       <Intro scrollY={scrollY} />
       <SlidingParagraphs />
-      {/* <Cube /> */}
+      <Cube scrollY={scrollY} />
     </div>
   );
 };
