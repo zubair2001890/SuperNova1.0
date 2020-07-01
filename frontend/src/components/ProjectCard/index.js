@@ -11,15 +11,18 @@ import projectMockData from "../../mockData/projects";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: 273,
+    maxWidth: 273,
     height: 408,
+    width: "100%",
+    borderColor: theme.palette.common.gray,
   },
   projectImage: {
     position: "relative",
-    top: 4.03,
+    top: 4,
     left: 3.9,
     width: 265,
     height: 149,
+    borderRadius: 3,
   },
   projectTitleContainer: {
     maxWidth: 235,
@@ -33,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
   },
   projectTitle: {
     fontSize: 16,
-    letterSpacing: "0.06em",
+    letterSpacing: 0.96,
     fontWeight: 700,
     lineHeight: "19px",
   },
@@ -50,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
   },
   personDetails: {
     fontSize: 14,
-    letterSpacing: "0.08em",
+    letterSpacing: 1.12,
     fontWeight: 500,
     lineHeight: "18px",
   },
@@ -75,15 +78,14 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 50,
   },
   raisedDescriptionContainer: {
-    width: 240,
-    height: 19,
+    width: "100%",
     position: "relative",
     top: 74,
     left: 13.9,
   },
   raisedDescription: {
     fontSize: 15,
-    letterSpacing: "0.05em",
+    letterSpacing: 0.75,
     fontWeight: 700,
     lineHeight: "29px",
   },
@@ -92,7 +94,7 @@ const ProjectCard = (props) => {
   const classes = useStyles();
   console.log(projectMockData[1].first_name);
   return (
-    <Card className={classes.root}>
+    <Card className={classes.root} variant="outlined">
       <CardMedia
         className={classes.projectImage}
         title="Project Image"
@@ -106,7 +108,7 @@ const ProjectCard = (props) => {
       <div className={classes.personPictureContainer}>
         <Avatar
           className={classes.personPicture}
-          alt="Travis Howard"
+          alt="Project Researcher"
           src={projectMockData[1].avatar_url}
         />
       </div>
@@ -121,15 +123,20 @@ const ProjectCard = (props) => {
       <div className={classes.raisedProgressBarContainer}>
         <LinearProgress
           variant="determinate"
-          value={40}
+          value={
+            (projectMockData[1].total_raised_funds /
+              projectMockData[1].funds_goal) *
+            100
+          }
           color="secondary"
           className={classes.raisedProgressBar}
         />
       </div>
       <div className={classes.raisedDescriptionContainer}>
         <Typography className={classes.raisedDescription} variant="h5">
-          £{projectMockData[1].total_raised_funds.toLocaleString()} raised of £
-          {projectMockData[1].funds_goal.toLocaleString()} goal
+          £{parseInt(projectMockData[1].total_raised_funds).toLocaleString()}{" "}
+          raised of £{parseInt(projectMockData[1].funds_goal).toLocaleString()}{" "}
+          goal
         </Typography>
       </div>
     </Card>
