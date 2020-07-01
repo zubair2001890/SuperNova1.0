@@ -8,6 +8,11 @@ import Error404 from "./pages/Error404";
 import Faq from "./pages/Faq";
 import paths from "./constants/paths";
 import theme from "./theme";
+import Mission from "./pages/Mission";
+import Terms from "./pages/Terms";
+import Model from "./pages/Model";
+import Contact from "./pages/Contact";
+import Team from "./pages/Team";
 
 function App() {
   return (
@@ -20,6 +25,21 @@ function App() {
             </Route>
             <Route path={paths.faq}>
               <Faq />
+            </Route>
+            <Route path={paths.mission}>
+              <Mission />
+            </Route>
+            <Route path={paths.terms}>
+              <Terms />
+            </Route>
+            <Route path={paths.model}>
+              <Model />
+            </Route>
+            <Route path={paths.contact}>
+              <Contact />
+            </Route>
+            <Route path={paths.team}>
+              <Team />
             </Route>
             <Route path={paths.home} exact>
               <Homepage />

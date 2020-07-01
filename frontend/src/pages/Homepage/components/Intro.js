@@ -3,7 +3,6 @@ import clsx from "clsx";
 import { makeStyles, useTheme, Typography } from "@material-ui/core";
 import GrowVerticalBar from "./GrowVerticalBar";
 import AnimateArrows from "./AnimatedArrows";
-import SlideFadeIn from "../../../components/SlideFadeIn";
 
 const createExploreMarginBottom = 50;
 
@@ -21,17 +20,25 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     letterSpacing: 10,
     color: theme.palette.common.white,
+    animation: "slideFadeUp 1.5s ease 1s backwards",
   },
-  createExploreContainer: {
+  subtitle: {
+    animation: "slideFadeUp 1.5s ease 2s backwards",
+  },
+  createExplore: {
     display: "flex",
     width: "100%",
     flexFlow: "row nowrap",
     justifyContent: "center",
     alignItems: "center",
+    animation: "slideFadeUp 1.5s ease 2s backwards",
   },
   growVerticalBar: {
     flex: "0 0 auto",
   },
+  arrows: {
+    animation: "slideFadeUp 1.5s ease 2s backwards",
+  }
 }));
 
 export default ({ scrollY, className }) => {
@@ -40,22 +47,18 @@ export default ({ scrollY, className }) => {
 
   return (
     <div className={clsx(classes.container, className)}>
-      <SlideFadeIn delay={500} slideDirection="up">
-        <Typography variant="h1" className={classes.title}>
-          SUPERNOVA
-        </Typography>
-      </SlideFadeIn>
-      <SlideFadeIn delay={2000} slideDirection="up">
-        <Typography variant="h4" gutterBottom>
-          <>
-            <span style={{ color: theme.palette.common.red }}>SCIENCE.</span>{" "}
-            <span style={{ color: theme.palette.common.white }}>
-              POWERED BY YOU.
-            </span>
-          </>
-        </Typography>
-      </SlideFadeIn>
-      <SlideFadeIn delay={2000} slideDirection="up">
+      <Typography variant="h1" className={classes.title}>
+        SUPERNOVA
+      </Typography>
+      <Typography variant="h4" className={classes.subtitle}>
+        <>
+          <span style={{ color: theme.palette.common.red }}>SCIENCE.</span>{" "}
+          <span style={{ color: theme.palette.common.white }}>
+            POWERED BY YOU.
+          </span>
+        </>
+      </Typography>
+      <div className={classes.createExploreContainer}>
         <Typography
           variant="h5"
           style={{
@@ -63,7 +66,7 @@ export default ({ scrollY, className }) => {
             textAlign: "right",
             marginBottom: createExploreMarginBottom,
           }}
-          className={classes.createExploreContainer}
+          className={classes.createExplore}
         >
           <span style={{ flex: "0 0 50%", textAlign: "right" }}>CREATE</span>
           <GrowVerticalBar
@@ -72,12 +75,11 @@ export default ({ scrollY, className }) => {
           />
           <span style={{ flex: "0 0 50%", textAlign: "left" }}>EXPLORE</span>
         </Typography>
-      </SlideFadeIn>
-      <SlideFadeIn delay={2000} slideDirection="up">
         <AnimateArrows
+          className={classes.arrows}
           style={{ opacity: 1 - scrollY / createExploreMarginBottom }}
         />
-      </SlideFadeIn>
+      </div>
     </div>
   );
 };
