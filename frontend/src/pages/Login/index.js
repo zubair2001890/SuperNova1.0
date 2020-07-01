@@ -1,21 +1,9 @@
 import React from "react";
-import { Link as MaterialLink } from "@material-ui/core";
-import { Link } from "react-router-dom";
-import paths from "../../constants/paths";
 import FormCard from "../../components/FormCard/index";
 import { makeStyles } from "@material-ui/core/styles";
-import clsx from "clsx";
-import AccountCircle from "@material-ui/icons/AccountCircle";
+
 import LoginForm from "./components/LoginForm";
-import {
-  Button,
-  Grid,
-  Input,
-  InputLabel,
-  IconButton,
-  InputAdornment,
-  Typography,
-} from "@material-ui/core";
+import { Button, Grid, IconButton, Typography } from "@material-ui/core";
 
 import FacebookIcon from "@material-ui/icons/Facebook";
 import TwitterIcon from "@material-ui/icons/Twitter";

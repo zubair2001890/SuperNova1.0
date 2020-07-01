@@ -85,6 +85,7 @@ export default () => {
         >
           Password
         </InputLabel>
+
         <Input
           fullWidth
           onChange={handleChange("password")}
@@ -109,6 +110,7 @@ export default () => {
           }
         />
       </FormControl>
+
       <Button className={classes.button}>Forgot your password?</Button>
     </>
   );
