@@ -72,47 +72,21 @@ body {
   margin: 0 0 0 0;
 }
 
-/* CUBE */
-
-.container {
-  perspective: 600px;
-  position: relative;
-  left: 50%;
+.cubeContainer {
+  background-color: #000647;
 }
 
-.cube {
-  position: relative;
-  transform-style: preserve-3d;
-  bottom: 0;
+.cubeContainer.newColour {
+  animation: changeColour;
 }
 
-.square {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border: 1px solid white;
-  background-color: rgba(white);
-}
-
-.back {
-  transform: rotateY(-90deg) translateX(50%) rotateY(90deg);
-}
-.right {
-  transform: rotateY(-270deg) translateX(50%);
-  transform-origin: top right;
-}
-.left {
-  transform: rotateY(270deg) translateX(-50%);
-  transform-origin: center left;
-}
-.top {
-  transform: rotateX(-90deg) translateY(-50%);
-  transform-origin: top center;
-}
-.bottom {
-  transform: rotateX(90deg) translateY(50%);
-  transform-origin: bottom center;
-}
-.front {
-  transform: rotateY(-90deg) translateX(-50%) rotateY(90deg);
+@keyframes changeColour {
+  0% {
+    opacity: 0;
+    background-color: #000647;
+  }
+  100% {
+    opacity: 1;
+    background-color: green;
+  }
 }
