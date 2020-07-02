@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Typography, makeStyles } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 import { setDarkTheme as setPageDarkTheme } from "../store/slices/page";
+import ProjectCard from "../components/ProjectCard";
 
 const useStyles = makeStyles((theme) => ({
   center: {
@@ -72,6 +73,7 @@ function Contact() {
         >
           zm@supernova.ac
         </Typography>
+        <ProjectCard />
       </div>
     </>
   );

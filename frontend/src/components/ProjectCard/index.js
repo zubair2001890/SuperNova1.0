@@ -6,139 +6,136 @@ import {
   Typography,
   Avatar,
   LinearProgress,
+  CardActionArea,
+  CardContent,
 } from "@material-ui/core";
 import projectMockData from "../../mockData/projects";
+import defaultCardHeaderImage from "./assets/default-project-header-image.png";
+
+const defaultHeaderUrl = defaultCardHeaderImage;
+const defaultTitle = "Project Name: -";
+const defaultSubtitle = (
+  <span>
+    Person Name: - <br />
+    Name of Univeristy: -
+  </span>
+);
+
+const getProgressValue = ({ fundsRaised, fundsGoal }) => {
+  if (typeof fundsRaised === "number" && typeof fundsGoal === "number") {
+    return (fundsRaised / fundsGoal) * 100;
+  }
+  return 0;
+};
+
+const getFooter = ({ fundsRaised, fundsGoal }) => {
+  if (typeof fundsRaised === "number" && typeof fundsGoal === "number") {
+    return `${new Intl.NumberFormat("en-EN", {
+      style: "currency",
+      currency: "GBP",
+      maximumFractionDigits: 0,
+      minimumFractionDigits: 0,
+    }).format(projectMockData[1].total_raised_funds)}
+    raised of
+    ${new Intl.NumberFormat("en-EN", {
+      style: "currency",
+      currency: "GBP",
+      maximumFractionDigits: 0,
+      minimumFractionDigits: 0,
+    }).format(projectMockData[1].funds_goal)}
+    goal`;
+  }
+  return "-";
+};
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    maxWidth: 273,
-    height: 408,
-    width: "100%",
+  card: {
     borderColor: theme.palette.common.gray,
+    padding: 4,
   },
   projectImage: {
-    position: "relative",
-    top: 4,
-    left: 3.9,
-    width: 265,
-    height: 149,
+    height: "30%",
+    paddingTop: "30%",
     borderRadius: 3,
   },
-  projectTitleContainer: {
-    maxWidth: 235,
-    height: 38,
-    position: "relative",
-    top: 14,
-    left: 12.9,
-    fontSize: 16,
-    width: "100%",
-    overflow: "hidden",
+  cardContent: {
+    padding: theme.spacing(3, 2, 3, 2),
+    "& > *": {
+      marginTop: 0,
+      marginBottom: 0,
+      "&:not(:last-child)": { marginBottom: theme.spacing(2) },
+    },
   },
   projectTitle: {
     fontSize: 16,
     letterSpacing: 0.96,
     fontWeight: 700,
     lineHeight: "19px",
+    fontFamily: "'Montserrat', sans-serif",
+    maxHeight: 36,
+    overflowY: "hidden",
   },
-  personPictureContainer: {
+  avatar: {
     width: 56,
-    height: 58,
-    position: "relative",
-    top: 32,
-    left: 12.9,
+    height: 56,
   },
-  personPicture: {
-    width: 56,
-    height: 58,
-  },
-  personDetails: {
+  subtitle: {
     fontSize: 14,
     letterSpacing: 1.12,
-    fontWeight: 500,
+    fontWeight: 600,
     lineHeight: "18px",
+    fontFamily: "'Montserrat', sans-serif",
   },
-  personDetailsContainer: {
-    maxWidth: 226,
-    height: 45,
-    position: "relative",
-    top: 50,
-    left: 13.9,
-    width: "100%",
-  },
-  raisedProgressBarContainer: {
-    width: 238,
-    height: 5,
-    position: "relative",
-    top: 58.5,
-    left: 12.9,
-  },
-  raisedProgressBar: {
+  linearProgress: {
     backgroundColor: theme.palette.common.black,
     height: 7,
     borderRadius: 50,
   },
-  raisedDescriptionContainer: {
-    width: "100%",
-    position: "relative",
-    top: 74,
-    left: 13.9,
-  },
-  raisedDescription: {
+  footer: {
     fontSize: 15,
     letterSpacing: 0.75,
     fontWeight: 700,
     lineHeight: "29px",
   },
 }));
-const ProjectCard = (props) => {
+const ProjectCard = ({
+  headerUrl = defaultHeaderUrl,
+  title = defaultTitle,
+  avatarUrl,
+  subtitle = defaultSubtitle,
+  fundsRaised,
+  fundsGoal,
+}) => {
   const classes = useStyles();
-  console.log(projectMockData[1].first_name);
   return (
-    <Card className={classes.root} variant="outlined">
-      <CardMedia
-        className={classes.projectImage}
-        title="Project Image"
-        image={projectMockData[1].project_image_url}
-      />
-      <div className={classes.projectTitleContainer}>
-        <Typography className={classes.projectTitle} variant="h4">
-          {projectMockData[1].project_title}
-        </Typography>
-      </div>
-      <div className={classes.personPictureContainer}>
-        <Avatar
-          className={classes.personPicture}
-          alt="Project Researcher"
-          src={projectMockData[1].avatar_url}
+    <Card className={classes.card} variant="outlined">
+      <CardActionArea>
+        <CardMedia
+          className={classes.projectImage}
+          title="Project Image"
+          image={headerUrl}
         />
-      </div>
-      <div className={classes.personDetailsContainer}>
-        <Typography variant="h6" className={classes.personDetails}>
-          {projectMockData[1].first_name} {projectMockData[1].last_name}
-        </Typography>
-        <Typography variant="h6" className={classes.personDetails}>
-          {projectMockData[1].university}
-        </Typography>
-      </div>
-      <div className={classes.raisedProgressBarContainer}>
-        <LinearProgress
-          variant="determinate"
-          value={
-            (projectMockData[1].total_raised_funds /
-              projectMockData[1].funds_goal) *
-            100
-          }
-          color="secondary"
-          className={classes.raisedProgressBar}
-        />
-      </div>
-      <div className={classes.raisedDescriptionContainer}>
-        <Typography className={classes.raisedDescription} variant="h5">
-          £{parseInt(projectMockData[1].total_raised_funds).toLocaleString()}{" "}
-          raised of £{parseInt(projectMockData[1].funds_goal).toLocaleString()}{" "}
-          goal
-        </Typography>
-      </div>
+        <CardContent className={classes.cardContent}>
+          <p className={classes.projectTitle}>
+            {title.length < 45 ? title : title.slice(0, 41) + "..."}
+          </p>
+          <Avatar
+            className={classes.avatar}
+            alt="Researcher Avatar"
+            src={avatarUrl}
+          />
+          <p className={classes.subtitle}>{subtitle}</p>
+          <LinearProgress
+            variant="determinate"
+            value={getProgressValue({ fundsRaised, fundsGoal })}
+            color="secondary"
+            className={classes.linearProgress}
+          />
+          <p className={classes.footer}>
+            {getFooter({ fundsRaised, fundsGoal })}
+          </p>
+        </CardContent>
+      </CardActionArea>
     </Card>
   );
 };

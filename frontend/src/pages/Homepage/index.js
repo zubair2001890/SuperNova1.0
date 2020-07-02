@@ -8,6 +8,7 @@ import {
 import useWindowScrollY from "../../hooks/useWindowScrollY";
 import Intro from "./components/Intro";
 import SlidingParagraphs from "./components/SlidingParagraphs";
+import { fetchProjects } from "../../store/slices/projects";
 
 const useStyles = makeStyles((theme) => ({
   pageContainer: {
@@ -23,6 +24,7 @@ export default () => {
   useEffect(() => {
     dispatch(setPageDarkTheme(true));
     dispatch(setPageParticles(true));
+    dispatch(fetchProjects());
     return () => {
       dispatch(setPageDarkTheme(false));
       dispatch(setPageParticles(false));
