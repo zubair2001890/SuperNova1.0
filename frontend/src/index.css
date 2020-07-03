@@ -72,21 +72,45 @@ body {
   margin: 0 0 0 0;
 }
 
-.cubeContainer {
-  background-color: #000647;
+#cube-face-front {
+  transform: rotateY(0deg) translateZ(100px);
 }
 
-.cubeContainer.newColour {
-  animation: changeColour;
+#cube-face-right {
+  transform: rotateY(90deg) translateZ(100px);
 }
 
-@keyframes changeColour {
-  0% {
-    opacity: 0;
-    background-color: #000647;
-  }
-  100% {
-    opacity: 1;
-    background-color: green;
-  }
+#cube-face-back {
+  transform: rotateY(180deg) translateZ(100px);
+}
+
+#cube-face-left {
+  transform: rotateY(-90deg) translateZ(100px);
+}
+
+#cube-face-top {
+  transform: rotateX(90deg) translateZ(100px);
+}
+
+#cube-face-bottom {
+  transform: rotateX(-90deg) translateZ(100px);
+}
+
+.cube-container {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  perspective: 600;
+  margin: auto;
+  top: 400px;
+}
+
+.cube-container-fixed {
+  position: fixed;
+  width: 200px;
+  height: 200px;
+  perspective: 600;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
