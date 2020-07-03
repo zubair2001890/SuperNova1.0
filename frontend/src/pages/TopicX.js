@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
     color: "white",
   },
   subheadingVerticalMargin: {
-    margin: "68px 0",
+    margin: "68px 0px",
   },
   subheadingTextVerticalMargin: {
     paddingBottom: 48,
