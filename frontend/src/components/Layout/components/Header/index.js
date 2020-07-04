@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import clsx from "clsx";
 import { Link as RouterLink } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import { AppBar, IconButton, Toolbar, Button } from "@material-ui/core";
@@ -33,10 +34,12 @@ const useStyles = makeStyles((theme) => ({
   logo: {
     marginRight: "auto",
     height: "100%",
-    animation: "fadeIn 1.5s ease 1s backwards",
-    "&:hover": {
-      animation: "rotate 3s infinite linear",
-    },
+  },
+  logoRotate: {
+    animation: "rotate 3s infinite linear",
+  },
+  logoFadeIn: {
+    animation: "fadeIn 1.5s ease .8s backwards",
   },
   appBarRight: {
     marginLeft: "auto",
@@ -50,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const getLogoSrc = (darkTheme) => (darkTheme ? logoWhite : logoBlack);
+const getInitialLogoSrc = (darkTheme) => (darkTheme ? logoWhite : logoBlack);
 
 export default function Header({ darkTheme = true }) {
   const classes = useStyles({ darkTheme });
@@ -58,7 +61,17 @@ export default function Header({ darkTheme = true }) {
     left: false,
   });
 
-  const [logoSrc, setLogoSrc] = useState(getLogoSrc(darkTheme));
+  const [logoImg, setLogoImg] = useState(null);
+
+  useEffect(() => {
+    setLogoImg(
+      <img
+        src={getInitialLogoSrc(darkTheme)}
+        className={clsx(classes.logo, classes.logoFadeIn)}
+        alt="supernova logo"
+      />
+    );
+  }, [darkTheme, classes.logo, classes.logoFadeIn]);
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (
@@ -70,10 +83,6 @@ export default function Header({ darkTheme = true }) {
 
     setDrawerState({ ...drawerState, [anchor]: open });
   };
-
-  useEffect(() => {
-    setLogoSrc(getLogoSrc(darkTheme));
-  }, [darkTheme]);
 
   return (
     <>
@@ -97,18 +106,29 @@ export default function Header({ darkTheme = true }) {
               <MenuIcon fontSize="large" color="inherit" />
             )}
           </IconButton>
-          <RouterLink className={classes.logoContainer} to={paths.home}>
-            <img
-              src={logoSrc}
-              onMouseOver={() => {
-                setLogoSrc(logoRed);
-              }}
-              onMouseOut={() => {
-                setLogoSrc(getLogoSrc(darkTheme));
-              }}
-              alt="supernova logo"
-              className={classes.logo}
-            />
+          <RouterLink
+            className={classes.logoContainer}
+            to={paths.home}
+            onMouseOver={() => {
+              setLogoImg(
+                <img
+                  src={logoRed}
+                  className={clsx(classes.logo, classes.logoRotate)}
+                  alt="supernova logo"
+                />
+              );
+            }}
+            onMouseOut={() => {
+              setLogoImg(
+                <img
+                  src={getInitialLogoSrc(darkTheme)}
+                  className={classes.logo}
+                  alt="supernova logo"
+                />
+              );
+            }}
+          >
+            {logoImg}
           </RouterLink>
           <div className={classes.appBarRight}>
             <Button
