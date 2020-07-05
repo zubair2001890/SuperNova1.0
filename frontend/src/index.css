@@ -101,8 +101,7 @@ body {
   width: 200px;
   height: 200px;
   perspective: 600;
-  margin: auto;
-  top: 400px;
+  margin: 50px 0px 50px 0px;
 }
 
 .cube-container-fixed {

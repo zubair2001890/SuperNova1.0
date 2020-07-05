@@ -3,11 +3,11 @@ import { makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   cubeSection: {
-    // display: "flex",
-    // flexDirection: "row",
-    // justifyContent: "center",
-    // alignItems: "top",
-    height: "3000px",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "flex-start",
+    alignItems: "center",
+    height: "5000px",
     backgroundColor: "#000647",
   },
   cube: {
@@ -37,9 +37,15 @@ export default function Cube({scrollY}) {
     document.getElementById("cube-container").classList.remove("cube-container");
     document.getElementById("cube-container").classList.add("cube-container-fixed");
   }
-  else if (document.getElementById("cube-container") && (scrollY >= 6000 || scrollY <= 4770)) {
+  else if (document.getElementById("cube-container") && (scrollY <= 4770)) {
     document.getElementById("cube-container").classList.remove("cube-container-fixed");
     document.getElementById("cube-container").classList.add("cube-container");
+    document.getElementById("cube-section").style.justifyContent = "flex-start";
+  }
+  else if (document.getElementById("cube-container") && (scrollY > 6000)) {
+    document.getElementById("cube-container").classList.remove("cube-container-fixed");
+    document.getElementById("cube-container").classList.add("cube-container");
+    document.getElementById("cube-section").style.justifyContent = "flex-end";
   }
 
   return (
