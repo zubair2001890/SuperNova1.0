@@ -7,7 +7,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     justifyContent: "flex-start",
     alignItems: "center",
-    height: "5000px",
+    height: "3550px",
     backgroundColor: "#000647",
   },
   cube: {
@@ -19,8 +19,8 @@ const useStyles = makeStyles((theme) => ({
   },
   cubeFace: {
     position: "absolute",
-    width: 200,
-    height: 200,
+    width: 400,
+    height: 400,
     textAlign: "center",
     backgroundColor: "white",
     color: "black",
@@ -33,25 +33,40 @@ const useStyles = makeStyles((theme) => ({
 export default function Cube({scrollY}) {
   const classes = useStyles();
 
-  if (scrollY > 4770 && scrollY < 6000) {
-    document.getElementById("cube-container").classList.remove("cube-container");
-    document.getElementById("cube-container").classList.add("cube-container-fixed");
+  if (scrollY > 7290) {
+    document.getElementById("cube-container").className = "cube-container";
+    document.getElementById("cube-section").style.justifyContent = "flex-end";
+  }
+  else if (scrollY > 6750) {
+    document.getElementById("cube-container").className = "cube-container-fixed";
+    document.getElementById("cube").className = "cube-show-face-6";
+  }
+  else if (scrollY > 6250) {
+    document.getElementById("cube-container").className = "cube-container-fixed";
+    document.getElementById("cube").className = "cube-show-face-5";
+  }
+  else if (scrollY > 5750) {
+    document.getElementById("cube-container").className = "cube-container-fixed";
+    document.getElementById("cube").className = "cube-show-face-4";
+  }
+  else if (scrollY > 5250) {
+    document.getElementById("cube-container").className = "cube-container-fixed";
+    document.getElementById("cube").className = "cube-show-face-3";
+  }
+  else if (scrollY > 4750) {
+    document.getElementById("cube-container").className = "cube-container-fixed";
+    document.getElementById("cube").className = "cube-show-face-2";
   }
   else if (document.getElementById("cube-container") && (scrollY <= 4770)) {
-    document.getElementById("cube-container").classList.remove("cube-container-fixed");
-    document.getElementById("cube-container").classList.add("cube-container");
+    document.getElementById("cube-container").className = "cube-container";
     document.getElementById("cube-section").style.justifyContent = "flex-start";
-  }
-  else if (document.getElementById("cube-container") && (scrollY > 6000)) {
-    document.getElementById("cube-container").classList.remove("cube-container-fixed");
-    document.getElementById("cube-container").classList.add("cube-container");
-    document.getElementById("cube-section").style.justifyContent = "flex-end";
+    document.getElementById("cube").className = "cube";
   }
 
   return (
     <div className={classes.cubeSection} id="cube-section">
       <div class="cube-container" id="cube-container">
-        <div className={classes.cube}>
+        <div class="cube" id="cube">
           <div className={classes.cubeFace} id="cube-face-front">
             front
           </div>
