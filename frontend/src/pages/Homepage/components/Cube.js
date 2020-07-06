@@ -24,9 +24,9 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     backgroundColor: "white",
     color: "black",
-    opacity: 0.5,
+    opacity: 1,
     border: "3px solid green",
-    borderRadius: 10,
+    borderRadius: 15,
   },
 }));
 
@@ -42,15 +42,12 @@ export default function Cube({scrollY}) {
     document.getElementById("cube").className = "cube-show-face-6";
   }
   else if (scrollY > 6250) {
-    document.getElementById("cube-container").className = "cube-container-fixed";
     document.getElementById("cube").className = "cube-show-face-5";
   }
   else if (scrollY > 5750) {
-    document.getElementById("cube-container").className = "cube-container-fixed";
     document.getElementById("cube").className = "cube-show-face-4";
   }
   else if (scrollY > 5250) {
-    document.getElementById("cube-container").className = "cube-container-fixed";
     document.getElementById("cube").className = "cube-show-face-3";
   }
   else if (scrollY > 4750) {
