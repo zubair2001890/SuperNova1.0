@@ -100,7 +100,7 @@ body {
   position: relative;
   width: 400px;
   height: 400px;
-  perspective: 600;
+  perspective: 1200;
   margin: 300px 0px 300px 0px;
 }
 
@@ -108,7 +108,7 @@ body {
   position: fixed;
   width: 400px;
   height: 400px;
-  perspective: 600;
+  perspective: 1200;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);

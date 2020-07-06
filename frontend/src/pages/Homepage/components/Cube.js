@@ -25,8 +25,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "white",
     color: "black",
     opacity: 1,
-    border: "3px solid green",
-    borderRadius: 15,
+    borderRadius: 20,
   },
 }));
 
