@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import projectsMockData from "../../mockData/projects";
+import projectsMockData from "../../mockData/projects.json";
 
 export const projectsSlice = createSlice({
   name: "projects",
@@ -31,8 +31,8 @@ export const fetchProjects = () => (dispatch) => {
   }, 1000);
 };
 
-export const selectData = (state) => state.data;
-export const selectLoading = (state) => state.loading;
-export const selectError = (state) => state.error;
+export const selectData = (state) => state.projects.data;
+export const selectLoading = (state) => state.projects.loading;
+export const selectError = (state) => state.projects.error;
 
 export default projectsSlice.reducer;

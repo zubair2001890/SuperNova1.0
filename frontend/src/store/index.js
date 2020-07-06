@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import counterReducer from "./slices/counter/counterSlice";
 import pageReducer from "./slices/page";
-import projectsReducer from "./slices/projects";
+import projectsReducer from "./slices/projectsSlice";
 
 export default configureStore({
   reducer: {
