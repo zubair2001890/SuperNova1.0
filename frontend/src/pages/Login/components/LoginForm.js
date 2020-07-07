@@ -54,7 +54,7 @@ export default () => {
   };
   return (
     <>
-      <Typography variant="caption" component="h1" align="center">
+      <Typography variant="subtitle2" component="h1" align="center">
         New to SuperNova? Create an Account
       </Typography>
 

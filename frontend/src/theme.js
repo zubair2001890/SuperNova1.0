@@ -90,6 +90,8 @@ export default createMuiTheme({
     },
     subtitle2: {
       fontFamily: appFonts.montserrat,
+      fontWeight: 700,
+      fontSize: 14,
     },
     body1: {
       fontFamily: appFonts.avertaDemo,
