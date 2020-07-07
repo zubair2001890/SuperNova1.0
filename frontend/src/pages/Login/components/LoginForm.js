@@ -66,6 +66,7 @@ export default () => {
         <Input
           onChange={handleChange("email")}
           id="standard-adornment-email"
+          type="email"
           value={values.email}
           fullWidth
           endAdornment={
