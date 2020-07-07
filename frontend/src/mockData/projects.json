@@ -22,7 +22,7 @@
     "fundsRaised": 2048
   },
   {
-    "id": 0,
+    "id": 2,
     "firstName": "Sammy",
     "lastName": "Shark",
     "university": "Univeristy of Birmingham",
@@ -33,7 +33,7 @@
     "fundsRaised": 2048
   },
   {
-    "id": 1,
+    "id": 3,
     "firstName": "Louis",
     "lastName": "Whale",
     "university": "University of Loughborough",

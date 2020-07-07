@@ -5,6 +5,7 @@ import {
   Avatar,
   LinearProgress,
   CircularProgress,
+  Tooltip,
 } from "@material-ui/core";
 import { useSelector } from "react-redux";
 import { selectData as selectProjectsData } from "../../../store/slices/projectsSlice";
@@ -94,7 +95,7 @@ export default () => {
   const projectsLoading = useSelector(selectProjectsLoading);
   return (
     <div className={classes.projectsContainer}>
-      <Typography variant="h1" className={classes.projectsContainerTitle}>
+      <Typography variant="h2" className={classes.projectsContainerTitle}>
         FEATURED PROJECTS
       </Typography>
       <div className={classes.projectsGrid}>
@@ -108,9 +109,13 @@ export default () => {
               body={
                 <>
                   <p className={classes.projectTitle}>
-                    {project.title.length < 45
-                      ? project.title
-                      : project.title.slice(0, 41) + "..."}
+                    {project.title.length < 45 ? (
+                      project.title
+                    ) : (
+                      <Tooltip title={project.title} placement="top">
+                        <span>{project.title.slice(0, 41) + "..."}</span>
+                      </Tooltip>
+                    )}
                   </p>
                   <Avatar
                     className={classes.avatar}
