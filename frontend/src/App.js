@@ -14,6 +14,7 @@ import Model from "./pages/Model";
 import Contact from "./pages/Contact";
 import Team from "./pages/Team";
 import TopicX from "./pages/TopicX";
+import Explore from "./pages/Explore";
 
 function App() {
   return (
@@ -47,6 +48,9 @@ function App() {
             </Route>
             <Route path={paths.home} exact>
               <Homepage />
+            </Route>
+            <Route path={paths.explore} exact>
+              <Explore />
             </Route>
             <Route path={paths.error404}>
               <Error404 />
