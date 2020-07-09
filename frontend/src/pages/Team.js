@@ -46,12 +46,12 @@ function Team() {
     <>
       <div className={classes.pageHeader}>
         <div className={classes.mockAppBarLayout} />
-        <Typography variant="h1" align="center" className={classes.pageTitle}>
+        <Typography variant="h2" align="center" className={classes.pageTitle}>
           OUR TEAM
         </Typography>
       </div>
       <div className={classes.center}>
-        <Typography variant="h2" className={classes.subheadingVerticalMargin}>
+        <Typography variant="h5" className={classes.subheadingVerticalMargin}>
           Founders:
         </Typography>
         <Typography
@@ -78,7 +78,7 @@ function Team() {
           pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
           culpa qui officia deserunt mollit anim id est laborum."
         </Typography>
-        <Typography variant="h2" className={classes.subheadingVerticalMargin}>
+        <Typography variant="h5" className={classes.subheadingVerticalMargin}>
           Developers:
         </Typography>
         <Typography
@@ -105,7 +105,7 @@ function Team() {
           pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
           culpa qui officia deserunt mollit anim id est laborum."
         </Typography>
-        <Typography variant="h2" className={classes.subheadingVerticalMargin}>
+        <Typography variant="h5" className={classes.subheadingVerticalMargin}>
           Designers and artists:
         </Typography>
         <Typography

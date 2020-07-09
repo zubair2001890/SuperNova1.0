@@ -46,12 +46,12 @@ function Contact() {
     <>
       <div className={classes.pageHeader}>
         <div className={classes.mockAppBarLayout} />
-        <Typography variant="h1" align="center" className={classes.pageTitle}>
+        <Typography variant="h2" align="center" className={classes.pageTitle}>
           CONTACT US
         </Typography>
       </div>
       <div className={classes.center}>
-        <Typography variant="h2" className={classes.subheadingVerticalMargin}>
+        <Typography variant="h5" className={classes.subheadingVerticalMargin}>
           You can reach us at the following addresses:
         </Typography>
         <Typography

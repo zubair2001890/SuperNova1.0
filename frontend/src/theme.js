@@ -64,7 +64,7 @@ export default createMuiTheme({
     },
     h2: {
       fontFamily: appFonts.montserrat,
-      fontSize: 40,
+      fontSize: 50,
       fontWeight: 700,
       lineHeight: "48px",
       letterSpacing: 1.8,
