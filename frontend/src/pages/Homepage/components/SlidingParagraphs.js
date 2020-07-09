@@ -46,7 +46,7 @@ export default () => {
                 {inView && (
                   <Typography
                     component="p"
-                    variant="h6"
+                    variant="h4"
                     gutterBottom
                     className={clsx(classes.paragraph, classes.slideFadeLeft)}
                   >

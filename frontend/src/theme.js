@@ -59,12 +59,12 @@ export default createMuiTheme({
     h1: {
       fontFamily: appFonts.montserrat,
       fontWeight: 700,
-      fontSize: 125,
+      fontSize: 50,
       lineHeight: "60px",
     },
     h2: {
       fontFamily: appFonts.montserrat,
-      fontSize: 50,
+      fontSize: 40,
       fontWeight: 700,
       lineHeight: "48px",
       letterSpacing: 1.8,
@@ -75,20 +75,15 @@ export default createMuiTheme({
     h4: {
       fontFamily: appFonts.montserrat,
       fontWeight: 600,
-      fontSize: 45,
       letterSpacing: "0.2rem",
     },
     h5: {
       fontFamily: appFonts.montserrat,
       fontWeight: 600,
-      fontSize: 35,
       letterSpacing: "0.2rem",
     },
     h6: {
       fontFamily: appFonts.montserrat,
-      fontWeight: 600,
-      fontSize: 25,
-      letterSpacing: 2.65,
     },
     subtitle1: {
       fontFamily: appFonts.montserrat,
