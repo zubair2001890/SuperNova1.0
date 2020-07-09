@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     color: "white",
   },
   body: {
-    padding: theme.spacing(4, 2, 2, 2),
+    padding: theme.spacing(0, 2, 2, 2),
   },
   footer: {
     padding: theme.spacing(2),

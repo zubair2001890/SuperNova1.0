@@ -20,7 +20,8 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.common.black,
   },
   form: {
-    marginTop: theme.spacing(5),
+    marginTop: theme.spacing(6),
+    marginBottom: theme.spacing(2),
   },
   icons: {
     color: theme.palette.common.black,
@@ -52,7 +53,12 @@ export default () => {
   };
   return (
     <>
-      <Typography variant="subtitle2" component="h1" align="center">
+      <Typography
+        className={classes.form}
+        variant="subtitle2"
+        component="h1"
+        align="center"
+      >
         New to SuperNova? Create an Account
       </Typography>
 

@@ -17,6 +17,11 @@ const useStyles = makeStyles((theme) => ({
   socialIcons: {
     color: "white",
   },
+  button: {
+    color: theme.palette.black,
+
+    padding: theme.spacing(3, 0),
+  },
 }));
 
 export default function Links() {
@@ -46,9 +51,8 @@ export default function Links() {
         bodyChildren={<LoginForm />}
         footerChildren={
           <>
-            <GoogleLogo />
             <Button fullWidth size="large">
-              SIGN IN
+              <Typography variant="h5">SIGN IN</Typography>
             </Button>
           </>
         }
