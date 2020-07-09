@@ -18,6 +18,9 @@ const useStyles = makeStyles((theme) => ({
   pageHeader: {
     height: 370,
     backgroundImage: "url(" + require("./assets/team.png") + ")",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center",
+    backgroundSize: "cover",
   },
   pageTitle: {
     position: "relative",
