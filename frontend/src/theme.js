@@ -59,7 +59,7 @@ export default createMuiTheme({
     h1: {
       fontFamily: appFonts.montserrat,
       fontWeight: 700,
-      fontSize: 50,
+      fontSize: 125,
       lineHeight: "60px",
     },
     h2: {
