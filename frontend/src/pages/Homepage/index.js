@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { makeStyles } from "@material-ui/core";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   setDarkTheme as setPageDarkTheme,
   setParticles as setPageParticles,
@@ -9,7 +9,11 @@ import useWindowScrollY from "../../hooks/useWindowScrollY";
 import Intro from "./components/Intro";
 import SlidingParagraphs from "./components/SlidingParagraphs";
 import Projects from "./components/Projects";
-import { fetchProjects } from "../../store/slices/projectsSlice";
+import {
+  fetchProjects,
+  selectData as selectProjectsData,
+  selectLoading as selectProjectsLoading,
+} from "../../store/slices/projectsSlice";
 
 const useStyles = makeStyles((theme) => ({
   pageContainer: {
@@ -21,6 +25,8 @@ export default () => {
   const dispatch = useDispatch();
   const classes = useStyles();
   const scrollY = useWindowScrollY();
+  const projectsData = useSelector(selectProjectsData);
+  const projectsLoading = useSelector(selectProjectsLoading);
 
   useEffect(() => {
     dispatch(setPageDarkTheme(true));
@@ -36,7 +42,7 @@ export default () => {
     <div className={classes.pageContainer}>
       <Intro scrollY={scrollY} />
       <SlidingParagraphs />
-      <Projects />
+      <Projects projectsData={projectsData} projectsLoading={projectsLoading} />
     </div>
   );
 };
