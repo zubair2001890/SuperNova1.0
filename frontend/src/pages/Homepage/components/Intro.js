@@ -26,7 +26,6 @@ const useStyles = makeStyles((theme) => ({
   },
   subtitle: {
     animation: "slideFadeUp 1.5s ease 2s backwards",
-    fontFamily: "Montserrat",
     fontSize: 45,
     fontWeight: 600,
     letterSpacing: "0.2rem",
