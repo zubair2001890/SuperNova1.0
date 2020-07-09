@@ -21,9 +21,16 @@ const useStyles = makeStyles((theme) => ({
     letterSpacing: 10,
     color: theme.palette.common.white,
     animation: "slideFadeUp 1.5s ease 1s backwards",
+    fontSize: 125,
+    fontWeight: 700,
   },
   subtitle: {
     animation: "slideFadeUp 1.5s ease 2s backwards",
+    fontFamily: "Montserrat",
+    fontSize: 45,
+    fontWeight: 600,
+    letterSpacing: "0.2rem",
+    textAlign: "center",
   },
   createExplore: {
     display: "flex",
@@ -32,6 +39,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     alignItems: "center",
     animation: "slideFadeUp 1.5s ease 2s backwards",
+    fontSize: 35,
   },
   growVerticalBar: {
     flex: "0 0 auto",
