@@ -7,7 +7,6 @@ import { Button, Grid, IconButton, Typography } from "@material-ui/core";
 
 import FacebookIcon from "@material-ui/icons/Facebook";
 import TwitterIcon from "@material-ui/icons/Twitter";
-import LinkedInIcon from "@material-ui/icons/LinkedIn";
 
 const useStyles = makeStyles((theme) => ({
   container: {
