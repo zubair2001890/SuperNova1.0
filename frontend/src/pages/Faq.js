@@ -47,12 +47,12 @@ function Faq() {
     <>
       <div className={classes.pageHeader}>
         <div className={classes.mockAppBarLayout} />
-        <Typography variant="h1" align="center" className={classes.pageTitle}>
+        <Typography variant="h2" align="center" className={classes.pageTitle}>
           FREQUENTLY ASKED QUESTIONS
         </Typography>
       </div>
       <div className={classes.center}>
-        <Typography variant="h2" className={classes.subheadingVerticalMargin}>
+        <Typography variant="h5" className={classes.subheadingVerticalMargin}>
           Who is SuperNova for?
         </Typography>
         <Typography
@@ -67,7 +67,7 @@ function Faq() {
           Pellentesque sed neque et ipsum tincidunt volutpat id sit amet erat.
           Nullam eu accumsan justo.
         </Typography>
-        <Typography variant="h2" className={classes.subheadingVerticalMargin}>
+        <Typography variant="h5" className={classes.subheadingVerticalMargin}>
           Can I refund my donation?
         </Typography>
         <Typography
@@ -82,7 +82,7 @@ function Faq() {
           Pellentesque sed neque et ipsum tincidunt volutpat id sit amet erat.
           Nullam eu accumsan justo.
         </Typography>
-        <Typography variant="h2" className={classes.subheadingVerticalMargin}>
+        <Typography variant="h5" className={classes.subheadingVerticalMargin}>
           Can I create more than one project at once?
         </Typography>
         <Typography
@@ -97,7 +97,7 @@ function Faq() {
           Pellentesque sed neque et ipsum tincidunt volutpat id sit amet erat.
           Nullam eu accumsan justo.
         </Typography>
-        <Typography variant="h2" className={classes.subheadingVerticalMargin}>
+        <Typography variant="h5" className={classes.subheadingVerticalMargin}>
           Question question question?
         </Typography>
         <Typography
@@ -112,7 +112,7 @@ function Faq() {
           Pellentesque sed neque et ipsum tincidunt volutpat id sit amet erat.
           Nullam eu accumsan justo.
         </Typography>
-        <Typography variant="h2" className={classes.subheadingVerticalMargin}>
+        <Typography variant="h5" className={classes.subheadingVerticalMargin}>
           Question question question?
         </Typography>
         <Typography

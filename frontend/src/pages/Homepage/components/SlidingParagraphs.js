@@ -46,7 +46,7 @@ export default () => {
                 {inView && (
                   <Typography
                     component="p"
-                    variant="h4"
+                    variant="h6"
                     gutterBottom
                     className={clsx(classes.paragraph, classes.slideFadeLeft)}
                   >
@@ -68,7 +68,7 @@ export default () => {
                 {inView && (
                   <Typography
                     component="p"
-                    variant="h4"
+                    variant="h6"
                     gutterBottom
                     className={clsx(classes.paragraph, classes.slideFadeRight)}
                   >
@@ -92,7 +92,7 @@ export default () => {
                 {inView && (
                   <Typography
                     component="p"
-                    variant="h4"
+                    variant="h6"
                     gutterBottom
                     className={clsx(classes.paragraph, classes.slideFadeLeft)}
                   >
@@ -114,7 +114,7 @@ export default () => {
                 {inView && (
                   <Typography
                     component="p"
-                    variant="h4"
+                    variant="h6"
                     gutterBottom
                     className={clsx(classes.paragraph, classes.slideFadeRight)}
                   >
