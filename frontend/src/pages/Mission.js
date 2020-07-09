@@ -46,12 +46,12 @@ function Mission() {
     <>
       <div className={classes.pageHeader}>
         <div className={classes.mockAppBarLayout} />
-        <Typography variant="h2" align="center" className={classes.pageTitle}>
+        <Typography variant="h1" align="center" className={classes.pageTitle}>
           OUR MISSION
         </Typography>
       </div>
       <div className={classes.center}>
-        <Typography variant="h5" className={classes.subheadingVerticalMargin}>
+        <Typography variant="h2" className={classes.subheadingVerticalMargin}>
           SuperNova's Mission:
         </Typography>
         <Typography
@@ -83,7 +83,7 @@ function Mission() {
           Scientists to collaborate, and for The People to play an active role
           in the advancement of Science itself.
         </Typography>
-        <Typography variant="h5" className={classes.subheadingVerticalMargin}>
+        <Typography variant="h2" className={classes.subheadingVerticalMargin}>
           More Mission:
         </Typography>
         <Typography
