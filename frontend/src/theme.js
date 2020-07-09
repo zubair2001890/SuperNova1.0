@@ -75,11 +75,13 @@ export default createMuiTheme({
     h4: {
       fontFamily: appFonts.montserrat,
       fontWeight: 600,
+      fontSize: 45,
       letterSpacing: "0.2rem",
     },
     h5: {
       fontFamily: appFonts.montserrat,
       fontWeight: 600,
+      fontSize: 35,
       letterSpacing: "0.2rem",
     },
     h6: {
