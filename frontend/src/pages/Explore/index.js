@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
-import { Typography, makeStyles } from "@material-ui/core";
+import { Link as RouterLink } from "react-router-dom";
+import { Typography, makeStyles, Button } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 import { setDarkTheme as setPageDarkTheme } from "../../store/slices/page";
+import paths from "../../constants/paths";
 
 const useStyles = makeStyles((theme) => ({
   center: {
@@ -58,6 +60,7 @@ const useStyles = makeStyles((theme) => ({
     lineHeight: "37px",
     letterSpacing: "0.09em",
     fontWeight: 700,
+    padding: 0,
   },
   socialSciencesContainer: {
     position: "absolute",
@@ -124,34 +127,94 @@ export default () => {
           <div className={classes.mockAppBarLayout} />
           <div className={classes.fieldLinks}>
             <div className={classes.biologyContainer}>
-              <p className={classes.fieldText}>BIOLOGY</p>
+              <Button
+                component={RouterLink}
+                to={paths.biology}
+                className={classes.fieldText}
+              >
+                BIOLOGY
+              </Button>
             </div>
             <div className={classes.socialSciencesContainer}>
-              <p className={classes.fieldText}>SOCIAL SCIENCES</p>
+              <Button
+                component={RouterLink}
+                to={paths.socialsciences}
+                className={classes.fieldText}
+              >
+                SOCIAL SCIENCES
+              </Button>
             </div>
             <div className={classes.physicsContainer}>
-              <p className={classes.fieldText}>PHYSICS</p>
+              <Button
+                component={RouterLink}
+                to={paths.physics}
+                className={classes.fieldText}
+              >
+                PHYSICS
+              </Button>
             </div>
             <div className={classes.mathsStatsContainer}>
-              <p className={classes.fieldText}>MATHEMATICS STATISTICS</p>
+              <Button
+                component={RouterLink}
+                to={paths.mathematicsandstats}
+                className={classes.fieldText}
+              >
+                MATHEMATICS STATISTICS
+              </Button>
             </div>
             <div className={classes.spaceSciencesContainer}>
-              <p className={classes.fieldText}>SPACE SCIENCES</p>
+              <Button
+                component={RouterLink}
+                to={paths.spacesciences}
+                className={classes.fieldText}
+              >
+                SPACE SCIENCES
+              </Button>
             </div>
             <div className={classes.computerScienceContainer}>
-              <p className={classes.fieldText}>COMPUTER SCIENCE</p>
+              <Button
+                component={RouterLink}
+                to={paths.computerscience}
+                className={classes.fieldText}
+              >
+                COMPUTER SCIENCE
+              </Button>
             </div>
             <div className={classes.engineeringTechnologyContainer}>
-              <p className={classes.fieldText}>ENGINEERING AND TECHNOLOGY</p>
+              <Button
+                component={RouterLink}
+                to={paths.engineeringandtech}
+                className={classes.fieldText}
+              >
+                ENGINEERING AND TECHNOLOGY
+              </Button>
             </div>
             <div className={classes.earthSciencesContainer}>
-              <p className={classes.fieldText}>EARTH SCIENCES</p>
+              <Button
+                component={RouterLink}
+                to={paths.earthsciences}
+                className={classes.fieldText}
+              >
+                EARTH SCIENCES
+              </Button>
             </div>
             <div className={classes.chemistryContainer}>
-              <p className={classes.fieldText}>CHEMISTRY</p>
+              <Button
+                component={RouterLink}
+                to={paths.chemistry}
+                className={classes.fieldText}
+              >
+                CHEMSITRY
+              </Button>
             </div>
             <div className={classes.medicineContainer}>
-              <p className={classes.fieldText}>MEDICINE</p>
+              <Button
+                component={RouterLink}
+                to={paths.medicine}
+                className={classes.fieldText}
+              >
+                MEDICINE
+              </Button>
             </div>
           </div>
         </div>
