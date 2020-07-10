@@ -21,6 +21,8 @@ const useStyles = makeStyles((theme) => ({
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
     backgroundSize: "cover",
+    width: "100%",
+    display: "block",
   },
   pageTitle: {
     marginTop: 78,
@@ -30,6 +32,77 @@ const useStyles = makeStyles((theme) => ({
   },
   subheadingTextVerticalMargin: {
     paddingBottom: 48,
+  },
+  container: {
+    position: "relative",
+    margin: 0,
+  },
+  fieldLinks: {
+    position: "absolute",
+    height: 1080,
+    top: 0,
+    left: 0,
+  },
+  biologyContainer: {
+    position: "absolute",
+    top: 119,
+    left: "53.23vw",
+  },
+  fieldText: {
+    position: "relative",
+    margin: 0,
+    textAlign: "center",
+    fontFamily: "Montserrat",
+    color: "white",
+    fontSize: 30,
+    lineHeight: "37px",
+    letterSpacing: "0.09em",
+    fontWeight: 700,
+  },
+  socialSciencesContainer: {
+    position: "absolute",
+    top: 287,
+    left: "63.125vw",
+  },
+  physicsContainer: {
+    position: "absolute",
+    top: 522,
+    left: "67.66vw",
+  },
+  mathsStatsContainer: {
+    position: "absolute",
+    top: 767,
+    left: "62.66vw",
+  },
+  spaceSciencesContainer: {
+    position: "absolute",
+    top: 924,
+    left: "52.86vw",
+  },
+  computerScienceContainer: {
+    position: "absolute",
+    top: 924,
+    left: "36.5625vw",
+  },
+  engineeringTechnologyContainer: {
+    position: "absolute",
+    top: 756,
+    left: "21.15vw",
+  },
+  earthSciencesContainer: {
+    position: "absolute",
+    top: 503,
+    left: "21.72vw",
+  },
+  chemistryContainer: {
+    position: "absolute",
+    top: 240,
+    left: "22.55vw",
+  },
+  medicineContainer: {
+    position: "absolute",
+    top: 119,
+    left: "37.08vw",
   },
 }));
 
@@ -46,8 +119,42 @@ export default () => {
 
   return (
     <>
-      <div className={classes.pageHeader}>
-        <div className={classes.mockAppBarLayout} />
+      <div className={classes.container}>
+        <div className={classes.pageHeader}>
+          <div className={classes.mockAppBarLayout} />
+          <div className={classes.fieldLinks}>
+            <div className={classes.biologyContainer}>
+              <p className={classes.fieldText}>BIOLOGY</p>
+            </div>
+            <div className={classes.socialSciencesContainer}>
+              <p className={classes.fieldText}>SOCIAL SCIENCES</p>
+            </div>
+            <div className={classes.physicsContainer}>
+              <p className={classes.fieldText}>PHYSICS</p>
+            </div>
+            <div className={classes.mathsStatsContainer}>
+              <p className={classes.fieldText}>MATHEMATICS STATISTICS</p>
+            </div>
+            <div className={classes.spaceSciencesContainer}>
+              <p className={classes.fieldText}>SPACE SCIENCES</p>
+            </div>
+            <div className={classes.computerScienceContainer}>
+              <p className={classes.fieldText}>COMPUTER SCIENCE</p>
+            </div>
+            <div className={classes.engineeringTechnologyContainer}>
+              <p className={classes.fieldText}>ENGINEERING AND TECHNOLOGY</p>
+            </div>
+            <div className={classes.earthSciencesContainer}>
+              <p className={classes.fieldText}>EARTH SCIENCES</p>
+            </div>
+            <div className={classes.chemistryContainer}>
+              <p className={classes.fieldText}>CHEMISTRY</p>
+            </div>
+            <div className={classes.medicineContainer}>
+              <p className={classes.fieldText}>MEDICINE</p>
+            </div>
+          </div>
+        </div>
       </div>
       <div className={classes.center}>
         <Typography variant="h1" className={classes.pageTitle}>
