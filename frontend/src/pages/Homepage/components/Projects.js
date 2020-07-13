@@ -9,6 +9,8 @@ import {
 import ProjectCard from "../../../components/ProjectCard";
 import FundsProgress from "../../../components/ProjectCard/components/FundsProgress";
 
+const maxTitleLength = 45;
+
 const useStyles = makeStyles((theme) => ({
   sectionContainer: { minHeight: "100vh" },
   sectionTitle: {
@@ -72,11 +74,13 @@ export default ({ projectsData, projectsLoading }) => {
               body={
                 <div className={classes.cardBody}>
                   <p className={classes.projectTitle}>
-                    {project.title.length < 45 ? (
+                    {project.title.length < maxTitleLength ? (
                       project.title
                     ) : (
                       <Tooltip title={project.title} placement="top">
-                        <span>{project.title.slice(0, 41) + "..."}</span>
+                        <span>
+                          {project.title.slice(0, maxTitleLength - 3) + "..."}
+                        </span>
                       </Tooltip>
                     )}
                   </p>

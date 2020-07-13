@@ -20,6 +20,8 @@ const useStyles = makeStyles((theme) => ({
   },
   paragraph: {
     color: theme.palette.common.white,
+    fontSize: 30,
+    letterSpacing: 2.5,
   },
   slideFadeLeft: {
     animation: "slideFadeLeft .8s ease 0s backwards",
