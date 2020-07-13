@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   },
   pageHeader: {
     height: 370,
-    backgroundImage: "url(" + require("./assets/team.png") + ")",
+    backgroundImage: "url(" + require("./assets/contact.png") + ")",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
     backgroundSize: "cover",
@@ -28,14 +28,14 @@ const useStyles = makeStyles((theme) => ({
     color: "white",
   },
   subheadingVerticalMargin: {
-    margin: "68px 0",
+    margin: "68px 0px",
   },
   subheadingTextVerticalMargin: {
     paddingBottom: 48,
   },
 }));
 
-function Team() {
+function TopicX() {
   const classes = useStyles();
   const dispatch = useDispatch();
 
@@ -50,51 +50,12 @@ function Team() {
       <div className={classes.pageHeader}>
         <div className={classes.mockAppBarLayout} />
         <Typography variant="h1" align="center" className={classes.pageTitle}>
-          OUR TEAM
+          SCIENCE TOPIC X
         </Typography>
       </div>
       <div className={classes.center}>
         <Typography variant="h2" className={classes.subheadingVerticalMargin}>
-          Founders:
-        </Typography>
-        <Typography
-          variant="body1"
-          className={classes.subheadingTextVerticalMargin}
-        >
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum."
-        </Typography>
-        <Typography
-          variant="body1"
-          className={classes.subheadingTextVerticalMargin}
-        >
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum."
-        </Typography>
-        <Typography variant="h2" className={classes.subheadingVerticalMargin}>
-          Developers:
-        </Typography>
-        <Typography
-          variant="body1"
-          className={classes.subheadingTextVerticalMargin}
-        >
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum."
+          Overview:
         </Typography>
         <Typography
           variant="body1"
@@ -109,7 +70,7 @@ function Team() {
           culpa qui officia deserunt mollit anim id est laborum."
         </Typography>
         <Typography variant="h2" className={classes.subheadingVerticalMargin}>
-          Designers and artists:
+          Details:
         </Typography>
         <Typography
           variant="body1"
@@ -128,4 +89,4 @@ function Team() {
   );
 }
 
-export default Team;
+export default TopicX;
