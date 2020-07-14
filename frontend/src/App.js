@@ -1,57 +1,61 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import React from "react";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { ThemeProvider } from "@material-ui/core/styles";
+import Layout from "./components/Layout";
+import Homepage from "./pages/Homepage";
+import Login from "./pages/Login";
+import Error404 from "./pages/Error404";
+import Faq from "./pages/Faq";
+import paths from "./constants/paths";
+import theme from "./theme";
+import Mission from "./pages/Mission";
+import Terms from "./pages/Terms";
+import Model from "./pages/Model";
+import Contact from "./pages/Contact";
+import Team from "./pages/Team";
+import TopicX from "./pages/TopicX";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <BrowserRouter>
+        <Layout>
+          <Switch>
+            <Route path={paths.login}>
+              <Login />
+            </Route>
+            <Route path={paths.faq}>
+              <Faq />
+            </Route>
+            <Route path={paths.mission}>
+              <Mission />
+            </Route>
+            <Route path={paths.terms}>
+              <Terms />
+            </Route>
+            <Route path={paths.model}>
+              <Model />
+            </Route>
+            <Route path={paths.contact}>
+              <Contact />
+            </Route>
+            <Route path={paths.team}>
+              <Team />
+            </Route>
+            <Route path={paths.informationPageX}>
+              <TopicX />
+            </Route>
+            <Route path={paths.home} exact>
+              <Homepage />
+            </Route>
+            <Route path={paths.error404}>
+              <Error404 />
+            </Route>
+            <Redirect to={paths.error404} />
+          </Switch>
+        </Layout>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }
 
