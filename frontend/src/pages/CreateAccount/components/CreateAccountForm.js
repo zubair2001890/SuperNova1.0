@@ -1,10 +1,9 @@
 import React from "react";
-import { Link as RouterLink } from "react-router-dom";
-import paths from "../../../constants/paths";
 import { makeStyles } from "@material-ui/core/styles";
 
 import {
   Button,
+  Checkbox,
   FormControl,
   Input,
   InputLabel,
@@ -16,6 +15,7 @@ import {
 import LockIcon from "@material-ui/icons/Lock";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
 import EmailIcon from "@material-ui/icons/Email";
+import PeopleIcon from "@material-ui/icons/People";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
   },
   icons: {
     color: theme.palette.common.black,
-    padding: theme.spacing(0),
+    padding: theme.spacing(1),
   },
   button: {
     color: theme.palette.secondary.main,
@@ -38,6 +38,7 @@ const useStyles = makeStyles((theme) => ({
 export default () => {
   const classes = useStyles();
   const [values, setValues] = React.useState({
+    name: "",
     password: "",
     email: "",
     showPassword: false,
@@ -55,20 +56,30 @@ export default () => {
   };
   return (
     <>
-      <RouterLink className={classes.root} to={paths.createAccount}>
-        <Typography
-          className={classes.form}
-          variant="subtitle2"
-          component="h1"
-          align="center"
-        >
-          New to SuperNova? Create an Account
-        </Typography>
-      </RouterLink>
+      <FormControl fullWidth className={classes.form}>
+        <InputLabel className={classes.root} htmlFor="standard-adornment-name">
+          First Name...
+        </InputLabel>
+
+        <Input
+          onChange={handleChange("name")}
+          id="standard-adornment-name"
+          type="text"
+          value={values.email}
+          fullWidth
+          endAdornment={
+            <InputAdornment position="end">
+              <IconButton disabled edge="end">
+                <PeopleIcon className={classes.icons} />
+              </IconButton>
+            </InputAdornment>
+          }
+        />
+      </FormControl>
 
       <FormControl fullWidth className={classes.form}>
         <InputLabel className={classes.root} htmlFor="standard-adornment-email">
-          Email
+          Email...
         </InputLabel>
 
         <Input
@@ -119,8 +130,10 @@ export default () => {
           }
         />
       </FormControl>
-
-      <Button className={classes.button}>Forgot your password?</Button>
+      <Checkbox className={classes.icons} />
+      <Button className={classes.button}>
+        I have read and understand the terms and conditions.
+      </Button>
     </>
   );
 };

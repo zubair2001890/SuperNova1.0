@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     top: 0,
     left: "50%",
     backgroundColor: "black",
-    padding: theme.spacing(3, 9, 0, 9),
+    padding: theme.spacing(3, 4, 0, 4),
     maxWidth: "85%",
     transform: "translate(-50%, -50%)",
     color: "white",
