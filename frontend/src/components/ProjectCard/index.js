@@ -14,10 +14,11 @@ const defaultHeaderUrl = defaultCardHeaderImage;
 const useStyles = makeStyles((theme) => ({
   card: {
     borderColor: theme.palette.common.gray,
-    padding: 2,
+    padding: 3,
+    maxWidth: 273,
   },
   projectImage: {
-    paddingTop: "30%",
+    paddingTop: "50%",
     borderRadius: 3,
   },
   cardContent: {

@@ -13,7 +13,7 @@ import {
   fetchProjects,
   selectData as selectProjectsData,
   selectLoading as selectProjectsLoading,
-} from "../../store/slices/projectsSlice";
+} from "../../store/slices/projects";
 
 const useStyles = makeStyles((theme) => ({
   pageContainer: {

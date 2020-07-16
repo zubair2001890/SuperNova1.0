@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import projectsMockData from "../../mockData/projects.json";
+import sleep from "../../helpers/sleep";
 
 export const projectsSlice = createSlice({
   name: "projects",
@@ -25,10 +26,9 @@ export const { setData, setLoading, setError } = projectsSlice.actions;
 
 export const fetchProjects = () => (dispatch) => {
   dispatch(setLoading(true));
-  setTimeout(() => {
-    dispatch(setData(projectsMockData));
-    dispatch(setLoading(false));
-  }, 1000);
+  sleep(1000);
+  dispatch(setData(projectsMockData));
+  dispatch(setLoading(false));
 };
 
 export const selectData = (state) => state.projects.data;

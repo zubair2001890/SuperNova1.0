@@ -2,6 +2,8 @@ import * as Express from 'express';
 import { Express as IExpress } from 'express';
 import bodyParser = require('body-parser');
 import Routes from './api/routes';
+import * as jwt from 'express-jwt';
+import * as jwksRsa from 'jwks-rsa';
 require('dotenv').config();
 
 const port: number = Number(process.env.PORT) || 5000; // port / default port
@@ -32,8 +34,31 @@ app.get('/products', (req, res, next) => {
     res.status(200).json({ dummyProduct1: 'DUMMY_PRODUCT1' });
 });
 
+const publicApi: Express.Router = Express.Router();
+const privateApi: Express.Router = Express.Router();
+
+var jwtCheck = jwt({
+    secret: jwksRsa.expressJwtSecret({
+        cache: true,
+        rateLimit: true,
+        jwksRequestsPerMinute: 5,
+        jwksUri: process.env.AUTH0_DOMAIN + '/.well-known/jwks.json'
+  }),
+  audience: 'localhost',
+  issuer: process.env.AUTH0_DOMAIN,
+  algorithms: ['RS256']
+});
+
+// Register token check for the private API
+privateApi.use(jwtCheck);
+
+// Register API's on server
+app.use('/api/public', publicApi);
+app.use('/api/private', privateApi);
+
+
 // Register all routes
-Routes(app);
+Routes(publicApi, privateApi);
 
 app.listen(port);
 

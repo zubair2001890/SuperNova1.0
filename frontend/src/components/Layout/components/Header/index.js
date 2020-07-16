@@ -4,6 +4,7 @@ import { Link as RouterLink } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import { AppBar, IconButton, Toolbar, Button } from "@material-ui/core";
 import { Menu as MenuIcon, Close as CloseIcon } from "@material-ui/icons";
+import { useAuth0 } from "@auth0/auth0-react";
 import LeftDrawer from "./components/LeftDrawer";
 import paths from "../../../../constants/paths";
 import logoRed from "./assets/logo-red.svg";
@@ -84,6 +85,8 @@ export default function Header({ darkTheme = true }) {
     setDrawerState({ ...drawerState, [anchor]: open });
   };
 
+  const { loginWithRedirect, user, isAuthenticated, logout } = useAuth0();
+
   return (
     <>
       <LeftDrawer
@@ -142,12 +145,11 @@ export default function Header({ darkTheme = true }) {
             </Button>
             <Button
               color="inherit"
-              component={RouterLink}
-              to={paths.login}
+              onClick={() => isAuthenticated ? logout() : loginWithRedirect()}
               size="large"
               className={classes.appBarRightLink}
             >
-              LOG IN
+              { isAuthenticated ? 'LOG OUT' : 'LOG IN' }
             </Button>
           </div>
         </Toolbar>
