@@ -29,13 +29,13 @@ const useStyles = makeStyles((theme) => ({
   pageTitle: {
     marginTop: 78,
   },
-  subheadingVerticalMargin: {
+  subheading: {
     margin: "68px 0",
   },
-  subheadingTextVerticalMargin: {
+  subheadingParagraph: {
     paddingBottom: 48,
   },
-  container: {
+  pageContainer: {
     position: "relative",
     margin: 0,
   },
@@ -44,11 +44,6 @@ const useStyles = makeStyles((theme) => ({
     height: 1080,
     top: 0,
     left: 0,
-  },
-  biologyContainer: {
-    position: "absolute",
-    top: 119,
-    left: "53.23vw",
   },
   fieldText: {
     position: "relative",
@@ -61,6 +56,11 @@ const useStyles = makeStyles((theme) => ({
     letterSpacing: "0.09em",
     fontWeight: 700,
     padding: 0,
+  },
+  biologyContainer: {
+    position: "absolute",
+    top: 119,
+    left: "53.23vw",
   },
   socialSciencesContainer: {
     position: "absolute",
@@ -204,7 +204,7 @@ export default () => {
                 to={paths.chemistry}
                 className={classes.fieldText}
               >
-                CHEMSITRY
+                CHEMISTRY
               </Button>
             </div>
             <div className={classes.medicineContainer}>
