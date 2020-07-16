@@ -1,6 +1,5 @@
 import React from "react";
-import { Link as RouterLink } from "react-router-dom";
-import paths from "../../../constants/paths";
+
 import { makeStyles } from "@material-ui/core/styles";
 
 import {
@@ -55,16 +54,14 @@ export default () => {
   };
   return (
     <>
-      <RouterLink className={classes.root} to={paths.createAccount}>
-        <Typography
-          className={classes.form}
-          variant="subtitle2"
-          component="h1"
-          align="center"
-        >
-          New to SuperNova? Create an Account
-        </Typography>
-      </RouterLink>
+      <Typography
+        className={classes.form}
+        variant="subtitle2"
+        component="h1"
+        align="center"
+      >
+        New to SuperNova? Create an Account
+      </Typography>
 
       <FormControl fullWidth className={classes.form}>
         <InputLabel className={classes.root} htmlFor="standard-adornment-email">
