@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
   subtitle: {
     fontSize: 14,
     letterSpacing: 1.12,
-    fontWeight: 600,
+    fontWeight: 500,
     lineHeight: "18px",
     fontFamily: "'Montserrat', sans-serif",
   },
