@@ -87,7 +87,7 @@ function Footer(props) {
       </Grid>
 
       <Grid container className={classes.gridRow}>
-        {props.location.pathname !== "/login" ? (
+        {props.location.pathname === "/login" ? null : (
           <>
             <Grid item xs={4} className={classes.gridItem}>
               <MaterialLink
@@ -117,9 +117,9 @@ function Footer(props) {
               </MaterialLink>
             </Grid>{" "}
           </>
-        ) : null}
+        )}
       </Grid>
-      {props.location.pathname !== "/login" ? (
+      {props.location.pathname === "/login" ? null : (
         <>
           <Grid container spacing={2} className={classes.gridRow}>
             <Grid item xs={4} className={classes.gridItem}>
@@ -223,7 +223,7 @@ function Footer(props) {
             />
           </BottomNavigation>{" "}
         </>
-      ) : null}
+      )}
     </div>
   );
 }
