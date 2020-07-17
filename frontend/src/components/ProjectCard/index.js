@@ -9,7 +9,7 @@ import {
 } from "@material-ui/core";
 import defaultCardHeaderImage from "./assets/default-project-header-image.png";
 
-const defaultHeaderUrl = defaultCardHeaderImage;
+const defaultprojectImage = defaultCardHeaderImage;
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -25,7 +25,11 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(3, 2, 3, 2),
   },
 }));
-const ProjectCard = ({ headerUrl = defaultHeaderUrl, body, className }) => {
+const ProjectCard = ({
+  projectImage = defaultprojectImage,
+  body,
+  className,
+}) => {
   const classes = useStyles();
   return (
     <Card className={clsx(classes.card, className)} variant="outlined">
@@ -33,7 +37,7 @@ const ProjectCard = ({ headerUrl = defaultHeaderUrl, body, className }) => {
         <CardMedia
           className={classes.projectImage}
           title="Project Image"
-          image={headerUrl}
+          image={projectImage}
         />
         <CardContent className={classes.cardContent}>{body}</CardContent>
       </CardActionArea>

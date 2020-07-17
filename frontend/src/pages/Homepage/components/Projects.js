@@ -69,17 +69,18 @@ export default ({ projectsData, projectsLoading }) => {
           projectsData.map((project) => (
             <ProjectCard
               key={project.id}
-              headerUrl={project.headerUrl}
+              projectImage={project.projectImage}
               className={classes.card}
               body={
                 <div className={classes.cardBody}>
                   <p className={classes.projectTitle}>
-                    {project.title.length < maxTitleLength ? (
-                      project.title
+                    {project.projectName.length < maxTitleLength ? (
+                      project.projectName
                     ) : (
-                      <Tooltip title={project.title} placement="top">
+                      <Tooltip title={project.projectName} placement="top">
                         <span>
-                          {project.title.slice(0, maxTitleLength - 3) + "..."}
+                          {project.projectName.slice(0, maxTitleLength - 3) +
+                            "..."}
                         </span>
                       </Tooltip>
                     )}

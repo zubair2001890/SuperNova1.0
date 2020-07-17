@@ -14,6 +14,7 @@ import Model from "./pages/Model";
 import Contact from "./pages/Contact";
 import Team from "./pages/Team";
 import TopicX from "./pages/TopicX";
+import ProjectX from "./pages/ProjectX";
 
 function App() {
   return (
@@ -44,6 +45,9 @@ function App() {
             </Route>
             <Route path={paths.informationPageX}>
               <TopicX />
+            </Route>
+            <Route path={paths.projectX}>
+              <ProjectX />
             </Route>
             <Route path={paths.home} exact>
               <Homepage />
