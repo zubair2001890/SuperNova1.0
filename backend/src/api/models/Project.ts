@@ -15,7 +15,7 @@ const Project = model('Project', new Schema({
         minlength: 1,
         maxlength: 2000 // Arbitrary number, I thought 2,000 characters should be enough.
     },
-    universityText : {
+    university : {
         type: String,
         required: true,
         minlength: 1,
@@ -53,7 +53,7 @@ const Project = model('Project', new Schema({
         type: Number,
         requred: true
     },
-    projectImageText: {
+    projectImage: {
         type: String,
         required: true,
         minlength: 1,

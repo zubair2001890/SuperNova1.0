@@ -6,10 +6,6 @@ const ProjectStatus = model('ProjectStatus', new Schema({
         type: Number,
         required: true
     },
-    materialTypeID: {
-        type: Number,
-        required: true
-    },
     statusName: {
         type: String,
         required: true,

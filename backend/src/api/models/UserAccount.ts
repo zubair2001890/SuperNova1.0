@@ -36,8 +36,10 @@ const UserAccount = model('UserAccount', new Schema({
         required: true
     },
     universityID : {
-        type: Number,
-        required: true
+        type: String,
+        required: true,
+        minLength: 1,
+        maxlength: 255
     },
     dateJoined : {
         type: Date,
@@ -57,7 +59,7 @@ const UserAccount = model('UserAccount', new Schema({
     },
     projectScientistID : {
         type: Number,
-        required: true
+        required: false
     },
     fieldID : {
         type: Number,
