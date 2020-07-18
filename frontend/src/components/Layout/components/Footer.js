@@ -1,6 +1,5 @@
 import React from "react";
 import { Link as RouterLink } from "react-router-dom";
-import { withRouter } from "react-router-dom";
 import {
   BottomNavigation,
   BottomNavigationAction,
@@ -67,7 +66,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Footer(props) {
+export default function Footer() {
   const classes = useStyles();
 
   return (
@@ -87,144 +86,136 @@ function Footer(props) {
       </Grid>
 
       <Grid container className={classes.gridRow}>
-        {props.location.pathname === "/login" ? null : (
-          <>
-            <Grid item xs={4} className={classes.gridItem}>
-              <MaterialLink
-                component={RouterLink}
-                to="/"
-                className={classes.boldLink}
-              >
-                ABOUT
-              </MaterialLink>
-            </Grid>
-            <Grid item xs={4} className={classes.gridItem}>
-              <MaterialLink
-                component={RouterLink}
-                to="/"
-                className={classes.boldLink}
-              >
-                CREATE
-              </MaterialLink>
-            </Grid>
-            <Grid item xs={4} className={classes.gridItem}>
-              <MaterialLink
-                component={RouterLink}
-                to="/"
-                className={classes.boldLink}
-              >
-                EXPLORE
-              </MaterialLink>
-            </Grid>{" "}
-          </>
-        )}
+        <Grid item xs={4} className={classes.gridItem}>
+          <MaterialLink
+            component={RouterLink}
+            to="/"
+            className={classes.boldLink}
+          >
+            ABOUT
+          </MaterialLink>
+        </Grid>
+        <Grid item xs={4} className={classes.gridItem}>
+          <MaterialLink
+            component={RouterLink}
+            to="/"
+            className={classes.boldLink}
+          >
+            CREATE
+          </MaterialLink>
+        </Grid>
+        <Grid item xs={4} className={classes.gridItem}>
+          <MaterialLink
+            component={RouterLink}
+            to="/"
+            className={classes.boldLink}
+          >
+            EXPLORE
+          </MaterialLink>
+        </Grid>
       </Grid>
-      {props.location.pathname === "/login" ? null : (
-        <>
-          <Grid container spacing={2} className={classes.gridRow}>
-            <Grid item xs={4} className={classes.gridItem}>
-              <MaterialLink
-                component={RouterLink}
-                to={paths.mission}
-                className={classes.regularLink}
-              >
-                Our Mission
-              </MaterialLink>
-            </Grid>
-            <Grid item xs={4} className={classes.gridItem}>
-              <MaterialLink
-                component={RouterLink}
-                to="/"
-                className={classes.regularLink}
-              >
-                Upload a Project
-              </MaterialLink>
-            </Grid>
-            <Grid item xs={4} className={classes.gridItem}>
-              <MaterialLink
-                component={RouterLink}
-                to="/"
-                className={classes.regularLink}
-              >
-                Browse Projects
-              </MaterialLink>
-            </Grid>
-            <Grid item xs={4} className={classes.gridItem}>
-              <MaterialLink
-                component={RouterLink}
-                to={paths.terms}
-                className={classes.regularLink}
-              >
-                T&Cs
-              </MaterialLink>
-            </Grid>
-            <Grid item xs={4} className={classes.gridItem}>
-              <MaterialLink
-                component={RouterLink}
-                to="/"
-                className={classes.regularLink}
-              >
-                Create Account
-              </MaterialLink>
-            </Grid>
-            <Grid item xs={4} className={classes.gridItem}>
-              <MaterialLink
-                component={RouterLink}
-                to="/"
-                className={classes.regularLink}
-              >
-                Funded Projects
-              </MaterialLink>
-            </Grid>
-            <Grid item xs={4} className={classes.gridItem}>
-              <MaterialLink
-                component={RouterLink}
-                to={paths.model}
-                className={classes.regularLink}
-              >
-                Our Model
-              </MaterialLink>
-            </Grid>
-            <Grid item xs={4} className={classes.gridItem}>
-              <MaterialLink
-                component={RouterLink}
-                to={paths.contact}
-                className={classes.regularLink}
-              >
-                Contact Us
-              </MaterialLink>
-            </Grid>
-            <Grid item xs={4} className={classes.gridItem}>
-              <MaterialLink
-                component={RouterLink}
-                to={paths.faq}
-                className={classes.regularLink}
-              >
-                FAQ
-              </MaterialLink>
-            </Grid>
-          </Grid>
-          <BottomNavigation className={classes.bottomNavBar}>
-            <BottomNavigationAction
-              className={classes.icon}
-              icon={<FacebookIcon />}
-            />
-            <BottomNavigationAction
-              className={classes.icon}
-              icon={<TwitterIcon />}
-            />
-            <BottomNavigationAction
-              className={classes.icon}
-              icon={<InstagramIcon />}
-            />
-            <BottomNavigationAction
-              className={classes.icon}
-              icon={<LinkedInIcon />}
-            />
-          </BottomNavigation>{" "}
-        </>
-      )}
+
+      <Grid container spacing={2} className={classes.gridRow}>
+        <Grid item xs={4} className={classes.gridItem}>
+          <MaterialLink
+            component={RouterLink}
+            to={paths.mission}
+            className={classes.regularLink}
+          >
+            Our Mission
+          </MaterialLink>
+        </Grid>
+        <Grid item xs={4} className={classes.gridItem}>
+          <MaterialLink
+            component={RouterLink}
+            to="/"
+            className={classes.regularLink}
+          >
+            Upload a Project
+          </MaterialLink>
+        </Grid>
+        <Grid item xs={4} className={classes.gridItem}>
+          <MaterialLink
+            component={RouterLink}
+            to="/"
+            className={classes.regularLink}
+          >
+            Browse Projects
+          </MaterialLink>
+        </Grid>
+        <Grid item xs={4} className={classes.gridItem}>
+          <MaterialLink
+            component={RouterLink}
+            to={paths.terms}
+            className={classes.regularLink}
+          >
+            T&Cs
+          </MaterialLink>
+        </Grid>
+        <Grid item xs={4} className={classes.gridItem}>
+          <MaterialLink
+            component={RouterLink}
+            to="/"
+            className={classes.regularLink}
+          >
+            Create Account
+          </MaterialLink>
+        </Grid>
+        <Grid item xs={4} className={classes.gridItem}>
+          <MaterialLink
+            component={RouterLink}
+            to="/"
+            className={classes.regularLink}
+          >
+            Funded Projects
+          </MaterialLink>
+        </Grid>
+        <Grid item xs={4} className={classes.gridItem}>
+          <MaterialLink
+            component={RouterLink}
+            to={paths.model}
+            className={classes.regularLink}
+          >
+            Our Model
+          </MaterialLink>
+        </Grid>
+        <Grid item xs={4} className={classes.gridItem}>
+          <MaterialLink
+            component={RouterLink}
+            to={paths.contact}
+            className={classes.regularLink}
+          >
+            Contact Us
+          </MaterialLink>
+        </Grid>
+        <Grid item xs={4} className={classes.gridItem}>
+          <MaterialLink
+            component={RouterLink}
+            to={paths.faq}
+            className={classes.regularLink}
+          >
+            FAQ
+          </MaterialLink>
+        </Grid>
+      </Grid>
+      <BottomNavigation className={classes.bottomNavBar}>
+        <BottomNavigationAction
+          className={classes.icon}
+          icon={<FacebookIcon />}
+        />
+        <BottomNavigationAction
+          className={classes.icon}
+          icon={<TwitterIcon />}
+        />
+        <BottomNavigationAction
+          className={classes.icon}
+          icon={<InstagramIcon />}
+        />
+        <BottomNavigationAction
+          className={classes.icon}
+          icon={<LinkedInIcon />}
+        />
+      </BottomNavigation>
     </div>
   );
 }
-export default withRouter(Footer);
