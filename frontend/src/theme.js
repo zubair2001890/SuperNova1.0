@@ -6,6 +6,7 @@ const appColors = {
   blue: "#000647",
   black: "#000",
   white: "#FFF",
+  gray: "#707070",
 };
 
 // fonts
@@ -42,6 +43,7 @@ export default createMuiTheme({
       blue: appColors.blue,
       black: appColors.black,
       white: appColors.white,
+      gray: appColors.gray,
     },
     primary: {
       main: appColors.blue,
