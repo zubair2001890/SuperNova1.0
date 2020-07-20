@@ -6,16 +6,9 @@ import { setDarkTheme as setPageDarkTheme } from "../../store/slices/page";
 import paths from "../../constants/paths";
 
 const useStyles = makeStyles((theme) => ({
-  center: {
-    margin: "0 auto",
-    maxWidth: 966,
-    paddingLeft: theme.spacing(2),
-    paddingRight: theme.spacing(2),
-    paddingTop: 92,
-    paddingBottom: 92,
-  },
-  mockAppBarLayout: {
-    ...theme.mixins.appBar,
+  pageContainer: {
+    position: "relative",
+    margin: 0,
   },
   pageHeader: {
     height: 1080,
@@ -26,18 +19,8 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: "cover",
     display: "block",
   },
-  pageTitle: {
-    marginTop: 78,
-  },
-  subheading: {
-    margin: "68px 0",
-  },
-  subheadingParagraph: {
-    paddingBottom: 48,
-  },
-  pageContainer: {
-    position: "relative",
-    margin: 0,
+  mockAppBarLayout: {
+    ...theme.mixins.appBar,
   },
   fieldLinks: {
     position: "absolute",
@@ -45,6 +28,11 @@ const useStyles = makeStyles((theme) => ({
     width: "100vw",
     top: 0,
     left: 0,
+  },
+  biologyContainer: {
+    position: "absolute",
+    top: "calc(50% - 37px/2 - 361px)",
+    left: "calc(50% - 161px/2 + 207px)",
   },
   fieldText: {
     position: "relative",
@@ -62,55 +50,67 @@ const useStyles = makeStyles((theme) => ({
     overflow: "visible",
     transform: "translate(-50%, -50%)",
   },
-  biologyContainer: {
-    position: "absolute",
-    top: "15%",
-    left: "58%",
-  },
   socialSciencesContainer: {
     position: "absolute",
-    top: "28%",
-    left: "72%",
+    top: "calc(50% - 74px/2 - 204px)",
+    left: "calc(50% - 176px/2 + 414px)",
   },
   physicsContainer: {
     position: "absolute",
-    top: "50%",
-    left: "80%",
+    top: "calc(50% - 37px/2 + 6px)",
+    left: "calc(50% - 152px/2 + 522px)",
   },
   mathsStatsContainer: {
     position: "absolute",
-    top: "75%",
-    left: "75%",
+    top: "calc(50% - 111px/2 + 307px)",
+    left: "calc(50% - 264px/2 + 500px)",
   },
   spaceSciencesContainer: {
     position: "absolute",
-    top: "88%",
-    left: "59%",
+    top: "calc(50% - 74px/2 + 445px)",
+    left: "calc(50% - 176px/2 + 220px)",
   },
   computerScienceContainer: {
     position: "absolute",
-    top: "88%",
-    left: "41%",
+    top: "calc(50% - 74px/2 + 445px)",
+    left: "calc(50% - 200px/2 - 24px)",
   },
   engineeringTechnologyContainer: {
     position: "absolute",
-    top: "75%",
-    left: "25%",
+    top: "calc(50% - 111px/2 + 307px)",
+    left: "calc(50% - 260px/2 - 238px)",
   },
   earthSciencesContainer: {
     position: "absolute",
-    top: "50%",
-    left: "20%",
+    top: "calc(50% - 74px/2 + 24.5px)",
+    left: "calc(50% - 176px/2 - 358px)",
   },
   chemistryContainer: {
     position: "absolute",
-    top: "28%",
-    left: "28%",
+    top: "calc(50% - 37px/2 - 222.5px)",
+    left: "calc(50% - 206px/2 - 223px)",
   },
   medicineContainer: {
     position: "absolute",
-    top: "15%",
-    left: "42%",
+    top: "calc(50% - 37px/2 - 361px)",
+    left: "calc(50% - 179px/2 - 37px)",
+  },
+  center: {
+    margin: "0 auto",
+    maxWidth: 966,
+    paddingLeft: theme.spacing(2),
+    paddingRight: theme.spacing(2),
+    paddingTop: 92,
+    paddingBottom: 92,
+  },
+  pageTitle: {
+    marginTop: 78,
+  },
+  subheading: {
+    margin: "68px 0",
+  },
+  subheadingParagraph: {
+    paddingBottom: 48,
   },
 }));
 
@@ -127,7 +127,7 @@ export default () => {
 
   return (
     <>
-      <div className={classes.container}>
+      <div className={classes.pageContainer}>
         <div className={classes.pageHeader}>
           <div className={classes.mockAppBarLayout} />
           <div className={classes.fieldLinks}>
@@ -164,7 +164,7 @@ export default () => {
                 to={paths.mathematicsandstats}
                 className={classes.fieldText}
               >
-                MATHEMATICS STATISTICS
+                MATHEMATICS AND STATISTICS
               </Button>
             </div>
             <div className={classes.spaceSciencesContainer}>
@@ -228,13 +228,10 @@ export default () => {
         <Typography variant="h1" className={classes.pageTitle}>
           Welcome to the Explore Section
         </Typography>
-        <Typography variant="h2" className={classes.subheadingVerticalMargin}>
+        <Typography variant="h2" className={classes.subheading}>
           How it works:
         </Typography>
-        <Typography
-          variant="body1"
-          className={classes.subheadingTextVerticalMargin}
-        >
+        <Typography variant="body1" className={classes.subheadingParagraph}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
           minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -243,16 +240,13 @@ export default () => {
           pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
           culpa qui officia deserunt mollit anim id est laborum.
         </Typography>
-        <Typography variant="h2" className={classes.subheadingVerticalMargin}>
+        <Typography variant="h2" className={classes.subheading}>
           SuperNova's Featured Projects:
         </Typography>
-        <Typography variant="h2" className={classes.subheadingVerticalMargin}>
+        <Typography variant="h2" className={classes.subheading}>
           Science and the world of research:
         </Typography>
-        <Typography
-          variant="body1"
-          className={classes.subheadingTextVerticalMargin}
-        >
+        <Typography variant="body1" className={classes.subheadingParagraph}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
           minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -261,7 +255,7 @@ export default () => {
           pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
           culpa qui officia deserunt mollit anim id est laborum.
         </Typography>
-        <Typography variant="h2" className={classes.subheadingVerticalMargin}>
+        <Typography variant="h2" className={classes.subheading}>
           Educational Resources:
         </Typography>
       </div>
