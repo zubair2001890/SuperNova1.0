@@ -10,4 +10,5 @@ export default {
   contact: "/contactus",
   team: "/ourteam",
   informationPageX: "/topicx",
+  exploreSubPage: "/exploresubpage",
 };
