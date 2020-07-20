@@ -29,11 +29,6 @@ const useStyles = makeStyles((theme) => ({
     top: 0,
     left: 0,
   },
-  biologyContainer: {
-    position: "absolute",
-    top: "calc(50% - 37px/2 - 361px)",
-    left: "calc(50% - 161px/2 + 207px)",
-  },
   fieldText: {
     position: "relative",
     margin: 0,
@@ -49,6 +44,11 @@ const useStyles = makeStyles((theme) => ({
     height: 0,
     overflow: "visible",
     transform: "translate(-50%, -50%)",
+  },
+  biologyContainer: {
+    position: "absolute",
+    top: "calc(50% - 37px/2 - 361px)",
+    left: "calc(50% - 161px/2 + 207px)",
   },
   socialSciencesContainer: {
     position: "absolute",
