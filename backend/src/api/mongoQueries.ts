@@ -1,8 +1,9 @@
 const mongoose = require('mongoose')
-const {Project} = require('../models/project')
-import { Field } from '../models/Field';
-const {Subfield} = require('../models/subfield')
-const {UserAccount} = require('../models/useraccount')
+
+import {Project} from '../models/Project'
+import {ProjectBacker} from '../models/ProjectBacker'
+import {Subfield} from '../models/Subfield';
+import UserAccount from '../models/UserAccount';
 
 
 mongoose.connect('mongodb://uoovwklzznl5qbd3vnmc:CKB9CbXz4cbJrrrCskwU@bosn1sg8zx8aq8n-mongodb.services.clever-cloud.com:27017/bosn1sg8zx8aq8n')
@@ -11,52 +12,92 @@ mongoose.connect('mongodb://uoovwklzznl5qbd3vnmc:CKB9CbXz4cbJrrrCskwU@bosn1sg8zx
 
  export const getFeaturedProject = function()
     {
-      var projects = await Project.find().sort({'totalPledged': -1}); // To sort in descending order of totalPledged.
-      return projects[0]; // I.e. the project that has the most pledged.
+      var projects = Project.find().sort({'totalPledged': -1}); // To sort in descending order of totalPledged.
+      var featuredProject = projects[0];
+      featuredProject["project_id"] = featuredProject._id;
+      return featuredProject; // I.e. the project that has the most pledged.
  }
 
- async function getProjectDetails(projectID: String)
- {
-   return null; // I need to look at the screenshot for what to show here.
- }
-
- async function getAllSubfields(fieldID: number): Promise<Array<Object>>
+ export const getAllSubfields = function(fieldID: String)
    {
-      return await Subfield.find({fieldID: fieldID}).exec();
+      return Subfield.find({fieldID: fieldID}).exec();
    }
 
- async function getProjectsByFieldID(fieldID: number): Promise<Array<Object>>
+ function getProjectInfo(project: typeof Project)
  {
-    return await Project.find({fieldID: fieldID}).exec();
+    project["project_id"] = project._id;
+    project["link"] = project.projectImage;
+    project["backers"] = getProjectBackers(project);
+    project["status_name"] = getStatusName(project.projectStatusID)
+    return project;
  }
 
- async function getProjectsBySubfieldID(subFieldID: number): Promise<Array<Object>>
+ function getStatusName(statusCode: Number)
  {
-    return await Project.find({subFieldID: subFieldID}).exec();
+    if (statusCode === 0)
+    {
+       return "Inactive";
+    }
+    else
+    {
+       return "Active";
+    }
  }
 
- async function getProjectsByProjectScientistID(projectScientistID: number): Promise<Array<Object>>
+ function getProjectBackers(project: typeof Project)
  {
-    return await Project.find({projectScientistID: projectScientistID}).exec();
+    return ProjectBacker.find({projectID: project._id}).exec();
  }
 
- async function getProjectByProjectID(projectID: String): Promise<Object>
+ export const getProjectsByFieldID = function(fieldID: String)
  {
-    return await Project.findById(projectID);
+    let result = Array();
+    let projects = Project.find({fieldID: fieldID}).exec();
+    projects.array.forEach(project => {
+      result.push(getProjectInfo(project));   
+    });
+    return result;
+ }
+
+ export const getProjectsBySubfieldID = function(subFieldID: String)
+ {
+    let result = Array();
+    let projects = Project.find({subFieldID: subFieldID}).exec();
+    projects.array.forEach(project => {
+      result.push(getProjectInfo(project));   
+    });
+    return result;
+ }
+
+ export const getProjectsByProjectScientistID = function(projectScientistID: String)
+ {
+   let result = Array();
+    let projects = Project.find({projectScientistID: projectScientistID}).exec();
+    projects.array.forEach(project => {
+      result.push(getProjectInfo(project));   
+    });
+    return result;
+ }
+
+ export const getProjectsByProjectID = function(projectID: String)
+ {
+   let result = Array();
+    let projects = Project.findById(projectID).exec();
+    projects.array.forEach(project => {
+      result.push(getProjectInfo(project));   
+    });
+    return result;
  }
 
  // So a Project will need to be passed in with the necessary parameters, as per the schema.
- async function createProject(project: typeof Project) 
+ export const createProject = function(project: typeof Project) 
  {
-    await project.save();
-   let field = new Field({
-      fieldName: project.
-   });  
+    project.save();
 }
 
-async function updateProject(updatedProject: typeof Project)
+export const updateProject = function(updatedProject: typeof Project)
 { // projectName, projectDescription, projectImage, goal, fieldID, subfieldID
-   let currentProject = await Project.findById(updatedProject._id);
+   let currentProject = Project.findById(updatedProject._id);
    if (updatedProject.projectName !== undefined)
    {
       currentProject.projectName = updatedProject.projectName;
@@ -127,12 +168,14 @@ async function updateAccount(updatedAccount: typeof UserAccount)
    currentUser.save();
 }
 
+
+
 async function getAccountInfo(userID: String): Promise<Object>
 {
  return await UserAccount.findById(userID, 'firstName lastName university fieldName projectScientistID userAccountID imageURL').exec();
   }
 
-/*function getFieldsDictionary() This code is commented out because it's not necessary currently, but may be at some point in the future.
+  /*function getFieldsDictionary() This code is commented out because it's not necessary currently, but may be at some point in the future.
  {
    let fieldsDictionary = new Object();
    fieldsDictionary["biology"] = 0;

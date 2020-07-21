@@ -1,14 +1,14 @@
 import { model } from "mongoose";
 import { Schema } from "mongoose";
 
-const Material = model('Material', new Schema({
+export const Material = model('Material', new Schema({
     projectID: {
-        type: Number,
+        type: String,
         required: true
     },
     materialTypeID: {
         type: Number,
-        required: true
+        required: false
     },
     description: {
         type: String,

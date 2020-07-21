@@ -3,7 +3,7 @@ import { Schema } from "mongoose";
 
 const ProjectBacker = model('ProjectBacker', new Schema({
     projectID: {
-        type: Number,
+        type: String,
         required: true
     },
     userAccountID: {
