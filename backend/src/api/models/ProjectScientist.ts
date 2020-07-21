@@ -1,7 +1,7 @@
 import { model } from "mongoose";
 import { Schema } from "mongoose";
 
-const ProjectScientist = model('ProjectScientist', new Schema({
+export const ProjectScientist = model('ProjectScientist', new Schema({
     projectID: {
         type: Number,
         required: true
@@ -15,5 +15,3 @@ const ProjectScientist = model('ProjectScientist', new Schema({
         required: true
     }
 }));
-
-exports.ProjectScientist = ProjectScientist;

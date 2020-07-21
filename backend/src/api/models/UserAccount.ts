@@ -2,7 +2,7 @@ import { model } from "mongoose";
 import {Schema} from "mongoose";
 
 
-const UserAccount = model('UserAccount', new Schema({
+export const UserAccount = model('UserAccount', new Schema({
     firstName : {
         type: String,
         required: true,
@@ -66,5 +66,3 @@ const UserAccount = model('UserAccount', new Schema({
         required: true
     }
 }));
-
-exports.UserAccount = UserAccount;

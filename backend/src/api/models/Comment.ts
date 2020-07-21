@@ -1,7 +1,7 @@
 import { model } from "mongoose";
 import {Schema} from "mongoose";
 
-const Comment = model('Comment', new Schema({
+export const Comment = model('Comment', new Schema({
     projectID : {
         type: Number,
         required: true
@@ -17,5 +17,3 @@ const Comment = model('Comment', new Schema({
         required: true
     }      
 }));
-
-exports.Comment = Comment;

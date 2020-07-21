@@ -1,7 +1,7 @@
 import { model } from "mongoose";
 import { Schema } from "mongoose";
 
-const University = model('University', new Schema({
+export const University = model('University', new Schema({
     universityName: {
         type: String,
         required: true,
@@ -9,5 +9,3 @@ const University = model('University', new Schema({
         maxlength: 255
     },
 }));
-
-exports.University = University;

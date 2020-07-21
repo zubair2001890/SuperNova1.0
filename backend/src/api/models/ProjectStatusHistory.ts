@@ -1,7 +1,7 @@
 import { model } from "mongoose";
 import { Schema } from "mongoose";
 
-const ProjectStatusHistory = model('ProjectStatusHistory', new Schema({
+export const ProjectStatusHistory = model('ProjectStatusHistory', new Schema({
     projectID: {
         type: Number,
         required: true
@@ -15,5 +15,3 @@ const ProjectStatusHistory = model('ProjectStatusHistory', new Schema({
         required: true
     }
 }));
-
-exports.ProjectStatusHistory = ProjectStatusHistory;
