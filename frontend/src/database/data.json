@@ -1,0 +1,10 @@
+{
+  "user": {
+    "first_Name": "Zubair Mahmood",
+    "university": "Cambridge University",
+    "field_name": "Mathematics",
+    "project_scientist_id": 5,
+    "user_account_id": 10,
+    "imageURL": "https://randomuser.me/api/portraits/men/31.jpg"
+  }
+}
