@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
     height: "100%",
     width: "100%",
     backgroundImage:
-      "url(" + require("../assets/constellation/constellation.png") + ")",
+      "url(" + require("./assets/constellation/constellation.png") + ")",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
     backgroundSize: "cover",
@@ -26,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "bold",
     top: 200,
     left: 200,
+    width: 300,
   },
 }));
 

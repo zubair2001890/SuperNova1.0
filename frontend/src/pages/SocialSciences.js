@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { makeStyles, Typography } from "@material-ui/core";
 import { useDispatch } from "react-redux";
-import { setDarkTheme as setPageDarkTheme } from "../../store/slices/page";
+import { setDarkTheme as setPageDarkTheme } from "../store/slices/page";
 import Carousel from "react-material-ui-carousel";
-import Constellation from "./components/Constellation";
+import Constellation from "../components/Constellation";
 
 const useStyles = makeStyles((theme) => ({
   mockAppBarLayout: {
@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
     height: "100%",
     width: "100%",
     backgroundImage:
-      "url(" + require("./assets/background/background.png") + ")",
+      "url(" + require("../components/Constellation/assets/background/background.png") + ")",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
     backgroundSize: "cover",
@@ -68,22 +68,22 @@ export default () => {
 
   var items = [
     {
-      title: "SCIENCE",
-      name1: "SCIENCE 1",
-      name2: "SCIENCE 2",
-      name3: "SCIENCE 3",
+      title: "SOCIAL SCIENCES",
+      name1: "SOCIAL SCIENCES 1",
+      name2: "SOCIAL SCIENCES 2",
+      name3: "SOCIAL SCIENCES 3",
     },
     {
-      title: "MORE SCIENCE",
-      name1: "MORE SCIENCE 1",
-      name2: "MORE SCIENCE 2",
-      name3: "MORE SCIENCE 3",
+      title: "SOCIAL SCIENCES",
+      name1: "SOCIAL SCIENCES 4",
+      name2: "SOCIAL SCIENCES 5",
+      name3: "SOCIAL SCIENCES 6",
     },
     {
-      title: "OTHER SCIENCE",
-      name1: "OTHER SCIENCE 1",
-      name2: "OTHER SCIENCE 2",
-      name3: "OTHER SCIENCE 3",
+      title: "SOCIAL SCIENCES",
+      name1: "SOCIAL SCIENCES 7",
+      name2: "SOCIAL SCIENCES 8",
+      name3: "SOCIAL SCIENCES 9",
     },
   ];
 
