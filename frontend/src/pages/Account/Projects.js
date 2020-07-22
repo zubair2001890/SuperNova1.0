@@ -29,6 +29,7 @@ const renderProject = (classes) => (projectData, index) => (
     className={classes.card}
     key={index}
     body={<Body project={projectData} />}
+    id={projectData.id}
   ></ProjectCard>
 )
 

@@ -1,4 +1,4 @@
-const getAccountUrl = (subPath) => `/account/${subPath}`
+import { getAccountUrl } from '../helpers/createPaths'
 
 export default {
   login: '/login',

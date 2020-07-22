@@ -34,6 +34,7 @@ export default ({ projectsData, projectsLoading }) => {
           projectsData.map((project) => (
             <ProjectCard
               key={project.id}
+              id={project.id}
               headerUrl={project.headerUrl}
               className={classes.card}
               body={<Body project={project} />}
