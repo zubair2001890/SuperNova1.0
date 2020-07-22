@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   constellation: {
-    position: "relative",
+    position: "absolute",
     height: 400,
     width: 240,
   },

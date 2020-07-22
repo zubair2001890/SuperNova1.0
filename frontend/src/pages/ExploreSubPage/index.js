@@ -55,9 +55,9 @@ function Item(props) {
       <Typography variant="h2" className={props.titleStyle}>
         {props.item.title}
       </Typography>
-      <Constellation subfield={props.item.name2} top={40} left={400} />
-      <Constellation subfield={props.item.name1} top={100} left={350} />
-      <Constellation subfield={props.item.name3} top={-350} left={1200} />
+      <Constellation subfield={props.item.name2} top="calc(50% + 10px)" left="calc(50% - 550px)" />
+      <Constellation subfield={props.item.name1} top="calc(50% - 450px)" left="calc(50% - 450px)" />
+      <Constellation subfield={props.item.name3} top="calc(50%)" left="calc(50% + 250px)" />
     </>
   );
 }
