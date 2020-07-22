@@ -1,6 +1,11 @@
 import React, { useEffect } from "react";
 import { Link as RouterLink } from "react-router-dom";
-import { Typography, makeStyles, Button } from "@material-ui/core";
+import {
+  Typography,
+  makeStyles,
+  Button,
+  useMediaQuery,
+} from "@material-ui/core";
 import { useDispatch } from "react-redux";
 import { setDarkTheme as setPageDarkTheme } from "../../store/slices/page";
 import paths from "../../constants/paths";
@@ -11,7 +16,6 @@ const useStyles = makeStyles((theme) => ({
     margin: 0,
   },
   pageHeader: {
-    height: 1080,
     width: "100%",
     backgroundImage: "url(" + require("./assets/exploreHome.png") + ")",
     backgroundRepeat: "no-repeat",
@@ -24,15 +28,12 @@ const useStyles = makeStyles((theme) => ({
   },
   fieldLinks: {
     position: "absolute",
-    height: 1080,
     width: "100vw",
     top: 0,
     left: 0,
   },
   biologyContainer: {
     position: "absolute",
-    top: "calc(50% - 37px/2 - 361px)",
-    left: "calc(50% - 161px/2 + 207px)",
   },
   fieldText: {
     position: "relative",
@@ -40,8 +41,6 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     fontFamily: "Montserrat",
     color: "white",
-    fontSize: 30,
-    lineHeight: "37px",
     letterSpacing: "0.09em",
     fontWeight: 700,
     padding: 0,
@@ -52,48 +51,30 @@ const useStyles = makeStyles((theme) => ({
   },
   socialSciencesContainer: {
     position: "absolute",
-    top: "calc(50% - 74px/2 - 204px)",
-    left: "calc(50% - 176px/2 + 414px)",
   },
   physicsContainer: {
     position: "absolute",
-    top: "calc(50% - 37px/2 + 6px)",
-    left: "calc(50% - 152px/2 + 522px)",
   },
   mathsStatsContainer: {
     position: "absolute",
-    top: "calc(50% - 111px/2 + 307px)",
-    left: "calc(50% - 264px/2 + 500px)",
   },
   spaceSciencesContainer: {
     position: "absolute",
-    top: "calc(50% - 74px/2 + 445px)",
-    left: "calc(50% - 176px/2 + 220px)",
   },
   computerScienceContainer: {
     position: "absolute",
-    top: "calc(50% - 74px/2 + 445px)",
-    left: "calc(50% - 200px/2 - 24px)",
   },
   engineeringTechnologyContainer: {
     position: "absolute",
-    top: "calc(50% - 111px/2 + 307px)",
-    left: "calc(50% - 260px/2 - 238px)",
   },
   earthSciencesContainer: {
     position: "absolute",
-    top: "calc(50% - 74px/2 + 24.5px)",
-    left: "calc(50% - 176px/2 - 358px)",
   },
   chemistryContainer: {
     position: "absolute",
-    top: "calc(50% - 37px/2 - 222.5px)",
-    left: "calc(50% - 206px/2 - 223px)",
   },
   medicineContainer: {
     position: "absolute",
-    top: "calc(50% - 37px/2 - 361px)",
-    left: "calc(50% - 179px/2 - 37px)",
   },
   center: {
     margin: "0 auto",
@@ -117,6 +98,7 @@ const useStyles = makeStyles((theme) => ({
 export default () => {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const moreThan1080PixelsHigh = useMediaQuery("(min-height:1080px)");
 
   useEffect(() => {
     dispatch(setPageDarkTheme(true));
@@ -128,95 +110,241 @@ export default () => {
   return (
     <>
       <div className={classes.pageContainer}>
-        <div className={classes.pageHeader}>
+        <div
+          className={classes.pageHeader}
+          style={{ height: moreThan1080PixelsHigh ? 1080 : "100vh" }}
+        >
           <div className={classes.mockAppBarLayout} />
-          <div className={classes.fieldLinks}>
-            <div className={classes.biologyContainer}>
+          <div
+            className={classes.fieldLinks}
+            style={{ height: moreThan1080PixelsHigh ? 1080 : "100vh" }}
+          >
+            <div
+              className={classes.biologyContainer}
+              style={{
+                top: moreThan1080PixelsHigh
+                  ? "calc(50% - 37px/2 - 361px)"
+                  : "calc(50% - 35.14vh)",
+                left: moreThan1080PixelsHigh
+                  ? "calc(50% - 161px/2 + 207px)"
+                  : "calc(50% + 11.71vh)",
+              }}
+            >
               <Button
                 component={RouterLink}
                 to={paths.biology}
                 className={classes.fieldText}
+                style={{
+                  fontSize: moreThan1080PixelsHigh ? 30 : "2.78vh",
+                  lineHeight: moreThan1080PixelsHigh ? "37px" : "3.426vh",
+                }}
               >
                 BIOLOGY
               </Button>
             </div>
-            <div className={classes.socialSciencesContainer}>
+            <div
+              className={classes.socialSciencesContainer}
+              style={{
+                top: moreThan1080PixelsHigh
+                  ? "calc(50% - 74px/2 - 204px)"
+                  : "calc(50% - 22.31vh)",
+                left: moreThan1080PixelsHigh
+                  ? "calc(50% - 176px/2 + 414px)"
+                  : "calc(50% + 30.19vh)",
+              }}
+            >
               <Button
                 component={RouterLink}
                 to={paths.socialsciences}
                 className={classes.fieldText}
+                style={{
+                  fontSize: moreThan1080PixelsHigh ? 30 : "2.78vh",
+                  lineHeight: moreThan1080PixelsHigh ? "37px" : "3.426vh",
+                }}
               >
                 SOCIAL SCIENCES
               </Button>
             </div>
-            <div className={classes.physicsContainer}>
+            <div
+              className={classes.physicsContainer}
+              style={{
+                top: moreThan1080PixelsHigh
+                  ? "calc(50% - 37px/2 + 6px)"
+                  : "calc(50% - 1.16vh)",
+                left: moreThan1080PixelsHigh
+                  ? "calc(50% - 152px/2 + 522px)"
+                  : "calc(50% + 41.23vh)",
+              }}
+            >
               <Button
                 component={RouterLink}
                 to={paths.physics}
                 className={classes.fieldText}
+                style={{
+                  fontSize: moreThan1080PixelsHigh ? 30 : "2.78vh",
+                  lineHeight: moreThan1080PixelsHigh ? "37px" : "3.426vh",
+                }}
               >
                 PHYSICS
               </Button>
             </div>
-            <div className={classes.mathsStatsContainer}>
+            <div
+              className={classes.mathsStatsContainer}
+              style={{
+                top: moreThan1080PixelsHigh
+                  ? "calc(50% - 111px/2 + 307px)"
+                  : "calc(50% + 23.29vh)",
+                left: moreThan1080PixelsHigh
+                  ? "calc(50% - 264px/2 + 500px)"
+                  : "calc(50% + 34.07vh)",
+              }}
+            >
               <Button
                 component={RouterLink}
                 to={paths.mathematicsandstats}
                 className={classes.fieldText}
+                style={{
+                  fontSize: moreThan1080PixelsHigh ? 30 : "2.78vh",
+                  lineHeight: moreThan1080PixelsHigh ? "37px" : "3.426vh",
+                }}
               >
                 MATHEMATICS AND STATISTICS
               </Button>
             </div>
-            <div className={classes.spaceSciencesContainer}>
+            <div
+              className={classes.spaceSciencesContainer}
+              style={{
+                top: moreThan1080PixelsHigh
+                  ? "calc(50% - 74px/2 + 445px)"
+                  : "calc(50% + 37.78vh)",
+                left: moreThan1080PixelsHigh
+                  ? "calc(50% - 176px/2 + 220px)"
+                  : "calc(50% + 12.22vh)",
+              }}
+            >
               <Button
                 component={RouterLink}
                 to={paths.spacesciences}
                 className={classes.fieldText}
+                style={{
+                  fontSize: moreThan1080PixelsHigh ? 30 : "2.78vh",
+                  lineHeight: moreThan1080PixelsHigh ? "37px" : "3.426vh",
+                }}
               >
                 SPACE SCIENCES
               </Button>
             </div>
-            <div className={classes.computerScienceContainer}>
+            <div
+              className={classes.computerScienceContainer}
+              style={{
+                top: moreThan1080PixelsHigh
+                  ? "calc(50% - 74px/2 + 445px)"
+                  : "calc(50% + 37.78vh)",
+                left: moreThan1080PixelsHigh
+                  ? "calc(50% - 200px/2 - 24px)"
+                  : "calc(50% - 11.48vh)",
+              }}
+            >
               <Button
                 component={RouterLink}
                 to={paths.computerscience}
                 className={classes.fieldText}
+                style={{
+                  fontSize: moreThan1080PixelsHigh ? 30 : "2.78vh",
+                  lineHeight: moreThan1080PixelsHigh ? "37px" : "3.426vh",
+                }}
               >
                 COMPUTER SCIENCE
               </Button>
             </div>
-            <div className={classes.engineeringTechnologyContainer}>
+            <div
+              className={classes.engineeringTechnologyContainer}
+              style={{
+                top: moreThan1080PixelsHigh
+                  ? "calc(50% - 111px/2 + 307px)"
+                  : "calc(50% + 23.29vh)",
+                left: moreThan1080PixelsHigh
+                  ? "calc(50% - 260px/2 - 238px)"
+                  : "calc(50% - 34.07vh)",
+              }}
+            >
               <Button
                 component={RouterLink}
                 to={paths.engineeringandtech}
                 className={classes.fieldText}
+                style={{
+                  fontSize: moreThan1080PixelsHigh ? 30 : "2.78vh",
+                  lineHeight: moreThan1080PixelsHigh ? "37px" : "3.426vh",
+                }}
               >
                 ENGINEERING AND TECHNOLOGY
               </Button>
             </div>
-            <div className={classes.earthSciencesContainer}>
+            <div
+              className={classes.earthSciencesContainer}
+              style={{
+                top: moreThan1080PixelsHigh
+                  ? "calc(50% - 74px/2 + 24.5px)"
+                  : "calc(50% - 1.16vh)",
+                left: moreThan1080PixelsHigh
+                  ? "calc(50% - 176px/2 - 358px)"
+                  : "calc(50% - 41.23vh)",
+              }}
+            >
               <Button
                 component={RouterLink}
                 to={paths.earthsciences}
                 className={classes.fieldText}
+                style={{
+                  fontSize: moreThan1080PixelsHigh ? 30 : "2.78vh",
+                  lineHeight: moreThan1080PixelsHigh ? "37px" : "3.426vh",
+                }}
               >
                 EARTH SCIENCES
               </Button>
             </div>
-            <div className={classes.chemistryContainer}>
+            <div
+              className={classes.chemistryContainer}
+              style={{
+                top: moreThan1080PixelsHigh
+                  ? "calc(50% - 37px/2 - 222.5px)"
+                  : "calc(50% - 22.31vh)",
+                left: moreThan1080PixelsHigh
+                  ? "calc(50% - 206px/2 - 223px)"
+                  : "calc(50% - 30.19vh)",
+              }}
+            >
               <Button
                 component={RouterLink}
                 to={paths.chemistry}
                 className={classes.fieldText}
+                style={{
+                  fontSize: moreThan1080PixelsHigh ? 30 : "2.78vh",
+                  lineHeight: moreThan1080PixelsHigh ? "37px" : "3.426vh",
+                }}
               >
                 CHEMISTRY
               </Button>
             </div>
-            <div className={classes.medicineContainer}>
+            <div
+              className={classes.medicineContainer}
+              style={{
+                top: moreThan1080PixelsHigh
+                  ? "calc(50% - 37px/2 - 361px)"
+                  : "calc(50% - 35.14vh)",
+                left: moreThan1080PixelsHigh
+                  ? "calc(50% - 179px/2 - 37px)"
+                  : "calc(50% - 11.71vh)",
+              }}
+            >
               <Button
                 component={RouterLink}
                 to={paths.medicine}
                 className={classes.fieldText}
+                style={{
+                  fontSize: moreThan1080PixelsHigh ? 30 : "2.78vh",
+                  lineHeight: moreThan1080PixelsHigh ? "37px" : "3.426vh",
+                }}
               >
                 MEDICINE
               </Button>
