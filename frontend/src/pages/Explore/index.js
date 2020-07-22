@@ -32,12 +32,6 @@ const useStyles = makeStyles((theme) => ({
     top: 0,
     left: 0,
   },
-<<<<<<< HEAD
-  biologyContainer: {
-    position: "absolute",
-  },
-=======
->>>>>>> 8e04388b159e4d495d8670f7186909e5eb124ae7
   fieldText: {
     position: "relative",
     margin: 0,
@@ -54,8 +48,6 @@ const useStyles = makeStyles((theme) => ({
   },
   biologyContainer: {
     position: "absolute",
-    top: "calc(50% - 37px/2 - 361px)",
-    left: "calc(50% - 161px/2 + 207px)",
   },
   socialSciencesContainer: {
     position: "absolute",
