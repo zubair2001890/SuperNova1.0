@@ -14,4 +14,6 @@ export default {
   informationPageX: '/topicx',
   account: getAccountUrl(''),
   myProjects: getAccountUrl('my-projects'),
+  profile: getAccountUrl('profile'),
+  activity: getAccountUrl('activity'),
 }

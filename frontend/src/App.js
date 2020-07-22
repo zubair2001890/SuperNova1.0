@@ -19,6 +19,8 @@ import { connect } from 'react-redux'
 import { fetchAndSetUserInfo } from './store/user'
 import MyProjects from './pages/Account/MyProjects'
 import BackedProjects from './pages/Account/BackedProjects'
+import Profile from './pages/Account/Profile'
+import Activity from './pages/Account/Activity'
 
 class App extends Component {
   fetchUser = () => {
@@ -71,6 +73,12 @@ class App extends Component {
               </Route>
               <Route path={paths.myProjects}>
                 <MyProjects />
+              </Route>
+              <Route path={paths.profile}>
+                <Profile />
+              </Route>
+              <Route path={paths.activity}>
+                <Activity />
               </Route>
               <Route path={paths.error404}>
                 <Error404 />

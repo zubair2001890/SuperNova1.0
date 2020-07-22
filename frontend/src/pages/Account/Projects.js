@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core'
 import ProjectCard from '../../components/ProjectCard'
 import Body from '../../components/ProjectCard/components/Body'
 
-const marginRight = '2rem'
+const marginRight = '1rem'
 
 const useStyles = makeStyles((theme) => ({
   projects: {
@@ -17,8 +17,8 @@ const useStyles = makeStyles((theme) => ({
       flexBasis: `calc(50% - ${marginRight})`,
       marginRight,
     },
-    [theme.breakpoints.up('lg')]: {
-      flexBasis: `calc(32% - ${marginRight})`,
+    [theme.breakpoints.up('xl')]: {
+      flexBasis: `calc(25% - ${marginRight})`,
     },
     marginBottom: '3.25rem',
   },

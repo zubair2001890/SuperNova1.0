@@ -6,7 +6,7 @@ const useStyles = makeStyles((theme) => ({
   nav: {
     marginBottom: '4rem',
     [theme.breakpoints.up('md')]: {
-      flexBasis: '30%',
+      flexBasis: '25%',
       borderRight: '2px solid black',
     },
   },
