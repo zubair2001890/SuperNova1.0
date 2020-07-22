@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { withStyles } from '@material-ui/core'
+import { getAccountUrl } from '../../../helpers/createPaths'
 
 const styles = {
   button: {
@@ -20,7 +21,12 @@ const styles = {
 export class Edit extends Component {
   render() {
     const { classes } = this.props
-    return <Link className={classes.button}>Edit Profile</Link>
+    const editPath = getAccountUrl('edit')
+    return (
+      <Link className={classes.button} to={editPath}>
+        Edit Profile
+      </Link>
+    )
   }
 }
 
