@@ -2,6 +2,7 @@ import { getAccountUrl } from '../helpers/createPaths'
 
 export default {
   login: '/login',
+  logout: '/logout',
   error404: '/not-found',
   home: '/',
   explore: '/explore',
