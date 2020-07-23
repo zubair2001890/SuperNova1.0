@@ -26,15 +26,20 @@ const renderLink = (linkData, index) => <Item {...linkData} key={index} />
 
 const renderLinks = () => linksList.map(renderLink)
 
-const useStyles = makeStyles({
-  list: {
-    position: 'absolute',
-    top: '100%',
-    right: '50%',
-    backgroundColor: 'white',
-    padding: '0 0.5rem 1rem',
-    minWidth: '10rem',
-  },
+const useStyles = makeStyles(() => {
+  const paddingRight = '1rem'
+  return {
+    list: {
+      position: 'absolute',
+      top: '100%',
+      right: `calc(50% - ${paddingRight})`,
+      backgroundColor: 'white',
+      padding: `0 ${paddingRight} 1rem`,
+      minWidth: '10rem',
+      marginTop: 0,
+      borderRadius: '0.25rem',
+    },
+  }
 })
 
 export default function Links() {

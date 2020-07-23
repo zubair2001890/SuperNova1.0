@@ -49,7 +49,12 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: 'auto',
     animation: 'slideFadeUp 1.5s ease 2s backwards',
     display: 'flex',
+    flexWrap: 'wrap',
+    flexDirection: 'column',
     alignItems: 'center',
+    [theme.breakpoints.up('md')]: {
+      flexDirection: 'row',
+    },
     '& > *:not(:last-child)': {
       marginRight: theme.spacing(4),
     },

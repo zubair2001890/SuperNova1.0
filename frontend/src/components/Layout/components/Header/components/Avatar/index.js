@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => {
 })
 
 function Avatar({ user }) {
-  const [isOpen, setIsOpen] = useState(true)
+  const [isOpen, setIsOpen] = useState(false)
   const classes = useStyles()
   const toggleOpen = () => setIsOpen(!isOpen)
   return (
