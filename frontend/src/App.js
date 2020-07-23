@@ -14,84 +14,63 @@ import Model from './pages/Model'
 import Contact from './pages/Contact'
 import Team from './pages/Team'
 import TopicX from './pages/TopicX'
-import { Component } from 'react'
-import { connect } from 'react-redux'
-import { fetchAndSetUserInfo } from './store/user'
 import MyProjects from './pages/Account/MyProjects'
 import BackedProjects from './pages/Account/BackedProjects'
 import Profile from './pages/Account/Profile'
 import Activity from './pages/Account/Activity'
 
-class App extends Component {
-  fetchUser = () => {
-    const { user, fetchAndSetUserInfo } = this.props
-    if (!user) {
-      return fetchAndSetUserInfo()
-    }
-    return null
-  }
-
-  componentDidMount() {
-    this.fetchUser()
-  }
-
-  render() {
-    return (
-      <ThemeProvider theme={theme}>
-        <BrowserRouter>
-          <Layout>
-            <Switch>
-              <Route path={paths.login}>
-                <Login />
-              </Route>
-              <Route path={paths.faq}>
-                <Faq />
-              </Route>
-              <Route path={paths.mission}>
-                <Mission />
-              </Route>
-              <Route path={paths.terms}>
-                <Terms />
-              </Route>
-              <Route path={paths.model}>
-                <Model />
-              </Route>
-              <Route path={paths.contact}>
-                <Contact />
-              </Route>
-              <Route path={paths.team}>
-                <Team />
-              </Route>
-              <Route path={paths.informationPageX}>
-                <TopicX />
-              </Route>
-              <Route path={paths.home} exact>
-                <Homepage />
-              </Route>
-              <Route path={paths.account} exact>
-                <BackedProjects />
-              </Route>
-              <Route path={paths.myProjects}>
-                <MyProjects />
-              </Route>
-              <Route path={paths.profile}>
-                <Profile />
-              </Route>
-              <Route path={paths.activity}>
-                <Activity />
-              </Route>
-              <Route path={paths.error404}>
-                <Error404 />
-              </Route>
-              <Redirect to={paths.error404} />
-            </Switch>
-          </Layout>
-        </BrowserRouter>
-      </ThemeProvider>
-    )
-  }
+export default function App() {
+  return (
+    <ThemeProvider theme={theme}>
+      <BrowserRouter>
+        <Layout>
+          <Switch>
+            <Route path={paths.login}>
+              <Login />
+            </Route>
+            <Route path={paths.faq}>
+              <Faq />
+            </Route>
+            <Route path={paths.mission}>
+              <Mission />
+            </Route>
+            <Route path={paths.terms}>
+              <Terms />
+            </Route>
+            <Route path={paths.model}>
+              <Model />
+            </Route>
+            <Route path={paths.contact}>
+              <Contact />
+            </Route>
+            <Route path={paths.team}>
+              <Team />
+            </Route>
+            <Route path={paths.informationPageX}>
+              <TopicX />
+            </Route>
+            <Route path={paths.home} exact>
+              <Homepage />
+            </Route>
+            <Route path={paths.account} exact>
+              <BackedProjects />
+            </Route>
+            <Route path={paths.myProjects}>
+              <MyProjects />
+            </Route>
+            <Route path={paths.profile}>
+              <Profile />
+            </Route>
+            <Route path={paths.activity}>
+              <Activity />
+            </Route>
+            <Route path={paths.error404}>
+              <Error404 />
+            </Route>
+            <Redirect to={paths.error404} />
+          </Switch>
+        </Layout>
+      </BrowserRouter>
+    </ThemeProvider>
+  )
 }
-
-const mapStateToProps = ({ user }) => ({ user })
-
-export default connect(mapStateToProps, { fetchAndSetUserInfo })(App)
