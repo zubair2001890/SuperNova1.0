@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withStyles, Typography } from '@material-ui/core'
+import { withAuth0 } from '@auth0/auth0-react'
 import Nav from './Nav'
 import { fetchProjects } from '../../../store/slices/projects'
 
@@ -48,8 +49,8 @@ export class Layout extends Component {
   }
 
   render() {
-    const { children, title, user, classes } = this.props
-    if (!user) return <p>Please sign in.</p>
+    const { children, title, classes, auth0 } = this.props
+    if (!auth0.isAuthenticated) return <p>Please sign in.</p>
     return (
       <div className={classes.layout}>
         <Typography variant="h1" className={classes.title}>
@@ -69,8 +70,10 @@ export class Layout extends Component {
   }
 }
 
-const mapStateToProps = ({ user, projects }) => ({ user, projects })
+const mapStateToProps = ({ projects }) => ({ projects })
 
 const StyledPage = withStyles(styles, { withTheme: true })(Layout)
 
-export default connect(mapStateToProps, { fetchProjects })(StyledPage)
+const WithAuthentication = withAuth0(StyledPage)
+
+export default connect(mapStateToProps, { fetchProjects })(WithAuthentication)

@@ -2,10 +2,9 @@ import React, { useState, useEffect } from 'react'
 import clsx from 'clsx'
 import { Link as RouterLink } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles'
-import { AppBar, IconButton, Toolbar, Button, Avatar } from '@material-ui/core'
+import { AppBar, IconButton, Toolbar, Button } from '@material-ui/core'
 import { Menu as MenuIcon, Close as CloseIcon } from '@material-ui/icons'
 import { useAuth0 } from '@auth0/auth0-react'
-import { connect } from 'react-redux'
 
 import LeftDrawer from './components/LeftDrawer'
 import AvatarDropdown from './components/Avatar'
@@ -66,7 +65,7 @@ const useStyles = makeStyles((theme) => ({
 
 const getInitialLogoSrc = (darkTheme) => (darkTheme ? logoWhite : logoBlack)
 
-function Header({ darkTheme = true, user }) {
+export default function Header({ darkTheme = true }) {
   const classes = useStyles({ darkTheme })
   const [drawerState, setDrawerState] = useState({
     left: false,
@@ -153,22 +152,23 @@ function Header({ darkTheme = true, user }) {
             >
               EXPLORE
             </Button>
-            <Button
-              color="inherit"
-              onClick={() => (isAuthenticated ? logout() : loginWithRedirect())}
-              size="large"
-              className={classes.appBarRightLink}
-            >
-              {!isAuthenticated && 'LOG IN'}
-            </Button>
-            {user && <AvatarDropdown />}
+            {isAuthenticated ? (
+              <AvatarDropdown />
+            ) : (
+              <Button
+                color="inherit"
+                onClick={() =>
+                  isAuthenticated ? logout() : loginWithRedirect()
+                }
+                size="large"
+                className={classes.appBarRightLink}
+              >
+                LOG IN
+              </Button>
+            )}
           </div>
         </Toolbar>
       </AppBar>
     </>
   )
 }
-
-const mapStateToProps = ({ user }) => ({ user })
-
-export default connect(mapStateToProps)(Header)

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { connect } from 'react-redux'
 import { makeStyles } from '@material-ui/core'
 import Links from './Links'
+import { useAuth0 } from '@auth0/auth0-react'
 
 const useStyles = makeStyles((theme) => {
   const size = '3.875rem'
@@ -21,22 +21,17 @@ const useStyles = makeStyles((theme) => {
   }
 })
 
-function Avatar({ user }) {
+function Avatar() {
+  const { user } = useAuth0()
   const [isOpen, setIsOpen] = useState(false)
   const classes = useStyles()
   const toggleOpen = () => setIsOpen(!isOpen)
   return (
     <button onClick={toggleOpen} className={classes.avatar}>
-      <img
-        src={user.imageURL}
-        alt={user.first_Name}
-        className={classes.image}
-      />
+      <img src={user.picture} alt={user.given_name} className={classes.image} />
       {isOpen && <Links />}
     </button>
   )
 }
 
-const mapStateToProps = ({ user }) => ({ user })
-
-export default connect(mapStateToProps)(Avatar)
+export default Avatar

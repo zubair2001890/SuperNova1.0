@@ -2,6 +2,7 @@ import React from 'react'
 import paths from '../../../../../../../constants/paths'
 import Item from './Item'
 import { makeStyles } from '@material-ui/core'
+import Logout from './Logout'
 
 const linksList = [
   {
@@ -15,10 +16,6 @@ const linksList = [
   {
     to: paths.activity,
     children: 'Activity',
-  },
-  {
-    to: paths.logout,
-    children: 'Logout',
   },
 ]
 
@@ -38,11 +35,18 @@ const useStyles = makeStyles(() => {
       minWidth: '10rem',
       marginTop: 0,
       borderRadius: '0.25rem',
+      display: 'flex',
+      flexDirection: 'column',
     },
   }
 })
 
 export default function Links() {
   const classes = useStyles()
-  return <ul className={classes.list}>{renderLinks()}</ul>
+  return (
+    <ul className={classes.list}>
+      {renderLinks()}
+      <Logout />
+    </ul>
+  )
 }

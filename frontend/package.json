@@ -2,7 +2,6 @@
   "name": "supernova-frontend",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:5000",
   "dependencies": {
     "@auth0/auth0-react": "^1.0.0",
     "@material-ui/core": "^4.10.2",

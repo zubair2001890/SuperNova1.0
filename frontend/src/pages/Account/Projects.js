@@ -1,4 +1,6 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { withAuth0 } from '@auth0/auth0-react'
 import { makeStyles } from '@material-ui/core'
 import ProjectCard from '../../components/ProjectCard'
 import Body from '../../components/ProjectCard/components/Body'
@@ -36,11 +38,18 @@ const renderProject = (classes) => (projectData, index) => (
 const renderProjects = (projects, classes) =>
   projects.map(renderProject(classes))
 
-export default function Projects({ projects }) {
+function Projects({ projects, filterProjects, auth0 }) {
   const classes = useStyles()
+  const filteredProjects = filterProjects(auth0.user, projects)
   return (
     <div className={classes.projects}>
-      {projects && renderProjects(projects, classes)}
+      {projects && renderProjects(filteredProjects, classes)}
     </div>
   )
 }
+
+const WithAuth = withAuth0(Projects)
+
+const mapStateToProps = ({ projects }) => ({ projects: projects.data })
+
+export default connect(mapStateToProps)(WithAuth)

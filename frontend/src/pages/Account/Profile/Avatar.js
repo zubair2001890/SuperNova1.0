@@ -12,14 +12,11 @@ const styles = {
 
 export class Avatar extends Component {
   render() {
-    const { classes, user } = this.props
-    return (
-      <img
-        src={user.imageURL}
-        alt={user.first_Name}
-        className={classes.avatar}
-      />
-    )
+    const {
+      classes,
+      user: { picture, given_name },
+    } = this.props
+    return <img src={picture} alt={given_name} className={classes.avatar} />
   }
 }
 

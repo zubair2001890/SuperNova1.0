@@ -16,7 +16,7 @@ export class Bio extends Component {
     return (
       <section className={classes.bio}>
         <p>Bio:</p>
-        <p>{user.bio}</p>
+        <p>{user.bio || 'No biography'}</p>
       </section>
     )
   }

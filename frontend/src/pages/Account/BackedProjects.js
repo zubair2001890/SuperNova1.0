@@ -1,19 +1,9 @@
 import React from 'react'
 import Projects from './Projects'
 import Layout from './Layout'
-import { connect } from 'react-redux'
-import { mapStateToProps } from '../../helpers/filterProjects'
-
-function BackedProjects(props) {
-  return (
-    <Layout title="Projects I've donated to">
-      <Projects {...props} />
-    </Layout>
-  )
-}
 
 const getIfNameInUser = (user) => (backerName) => {
-  return user.first_Name === backerName
+  return user.given_name === backerName
 }
 
 const getIfUserInBackers = (backers, user) =>
@@ -26,4 +16,10 @@ const getIfBackedProject = (user) => (project) => {
 const getBackedProjects = (user, projects) =>
   projects.filter(getIfBackedProject(user))
 
-export default connect(mapStateToProps(getBackedProjects))(BackedProjects)
+export default function BackedProjects(props) {
+  return (
+    <Layout title="Projects I've donated to">
+      <Projects filterProjects={getBackedProjects} {...props} />
+    </Layout>
+  )
+}

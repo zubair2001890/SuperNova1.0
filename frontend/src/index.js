@@ -7,6 +7,9 @@ import { Provider } from 'react-redux'
 import { Auth0Provider } from '@auth0/auth0-react'
 import * as serviceWorker from './serviceWorker'
 
+console.log(process.env.REACT_APP_AUTH0_DOMAIN)
+console.log(process.env.REACT_APP_AUTH0_CLIENTID)
+
 ReactDOM.render(
   <Auth0Provider
     domain={process.env.REACT_APP_AUTH0_DOMAIN}

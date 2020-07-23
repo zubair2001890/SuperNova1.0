@@ -24,11 +24,19 @@ const styles = (theme) => ({
 export class Info extends Component {
   render() {
     const { classes, user } = this.props
+    const {
+      given_name,
+      family_name,
+      university = 'None',
+      field_name = 'None',
+    } = user
     return (
       <div className={classes.info}>
-        <Item>{user.first_Name}</Item>
-        <Item>University: {user.university}</Item>
-        <Item>Field: {user.field_name}</Item>
+        <Item>
+          {given_name} {family_name}
+        </Item>
+        <Item>University: {university}</Item>
+        <Item>Field: {field_name}</Item>
       </div>
     )
   }

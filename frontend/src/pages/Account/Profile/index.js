@@ -7,6 +7,7 @@ import Avatar from './Avatar'
 import Bio from './Bio'
 import Edit from './Edit'
 import Stats from './Stats'
+import { withAuth0 } from '@auth0/auth0-react'
 
 const styles = (theme) => ({
   header: {
@@ -18,7 +19,8 @@ const styles = (theme) => ({
 
 export class Profile extends Component {
   render() {
-    const { classes, user } = this.props
+    const { classes, auth0 } = this.props
+    const { user } = auth0
     return (
       <Layout title="About Me:">
         <div className={classes.header}>
@@ -37,4 +39,6 @@ const StyledPage = withStyles(styles, { withTheme: true })(Profile)
 
 const mapStateToProps = ({ user }) => ({ user })
 
-export default connect(mapStateToProps)(StyledPage)
+const WithAuth = withAuth0(StyledPage)
+
+export default connect(mapStateToProps)(WithAuth)
