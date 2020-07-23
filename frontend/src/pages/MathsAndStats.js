@@ -52,12 +52,21 @@ const useStyles = makeStyles((theme) => ({
 function Item(props) {
   return (
     <>
-      <Typography variant="h2" className={props.titleStyle}>
-        {props.item.title}
-      </Typography>
-      <Constellation subfield={props.item.name2} top="calc(50% + 10px)" left="calc(50% - 550px)" />
-      <Constellation subfield={props.item.name1} top="calc(50% - 450px)" left="calc(50% - 450px)" />
-      <Constellation subfield={props.item.name3} top="calc(50%)" left="calc(50% + 250px)" />
+      <Constellation
+        subfield={props.item.name2}
+        top="calc(60% - 20px)"
+        left="calc(10% + 50px)"
+      />
+      <Constellation
+        subfield={props.item.name1}
+        top="calc(5% + 10px)"
+        left="calc(15% + 50px)"
+      />
+      <Constellation
+        subfield={props.item.name3}
+        top="calc(55%)"
+        left="calc(60%)"
+      />
     </>
   );
 }
@@ -68,19 +77,16 @@ export default () => {
 
   var items = [
     {
-      title: "MATHEMATICS AND STATICTICS",
       name1: "MATHEMATICS AND STATICTICS 1",
       name2: "MATHEMATICS AND STATICTICS 2",
       name3: "MATHEMATICS AND STATICTICS 3",
     },
     {
-      title: "MATHEMATICS AND STATICTICS",
       name1: "MATHEMATICS AND STATICTICS 4",
       name2: "MATHEMATICS AND STATICTICS 5",
       name3: "MATHEMATICS AND STATICTICS 6",
     },
     {
-      title: "MATHEMATICS AND STATICTICS",
       name1: "MATHEMATICS AND STATICTICS 7",
       name2: "MATHEMATICS AND STATICTICS 8",
       name3: "MATHEMATICS AND STATICTICS 9",
@@ -115,6 +121,9 @@ export default () => {
                 />
               ))}
             </Carousel>
+            <Typography variant="h2" className={classes.fieldTitle}>
+              MATHEMATICS AND STATISTICS
+            </Typography>
           </div>
         </div>
       </div>

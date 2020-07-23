@@ -52,12 +52,21 @@ const useStyles = makeStyles((theme) => ({
 function Item(props) {
   return (
     <>
-      <Typography variant="h2" className={props.titleStyle}>
-        {props.item.title}
-      </Typography>
-      <Constellation subfield={props.item.name2} top="calc(50% + 10px)" left="calc(50% - 550px)" />
-      <Constellation subfield={props.item.name1} top="calc(50% - 450px)" left="calc(50% - 450px)" />
-      <Constellation subfield={props.item.name3} top="calc(50%)" left="calc(50% + 250px)" />
+      <Constellation
+        subfield={props.item.name2}
+        top="calc(60% - 20px)"
+        left="calc(10% + 50px)"
+      />
+      <Constellation
+        subfield={props.item.name1}
+        top="calc(5% + 10px)"
+        left="calc(15% + 50px)"
+      />
+      <Constellation
+        subfield={props.item.name3}
+        top="calc(55%)"
+        left="calc(60%)"
+      />
     </>
   );
 }
@@ -68,19 +77,16 @@ export default () => {
 
   var items = [
     {
-      title: "PHYSICS",
       name1: "PHYSICS 1",
       name2: "PHYSICS 2",
       name3: "PHYSICS 3",
     },
     {
-      title: "PHYSICS",
       name1: "PHYSICS 4",
       name2: "PHYSICS 5",
       name3: "PHYSICS 6",
     },
     {
-      title: "PHYSICS",
       name1: "PHYSICS 7",
       name2: "PHYSICS 8",
       name3: "PHYSICS 9",
@@ -115,6 +121,9 @@ export default () => {
                 />
               ))}
             </Carousel>
+            <Typography variant="h2" className={classes.fieldTitle}>
+              PHYSICS
+            </Typography>
           </div>
         </div>
       </div>

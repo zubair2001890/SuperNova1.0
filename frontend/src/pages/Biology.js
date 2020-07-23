@@ -29,7 +29,9 @@ const useStyles = makeStyles((theme) => ({
     height: "100%",
     width: "100%",
     backgroundImage:
-      "url(" + require("../components/Constellation/assets/background/background.png") + ")",
+      "url(" +
+      require("../components/Constellation/assets/background/background.png") +
+      ")",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
     backgroundSize: "cover",
@@ -52,12 +54,37 @@ const useStyles = makeStyles((theme) => ({
 function Item(props) {
   return (
     <>
-      <Typography variant="h2" className={props.titleStyle}>
-        {props.item.title}
-      </Typography>
-      <Constellation subfield={props.item.name2} top="calc(50% + 10px)" left="calc(50% - 550px)" />
-      <Constellation subfield={props.item.name1} top="calc(50% - 450px)" left="calc(50% - 450px)" />
-      <Constellation subfield={props.item.name3} top="calc(50%)" left="calc(50% + 250px)" />
+      {/* <Constellation
+        subfield={props.item.name2}
+        top="calc(60% - 20px)"
+        left="calc(10% + 50px)"
+      />
+      <Constellation
+        subfield={props.item.name1}
+        top="calc(5% + 10px)"
+        left="calc(15% + 50px)"
+      />
+      <Constellation
+        subfield={props.item.name3}
+        top="calc(50%)"
+        left="calc(60%)"
+      />
+       */}
+       <Constellation
+        subfield={props.item.name2}
+        top={40}
+        left={400}
+      />
+      <Constellation
+        subfield={props.item.name1}
+        top={500}
+        left={300}
+      />
+      <Constellation
+        subfield={props.item.name3}
+        top={450}
+        left={1200}
+      />
     </>
   );
 }
@@ -68,19 +95,16 @@ export default () => {
 
   var items = [
     {
-      title: "BIOLOGY",
       name1: "BIOLOGY 1",
       name2: "BIOLOGY 2",
       name3: "BIOLOGY 3",
     },
     {
-      title: "BIOLOGY",
       name1: "BIOLOGY 4",
       name2: "BIOLOGY 5",
       name3: "BIOLOGY 6",
     },
     {
-      title: "BIOLOGY",
       name1: "BIOLOGY 7",
       name2: "BIOLOGY 8",
       name3: "BIOLOGY 9",
@@ -115,6 +139,9 @@ export default () => {
                 />
               ))}
             </Carousel>
+            <Typography variant="h2" className={classes.fieldTitle}>
+              BIOLOGY
+            </Typography>
           </div>
         </div>
       </div>
