@@ -20,6 +20,7 @@
     "moment": "^2.27.0",
     "mongoose": "^5.9.24",
     "mysql": "^2.18.1",
+    "stripe": "^8.77.0",
     "uuid": "^3.3.3"
   },
   "devDependencies": {

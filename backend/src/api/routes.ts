@@ -1,7 +1,9 @@
-import  userInteractions from './routes/userInteractionsRoutes';
+import paymentRoutes from './routes/paymentRoutes'
+import  productRoutes from './routes/productRoutes';
 import * as Express from 'express';
 import { Express as IExpress } from 'express';
 
 export default (publicApi: Express.Router, privateApi: Express.Router) => {
-  userInteractions(publicApi, privateApi);
+  paymentRoutes(publicApi, privateApi);
+  productRoutes(publicApi, privateApi);
 }

@@ -11,10 +11,8 @@ export const Material = model('Material', new Schema({
         required: false
     },
     description: {
-        type: String,
+        type: Array,
         required: true,
-        minlength: 1,
-        maxlength: 2000 // An arbitrary number, I think that 2,000 characters should be enough.
     },
     link: {
         type: String,
@@ -23,5 +21,3 @@ export const Material = model('Material', new Schema({
         maxlength: 2000 // An arbitrary number, I think that 2,000 characters should be enough.
     },
 }));
-
-exports.Material = Material;

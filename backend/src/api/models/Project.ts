@@ -65,12 +65,10 @@ export const Project = model('Project', new Schema({
         type: Array,
         required: false,
     },
-    methodsDescription: {
-        type: String,
+    methodDescription: {
+        type: Array,
         required: true,
-        minlength: 1,
-        maxlength: 2000 // An arbitrary number, I thought 2,000 characters should be enough.   
-    },
+        },
     timelineDescription: {
         type: Array,
         required: false,

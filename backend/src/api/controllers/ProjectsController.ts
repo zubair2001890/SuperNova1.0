@@ -2,23 +2,19 @@ import { Request, Response } from 'express';
 import {Material} from '../models/Material'
 import {LabNotes} from '../models/LabNotes'
 import {Project} from '../models/Project';
-import {getFeaturedProject, getAllSubfields, getProjectsByFieldID, getProjectsBySubfieldID, getProjectsByProjectScientistID, getProjectsByProjectID, createProject} from '../mongoQueries'
+import {getFeaturedProject, getAllSubfields, getProjectsByFieldID, getProjectsBySubfieldID, getProjectsByProjectScientistID, getProjectByProjectID} from '../mongoQueries'
 import moment = require('moment');
 
-class UserInteractionsController {
+class ProjectsController {
     constructor() {
     }
 
-    public login = (req: Request, res: Response) => {
-      res.send('Not yet implemented.');
-    }
-
-  public featured = async (req: Request, res: Response) => {
+    public featured = async (req: Request, res: Response) => {
       const featuredProject = await getFeaturedProject();
       res.send(featuredProject);
     }
 
-    public subFieldsByFieldID = async (req: Request, res: Response) {
+    public subFieldsByFieldID = async (req: Request, res: Response) => {
       let fieldID = req.params.field_id
       const subFields = await getAllSubfields(fieldID);
       res.send(subFields);
@@ -40,30 +36,31 @@ class UserInteractionsController {
       }
       else if (req.query.project_id !== undefined)
       {
-        projects = getProjectsByProjectID
+        projects = getProjectByProjectID
       }
       res.send(projects)
   }
 
   public createProject = async (req: Request, res: Response) => {
     let project = new Project({
-      projectName: req.body.project_name,
+      projectName: req.body.project_Name,
       projectDescription: req.body.project_description,
-      startDate: moment(req.body.date_started).format('DD/MM/YYYY'),
+      startDate: moment(new Date(req.body.date_started)).format('DD/MM/YYYY'),
       teamDescription: req.body.team_description,
       methodDescription: req.body.method_description,
+      timelineDescription: req.body.timeline_description,
       projectImage: req.body.project_image,
       goal: req.body.goal,
       projectScientistId: req.body.project_scientist_id,
       fieldID: req.body.field_id,
       subfieldID: req.body.subfield_id,
-      numberBackers: 0, // Hardcoded to 0 initially, as presumably a new project will have 0 backers.
+      numberBackers: 0 // Hardcoded to 0 initially, as presumably a new project will have 0 backers.
       });
          await project.save();
     let projectIDObject = await Project.findById(project._id, '_id').exec();
     let material = new Material({
       projectID: projectIDObject._id,
-      projectDescription: req.body.projectDescription,
+      description: req.body.project_description,
       link: req.body.link
     })
     material.save();    
@@ -78,6 +75,7 @@ class UserInteractionsController {
         {
           console.log(err);
         }
+        //console.log("projectQuery returns: " + docs);
         selectedProject = docs;
     });
     await LabNotes.findById(selectedProject._id, function (err,docs)
@@ -90,16 +88,19 @@ class UserInteractionsController {
   });
     // The following code is to avoid any fields being updated with undefined, as not all the put parameters
     // are necessarily going to be passed over.
-    let projectName = selectedProject.projectName;
-    if (req.body.project_Name !== undefined)
+    if (req.body.lab_notes !== undefined)
     {
-      projectName = req.body.project_name;  
+        this.createLabNotes(selectedProject._id, req.body.lab_notes); // The function needs to be filled out.
+        delete req.body.lab_notes;
     }
-    let projectDescription = selectedProject.projectDescription;  
+    //console.log("projectName = ") + projectName;
+    /*let projectDescription = selectedProject.projectDescription;
+    //console.log("selectedProject.projectDescription = " + selectedProject.projectDescription);  
     if (req.body.project_Description !== undefined)
     {
       projectDescription = req.body.project_Description;
     }
+    //console.log("projectDescription is now " + projectDescription);
     let teamDescription = selectedProject.teamDescription;
     if (req.body.team_description !== undefined)
     {
@@ -148,8 +149,11 @@ class UserInteractionsController {
     {
       projectStatusID = this.statusStringToInt(req.body.status_name);
     }
+    
     let update = 
-    {projectName: projectName,
+    {
+      _id: req.params.project_id,
+      projectName: projectName,
     projectDescription: projectDescription,
   teamDescription: teamDescription,
   methodDescription: methodDescription,
@@ -160,7 +164,35 @@ class UserInteractionsController {
   subfieldID: subfieldID,
       projectStatusID: projectStatusID
 }
-    projectQuery.updateOne(update);
+*/
+    //console.log("projectQuery = " + projectQuery);
+    console.log("update id = " + req.params.project_id);
+    /*Project.update(update, {info: "Project updated using the /updateProject endpoint."}, function (err,affected,resp){
+      if (err)
+      {
+        console.log(err);
+      }
+      console.log("affected = " + affected);
+      console.log("response = " + resp);
+    });
+    */
+   for (let property in req.body) {
+    if (!req.body[property]) delete req.body[property] 
+   }
+   let update = req.body;
+   //update.projectName = update.project_Name;
+   console.log("projectName = " + req.body.projectName);
+   console.log("project_Name = " + req.body.project_Name);
+   //let update = {projectName: "A different project name"};
+   //let update = Object.assign(selectedProject, req.body);
+   let id = req.params.project_id;
+   Project.findByIdAndUpdate(id, update, function (err, result){
+      if (err)
+      {
+        console.log(err);
+      }
+      console.log("Result of update operation = " + result);
+   });
     res.send({}); // Simply sending an empty object as per Apiary.
   }
 
@@ -208,4 +240,4 @@ class UserInteractionsController {
       }
   }
 }
-export default UserInteractionsController;
+export default ProjectsController;

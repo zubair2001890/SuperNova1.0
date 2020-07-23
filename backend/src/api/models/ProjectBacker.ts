@@ -1,7 +1,7 @@
 import { model } from "mongoose";
 import { Schema } from "mongoose";
 
-const ProjectBacker = model('ProjectBacker', new Schema({
+export const ProjectBacker = model('ProjectBacker', new Schema({
     projectID: {
         type: String,
         required: true
@@ -19,5 +19,3 @@ const ProjectBacker = model('ProjectBacker', new Schema({
         required: true
     }
 }));
-
-exports.ProjectBacker = ProjectBacker;

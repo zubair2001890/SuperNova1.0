@@ -3,7 +3,7 @@ import {Schema} from "mongoose";
 
 export const LabNotes = model('LabNotes', new Schema({
     projectID : {
-        type: Number,
+        type: String,
         required: true,
         },
     labnotesText : {
