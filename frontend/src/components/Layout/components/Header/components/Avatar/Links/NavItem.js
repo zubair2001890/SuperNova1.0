@@ -35,21 +35,9 @@ const useStyles = makeStyles({
       backgroundColor: 'white',
     },
   },
-  active: {
-    color: '#FF0000',
-    '&::after': {
-      backgroundColor: '#FF0000',
-    },
-  },
 })
 
 export default function NavItem({ Component, ...other }) {
   const classes = useStyles()
-  return (
-    <Component
-      className={classes.link}
-      activeClassName={classes.active}
-      {...other}
-    />
-  )
+  return <Component className={classes.link} {...other} />
 }
