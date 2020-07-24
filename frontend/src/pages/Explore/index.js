@@ -11,23 +11,29 @@ const useStyles = makeStyles((theme) => ({
     margin: 0,
   },
   pageHeader: {
-    height: 1080,
     width: "100%",
     backgroundImage: "url(" + require("./assets/exploreHome.png") + ")",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
     backgroundSize: "cover",
     display: "block",
+    height: 1080,
+    "@media (max-height:1080px)": {
+      height: "100vh",
+    },
   },
   mockAppBarLayout: {
     ...theme.mixins.appBar,
   },
   fieldLinks: {
     position: "absolute",
-    height: 1080,
     width: "100vw",
     top: 0,
     left: 0,
+    height: 1080,
+    "@media (max-height:1080px)": {
+      height: "100vh",
+    },
   },
   fieldText: {
     position: "relative",
@@ -35,8 +41,6 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     fontFamily: "Montserrat",
     color: "white",
-    fontSize: 30,
-    lineHeight: "37px",
     letterSpacing: "0.09em",
     fontWeight: 700,
     padding: 0,
@@ -44,56 +48,102 @@ const useStyles = makeStyles((theme) => ({
     height: 0,
     overflow: "visible",
     transform: "translate(-50%, -50%)",
+    fontSize: 30,
+    lineHeight: "37px",
+    "@media (max-height:1080px)": {
+      fontSize: "2.78vh",
+      lineHeight: "3.426vh",
+    },
   },
   biologyContainer: {
     position: "absolute",
     top: "calc(50% - 37px/2 - 361px)",
     left: "calc(50% - 161px/2 + 207px)",
+    "@media (max-height:1080px)": {
+      top: "calc(50% - 35.14vh)",
+      left: "calc(50% + 11.71vh)",
+    },
   },
   socialSciencesContainer: {
     position: "absolute",
     top: "calc(50% - 74px/2 - 204px)",
     left: "calc(50% - 176px/2 + 414px)",
+    "@media (max-height:1080px)": {
+      top: "calc(50% - 22.31vh)",
+      left: "calc(50% + 30.19vh)",
+    },
   },
   physicsContainer: {
     position: "absolute",
     top: "calc(50% - 37px/2 + 6px)",
     left: "calc(50% - 152px/2 + 522px)",
+    "@media (max-height:1080px)": {
+      top: "calc(50% - 1.16vh)",
+      left: "calc(50% + 41.23vh)",
+    },
   },
   mathsStatsContainer: {
     position: "absolute",
     top: "calc(50% - 111px/2 + 307px)",
     left: "calc(50% - 264px/2 + 500px)",
+    "@media (max-height:1080px)": {
+      top: "calc(50% + 23.29vh)",
+      left: "calc(50% + 34.07vh)",
+    },
   },
   spaceSciencesContainer: {
     position: "absolute",
     top: "calc(50% - 74px/2 + 445px)",
     left: "calc(50% - 176px/2 + 220px)",
+    "@media (max-height:1080px)": {
+      top: "calc(50% + 37.78vh)",
+      left: "calc(50% + 12.22vh)",
+    },
   },
   computerScienceContainer: {
     position: "absolute",
     top: "calc(50% - 74px/2 + 445px)",
     left: "calc(50% - 200px/2 - 24px)",
+    "@media (max-height:1080px)": {
+      top: "calc(50% + 37.78vh)",
+      left: "calc(50% - 11.48vh)",
+    },
   },
   engineeringTechnologyContainer: {
     position: "absolute",
     top: "calc(50% - 111px/2 + 307px)",
     left: "calc(50% - 260px/2 - 238px)",
+    "@media (max-height:1080px)": {
+      top: "calc(50% + 23.29vh)",
+      left: "calc(50% - 34.07vh)",
+    },
   },
   earthSciencesContainer: {
     position: "absolute",
     top: "calc(50% - 74px/2 + 24.5px)",
     left: "calc(50% - 176px/2 - 358px)",
+    "@media (max-height:1080px)": {
+      top: "calc(50% - 1.16vh)",
+      left: "calc(50% - 41.23vh)",
+    },
   },
   chemistryContainer: {
     position: "absolute",
     top: "calc(50% - 37px/2 - 222.5px)",
     left: "calc(50% - 206px/2 - 223px)",
+    "@media (max-height:1080px)": {
+      top: "calc(50% - 22.31vh)",
+      left: "calc(50% - 30.19vh)",
+    },
   },
   medicineContainer: {
     position: "absolute",
     top: "calc(50% - 37px/2 - 361px)",
     left: "calc(50% - 179px/2 - 37px)",
+    "@media (max-height:1080px)": {
+      top: "calc(50% - 35.14vh)",
+      left: "calc(50% - 11.71vh)",
+    },
   },
   center: {
     margin: "0 auto",
