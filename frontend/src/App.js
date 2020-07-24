@@ -1,23 +1,24 @@
-import React from 'react'
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
-import { ThemeProvider } from '@material-ui/core/styles'
-import Layout from './components/Layout'
-import Homepage from './pages/Homepage'
-import Login from './pages/Login'
-import Error404 from './pages/Error404'
-import Faq from './pages/Faq'
-import paths from './constants/paths'
-import theme from './theme'
-import Mission from './pages/Mission'
-import Terms from './pages/Terms'
-import Model from './pages/Model'
-import Contact from './pages/Contact'
-import Team from './pages/Team'
-import TopicX from './pages/TopicX'
-import MyProjects from './pages/Account/MyProjects'
-import BackedProjects from './pages/Account/BackedProjects'
-import Profile from './pages/Account/Profile'
-import Activity from './pages/Account/Activity'
+import React from "react";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { ThemeProvider } from "@material-ui/core/styles";
+
+import Layout from "./components/Layout";
+import Homepage from "./pages/Homepage";
+import Login from "./pages/Login";
+import Error404 from "./pages/Error404";
+import Faq from "./pages/Faq";
+import paths from "./constants/paths";
+import theme from "./theme";
+import Mission from "./pages/Mission";
+import Terms from "./pages/Terms";
+import Model from "./pages/Model";
+import Contact from "./pages/Contact";
+import Team from "./pages/Team";
+import TopicX from "./pages/TopicX";
+import MyProjects from "./pages/Account/MyProjects";
+import BackedProjects from "./pages/Account/BackedProjects";
+import Profile from "./pages/Account/Profile";
+import Activity from "./pages/Account/Activity";
 
 export default function App() {
   return (
@@ -72,5 +73,5 @@ export default function App() {
         </Layout>
       </BrowserRouter>
     </ThemeProvider>
-  )
+  );
 }

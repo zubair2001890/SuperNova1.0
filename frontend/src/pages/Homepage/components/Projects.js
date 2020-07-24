@@ -1,28 +1,28 @@
-import React from 'react'
-import { makeStyles, Typography, CircularProgress } from '@material-ui/core'
-import ProjectCard from '../../../components/ProjectCard'
-import Body from '../../../components/ProjectCard/components/Body'
+import React from "react";
+import { makeStyles, Typography, CircularProgress } from "@material-ui/core";
+import ProjectCard from "../../../components/ProjectCard";
+import Body from "../../../components/ProjectCard/components/Body";
 
 const useStyles = makeStyles(() => ({
-  sectionContainer: { minHeight: '100vh' },
+  sectionContainer: { minHeight: "100vh" },
   sectionTitle: {
-    color: 'white',
-    textAlign: 'center',
-    letterSpacing: '0.09em',
-    marginBottom: '10rem',
+    color: "white",
+    textAlign: "center",
+    letterSpacing: "0.09em",
+    marginBottom: "10rem",
   },
   projectCardsGrid: {
-    display: 'flex',
-    width: '100vw',
-    justifyContent: 'center',
+    display: "flex",
+    width: "100vw",
+    justifyContent: "center",
   },
   card: {
-    margin: '1rem',
+    margin: "1rem",
   },
-}))
+}));
 
 export default ({ projectsData, projectsLoading }) => {
-  const classes = useStyles()
+  const classes = useStyles();
   return (
     <div className={classes.sectionContainer}>
       <Typography variant="h2" className={classes.sectionTitle}>
@@ -42,5 +42,5 @@ export default ({ projectsData, projectsLoading }) => {
           ))}
       </div>
     </div>
-  )
-}
+  );
+};

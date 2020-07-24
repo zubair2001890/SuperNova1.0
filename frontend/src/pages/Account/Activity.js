@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
-import Layout from './Layout'
+import React, { Component } from "react";
+import Layout from "./Layout";
 
 export class Activity extends Component {
   render() {
-    return <Layout title="My comments:"></Layout>
+    return <Layout title="My comments:"></Layout>;
   }
 }
 
-export default Activity
+export default Activity;

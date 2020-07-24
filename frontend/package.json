@@ -48,5 +48,9 @@
   },
   "devDependencies": {
     "json-server": "^0.16.1"
+  },
+  "prettier": {
+    "singleQuote": false,
+    "semi": true
   }
 }
