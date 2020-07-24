@@ -3,8 +3,8 @@ import { makeStyles } from '@material-ui/core'
 import Links from './Links'
 import { useAuth0 } from '@auth0/auth0-react'
 
-const useStyles = makeStyles((theme) => {
-  const size = '3.875rem'
+const useStyles = makeStyles(() => {
+  const avatarSize = '3.875rem'
   return {
     avatar: {
       border: 0,
@@ -14,8 +14,8 @@ const useStyles = makeStyles((theme) => {
       position: 'relative',
     },
     image: {
-      width: size,
-      height: size,
+      width: avatarSize,
+      height: avatarSize,
       borderRadius: '50%',
     },
   }
