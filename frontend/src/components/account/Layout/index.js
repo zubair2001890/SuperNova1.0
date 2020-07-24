@@ -61,12 +61,12 @@ export class Layout extends Component {
   };
 
   render() {
-    const { children, classes, auth0, Nav } = this.props;
+    const { children, classes, auth0, Nav, mainTitle } = this.props;
     if (!auth0.isAuthenticated) return <LogIn />;
     return (
       <div className={classes.layout}>
         <Typography variant="h1" className={classes.title}>
-          My Account
+          {mainTitle}
         </Typography>
         <div className={classes.container}>
           <Nav />

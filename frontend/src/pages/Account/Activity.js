@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-import Layout from "../../components/account/Layout";
-import MainNav from "../../components/account/MainNav";
+import Layout from "./Layout";
 
 export class Activity extends Component {
   render() {
-    return <Layout title="My comments:" Nav={MainNav}></Layout>;
+    return <Layout title="My comments:"></Layout>;
   }
 }
 
