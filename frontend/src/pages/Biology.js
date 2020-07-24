@@ -2,8 +2,10 @@ import React, { useEffect } from "react";
 import { makeStyles, Typography } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 import { setDarkTheme as setPageDarkTheme } from "../store/slices/page";
-import Carousel from "react-material-ui-carousel";
+// import Carousel from "react-material-ui-carousel";
 import Constellation from "../components/Constellation";
+import "./carousel-styles.css"; // requires a loader
+import { Carousel } from "react-responsive-carousel";
 
 const useStyles = makeStyles((theme) => ({
   mockAppBarLayout: {
@@ -38,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
   },
   carouselSlide: {
     position: "relative",
-    height: "100%",
+    height: "100vh",
     top: 0,
   },
   fieldTitle: {
@@ -54,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
 function Item(props) {
   return (
     <>
-       <Constellation
+      <Constellation
         subfield={props.item.name2}
         top="calc(60% - 20px)"
         left="calc(10% + 50px)"
@@ -107,7 +109,7 @@ export default () => {
       <div className={classes.pageContainer}>
         <div className={classes.pageHeader}>
           <div className={classes.mockAppBarLayout} />
-          <div className={classes.carouselContainer}>
+          {/* <div className={classes.carouselContainer}>
             <Carousel
               autoPlay={false}
               animation={"slide"}
@@ -122,6 +124,49 @@ export default () => {
                   titleStyle={classes.fieldTitle}
                 />
               ))}
+            </Carousel>
+            <Typography variant="h2" className={classes.fieldTitle}>
+              BIOLOGY
+            </Typography>
+          </div> */}
+          <div className={classes.carouselContainer}>
+            <Carousel
+              showArrows={true}
+              showStatus={false}
+              showIndicators={false}
+              infiniteLoop={true}
+              showThumbs={false}
+              autoPlay={false}
+              useKeyboardArrows={true}
+              className={classes.carousel}
+            >
+              <div className={classes.carouselSlide}>
+                {
+                  <Item
+                    item={items[0]}
+                    className={classes.carouselSlide}
+                    titleStyle={classes.fieldTitle}
+                  />
+                }
+              </div>
+              <div>
+              {
+                  <Item
+                    item={items[1]}
+                    className={classes.carouselSlide}
+                    titleStyle={classes.fieldTitle}
+                  />
+                }
+              </div>
+              <div>
+              {
+                  <Item
+                    item={items[2]}
+                    className={classes.carouselSlide}
+                    titleStyle={classes.fieldTitle}
+                  />
+                }
+              </div>
             </Carousel>
             <Typography variant="h2" className={classes.fieldTitle}>
               BIOLOGY
