@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import { makeStyles, Typography } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 import { setDarkTheme as setPageDarkTheme } from "../store/slices/page";
-import Carousel from "react-material-ui-carousel";
 import Constellation from "../components/Constellation";
+import HeaderCarousel from "../components/HeaderCarousel";
 
 const useStyles = makeStyles((theme) => ({
   mockAppBarLayout: {
@@ -29,14 +29,16 @@ const useStyles = makeStyles((theme) => ({
     height: "100%",
     width: "100%",
     backgroundImage:
-      "url(" + require("../components/Constellation/assets/background/background.png") + ")",
+      "url(" +
+      require("../components/Constellation/assets/background/background.png") +
+      ")",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
     backgroundSize: "cover",
   },
   carouselSlide: {
     position: "relative",
-    height: "100%",
+    height: "100vh",
     top: 0,
   },
   fieldTitle: {
@@ -64,7 +66,7 @@ function Item(props) {
       />
       <Constellation
         subfield={props.item.name3}
-        top="calc(55%)"
+        top="calc(50%)"
         left="calc(60%)"
       />
     </>
@@ -77,19 +79,19 @@ export default () => {
 
   var items = [
     {
-      name1: "MATHEMATICS AND STATICTICS 1",
-      name2: "MATHEMATICS AND STATICTICS 2",
-      name3: "MATHEMATICS AND STATICTICS 3",
+      name1: "MATHEMATICS AND STATISTICS 1",
+      name2: "MATHEMATICS AND STATISTICS 2",
+      name3: "MATHEMATICS AND STATISTICS 3",
     },
     {
-      name1: "MATHEMATICS AND STATICTICS 4",
-      name2: "MATHEMATICS AND STATICTICS 5",
-      name3: "MATHEMATICS AND STATICTICS 6",
+      name1: "MATHEMATICS AND STATISTICS 4",
+      name2: "MATHEMATICS AND STATISTICS 5",
+      name3: "MATHEMATICS AND STATISTICS 6",
     },
     {
-      name1: "MATHEMATICS AND STATICTICS 7",
-      name2: "MATHEMATICS AND STATICTICS 8",
-      name3: "MATHEMATICS AND STATICTICS 9",
+      name1: "MATHEMATICS AND STATISTICS 7",
+      name2: "MATHEMATICS AND STATISTICS 8",
+      name3: "MATHEMATICS AND STATISTICS 9",
     },
   ];
 
@@ -100,27 +102,25 @@ export default () => {
     };
   }, [dispatch]);
 
+  const content = [
+    <div className={classes.carouselSlide}>
+      {<Item item={items[0]} titleStyle={classes.fieldTitle} />}
+    </div>,
+    <div className={classes.carouselSlide}>
+      {<Item item={items[1]} titleStyle={classes.fieldTitle} />}
+    </div>,
+    <div className={classes.carouselSlide}>
+      {<Item item={items[2]} titleStyle={classes.fieldTitle} />}
+    </div>,
+  ];
+
   return (
     <>
       <div className={classes.pageContainer}>
         <div className={classes.pageHeader}>
           <div className={classes.mockAppBarLayout} />
           <div className={classes.carouselContainer}>
-            <Carousel
-              autoPlay={false}
-              animation={"slide"}
-              navButtonsAlwaysVisible={true}
-              indicators={false}
-              className={classes.carousel}
-            >
-              {items.map((item) => (
-                <Item
-                  item={item}
-                  className={classes.carouselSlide}
-                  titleStyle={classes.fieldTitle}
-                />
-              ))}
-            </Carousel>
+            <HeaderCarousel className={classes.carousel} content={content} />
             <Typography variant="h2" className={classes.fieldTitle}>
               MATHEMATICS AND STATISTICS
             </Typography>
