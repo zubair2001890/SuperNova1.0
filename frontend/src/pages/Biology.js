@@ -2,10 +2,8 @@ import React, { useEffect } from "react";
 import { makeStyles, Typography } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 import { setDarkTheme as setPageDarkTheme } from "../store/slices/page";
-// import Carousel from "react-material-ui-carousel";
 import Constellation from "../components/Constellation";
-import "./carousel-styles.css"; // requires a loader
-import { Carousel } from "react-responsive-carousel";
+import HeaderCarousel from "../components/HeaderCarousel";
 
 const useStyles = makeStyles((theme) => ({
   mockAppBarLayout: {
@@ -104,70 +102,25 @@ export default () => {
     };
   }, [dispatch]);
 
+  const content = [
+    <div className={classes.carouselSlide}>
+      {<Item item={items[0]} titleStyle={classes.fieldTitle} />}
+    </div>,
+    <div className={classes.carouselSlide}>
+      {<Item item={items[1]} titleStyle={classes.fieldTitle} />}
+    </div>,
+    <div className={classes.carouselSlide}>
+      {<Item item={items[2]} titleStyle={classes.fieldTitle} />}
+    </div>,
+  ];
+
   return (
     <>
       <div className={classes.pageContainer}>
         <div className={classes.pageHeader}>
           <div className={classes.mockAppBarLayout} />
-          {/* <div className={classes.carouselContainer}>
-            <Carousel
-              autoPlay={false}
-              animation={"slide"}
-              navButtonsAlwaysVisible={true}
-              indicators={false}
-              className={classes.carousel}
-            >
-              {items.map((item) => (
-                <Item
-                  item={item}
-                  className={classes.carouselSlide}
-                  titleStyle={classes.fieldTitle}
-                />
-              ))}
-            </Carousel>
-            <Typography variant="h2" className={classes.fieldTitle}>
-              BIOLOGY
-            </Typography>
-          </div> */}
           <div className={classes.carouselContainer}>
-            <Carousel
-              showArrows={true}
-              showStatus={false}
-              showIndicators={false}
-              infiniteLoop={true}
-              showThumbs={false}
-              autoPlay={false}
-              useKeyboardArrows={true}
-              className={classes.carousel}
-            >
-              <div className={classes.carouselSlide}>
-                {
-                  <Item
-                    item={items[0]}
-                    className={classes.carouselSlide}
-                    titleStyle={classes.fieldTitle}
-                  />
-                }
-              </div>
-              <div>
-              {
-                  <Item
-                    item={items[1]}
-                    className={classes.carouselSlide}
-                    titleStyle={classes.fieldTitle}
-                  />
-                }
-              </div>
-              <div>
-              {
-                  <Item
-                    item={items[2]}
-                    className={classes.carouselSlide}
-                    titleStyle={classes.fieldTitle}
-                  />
-                }
-              </div>
-            </Carousel>
+            <HeaderCarousel className={classes.carousel} content={content} />
             <Typography variant="h2" className={classes.fieldTitle}>
               BIOLOGY
             </Typography>
