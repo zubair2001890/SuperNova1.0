@@ -17,13 +17,13 @@ function Item(props) {
       />
       <Constellation
         subfield={props.item.name1}
-        top="calc(5% + 10px)"
+        top="calc(5% - 10px)"
         left="calc(15% + 50px)"
       />
       <Constellation
         subfield={props.item.name3}
-        top="calc(50%)"
-        left="calc(60%)"
+        top="calc(54%)"
+        left="calc(65% - 100px)"
       />
     </>
   );

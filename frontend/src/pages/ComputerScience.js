@@ -22,7 +22,7 @@ function Item(props) {
       />
       <Constellation
         subfield={props.item.name3}
-        top="calc(50%)"
+        top="calc(52%)"
         left="calc(60%)"
       />
     </>
