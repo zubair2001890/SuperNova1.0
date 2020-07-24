@@ -19,11 +19,13 @@ import MyProjects from "./pages/Account/MyProjects";
 import BackedProjects from "./pages/Account/BackedProjects";
 import Profile from "./pages/Account/Profile";
 import Activity from "./pages/Account/Activity";
+import ScrollToTop from "./components/ScrollToTop";
 
 export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
+        <ScrollToTop />
         <Layout>
           <Switch>
             <Route path={paths.login}>
