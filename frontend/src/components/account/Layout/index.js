@@ -3,8 +3,7 @@ import { connect } from "react-redux";
 import { withStyles, Typography } from "@material-ui/core";
 import { withAuth0 } from "@auth0/auth0-react";
 
-import Nav from "./Nav";
-import LogIn from "../../Login";
+import LogIn from "../../../pages/Login";
 import { fetchProjects } from "../../../store/slices/projects";
 
 const styles = (theme) => ({
@@ -50,8 +49,19 @@ export class Layout extends Component {
     this.fetchProjects();
   }
 
+  renderPageTitle = () => {
+    const { title, classes } = this.props;
+    return (
+      title && (
+        <Typography variant="h2" className={classes.subtitle}>
+          {title}
+        </Typography>
+      )
+    );
+  };
+
   render() {
-    const { children, title, classes, auth0 } = this.props;
+    const { children, classes, auth0, Nav } = this.props;
     if (!auth0.isAuthenticated) return <LogIn />;
     return (
       <div className={classes.layout}>
@@ -61,9 +71,7 @@ export class Layout extends Component {
         <div className={classes.container}>
           <Nav />
           <div className={classes.content}>
-            <Typography variant="h2" className={classes.subtitle}>
-              {title}
-            </Typography>
+            {this.renderPageTitle()}
             {children}
           </div>
         </div>

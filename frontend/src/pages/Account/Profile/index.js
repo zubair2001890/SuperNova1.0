@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withStyles } from "@material-ui/core";
-import Layout from "../Layout";
+import Layout from "../../../components/account/Layout";
 import Info from "./Info/index";
 import Avatar from "./Avatar";
 import Bio from "./Bio";
 import Edit from "./Edit";
 import Stats from "./Stats";
 import { withAuth0 } from "@auth0/auth0-react";
+import MainNav from "../../../components/account/MainNav";
 
 const styles = (theme) => ({
   header: {
@@ -22,7 +23,7 @@ export class Profile extends Component {
     const { classes, auth0 } = this.props;
     const { user } = auth0;
     return (
-      <Layout title="About Me:">
+      <Layout title="About Me:" Nav={MainNav}>
         <div className={classes.header}>
           <Info user={user} />
           <Avatar user={user} />

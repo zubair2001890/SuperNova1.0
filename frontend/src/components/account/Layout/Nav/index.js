@@ -15,34 +15,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const links = [
-  {
-    to: "/",
-    children: "Backed Projects",
-  },
-  {
-    to: "/my-projects",
-    children: "My Projects",
-  },
-  {
-    to: "/activity",
-    children: "Activity",
-  },
-  {
-    to: "/profile",
-    children: "Profile",
-  },
-];
-
 const renderLink = (linkData, index) => <Item {...linkData} key={index} />;
 
-const renderLinks = () => links.map(renderLink);
+const renderLinks = (links) => links.map(renderLink);
 
-export function Nav() {
+export function Nav({ links }) {
   const classes = useStyles();
   return (
     <nav className={classes.nav}>
-      <ul className={classes.list}>{renderLinks()}</ul>
+      <ul className={classes.list}>{renderLinks(links)}</ul>
     </nav>
   );
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import Projects from "./Projects";
-import Layout from "./Layout";
+import Layout from "../../components/account/Layout";
+import MainNav from "../../components/account/MainNav";
 
 const getIfNameInUser = (user) => (backerName) => {
   return user.given_name === backerName;
@@ -19,7 +20,7 @@ const getBackedProjects = (user, projects) =>
 export default function BackedProjects(props) {
   return (
     <Layout title="Projects I've donated to">
-      <Projects filterProjects={getBackedProjects} {...props} />
+      <Projects filterProjects={getBackedProjects} Nav={MainNav} {...props} />
     </Layout>
   );
 }
