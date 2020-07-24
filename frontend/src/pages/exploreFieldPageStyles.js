@@ -17,12 +17,6 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     height: "100%",
     top: 0,
-    backgroundColor: "rgb(240, 160, 80)",
-  },
-  carousel: {
-    position: "absolute",
-    height: "100%",
-    width: "100%",
     backgroundImage:
       "url(" +
       require("../components/Constellation/assets/background/background.png") +
@@ -30,6 +24,11 @@ const useStyles = makeStyles((theme) => ({
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
     backgroundSize: "cover",
+  },
+  carousel: {
+    position: "absolute",
+    height: "100%",
+    width: "100%",
   },
   carouselSlide: {
     position: "relative",

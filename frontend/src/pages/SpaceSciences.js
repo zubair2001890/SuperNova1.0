@@ -5,6 +5,7 @@ import { setDarkTheme as setPageDarkTheme } from "../store/slices/page";
 import Constellation from "../components/Constellation";
 import HeaderCarousel from "../components/HeaderCarousel";
 import useStyles from "./exploreFieldPageStyles";
+import Media from "react-media";
 
 function Item(props) {
   return (
@@ -75,7 +76,15 @@ export default () => {
         <div className={classes.pageHeader}>
           <div className={classes.mockAppBarLayout} />
           <div className={classes.carouselContainer}>
-            <HeaderCarousel className={classes.carousel} content={content} />
+            <Media
+              query="(min-width: 1200px)"
+              render={() => (
+                <HeaderCarousel
+                  className={classes.carousel}
+                  content={content}
+                />
+              )}
+            />
             <Typography variant="h2" className={classes.fieldTitle}>
               SPACE SCIENCES
             </Typography>
