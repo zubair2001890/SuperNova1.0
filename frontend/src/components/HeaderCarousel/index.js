@@ -14,6 +14,7 @@ export default (props) => {
       useKeyboardArrows={true}
       className={props.className}
     >
+        {/* props.content should be an array of divs */}
       {props.content}
     </Carousel>
   );

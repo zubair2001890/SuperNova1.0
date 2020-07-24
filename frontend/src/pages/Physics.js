@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { setDarkTheme as setPageDarkTheme } from "../store/slices/page";
 import Constellation from "../components/Constellation";
 import HeaderCarousel from "../components/HeaderCarousel";
-import useStyles from "./explorePageStyles";
+import useStyles from "./exploreFieldPageStyles";
 
 function Item(props) {
   return (
