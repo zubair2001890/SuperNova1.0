@@ -1,55 +1,10 @@
 import React, { useEffect } from "react";
-import { makeStyles, Typography } from "@material-ui/core";
+import { Typography } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 import { setDarkTheme as setPageDarkTheme } from "../store/slices/page";
 import Constellation from "../components/Constellation";
 import HeaderCarousel from "../components/HeaderCarousel";
-
-const useStyles = makeStyles((theme) => ({
-  mockAppBarLayout: {
-    ...theme.mixins.appBar,
-  },
-  pageHeader: {
-    height: "100vh",
-    width: "100%",
-  },
-  pageContainer: {
-    position: "relative",
-    margin: 0,
-  },
-  carouselContainer: {
-    position: "absolute",
-    width: "100%",
-    height: "100%",
-    top: 0,
-    backgroundColor: "rgb(240, 160, 80)",
-  },
-  carousel: {
-    position: "absolute",
-    height: "100%",
-    width: "100%",
-    backgroundImage:
-      "url(" +
-      require("../components/Constellation/assets/background/background.png") +
-      ")",
-    backgroundRepeat: "no-repeat",
-    backgroundPosition: "center",
-    backgroundSize: "cover",
-  },
-  carouselSlide: {
-    position: "relative",
-    height: "100vh",
-    top: 0,
-  },
-  fieldTitle: {
-    position: "absolute",
-    color: "white",
-    textAlign: "center",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-  },
-}));
+import useStyles from "./explorePageStyles";
 
 function Item(props) {
   return (
