@@ -24,11 +24,13 @@ import EngineeringAndTech from "./pages/EngineeringAndTech";
 import EarthSciences from "./pages/EarthSciences";
 import Chemistry from "./pages/Chemistry";
 import Medicine from "./pages/Medicine";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
+        <ScrollToTop />
         <Layout>
           <Switch>
             <Route path={paths.login}>
