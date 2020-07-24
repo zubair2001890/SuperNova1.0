@@ -95,12 +95,89 @@ const useStyles = makeStyles((theme) => ({
   subheading: {
     margin: "68px 0",
   },
+  subheadingTitle: {
+    fontFamily: "Montserrat",
+    fontSize: 24,
+    lineHeight: "29px",
+    letterSpacing: "0.01em",
+    fontWeight: 600,
+    marginBottom: "1rem",
+  },
   subheadingParagraph: {
     paddingBottom: 48,
   },
-  labNotes: {
+  scientistName: {
+    fontFamily: "Montserrat",
+    fontSize: 24,
+    lineHeight: "29px",
+    letterSpacing: "-0.004em",
+    fontWeight: 600,
+    marginBottom: "1rem",
+  },
+  scientistTitle: {
+    fontFamily: "Montserrat",
+    fontSize: 20,
+    lineHeight: "24px",
+    letterSpacing: "-0.004em",
+    fontWeight: 600,
+    marginBottom: "2rem",
+  },
+  stageNumber: {
+    fontFamily: "Montserrat",
+    fontSize: 30,
+    lineHeight: "37px",
+    letterSpacing: "-0.004em",
+    fontWeight: 700,
+    marginBottom: "2rem",
+  },
+  stageTarget: {
+    fontFamily: "Montserrat",
+    fontSize: 24,
+    lineHeight: "29px",
+    letterSpacing: "-0.004em",
+    fontWeight: 600,
+    position: "relative",
+    top: -64,
+    textAlign: "end",
+  },
+  stageHeading: {
+    fontFamily: "Montserrat",
+    fontSize: 26,
+    lineHeight: "32px",
+    letterSpacing: "-0.004em",
+    fontWeight: 600,
+    marginBottom: "2rem",
+  },
+  stageSubheading: {
+    fontFamily: "Montserrat",
+    fontSize: 24,
+    lineHeight: "29px",
+    letterSpacing: "-0.004em",
+    fontWeight: 600,
+    marginBottom: "2rem",
+  },
+  stageSubheading2: {
+    fontFamily: "Montserrat",
+    fontSize: 20,
+    lineHeight: "24px",
+    letterSpacing: "-0.004em",
+    fontWeight: 600,
+    marginBottom: "2rem",
+  },
+  timePosted: {
+    fontFamily: "Montserrat",
+    fontSize: 20,
+    lineHeight: "24px",
+    letterSpacing: "-0.004em",
+    fontWeight: 600,
+    marginBottom: "2rem",
+  },
+  containerRelative: {
     position: "relative",
     top: 100,
+  },
+  notesEntry: {
+    marginBottom: theme.spacing(6),
   },
   methods: {
     position: "relative",
@@ -179,7 +256,7 @@ export default function ProjectX() {
         <TabPanel value={value} index={0}>
           <div className={classes.center}>
             <Typography variant="h1" className={classes.pageTitle}>
-              {ProjectMockData[0].projectName}
+              This is where the project title goes.
             </Typography>
             <Grid container direction="row" className={classes.headerGrid}>
               <Grid item className={classes.imageContainer}>
@@ -191,7 +268,12 @@ export default function ProjectX() {
               </Grid>
               <Grid item className={classes.projectDetails}>
                 <Typography variant="h2" style={{ letterSpacing: "0.09em" }}>
-                  £2,048
+                  {`${new Intl.NumberFormat("en-EN", {
+                    style: "currency",
+                    currency: "GBP",
+                    maximumFractionDigits: 0,
+                    minimumFractionDigits: 0,
+                  }).format(2048)}`}
                 </Typography>
                 <Typography
                   variant="h3"
@@ -203,7 +285,14 @@ export default function ProjectX() {
                     marginBottom: 24,
                   }}
                 >
-                  Raised of £8,192 goal
+                  Raised of{" "}
+                  {`${new Intl.NumberFormat("en-EN", {
+                    style: "currency",
+                    currency: "GBP",
+                    maximumFractionDigits: 0,
+                    minimumFractionDigits: 0,
+                  }).format(8192)}`}{" "}
+                  goal
                 </Typography>
                 <Typography
                   variant="h3"
@@ -214,7 +303,7 @@ export default function ProjectX() {
                     fontWeight: 700,
                   }}
                 >
-                  25% complete
+                  25% complete (Stage 1)
                 </Typography>
                 <Box className={classes.fundsProgress}>
                   <LinearProgress
@@ -270,14 +359,8 @@ export default function ProjectX() {
             <Typography variant="h2" className={classes.subheading}>
               About this Project
             </Typography>
-            <Typography variant="body1" className={classes.subheadingParagraph}>
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum."
+            <Typography component="h3" className={classes.subheadingTitle}>
+              Project aims:
             </Typography>
             <Typography variant="body1" className={classes.subheadingParagraph}>
               "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -287,6 +370,21 @@ export default function ProjectX() {
               reprehenderit in voluptate velit esse cillum dolore eu fugiat
               nulla pariatur. Excepteur sint occaecat cupidatat non proident,
               sunt in culpa qui officia deserunt mollit anim id est laborum."
+            </Typography>
+            <Typography component="h3" className={classes.subheadingTitle}>
+              The Scientific Context of the Project:
+            </Typography>
+            <Typography variant="body1" className={classes.subheadingParagraph}>
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+              sunt in culpa qui officia deserunt mollit anim id est laborum."
+            </Typography>
+            <Typography component="h3" className={classes.subheadingTitle}>
+              Why the Scientist believes the research is important / valuable:
             </Typography>
             <Typography variant="body1" className={classes.subheadingParagraph}>
               "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -300,6 +398,54 @@ export default function ProjectX() {
             <Typography variant="h2" className={classes.subheading}>
               The Scientists
             </Typography>
+            <Typography component="h5" className={classes.scientistName}>
+              Hugh Horowitz
+            </Typography>
+            <Typography component="h6" className={classes.scientistTitle}>
+              Project Leader
+            </Typography>
+            <Typography variant="body1" className={classes.subheadingParagraph}>
+              "I've been researching stars for 24 years. This project is my
+              second in the Berlin Astrophysics department. I'm excited about
+              this project beacause..."
+            </Typography>
+            <Typography component="h5" className={classes.scientistName}>
+              Arthur Franklin
+            </Typography>
+            <Typography component="h6" className={classes.scientistTitle}>
+              Theoretical advisor
+            </Typography>
+            <Typography variant="body1" className={classes.subheadingParagraph}>
+              "I've been researching stars for 24 years. This project is my
+              second in the Berlin Astrophysics department. I'm excited about
+              this project beacause..."
+            </Typography>
+            <Typography component="h5" className={classes.scientistName}>
+              Jada Williams
+            </Typography>
+            <Typography component="h6" className={classes.scientistTitle}>
+              Observatory operator
+            </Typography>
+            <Typography variant="body1" className={classes.subheadingParagraph}>
+              "I've been researching stars for 24 years. This project is my
+              second in the Berlin Astrophysics department. I'm excited about
+              this project beacause..."
+            </Typography>
+            <Typography variant="h2" className={classes.subheading}>
+              Timeline and Budget Breakdown
+            </Typography>
+            <Typography component="h3" className={classes.stageNumber}>
+              Stage 1:
+            </Typography>
+            <Typography component="h5" className={classes.stageTarget}>
+              Target £2048
+            </Typography>
+            <Typography component="h4" className={classes.stageHeading}>
+              Purchase of necessary equipment an data acquisition
+            </Typography>
+            <Typography component="h5" className={classes.stageSubheading}>
+              Aim:
+            </Typography>
             <Typography variant="body1" className={classes.subheadingParagraph}>
               "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
@@ -309,11 +455,83 @@ export default function ProjectX() {
               nulla pariatur. Excepteur sint occaecat cupidatat non proident,
               sunt in culpa qui officia deserunt mollit anim id est laborum."
             </Typography>
-            <Typography variant="h2" className={classes.subheading}>
-              Timeline
+            <Typography component="h6" className={classes.stageSubheading2}>
+              Fund allocation:
             </Typography>
-            <Typography variant="h2" className={classes.subheading}>
-              Budget Breakdown
+            <Typography variant="body1" className={classes.subheadingParagraph}>
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+              sunt in culpa qui officia deserunt mollit anim id est laborum."
+            </Typography>
+            <Typography component="h3" className={classes.stageNumber}>
+              Stage 2:
+            </Typography>
+            <Typography component="h5" className={classes.stageTarget}>
+              Target £2048
+            </Typography>
+            <Typography component="h4" className={classes.stageHeading}>
+              Purchase of necessary equipment an data acquisition
+            </Typography>
+            <Typography component="h5" className={classes.stageSubheading}>
+              Aim:
+            </Typography>
+            <Typography variant="body1" className={classes.subheadingParagraph}>
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+              sunt in culpa qui officia deserunt mollit anim id est laborum."
+            </Typography>
+            <Typography component="h6" className={classes.stageSubheading2}>
+              Fund allocation:
+            </Typography>
+            <Typography variant="body1" className={classes.subheadingParagraph}>
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+              sunt in culpa qui officia deserunt mollit anim id est laborum."
+            </Typography>
+            <Typography component="h3" className={classes.stageNumber}>
+              Stage 3:
+            </Typography>
+            <Typography component="h5" className={classes.stageTarget}>
+              Target £2048
+            </Typography>
+            <Typography component="h4" className={classes.stageHeading}>
+              Purchase of necessary equipment an data acquisition
+            </Typography>
+            <Typography component="h5" className={classes.stageSubheading}>
+              Aim:
+            </Typography>
+            <Typography variant="body1" className={classes.subheadingParagraph}>
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+              sunt in culpa qui officia deserunt mollit anim id est laborum."
+            </Typography>
+            <Typography component="h6" className={classes.stageSubheading2}>
+              Fund allocation:
+            </Typography>
+            <Typography variant="body1" className={classes.subheadingParagraph}>
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+              sunt in culpa qui officia deserunt mollit anim id est laborum."
             </Typography>
           </div>
         </TabPanel>
@@ -322,15 +540,32 @@ export default function ProjectX() {
             <Typography variant="h1" className={classes.pageTitle}>
               Lab Notes
             </Typography>
-            <Typography variant="body1" className={classes.labNotes}>
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum."
-            </Typography>
+            <div className={classes.containerRelative}>
+              <Typography component="h6" className={classes.timePosted}>
+                Posted 24/08/2020 18:21
+              </Typography>
+              <Typography variant="body1" className={classes.notesEntry}>
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                sunt in culpa qui officia deserunt mollit anim id est laborum."
+              </Typography>
+              <Typography component="h6" className={classes.timePosted}>
+                Posted 10/07/2020 18:59
+              </Typography>
+              <Typography variant="body1" className={classes.notesEntry}>
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                sunt in culpa qui officia deserunt mollit anim id est laborum."
+              </Typography>
+            </div>
           </div>
         </TabPanel>
         <TabPanel value={value} index={2}>
@@ -338,15 +573,44 @@ export default function ProjectX() {
             <Typography variant="h1" className={classes.pageTitle}>
               Methods
             </Typography>
-            <Typography variant="body1" className={classes.methods}>
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum."
-            </Typography>
+            <div className={classes.containerRelative}>
+              <Typography component="h6" className={classes.timePosted}>
+                Scientific Methods and Techniques:
+              </Typography>
+              <Typography variant="body1" className={classes.notesEntry}>
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                sunt in culpa qui officia deserunt mollit anim id est laborum."
+              </Typography>
+              <Typography component="h6" className={classes.timePosted}>
+                Details on Equipment:
+              </Typography>
+              <Typography variant="body1" className={classes.notesEntry}>
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                sunt in culpa qui officia deserunt mollit anim id est laborum."
+              </Typography>
+              <Typography component="h6" className={classes.timePosted}>
+                Further Scientific details:
+              </Typography>
+              <Typography variant="body1" className={classes.notesEntry}>
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                sunt in culpa qui officia deserunt mollit anim id est laborum."
+              </Typography>
+            </div>
           </div>
         </TabPanel>
       </div>
