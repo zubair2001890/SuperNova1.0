@@ -15,11 +15,13 @@ import Contact from "./pages/Contact";
 import Team from "./pages/Team";
 import TopicX from "./pages/TopicX";
 import Explore from "./pages/Explore";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
+        <ScrollToTop />
         <Layout>
           <Switch>
             <Route path={paths.login}>
