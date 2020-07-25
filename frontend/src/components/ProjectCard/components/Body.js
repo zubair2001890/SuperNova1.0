@@ -1,25 +1,25 @@
-import React from 'react'
-import { makeStyles, Avatar, Tooltip } from '@material-ui/core'
-import FundsProgress from './FundsProgress'
+import React from "react";
+import { makeStyles, Avatar, Tooltip } from "@material-ui/core";
+import FundsProgress from "./FundsProgress";
 
-const maxTitleLength = 45
+const maxTitleLength = 45;
 
 const useStyles = makeStyles((theme) => ({
   cardBody: {
-    '& > *': {
+    "& > *": {
       marginTop: 0,
       marginBottom: 0,
-      '&:not(:last-child)': { marginBottom: theme.spacing(2) },
+      "&:not(:last-child)": { marginBottom: theme.spacing(2) },
     },
   },
   projectTitle: {
     fontSize: 16,
     letterSpacing: 0.96,
     fontWeight: 700,
-    lineHeight: '19px',
+    lineHeight: "19px",
     fontFamily: "'Montserrat', sans-serif",
     maxHeight: 36,
-    overflowY: 'hidden',
+    overflowY: "hidden",
   },
   avatar: {
     width: 56,
@@ -29,13 +29,13 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 14,
     letterSpacing: 1.12,
     fontWeight: 500,
-    lineHeight: '18px',
+    lineHeight: "18px",
     fontFamily: "'Montserrat', sans-serif",
   },
-}))
+}));
 
 export default function Body({ project }) {
-  const classes = useStyles()
+  const classes = useStyles();
   return (
     <div className={classes.cardBody}>
       <p className={classes.projectTitle}>
@@ -43,7 +43,7 @@ export default function Body({ project }) {
           project.title
         ) : (
           <Tooltip title={project.title} placement="top">
-            <span>{project.title.slice(0, maxTitleLength - 3) + '...'}</span>
+            <span>{project.title.slice(0, maxTitleLength - 3) + "..."}</span>
           </Tooltip>
         )}
       </p>
@@ -61,5 +61,5 @@ export default function Body({ project }) {
         fundsGoal={project.fundsGoal}
       />
     </div>
-  )
+  );
 }
