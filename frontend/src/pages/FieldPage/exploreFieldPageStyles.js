@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     top: 0,
     backgroundImage:
       "url(" +
-      require("../components/Constellation/assets/background/background.png") +
+      require("../../components/Constellation/assets/background/background.png") +
       ")",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
