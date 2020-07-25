@@ -85,9 +85,22 @@ export default () => {
                 />
               )}
             />{" "}
-            <Typography variant="h2" className={classes.fieldTitle}>
-              BIOLOGY
-            </Typography>
+            <Media
+              query="(min-width: 600px)"
+              render={() => (
+                <Typography variant="h2" className={classes.fieldTitle}>
+                  BIOLOGY
+                </Typography>
+              )}
+            />
+            <Media
+              query="(max-width: 600px)"
+              render={() => (
+                <Typography variant="h5" className={classes.fieldTitle}>
+                  BIOLOGY
+                </Typography>
+              )}
+            />
           </div>
         </div>
       </div>
