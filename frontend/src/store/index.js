@@ -1,8 +1,8 @@
-import { configureStore } from '@reduxjs/toolkit'
-import counterReducer from './slices/counter/counterSlice'
-import pageReducer from './slices/page'
-import projectsReducer from './slices/projects'
-import thunk from 'redux-thunk'
+import { configureStore } from "@reduxjs/toolkit";
+import counterReducer from "./slices/counter/counterSlice";
+import pageReducer from "./slices/page";
+import projectsReducer from "./slices/projects";
+import thunk from "redux-thunk";
 
 export default configureStore({
   reducer: {
@@ -11,4 +11,4 @@ export default configureStore({
     projects: projectsReducer,
   },
   middleware: [thunk],
-})
+});
