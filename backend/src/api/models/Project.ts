@@ -13,16 +13,34 @@ export const Project = model('Project', new Schema({
     projectDescription : {
         type: Array,
         required: true,
-        minlength: 1,
-        maxlength: 2000 // Arbitrary number, I thought 2,000 characters should be enough.
     },
+    
     university : {
         type: String,
-        required: false, // Required is set to false for university because a university is not specified
-        // in the sample payload for create project in Apiary.
+        required: true,
         minlength: 1,
         maxlength: 255
     },
+
+    labNotes: {
+        type: Array,
+        required: false
+    },
+
+    firstName : {
+        type: String,
+        required: true,
+        minlength: 1,
+        maxlength: 50
+    },
+
+    lastName : {
+        type: String,
+        required: true,
+        minlength: 1,
+        maxlength: 50
+    },
+
     startDate: {
         type: Date,
         required: true
@@ -39,16 +57,12 @@ export const Project = model('Project', new Schema({
         type: Number,
         requred: true
     },
-    projectStatusID: {
-        type: Number,
-        requred: true
-    },
-    fieldID: {
-        type: Number,
-        requred: true
-    },
-    subfieldId: {
+    projectStatus: {
         type: String,
+        requred: true
+    },
+    subfieldID: {
+        type: Number,
         requred: true
     },
     projectScientistId: {
@@ -72,5 +86,17 @@ export const Project = model('Project', new Schema({
     timelineDescription: {
         type: Array,
         required: false,
+    },
+    fieldName: {
+        type: String,
+        required: true,
+        minlength: 1,
+        maxLength: 200
+    },
+    subfieldName: {
+        type: String,
+        required: true,
+        minlength: 1,
+        maxLength: 200
     }
     }));

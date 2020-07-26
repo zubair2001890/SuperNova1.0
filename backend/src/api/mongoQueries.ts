@@ -8,54 +8,31 @@ mongoose.connect('mongodb://uoovwklzznl5qbd3vnmc:CKB9CbXz4cbJrrrCskwU@bosn1sg8zx
     .then(() => console.log('Now connected to MongoDB!'))
     .catch(err => console.error('Something went wrong', err));
 
- export const getFeaturedProject = function()
+ export const getProjectsSortedByTotalPledged = async function()
     {
-      let projects = null;    
-      let featuredProject = null;    
-      let projectsQuery = Project.find(function(err, docs){
-         if (err)
-         {
-            console.log(err);
-         }
-         console.log("Returned projects = " + docs);
-         console.log("Number of returned projects = " + docs.length);
-         projects = docs;
-      });
-      projectsQuery.sort({'totalPledged': -1}); // To sort in descending order of totalPledged.
-      if (projects == null || projects.length == 0) // I.e. if no projects have been added, which could happen.
-      {
-         return {};
+      let resolver, rejecter;
+      const promise = new Promise((resolve, reject) => {
+        resolver = resolve;
+        rejecter = reject;
+      })
+     let projectsQuery = Project.find(function(err, docs)
+     {
+        if (err)
+        {
+           console.log(err);
+           rejecter(null);
+        }
+        //console.log("Returned project = " + docs);
+        resolver(docs)
+     });
+     projectsQuery.sort({'totalPledged': -1}); // To sort in descending order of totalPledged.
+      return promise;
       }
-      else
-      {
-         featuredProject = projects[0];
-         featuredProject["project_id"] = featuredProject._id;
-         return featuredProject; // I.e. the project that has the most pledged.
-      }
-   }
 
- export const getAllSubfields = function(fieldID: String)
+ export const getAllSubfieldsByFieldName = function(fieldName: String)
    {
-      return SubField.find({fieldID: fieldID}).exec();
+      return SubField.find({fieldName: fieldName}).exec();
    }
-
- function getProjectInfo(id: String)
- {
-    let selectedProject = null;
-   Project.findById(id).exec(function (err, docs)
-    {
-      if (err)
-      {
-         console.log(err);
-      }
-      selectedProject = docs;
-    });
-    selectedProject["project_id"] = id;
-    selectedProject["link"] = selectedProject.projectImage;
-    selectedProject["backers"] = getProjectBackers(id);
-    selectedProject["status_name"] = getStatusName(selectedProject.projectStatusID)
-    return selectedProject;
- }
 
  function getStatusName(statusCode: Number)
  {
@@ -74,46 +51,100 @@ mongoose.connect('mongodb://uoovwklzznl5qbd3vnmc:CKB9CbXz4cbJrrrCskwU@bosn1sg8zx
     return ProjectBacker.find({projectID: id}).exec();
  }
 
- export const getProjectsByFieldID = async function(fieldID: String)
+ export const getProjectsByFieldName = async function(fieldName: String)
  {
-    let result = Array();
-    let projects = await Project.find({fieldID: fieldID}).exec();
-    projects.forEach(project => {
-      result.push(getProjectInfo(project._id));   
-    });
-    return result;
+   let resolver, rejecter;
+   const promise = new Promise((resolve, reject) => {
+     resolver = resolve;
+     rejecter = reject;
+   })
+  Project.find({fieidName: fieldName}, function(err, docs)
+  {
+     if (err)
+     {
+        console.log(err);
+        rejecter(null);
+     }
+     //console.log("Returned project = " + docs);
+     resolver(docs)
+  });
+   return promise;
+ }
+ 
+
+ export const getProjectsBySubfieldID = async function(subfieldID: Number)
+ {
+   let resolver, rejecter;
+   const promise = new Promise((resolve, reject) => {
+     resolver = resolve;
+     rejecter = reject;
+   })
+  Project.find({projectSubfieldID: subfieldID}, function(err, docs)
+  {
+     if (err)
+     {
+        console.log(err);
+        rejecter(null);
+     }
+     //console.log("Returned project = " + docs);
+     resolver(docs)
+  });
+   return promise;
  }
 
- export const getProjectsBySubfieldID = async function(subFieldID: String)
+ export const getProjectsByProjectScientistID = async function(projectScientistID: Number)
  {
-    let result = Array();
-    let projects = await Project.find({subFieldID: subFieldID}).exec();
-    projects.forEach(project => {
-      result.push(getProjectInfo(project._id));   
-    });
-    return result;
+   let resolver, rejecter;
+    const promise = new Promise((resolve, reject) => {
+      resolver = resolve;
+      rejecter = reject;
+    })
+   Project.find({projectScientistID: projectScientistID}, function(err, docs)
+   {
+      if (err)
+      {
+         console.log(err);
+         rejecter(null);
+      }
+      //console.log("Returned project = " + docs);
+      resolver(docs)
+   });
+    return promise;
  }
 
- export const getProjectsByProjectScientistID = async function(projectScientistID: String)
+ export const getProjectByProjectID = function(projectID: String): Promise<any>
  {
-   let result = Array();
-    let projects = await Project.find({projectScientistID: projectScientistID}).exec();
-    projects.forEach(project => {
-      result.push(getProjectInfo(project._id));   
-    });
-    return result;
- }
-
- export const getProjectByProjectID = async function(projectID: String)
- {
-   return await Project.findById(projectID).exec();
-}
-
-export const addAmountPledged = async function(projectID: String)
+    let resolver, rejecter;
+    const promise = new Promise((resolve, reject) => {
+      resolver = resolve;
+      rejecter = reject;
+    })
+   Project.findById(projectID, function(err, docs)
+   {
+      if (err)
+      {
+         console.log(err);
+         rejecter(null);
+      }
+      //console.log("Returned project = " + docs);
+      resolver(docs)
+   });
+   return promise;
+} 
+ 
+export const addAmountPledged = async function(projectID: String, newAmountPledged: number, newBacker: String)
 {
-   Project.findById(projectID,(function(err,docs){
+   let amountPledged = 0;
+   const selectedProject = await this.getProjectByProjectID(projectID);
+   if ((selectedProject["amountPledged"] !== null) && (selectedProject["amountPledged"] !== undefined))
+   {
+      amountPledged = selectedProject["amountPledged"];
+   }
+   let total = amountPledged + newAmountPledged;
+   let update = {amountPledged: total};
+   Project.findByIdAndUpdate(update, function)
 
-   }));
+  
 }
 
  

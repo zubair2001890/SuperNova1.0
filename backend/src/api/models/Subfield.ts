@@ -8,12 +8,12 @@ export const SubField = model('SubField', new Schema({
         minlength: 1,
         maxlength: 255
     },
-    projectID : {
+    subfieldID : {
         type: Number,
         required: true,
         },
-    fieldID : {
-        type: Number,
+    fieldName : {
+        type: String,
         required: true,
-        },
+        }
 }));

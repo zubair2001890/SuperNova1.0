@@ -41,6 +41,12 @@ class ProjectsController {
       res.send(projects)
   }
 
+  public projectByProjectID = async(req: Request, res: Response) => {
+  let selectedProject: Object = await getProjectByProjectID(req.params.project_id);
+  res.send(selectedProject);
+
+   }
+
   public createProject = async (req: Request, res: Response) => {
     let project = new Project({
       projectName: req.body.project_Name,
@@ -181,8 +187,6 @@ class ProjectsController {
    }
    let update = req.body;
    //update.projectName = update.project_Name;
-   console.log("projectName = " + req.body.projectName);
-   console.log("project_Name = " + req.body.project_Name);
    //let update = {projectName: "A different project name"};
    //let update = Object.assign(selectedProject, req.body);
    let id = req.params.project_id;
@@ -191,7 +195,7 @@ class ProjectsController {
       {
         console.log(err);
       }
-      console.log("Result of update operation = " + result);
+      //console.log("Result of update operation = " + result);
    });
     res.send({}); // Simply sending an empty object as per Apiary.
   }

@@ -15,18 +15,6 @@ export const UserAccount = model('UserAccount', new Schema({
         minlength: 1,
         maxlength: 64
     },
-    password : {
-        type: String,
-        required: true,
-        minlength: 1,
-        maxlength: 255
-    },
-    email : {
-        type: String,
-        required: true,
-        minlength: 1,
-        maxlength: 128
-    },
     projectsSupported : {
         type: Number,
         required: true
@@ -61,8 +49,8 @@ export const UserAccount = model('UserAccount', new Schema({
         type: Number,
         required: false
     },
-    fieldID : {
-        type: Number,
+    fieldName : {
+        type: String,
         required: true
     }
 }));
