@@ -9,8 +9,8 @@
     "headerUrl": "https://i.picsum.photos/id/175/265/149.jpg?hmac=hkiEYOA9_jRekbOVVJy0LR8_d3iA2UgQ9MtdcfCE8oM",
     "fundsGoal": 8192,
     "fundsRaised": 2048,
-    "backers": ["Eduardo"],
-    "project_scientist_id": 5
+    "backers": ["Eduardo Valencia"],
+    "projectScientistId": 5
   },
   {
     "id": 1,
@@ -23,7 +23,7 @@
     "fundsGoal": 8192,
     "fundsRaised": 2048,
     "backers": [],
-    "project_scientist_id": 5
+    "projectScientistId": 5
   },
   {
     "id": 2,
@@ -36,7 +36,7 @@
     "fundsGoal": 8192,
     "fundsRaised": 2048,
     "backers": [],
-    "project_scientist_id": 6
+    "projectScientistId": 6
   },
   {
     "id": 3,
@@ -49,7 +49,7 @@
     "fundsGoal": 8192,
     "fundsRaised": 2048,
     "backers": [],
-    "project_scientist_id": 5
+    "projectScientistId": 5
   },
   {
     "id": 4,
@@ -62,7 +62,7 @@
     "fundsGoal": 8192,
     "fundsRaised": 2048,
     "backers": [],
-    "project_scientist_id": 5
+    "projectScientistId": 5
   },
   {
     "id": 5,
@@ -75,7 +75,7 @@
     "fundsGoal": 8192,
     "fundsRaised": 2048,
     "backers": [],
-    "project_scientist_id": 5
+    "projectScientistId": 5
   },
   {
     "id": 6,
@@ -88,7 +88,7 @@
     "fundsGoal": 8192,
     "fundsRaised": 2048,
     "backers": [],
-    "project_scientist_id": 5
+    "projectScientistId": 5
   },
   {
     "id": 7,
@@ -101,6 +101,6 @@
     "fundsGoal": 8192,
     "fundsRaised": 2048,
     "backers": [],
-    "project_scientist_id": 5
+    "projectScientistId": 5
   }
 ]

@@ -26,6 +26,7 @@ export default () => {
   const classes = useStyles();
   const scrollY = useWindowScrollY();
   const projectsData = useSelector(selectProjectsData);
+  const featuredProjects = projectsData.slice(0, 4);
   const projectsLoading = useSelector(selectProjectsLoading);
 
   useEffect(() => {
@@ -42,7 +43,10 @@ export default () => {
     <div className={classes.pageContainer}>
       <Intro scrollY={scrollY} />
       <SlidingParagraphs />
-      <Projects projectsData={projectsData} projectsLoading={projectsLoading} />
+      <Projects
+        projectsData={featuredProjects}
+        projectsLoading={projectsLoading}
+      />
     </div>
   );
 };

@@ -2,8 +2,9 @@ import React from "react";
 import Projects from "./Projects";
 import Layout from "./Layout";
 
-const getIfNameInUser = (user) => (backerName) => {
-  return user.given_name === backerName;
+const getIfNameInUser = ({ given_name, family_name }) => (backerName) => {
+  const fullName = `${given_name} ${family_name}`;
+  return fullName === backerName;
 };
 
 const getIfUserInBackers = (backers, user) =>
