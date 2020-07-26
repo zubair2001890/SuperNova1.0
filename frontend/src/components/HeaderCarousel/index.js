@@ -13,6 +13,8 @@ export default (props) => {
       autoPlay={false}
       useKeyboardArrows={true}
       className={props.className}
+      centerMode={props.centerMode}
+      centerSlidePercentage={props.centerSlidePercentage}
     >
         {/* props.content should be an array of divs, where each div will be a new slide */}
       {props.content}

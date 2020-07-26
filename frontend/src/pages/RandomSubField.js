@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Constellation from "../components/Constellation";
 import useStyles from "./SubFieldPage/exploreSubFieldPageStyles";
 import SubFieldPage from "./SubFieldPage";
+import ProjectCard from "../components/ProjectCard";
+import Projects from "./SubFieldPage/components/ProjectsForCarousel";
+import {
+  fetchProjects,
+  selectData as selectProjectsData,
+} from "../store/slices/projects";
 
 function Item(props) {
   return (
@@ -26,7 +33,13 @@ function Item(props) {
 }
 
 export default () => {
+  const dispatch = useDispatch();
   const classes = useStyles();
+  const projectsData = useSelector(selectProjectsData);
+
+  useEffect(() => {
+    dispatch(fetchProjects());
+  }, [dispatch]);
 
   var items = [
     {
@@ -47,9 +60,18 @@ export default () => {
   ];
 
   const content = [
-    <div className={classes.carouselSlide}>Hello</div>,
-    <div className={classes.carouselSlide}>World</div>,
-    <div className={classes.carouselSlide}>!</div>,
+    <div className={classes.carouselSlide}>
+      <Projects projectsData={projectsData.slice(0, 1)} />
+    </div>,
+    <div className={classes.carouselSlide}>
+      <Projects projectsData={projectsData.slice(1, 2)} />
+    </div>,
+    <div className={classes.carouselSlide}>
+      <Projects projectsData={projectsData.slice(2, 3)} />
+    </div>,
+    <div className={classes.carouselSlide}>
+      <Projects projectsData={projectsData.slice(3, 4)} />
+    </div>,
   ];
 
   return (

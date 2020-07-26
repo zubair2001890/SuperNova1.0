@@ -4,7 +4,6 @@ import { useDispatch } from "react-redux";
 import { setDarkTheme as setPageDarkTheme } from "../../store/slices/page";
 import HeaderCarousel from "../../components/HeaderCarousel";
 import useStyles from "./exploreSubFieldPageStyles";
-import Media from "react-media";
 
 export default (props) => {
   const classes = useStyles();
@@ -24,9 +23,10 @@ export default (props) => {
       <div className={classes.pageContainer}>
         <div className={classes.pageHeader}>
           <div className={classes.mockAppBarLayout} />
-          <div className={classes.constellationContainer} />
+          <div className={classes.constellationContainer}>
+          </div>
           <div className={classes.carouselContainer}>
-            <HeaderCarousel className={classes.carousel} content={content} />
+            <HeaderCarousel className={classes.carousel} content={content} centerMode="true" centerSlidePercentage={50} />
             <Typography variant="h2" className={classes.subFieldTitle}>
               {props.title}
             </Typography>
