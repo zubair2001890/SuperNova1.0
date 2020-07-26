@@ -24,32 +24,12 @@ export default (props) => {
       <div className={classes.pageContainer}>
         <div className={classes.pageHeader}>
           <div className={classes.mockAppBarLayout} />
+          <div className={classes.constellationContainer} />
           <div className={classes.carouselContainer}>
-            <Media
-              query="(min-width: 1200px)"
-              render={() => (
-                <HeaderCarousel
-                  className={classes.carousel}
-                  content={content}
-                />
-              )}
-            />{" "}
-            <Media
-              query="(min-width: 600px)"
-              render={() => (
-                <Typography variant="h2" className={classes.fieldTitle}>
-                  {props.title}
-                </Typography>
-              )}
-            />
-            <Media
-              query="(max-width: 600px)"
-              render={() => (
-                <Typography variant="h5" className={classes.fieldTitle}>
-                  {props.title}
-                </Typography>
-              )}
-            />
+            <HeaderCarousel className={classes.carousel} content={content} />
+            <Typography variant="h2" className={classes.subFieldTitle}>
+              {props.title}
+            </Typography>
           </div>
         </div>
       </div>

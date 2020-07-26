@@ -7,16 +7,6 @@ const useStyles = makeStyles((theme) => ({
   pageHeader: {
     height: "100vh",
     width: "100%",
-  },
-  pageContainer: {
-    position: "relative",
-    margin: 0,
-  },
-  carouselContainer: {
-    position: "absolute",
-    width: "100%",
-    height: "100%",
-    top: 0,
     backgroundImage:
       "url(" +
       require("../../components/Constellation/assets/background/background.png") +
@@ -25,21 +15,46 @@ const useStyles = makeStyles((theme) => ({
     backgroundPosition: "center",
     backgroundSize: "cover",
   },
-  carousel: {
-    position: "absolute",
-    height: "100%",
-    width: "100%",
-  },
-  carouselSlide: {
+  pageContainer: {
     position: "relative",
-    height: "100vh",
+    margin: 0,
+  },
+  constellationContainer: {
+    //
+  },
+  carouselContainer: {
+    position: "absolute",
+    width: "100%",
+    height: "100%",
     top: 0,
   },
-  fieldTitle: {
+  carousel: {
+    position: "absolute",
+    height: "50%",
+    width: "50%",
+    bottom: 0,
+    left: "50%",
+    transform: "translate(-50%, 0%)",
+    border: "3px solid green",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  carouselSlide: {
+    // position: "relative",
+    // height: "100vh",
+    // bottom: 0,
+    position: "relative",
+    width: "100%",
+    height: "100%",
+    backgroundColor: "#00f",
+    color: "#fff",
+  },
+  subFieldTitle: {
     position: "absolute",
     color: "white",
     textAlign: "center",
-    top: "50%",
+    top: "160px",
     left: "50%",
     transform: "translate(-50%, -50%)",
   },

@@ -1,7 +1,7 @@
 import React from "react";
 import Constellation from "../components/Constellation";
 import useStyles from "./SubFieldPage/exploreSubFieldPageStyles";
-import FieldPage from "./SubFieldPage";
+import SubFieldPage from "./SubFieldPage";
 
 function Item(props) {
   return (
@@ -47,20 +47,14 @@ export default () => {
   ];
 
   const content = [
-    <div className={classes.carouselSlide}>
-      {<Item item={items[0]} titleStyle={classes.fieldTitle} />}
-    </div>,
-    <div className={classes.carouselSlide}>
-      {<Item item={items[1]} titleStyle={classes.fieldTitle} />}
-    </div>,
-    <div className={classes.carouselSlide}>
-      {<Item item={items[2]} titleStyle={classes.fieldTitle} />}
-    </div>,
+    <div className={classes.carouselSlide}>Hello</div>,
+    <div className={classes.carouselSlide}>World</div>,
+    <div className={classes.carouselSlide}>!</div>,
   ];
 
   return (
     <>
-      <FieldPage title="SUBFIELD X" content={content}/>
+      <SubFieldPage title="SUBFIELD X" content={content} />
     </>
   );
 };
