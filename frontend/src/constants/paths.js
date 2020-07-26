@@ -20,4 +20,5 @@ export default {
   earthSciences: "/earthsciences",
   chemistry: "/chemistry",
   medicine: "/medicine",
+  randomSubField: "/randomsubfield",
 };
