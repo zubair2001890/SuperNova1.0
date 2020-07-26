@@ -8,9 +8,9 @@ import { fetchProjects } from "../../../store/slices/projects";
 
 const styles = (theme) => ({
   layout: {
-    padding: "0 1rem",
+    padding: "0 1rem 2rem 1rem",
     [theme.breakpoints.up("lg")]: {
-      padding: "0 7.5rem",
+      padding: "0 7.5rem 2rem 7.5rem",
     },
   },
   container: {
@@ -62,7 +62,7 @@ export class Layout extends Component {
 
   render() {
     const { children, classes, auth0, Nav, mainTitle } = this.props;
-    if (!auth0.isAuthenticated) return <LogIn />;
+    // if (!auth0.isAuthenticated) return <LogIn />;
     return (
       <div className={classes.layout}>
         <Typography variant="h1" className={classes.title}>

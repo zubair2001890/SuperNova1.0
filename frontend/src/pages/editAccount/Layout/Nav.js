@@ -1,17 +1,17 @@
 import React from "react";
-import Nav from "./Layout/Nav";
-import { getEditPath } from "../../helpers/createPaths";
+import Nav from "../../../components/account/Layout/Nav";
+import paths from "../../../constants/paths";
 
 export default function AccountNav() {
   return (
     <Nav
       links={[
         {
-          to: getEditPath("/overview"),
+          to: paths.overview,
           children: "Overview",
         },
         {
-          to: getEditPath("/settings"),
+          to: paths.settings,
           children: "Account Settings",
         },
       ]}
