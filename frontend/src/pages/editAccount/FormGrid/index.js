@@ -6,9 +6,9 @@ const renderField = (fieldData, index) => <Group {...fieldData} key={index} />;
 
 const renderFields = (fields) => fields.map(renderField);
 
-export default function FormGrid({ fields, handleSubmit }) {
+export default function FormGrid({ fields, handleSubmit, className = null }) {
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className={className}>
       {renderFields(fields)}
       <SaveButton />
     </form>

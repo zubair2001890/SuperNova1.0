@@ -1,12 +1,25 @@
 import React from "react";
+import { makeStyles } from "@material-ui/core";
 import { post } from "axios";
 import { reduxForm } from "redux-form";
 import { useAuth0 } from "@auth0/auth0-react";
 import FormGrid from "../FormGrid";
 
+const useStyles = makeStyles((theme) => ({
+  form: {
+    flexGrow: 1,
+    maxWidth: "33.5rem",
+    [theme.breakpoints.up("md")]: {
+      marginRight: "8.375rem",
+    },
+  },
+}));
+
 function FormGridWithFields(props) {
+  const classes = useStyles();
   return (
     <FormGrid
+      className={classes.form}
       fields={[
         {
           name: "name",
