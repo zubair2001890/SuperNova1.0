@@ -168,6 +168,69 @@ export default () => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
+  const fields = [
+    {
+      path: paths.biology,
+      containerClass: classes.biologyContainer,
+      label: "BIOLOGY",
+      index: 1,
+    },
+    {
+      path: paths.socialSciences,
+      containerClass: classes.socialSciencesContainer,
+      label: "SOCIAL SCIENCES",
+      index: 2,
+    },
+    {
+      path: paths.physics,
+      containerClass: classes.physicsContainer,
+      label: "PHYSICS",
+      index: 3,
+    },
+    {
+      path: paths.mathsAndStats,
+      containerClass: classes.mathsStatsContainer,
+      label: "MATHEMATICS AND STATISTICS",
+      index: 4,
+    },
+    {
+      path: paths.spaceSciences,
+      containerClass: classes.spaceSciencesContainer,
+      label: "SPACE SCIENCES",
+      index: 5,
+    },
+    {
+      path: paths.computerScience,
+      containerClass: classes.computerScienceContainer,
+      label: "COMPUTER SCIENCE",
+      index: 6,
+    },
+    {
+      path: paths.engineeringAndTech,
+      containerClass: classes.engineeringTechnologyContainer,
+      label: "ENGINEERING AND TECHNOLOGY",
+      index: 7,
+    },
+    {
+      path: paths.earthSciences,
+      containerClass: classes.earthSciencesContainer,
+      label: "EARTH SCIENCES",
+      index: 8,
+    },
+    {
+      path: paths.chemistry,
+      containerClass: classes.chemistryContainer,
+      label: "CHEMISTRY",
+      index: 9,
+    },
+    {
+      path: paths.medicine,
+      containerClass: classes.medicineContainer,
+      label: "MEDICINE",
+      index: 10,
+    },
+  ];
+
   useEffect(() => {
     dispatch(setPageDarkTheme(true));
     return () => {
@@ -181,96 +244,17 @@ export default () => {
         <div className={classes.pageHeader}>
           <div className={classes.mockAppBarLayout} />
           <div className={classes.fieldLinks}>
-            <div className={classes.biologyContainer}>
-              <Button
-                component={RouterLink}
-                to={paths.biology}
-                className={classes.fieldText}
-              >
-                BIOLOGY
-              </Button>
-            </div>
-            <div className={classes.socialSciencesContainer}>
-              <Button
-                component={RouterLink}
-                to={paths.socialsciences}
-                className={classes.fieldText}
-              >
-                SOCIAL SCIENCES
-              </Button>
-            </div>
-            <div className={classes.physicsContainer}>
-              <Button
-                component={RouterLink}
-                to={paths.physics}
-                className={classes.fieldText}
-              >
-                PHYSICS
-              </Button>
-            </div>
-            <div className={classes.mathsStatsContainer}>
-              <Button
-                component={RouterLink}
-                to={paths.mathematicsandstats}
-                className={classes.fieldText}
-              >
-                MATHEMATICS AND STATISTICS
-              </Button>
-            </div>
-            <div className={classes.spaceSciencesContainer}>
-              <Button
-                component={RouterLink}
-                to={paths.spacesciences}
-                className={classes.fieldText}
-              >
-                SPACE SCIENCES
-              </Button>
-            </div>
-            <div className={classes.computerScienceContainer}>
-              <Button
-                component={RouterLink}
-                to={paths.computerscience}
-                className={classes.fieldText}
-              >
-                COMPUTER SCIENCE
-              </Button>
-            </div>
-            <div className={classes.engineeringTechnologyContainer}>
-              <Button
-                component={RouterLink}
-                to={paths.engineeringandtech}
-                className={classes.fieldText}
-              >
-                ENGINEERING AND TECHNOLOGY
-              </Button>
-            </div>
-            <div className={classes.earthSciencesContainer}>
-              <Button
-                component={RouterLink}
-                to={paths.earthsciences}
-                className={classes.fieldText}
-              >
-                EARTH SCIENCES
-              </Button>
-            </div>
-            <div className={classes.chemistryContainer}>
-              <Button
-                component={RouterLink}
-                to={paths.chemistry}
-                className={classes.fieldText}
-              >
-                CHEMISTRY
-              </Button>
-            </div>
-            <div className={classes.medicineContainer}>
-              <Button
-                component={RouterLink}
-                to={paths.medicine}
-                className={classes.fieldText}
-              >
-                MEDICINE
-              </Button>
-            </div>
+            {fields.map((field) => (
+              <div className={field.containerClass} key={field.index}>
+                <Button
+                  component={RouterLink}
+                  to={field.path}
+                  className={classes.fieldText}
+                >
+                  {field.label}
+                </Button>
+              </div>
+            ))}
           </div>
         </div>
       </div>
