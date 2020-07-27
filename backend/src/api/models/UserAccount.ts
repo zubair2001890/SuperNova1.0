@@ -23,7 +23,7 @@ export const UserAccount = model('UserAccount', new Schema({
         type: Number,
         required: true
     },
-    universityID : {
+    university : {
         type: String,
         required: true,
         minLength: 1,

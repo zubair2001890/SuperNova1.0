@@ -15,7 +15,7 @@ class PaymentController {
             currency: 'gbp',
             payment_method_types: ['card'],
         });
-        addAmountPledged(projectID);
+        addAmountPledged(projectID, amountPledged, "Joe Bloggs"); // 
         res.send({client_secret: paymentIntent.client_secret});
     }
 }

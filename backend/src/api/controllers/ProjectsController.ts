@@ -1,8 +1,7 @@
 import { Request, Response } from 'express';
-import {Material} from '../models/Material'
-import {LabNotes} from '../models/LabNotes'
 import {Project} from '../models/Project';
-import {getFeaturedProject, getAllSubfields, getProjectsByFieldID, getProjectsBySubfieldID, getProjectsByProjectScientistID, getProjectByProjectID} from '../mongoQueries'
+import {getProjectsBySubfieldID, getProjectsByProjectScientistID, getProjectsByFieldName, getProjectByProjectID, getProjectsSortedByTotalPledged, getAllSubfields} from '../mongoQueries'
+import {addStringToArray} from '../helpers';
 import moment = require('moment');
 
 class ProjectsController {
@@ -10,238 +9,120 @@ class ProjectsController {
     }
 
     public featured = async (req: Request, res: Response) => {
-      const featuredProject = await getFeaturedProject();
-      res.send(featuredProject);
+      let projectsSortedByTotalPledged = await getProjectsSortedByTotalPledged(); // This works fine.
+      if (projectsSortedByTotalPledged === null || projectsSortedByTotalPledged.length === 0)
+      {
+        res.send({})
+      }
+      else
+      {
+        res.send(projectsSortedByTotalPledged[0]);
+      }
     }
 
-    public subFieldsByFieldID = async (req: Request, res: Response) => {
-      let fieldID = req.params.field_id
-      const subFields = await getAllSubfields(fieldID);
+    public subFieldsByFieldName = async (req: Request, res: Response) => {
+      let fieldName = req.params.field_name
+      const subFields = getAllSubfields(fieldName);
       res.send(subFields);
     }
 
     public project = async (req: Request, res: Response) => {
+      
     let projects = null;
-      if (req.query.field_id !== undefined)
+      if (req.query.field_name !== undefined)
       {
-        projects = getProjectsByFieldID
+        projects = await getProjectsByFieldName(req.query.field_name.toString());
       }
       else if (req.query.subfield_id !== undefined)
       {
-        projects = getProjectsBySubfieldID
+        projects = await getProjectsBySubfieldID(Number(req.query.subfield_id.toString()));
       }
       else if (req.query.project_scientist_id !== undefined)
       {
-        projects = getProjectsByProjectScientistID
+        projects = await getProjectsByProjectScientistID(Number(req.query.project_scientist_id.toString()));
       }
       else if (req.query.project_id !== undefined)
       {
-        projects = getProjectByProjectID
+        projects = await getProjectByProjectID(req.query.project_id.toString());
       }
-      res.send(projects)
+    res.send(projects)
   }
 
   public projectByProjectID = async(req: Request, res: Response) => {
-  let selectedProject: Object = await getProjectByProjectID(req.params.project_id);
-  res.send(selectedProject);
+    //let selectedProject = await getProjectsByFieldName("Biology");
+    let selectedProject = await getProjectByProjectID(req.params.project_id);
+    res.send(selectedProject);
 
    }
 
   public createProject = async (req: Request, res: Response) => {
+    let link = [];
+    if (req.body.link !== undefined)
+    {
+      link.push(req.body.link);
+    }
+    let startDate: String = req.body.startDate;
     let project = new Project({
-      projectName: req.body.project_Name,
+      projectName: req.body.projectName,
       projectDescription: req.body.project_description,
-      startDate: moment(new Date(req.body.date_started)).format('DD/MM/YYYY'),
-      teamDescription: req.body.team_description,
-      methodDescription: req.body.method_description,
-      timelineDescription: req.body.timeline_description,
-      projectImage: req.body.project_image,
+      university: req.body.university,
+      // To get rid of both of the slashes, I get an error message saying that String does not have a replaceAll method.
+      startDate: startDate.replace("/","").replace("/",""), 
+      teamDescription: req.body.teamDescription,
+      methodDescription: req.body.methodDescription,
+      timelineDescription: req.body.timelineDescription,
+      projectImage: req.body.projectImage,
       goal: req.body.goal,
-      projectScientistId: req.body.project_scientist_id,
-      fieldID: req.body.field_id,
-      subfieldID: req.body.subfield_id,
-      numberBackers: 0 // Hardcoded to 0 initially, as presumably a new project will have 0 backers.
+      projectScientistID: req.body.projectScientistId,
+      fieldName: req.body.fieldName,
+      subfieldName: req.body.subfieldName,
+      subfieldID: req.body.subfieldID,
+      firstName: req.body.teamDescription[0].split(" ")[0],
+      lastName: req.body.teamDescription[0].split(" ")[1].replace(",",""),
+      statusName: req.body.statusName,
+      link: link,
+      backers: new Array<String>()
       });
          await project.save();
     let projectIDObject = await Project.findById(project._id, '_id').exec();
-    let material = new Material({
-      projectID: projectIDObject._id,
-      description: req.body.project_description,
-      link: req.body.link
-    })
-    material.save();    
     res.send(projectIDObject);
   }
   public updateProject = async (req: Request, res: Response) => {
     let selectedProject = null;
     let labNotes = null;
-    let projectQuery = await Project.findById(req.params.project_id, function (err, docs)
+    await Project.findById(req.params.project_id, function (err, docs)
     {
+      console.log("selected project id = " + req.params.project_id);
         if (err)
         {
           console.log(err);
         }
-        //console.log("projectQuery returns: " + docs);
+        console.log("selectedProject = " + docs);
         selectedProject = docs;
     });
-    await LabNotes.findById(selectedProject._id, function (err,docs)
-    {
-      if (err)
-      {
-        console.log(err);
-      }
-      labNotes = docs;
-  });
-    // The following code is to avoid any fields being updated with undefined, as not all the put parameters
-    // are necessarily going to be passed over.
-    if (req.body.lab_notes !== undefined)
-    {
-        this.createLabNotes(selectedProject._id, req.body.lab_notes); // The function needs to be filled out.
-        delete req.body.lab_notes;
-    }
-    //console.log("projectName = ") + projectName;
-    /*let projectDescription = selectedProject.projectDescription;
-    //console.log("selectedProject.projectDescription = " + selectedProject.projectDescription);  
-    if (req.body.project_Description !== undefined)
-    {
-      projectDescription = req.body.project_Description;
-    }
-    //console.log("projectDescription is now " + projectDescription);
-    let teamDescription = selectedProject.teamDescription;
-    if (req.body.team_description !== undefined)
-    {
-      teamDescription = req.body.team_description;
-    }
-    let methodDescription = selectedProject.methodDescription;
-    if (req.body.method_description !== undefined)
-    {
-      methodDescription = req.body.method_description;
-    }
-    let timelineDescription = selectedProject.timelineDescription;
-    if (req.body.timeline_description !== undefined)
-    {
-      timelineDescription = req.body.timeline_description;
-    }
-    if (req.body.lab_notes !== undefined)
-    {
-      this.createLabNotes(selectedProject._id, req.body.lab_notes); // The function needs to be filled out.
-    }
-    let projectImage = selectedProject.projectImage;
-    if (req.body.project_image !== undefined)
-    {
-      projectImage = req.body.project_image;
-    }
-    let goal = selectedProject.goal;
-    if (req.body.goal !== undefined)
-    {
-      goal = req.body.goal;
-    }
-    let fieldID = selectedProject.fieldID;
-    if (req.body.field_id !== undefined)
-    {
-      fieldID = req.body.field_id;
-    }
-    let subfieldID = selectedProject.subfieldID;
-    if (req.body.subfield_id !== undefined)
-    {
-      subfieldID = req.body.subfield_id;
-    }
-    if (req.body.link !== undefined)
-    {
-      this.createLink(selectedProject._id, projectDescription, req.body.link);
-    }
-    let projectStatusID = selectedProject.projectStatusID;
-    if (req.body.status_name !== undefined)
-    {
-      projectStatusID = this.statusStringToInt(req.body.status_name);
-    }
-    
-    let update = 
-    {
-      _id: req.params.project_id,
-      projectName: projectName,
-    projectDescription: projectDescription,
-  teamDescription: teamDescription,
-  methodDescription: methodDescription,
-  timelineDescription: timelineDescription,
-  projectImage: projectImage,
-  goal: goal,
-  fieldID: fieldID,
-  subfieldID: subfieldID,
-      projectStatusID: projectStatusID
-}
-*/
-    //console.log("projectQuery = " + projectQuery);
     console.log("update id = " + req.params.project_id);
-    /*Project.update(update, {info: "Project updated using the /updateProject endpoint."}, function (err,affected,resp){
-      if (err)
-      {
-        console.log(err);
-      }
-      console.log("affected = " + affected);
-      console.log("response = " + resp);
-    });
-    */
    for (let property in req.body) {
     if (!req.body[property]) delete req.body[property] 
    }
    let update = req.body;
-   //update.projectName = update.project_Name;
-   //let update = {projectName: "A different project name"};
-   //let update = Object.assign(selectedProject, req.body);
-   let id = req.params.project_id;
-   Project.findByIdAndUpdate(id, update, function (err, result){
+   if (req.body.labNotes !== undefined)
+   {
+     let labNotes = addStringToArray(selectedProject.labNotes, req.body.labNotes);
+     labNotes = addStringToArray(labNotes, Date.now().toString());
+     update.labNotes = labNotes;
+   }
+   if (req.body.link !== undefined)
+   {
+     update.link = addStringToArray(selectedProject.link, req.body.link);
+   }
+   Project.findByIdAndUpdate(req.params.project_id, update, function (err, result){
       if (err)
       {
         console.log(err);
       }
-      //console.log("Result of update operation = " + result);
+      console.log("Result of update operation = " + result);
    });
     res.send({}); // Simply sending an empty object as per Apiary.
-  }
-
-  private createLink(projectID: String, description: String, link: Array<String>)
-  {
-    let material = new Material({
-      projectID: projectID,
-      description: description,
-      link: link
-    });
-    material.save();
-  }
-  
-  private createLabNotes(projectID: String, labNotesText: Array<String>)
-  {
-    let labNotes = new LabNotes({
-        projectID: projectID,
-        labNotesText: labNotesText,
-        ts: Date.now() // To get a unix timestamp.
-    });
-    labNotes.save();    
-  }
-
-  private statusStringToInt(statusString: String)
-  {
-    if (statusString === "Active")
-    {
-      return 1;
-    }
-    else
-    {
-      return 0;
-    }  
-  }
-
-  private intToStatusString(statusint: Number)
-  {
-      if (statusint == 1)
-      {
-        return "Active";
-      }
-      else
-      {
-        return "Inactive";
-      }
   }
 }
 export default ProjectsController;

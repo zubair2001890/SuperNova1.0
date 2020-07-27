@@ -23,24 +23,24 @@ export const getSubFieldForNumber = function subFieldID(subFieldID: number)
 }
 
 export const addStringToArray = function (stringArray: Array<String>, newString: String)
-{   let currentArray = [];
+{   let currentArray = new Array();
     if (stringArray !== null && stringArray !== undefined)
     {
         currentArray = stringArray;
     }
+    console.log("typeof currentArray = " + typeof currentArray);
     currentArray.push(newString);
     return currentArray;
 }
 
-export const addStringAndTimestampToArray = function (stringArray: Array<String>, newString: String)
+export const arrayContainsString = function(stringArray: Array<String>, string: String)
 {
-    let currentArray = [];
-    if (stringArray !== null && stringArray !== undefined)
+    for (let i = 0; i < stringArray.length; i++)
     {
-        currentArray = stringArray;
+        if (stringArray[i] === string)
+        {
+            return true;
+        }
     }
-    currentArray.push(newString);
-    currentArray.push(Date.now().toString); // Putting the timestamp into a String as well, so everything in the array has the same
-    //data type.
-    return currentArray;
+    return false;
 }

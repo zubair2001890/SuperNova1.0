@@ -40,10 +40,11 @@ export const Project = model('Project', new Schema({
         minlength: 1,
         maxlength: 50
     },
-
     startDate: {
-        type: Date,
-        required: true
+        type: String,
+        required: true,
+        minlength: 1,
+        maxlength: 10
     },
     goal: {
         type: Number,
@@ -53,11 +54,11 @@ export const Project = model('Project', new Schema({
         type: Number,
         requred: true
     },
-    numberBackers: {
-        type: Number,
+    backers: {
+        type: Array,
         requred: true
     },
-    projectStatus: {
+    statusName: {
         type: String,
         requred: true
     },
@@ -65,7 +66,7 @@ export const Project = model('Project', new Schema({
         type: Number,
         requred: true
     },
-    projectScientistId: {
+    projectScientistID: {
         type: Number,
         requred: true
     },
@@ -98,5 +99,10 @@ export const Project = model('Project', new Schema({
         required: true,
         minlength: 1,
         maxLength: 200
-    }
+    },
+    link : {
+        type: Array,
+        required: true,
+        }
+    
     }));
