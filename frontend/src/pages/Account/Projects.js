@@ -31,7 +31,7 @@ const renderProject = (classes) => (projectData, index) => (
     className={classes.card}
     key={index}
     body={<Body project={projectData} />}
-    id={projectData.id}
+    id={projectData._id}
   ></ProjectCard>
 );
 
@@ -50,6 +50,6 @@ function Projects({ projects, filterProjects, auth0 }) {
 
 const WithAuth = withAuth0(Projects);
 
-const mapStateToProps = ({ projects }) => ({ projects: projects.data });
+const mapStateToProps = ({ allProjects }) => ({ projects: allProjects });
 
 export default connect(mapStateToProps)(WithAuth);

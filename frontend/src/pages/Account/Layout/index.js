@@ -5,7 +5,7 @@ import { withAuth0 } from "@auth0/auth0-react";
 
 import Nav from "./Nav";
 import LogIn from "../../Login";
-import { fetchProjects } from "../../../store/slices/projects";
+import { fetchAllProjects } from "../../../store/allProjects";
 
 const styles = (theme) => ({
   layout: {
@@ -43,7 +43,8 @@ const styles = (theme) => ({
 export class Layout extends Component {
   fetchProjects = () => {
     const { projects, fetchProjects } = this.props;
-    if (!projects.data.length) fetchProjects();
+    console.log("projects", projects);
+    if (!projects.length) fetchProjects();
   };
 
   componentDidMount() {
@@ -72,10 +73,12 @@ export class Layout extends Component {
   }
 }
 
-const mapStateToProps = ({ projects }) => ({ projects });
+const mapStateToProps = ({ allProjects }) => ({ projects: allProjects });
 
 const StyledPage = withStyles(styles, { withTheme: true })(Layout);
 
 const WithAuthentication = withAuth0(StyledPage);
 
-export default connect(mapStateToProps, { fetchProjects })(WithAuthentication);
+export default connect(mapStateToProps, { fetchProjects: fetchAllProjects })(
+  WithAuthentication
+);

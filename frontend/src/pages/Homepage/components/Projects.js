@@ -31,15 +31,18 @@ export default ({ projectsData, projectsLoading }) => {
       <div className={classes.projectCardsGrid}>
         {projectsLoading && <CircularProgress color="secondary" />}
         {projectsData &&
-          projectsData.map((project) => (
-            <ProjectCard
-              key={project.id}
-              id={project.id}
-              headerUrl={project.headerUrl}
-              className={classes.card}
-              body={<Body project={project} />}
-            />
-          ))}
+          projectsData.map((project) => {
+            const { _id } = project;
+            return (
+              <ProjectCard
+                key={_id}
+                id={_id}
+                headerUrl={project.headerUrl}
+                className={classes.card}
+                body={<Body project={project} />}
+              />
+            );
+          })}
       </div>
     </div>
   );
