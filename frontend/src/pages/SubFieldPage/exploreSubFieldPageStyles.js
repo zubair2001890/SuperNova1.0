@@ -20,7 +20,14 @@ const useStyles = makeStyles((theme) => ({
     margin: 0,
   },
   constellationContainer: {
-    //
+    position: "absolute",
+    maxWidth: "25%",
+    minWidth: "250px",
+    maxHeight: 195,
+    top: "220px",
+    left: "50%",
+    transform: "translate(-50%, 0%)",
+    zIndex: 10,
   },
   carouselContainer: {
     position: "absolute",
