@@ -14,6 +14,7 @@ import Model from "./pages/Model";
 import Contact from "./pages/Contact";
 import Team from "./pages/Team";
 import TopicX from "./pages/TopicX";
+import Explore from "./pages/Explore";
 import Biology from "./pages/Biology";
 import SocialSciences from "./pages/SocialSciences";
 import Physics from "./pages/Physics";
@@ -72,7 +73,7 @@ function App() {
             <Route path={paths.spaceSciences}>
               <SpaceSciences />
             </Route>
-            <Route path={paths.compSci}>
+            <Route path={paths.computerScience}>
               <ComputerScience />
             </Route>
             <Route path={paths.engineeringAndTech}>
@@ -89,6 +90,9 @@ function App() {
             </Route>
             <Route path={paths.home} exact>
               <Homepage />
+            </Route>
+            <Route path={paths.explore} exact>
+              <Explore />
             </Route>
             <Route path={paths.error404}>
               <Error404 />
