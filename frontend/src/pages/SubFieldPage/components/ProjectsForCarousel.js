@@ -1,10 +1,6 @@
 import React from "react";
-import {
-  makeStyles,
-  Avatar,
-  Tooltip,
-} from "@material-ui/core";
-import ProjectCard from "../../../components/ProjectCard";
+import { makeStyles, Avatar, Tooltip } from "@material-ui/core";
+import ProjectCard from "../../../components/LargeProjectCard";
 import FundsProgress from "../../../components/ProjectCard/components/FundsProgress";
 
 const maxTitleLength = 45;
@@ -13,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
   projectCardContainer: {
     display: "flex",
     justifyContent: "center",
-    width: "50%",
+    // width: "50%",
   },
   card: {
     // margin: "1rem",
@@ -33,6 +29,8 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: "'Montserrat', sans-serif",
     maxHeight: 36,
     overflowY: "hidden",
+    textAlign: "left",
+    margin: 0,
   },
   avatar: {
     width: 56,
@@ -44,32 +42,46 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 500,
     lineHeight: "18px",
     fontFamily: "'Montserrat', sans-serif",
+    textAlign: "left",
+    marginLeft: 20,
   },
+  nameAndAvatar: {
+    display: "flex",
+    justifyContent: "flex-start",
+    width: "90%",
+  },
+  fundsProgress: {
+    textAlign: "left",
+    width: "70%",
+  }
 }));
 
 export default ({ projectsData }) => {
   const classes = useStyles();
   return (
-      <div className={classes.projectCardContainer}>
-        {projectsData &&
-          projectsData.map((project) => (
-            <ProjectCard
-              key={project.id}
-              headerUrl={project.headerUrl}
-              className={classes.card}
-              body={
-                <div className={classes.cardBody}>
-                  <p className={classes.projectTitle}>
-                    {project.title.length < maxTitleLength ? (
-                      project.title
-                    ) : (
-                      <Tooltip title={project.title} placement="top">
-                        <span>
-                          {project.title.slice(0, maxTitleLength - 3) + "..."}
-                        </span>
-                      </Tooltip>
-                    )}
-                  </p>
+    <div className={classes.projectCardContainer}>
+      {projectsData &&
+        projectsData.map((project) => (
+          <ProjectCard
+            key={project.id}
+            headerUrl={project.headerUrl}
+            className={classes.card}
+            aboutDescription={project.aboutDescription}
+            significanceDescription={project.significanceDescription}
+            details={
+              <div className={classes.cardBody}>
+                <p className={classes.projectTitle}>
+                  {project.title.length < maxTitleLength ? (
+                    project.title
+                  ) : (
+                    <Tooltip title={project.title} placement="top">
+                      <span>
+                        {project.title.slice(0, maxTitleLength - 3) + "..."}
+                      </span>
+                    </Tooltip>
+                  )}
+                </p>
+                <div className={classes.nameAndAvatar}>
                   <Avatar
                     className={classes.avatar}
                     alt="Researcher Avatar"
@@ -79,14 +91,17 @@ export default ({ projectsData }) => {
                     {project.firstName} {project.lastName} <br />
                     {project.university}
                   </p>
+                </div>
+                <div className={classes.fundsProgress}>
                   <FundsProgress
                     fundsRaised={project.fundsRaised}
                     fundsGoal={project.fundsGoal}
                   />
                 </div>
-              }
-            />
-          ))}
-      </div>
+              </div>
+            }
+          />
+        ))}
+    </div>
   );
 };
