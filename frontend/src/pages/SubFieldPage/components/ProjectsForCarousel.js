@@ -9,10 +9,6 @@ const useStyles = makeStyles((theme) => ({
   projectCardContainer: {
     display: "flex",
     justifyContent: "center",
-    // width: "50%",
-  },
-  card: {
-    // margin: "1rem",
   },
   cardBody: {
     "& > *": {
@@ -20,6 +16,10 @@ const useStyles = makeStyles((theme) => ({
       marginBottom: 0,
       "&:not(:last-child)": { marginBottom: theme.spacing(2) },
     },
+    height: "100%",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
   },
   projectTitle: {
     fontSize: 16,
@@ -65,7 +65,6 @@ export default ({ projectsData }) => {
           <ProjectCard
             key={project.id}
             headerUrl={project.headerUrl}
-            className={classes.card}
             aboutDescription={project.aboutDescription}
             significanceDescription={project.significanceDescription}
             details={

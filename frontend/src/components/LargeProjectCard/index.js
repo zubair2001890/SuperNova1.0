@@ -14,7 +14,7 @@ const defaultHeaderUrl = defaultCardHeaderImage;
 const useStyles = makeStyles((theme) => ({
   card: {
     borderColor: theme.palette.common.gray,
-    padding: 10,
+    padding: 5,
     maxWidth: 720,
     height: 435,
     margin: "0px 20px",
@@ -26,8 +26,9 @@ const useStyles = makeStyles((theme) => ({
     width: "40%",
   },
   cardDetails: {
-    padding: theme.spacing(3, 2, 3, 2),
     width: "60%",
+    height: "100%",
+    padding: 0,
   },
   cardBody: {
     height: "100%",
@@ -35,6 +36,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
+    padding: 10,
   },
   cardUpperBody: {
     display: "flex",

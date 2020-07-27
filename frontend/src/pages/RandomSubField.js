@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Constellation from "../components/Constellation";
 import useStyles from "./SubFieldPage/exploreSubFieldPageStyles";
 import SubFieldPage from "./SubFieldPage";
 import Projects from "./SubFieldPage/components/ProjectsForCarousel";
