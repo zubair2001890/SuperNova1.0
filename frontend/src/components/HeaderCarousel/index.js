@@ -15,6 +15,7 @@ export default (props) => {
       className={props.className}
       centerMode={props.centerMode}
       centerSlidePercentage={props.centerSlidePercentage}
+      onChange={props.changeFunction}
     >
         {/* props.content should be an array of divs, where each div will be a new slide */}
       {props.content}
