@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import icon from "./icon.png";
 import { makeStyles } from "@material-ui/core";
 import { post } from "axios";
-// import { useAuth0 } from "@auth0/auth0-react";
+import { useAuth0 } from "@auth0/auth0-react";
 import Avatar from "@material-ui/core/Avatar";
 
 const handleChange = (setPicture) => async (event) => {
@@ -66,10 +66,7 @@ const useStyles = makeStyles((theme) => {
 });
 
 export default function AvatarForm() {
-  // const { user } = useAuth0();
-  const user = {
-    picture: "https://randomuser.me/api/portraits/men/31.jpg",
-  };
+  const { user } = useAuth0();
   const [picture, setPicture] = useState(user.picture);
   const classes = useStyles();
   return (
