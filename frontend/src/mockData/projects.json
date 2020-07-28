@@ -1,10 +1,10 @@
 [
   {
-    "projectId": 0,
+    "_id": 0,
     "firstName": "Sammy",
     "lastName": "Shark",
     "university": "Univeristy of Birmingham",
-    "avatarUrl": "https://randomuser.me/api/portraits/men/31.jpg",
+    "imageUrl": "https://randomuser.me/api/portraits/men/31.jpg",
     "projectName": "An-arrgh-chy: The Law and Economics of Pirate Organization",
     "projectImage": "https://i.picsum.photos/id/175/265/149.jpg?hmac=hkiEYOA9_jRekbOVVJy0LR8_d3iA2UgQ9MtdcfCE8oM",
     "dateStarted": "13/06/2019",
@@ -23,11 +23,11 @@
     "statusName": "Active"
   },
   {
-    "projectId": 1,
+    "_id": 1,
     "firstName": "Louis",
     "lastName": "Whale",
     "university": "University of Loughborough",
-    "avatarUrl": "https://randomuser.me/api/portraits/women/31.jpg",
+    "imageUrl": "https://randomuser.me/api/portraits/women/31.jpg",
     "projectName": "Leaf me alone: visual constraints on the ecology of social group formation",
     "projectImage": "https://i.picsum.photos/id/1063/265/149.jpg?hmac=70JA5XD7fnNFO92VlRXsW-Viopx8KhU90ptiqqFgL4s",
     "dateStarted": "13/06/2019",
@@ -46,11 +46,11 @@
     "statusName": "Active"
   },
   {
-    "projectId": 2,
+    "_id": 2,
     "firstName": "Sammy",
     "lastName": "Shark",
     "university": "Univeristy of Birmingham",
-    "avatarUrl": "https://randomuser.me/api/portraits/men/31.jpg",
+    "imageUrl": "https://randomuser.me/api/portraits/men/31.jpg",
     "projectName": "An-arrgh-chy: The Law and Economics of Pirate Organization",
     "projectImage": "https://i.picsum.photos/id/175/265/149.jpg?hmac=hkiEYOA9_jRekbOVVJy0LR8_d3iA2UgQ9MtdcfCE8oM",
     "dateStarted": "13/06/2019",
@@ -69,11 +69,11 @@
     "statusName": "Active"
   },
   {
-    "projectId": 3,
+    "_id": 3,
     "firstName": "Louis",
     "lastName": "Whale",
     "university": "University of Loughborough",
-    "avatarUrl": "https://randomuser.me/api/portraits/women/31.jpg",
+    "imageUrl": "https://randomuser.me/api/portraits/women/31.jpg",
     "projectName": "Leaf me alone: visual constraints on the ecology of social group formation",
     "projectImage": "https://i.picsum.photos/id/1063/265/149.jpg?hmac=70JA5XD7fnNFO92VlRXsW-Viopx8KhU90ptiqqFgL4s",
     "dateStarted": "13/06/2019",

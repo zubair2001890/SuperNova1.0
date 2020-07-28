@@ -14,12 +14,25 @@ import Model from "./pages/Model";
 import Contact from "./pages/Contact";
 import Team from "./pages/Team";
 import TopicX from "./pages/TopicX";
+import Explore from "./pages/Explore";
+import Biology from "./pages/Biology";
+import SocialSciences from "./pages/SocialSciences";
+import Physics from "./pages/Physics";
+import MathsAndStats from "./pages/MathsAndStats";
+import SpaceSciences from "./pages/SpaceSciences";
+import ComputerScience from "./pages/ComputerScience";
+import EngineeringAndTech from "./pages/EngineeringAndTech";
+import EarthSciences from "./pages/EarthSciences";
+import Chemistry from "./pages/Chemistry";
+import Medicine from "./pages/Medicine";
+import ScrollToTop from "./components/ScrollToTop";
 import ProjectPage from "./pages/ProjectPage";
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
+        <ScrollToTop />
         <Layout>
           <Switch>
             <Route path={paths.login}>
@@ -49,8 +62,41 @@ function App() {
             <Route path={paths.projectX}>
               <ProjectPage />
             </Route>
+            <Route path={paths.biology}>
+              <Biology />
+            </Route>
+            <Route path={paths.socialSciences}>
+              <SocialSciences />
+            </Route>
+            <Route path={paths.physics}>
+              <Physics />
+            </Route>
+            <Route path={paths.mathsAndStats}>
+              <MathsAndStats />
+            </Route>
+            <Route path={paths.spaceSciences}>
+              <SpaceSciences />
+            </Route>
+            <Route path={paths.computerScience}>
+              <ComputerScience />
+            </Route>
+            <Route path={paths.engineeringAndTech}>
+              <EngineeringAndTech />
+            </Route>
+            <Route path={paths.earthSciences}>
+              <EarthSciences />
+            </Route>
+            <Route path={paths.chemistry}>
+              <Chemistry />
+            </Route>
+            <Route path={paths.medicine}>
+              <Medicine />
+            </Route>
             <Route path={paths.home} exact>
               <Homepage />
+            </Route>
+            <Route path={paths.explore} exact>
+              <Explore />
             </Route>
             <Route path={paths.error404}>
               <Error404 />

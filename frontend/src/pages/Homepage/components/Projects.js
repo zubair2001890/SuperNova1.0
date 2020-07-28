@@ -88,7 +88,7 @@ export default ({ projectsData, projectsLoading }) => {
                   <Avatar
                     className={classes.avatar}
                     alt="Researcher Avatar"
-                    src={project.avatarUrl}
+                    src={project.imageUrl}
                   />
                   <p className={classes.subtitle}>
                     {project.firstName} {project.lastName} <br />
