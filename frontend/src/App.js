@@ -1,9 +1,20 @@
-import React, { Suspense, Component, lazy } from "react";
+import React, { Suspense, lazy } from "react";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import { ThemeProvider } from "@material-ui/core/styles";
-import { withAuth0 } from "@auth0/auth0-react";
 
 import Layout from "./components/Layout";
+import Explore from "./pages/Explore";
+import Biology from "./pages/Biology";
+import SocialSciences from "./pages/SocialSciences";
+import Physics from "./pages/Physics";
+import MathsAndStats from "./pages/MathsAndStats";
+import SpaceSciences from "./pages/SpaceSciences";
+import ComputerScience from "./pages/ComputerScience";
+import EngineeringAndTech from "./pages/EngineeringAndTech";
+import EarthSciences from "./pages/EarthSciences";
+import Chemistry from "./pages/Chemistry";
+import Medicine from "./pages/Medicine";
+
 import paths from "./constants/paths";
 import theme from "./theme";
 
@@ -17,85 +28,112 @@ const Model = lazy(() => import("./pages/Model"));
 const Contact = lazy(() => import("./pages/Contact"));
 const Team = lazy(() => import("./pages/Team"));
 const TopicX = lazy(() => import("./pages/TopicX"));
+const ScrollToTop = lazy(() => import("./components/ScrollToTop"));
+
 const MyProjects = lazy(() => import("./pages/Account/MyProjects"));
 const BackedProjects = lazy(() => import("./pages/Account/BackedProjects"));
 const Profile = lazy(() => import("./pages/Account/Profile"));
 const Activity = lazy(() => import("./pages/Account/Activity"));
 const Overview = lazy(() => import("./pages/editAccount/Overview"));
-const ScrollToTop = lazy(() => import("./components/ScrollToTop"));
 const AccountSettings = lazy(() => import("./pages/editAccount/Settings"));
 
-class App extends Component {
-  // async componentDidMount() {
-  //   const { getAccessTokenSilently } = this.props.auth0;
-  //   const token = await getAccessTokenSilently();
-  //   console.log("token", token);
-  // }
-
-  render() {
-    return (
-      <ThemeProvider theme={theme}>
-        <BrowserRouter>
-          <Suspense fallback={<p>Loading...</p>}>
-            <ScrollToTop />
-            <Layout>
-              <Switch>
-                <Route path={paths.login}>
-                  <Login />
-                </Route>
-                <Route path={paths.faq}>
-                  <Faq />
-                </Route>
-                <Route path={paths.mission}>
-                  <Mission />
-                </Route>
-                <Route path={paths.terms}>
-                  <Terms />
-                </Route>
-                <Route path={paths.model}>
-                  <Model />
-                </Route>
-                <Route path={paths.contact}>
-                  <Contact />
-                </Route>
-                <Route path={paths.team}>
-                  <Team />
-                </Route>
-                <Route path={paths.informationPageX}>
-                  <TopicX />
-                </Route>
-                <Route path={paths.home} exact>
-                  <Homepage />
-                </Route>
-                <Route path={paths.account} exact>
-                  <BackedProjects />
-                </Route>
-                <Route path={paths.myProjects}>
-                  <MyProjects />
-                </Route>
-                <Route path={paths.profile}>
-                  <Profile />
-                </Route>
-                <Route path={paths.activity}>
-                  <Activity />
-                </Route>
-                <Route path={paths.overview} exact>
-                  <Overview />
-                </Route>
-                <Route path={paths.settings}>
-                  <AccountSettings />
-                </Route>
-                <Route path={paths.error404}>
-                  <Error404 />
-                </Route>
-                <Redirect to={paths.error404} />
-              </Switch>
-            </Layout>
-          </Suspense>
-        </BrowserRouter>
-      </ThemeProvider>
-    );
-  }
+export default function App() {
+  return (
+    <ThemeProvider theme={theme}>
+      <BrowserRouter>
+        <Suspense fallback={<p>Loading...</p>}>
+          <ScrollToTop />
+          <Layout>
+            <Switch>
+              <Route path={paths.login}>
+                <Login />
+              </Route>
+              <Route path={paths.faq}>
+                <Faq />
+              </Route>
+              <Route path={paths.mission}>
+                <Mission />
+              </Route>
+              <Route path={paths.terms}>
+                <Terms />
+              </Route>
+              <Route path={paths.model}>
+                <Model />
+              </Route>
+              <Route path={paths.contact}>
+                <Contact />
+              </Route>
+              <Route path={paths.team}>
+                <Team />
+              </Route>
+              <Route path={paths.informationPageX}>
+                <TopicX />
+              </Route>
+              <Route path={paths.home} exact>
+                <Homepage />
+              </Route>
+              <Route path={paths.account} exact>
+                <BackedProjects />
+              </Route>
+              <Route path={paths.myProjects}>
+                <MyProjects />
+              </Route>
+              <Route path={paths.profile}>
+                <Profile />
+              </Route>
+              <Route path={paths.activity}>
+                <Activity />
+              </Route>
+              <Route path={paths.overview} exact>
+                <Overview />
+              </Route>
+              <Route path={paths.settings}>
+                <AccountSettings />
+              </Route>
+              <Route path={paths.biology}>
+                <Biology />
+              </Route>
+              <Route path={paths.socialSciences}>
+                <SocialSciences />
+              </Route>
+              <Route path={paths.physics}>
+                <Physics />
+              </Route>
+              <Route path={paths.mathsAndStats}>
+                <MathsAndStats />
+              </Route>
+              <Route path={paths.spaceSciences}>
+                <SpaceSciences />
+              </Route>
+              <Route path={paths.computerScience}>
+                <ComputerScience />
+              </Route>
+              <Route path={paths.engineeringAndTech}>
+                <EngineeringAndTech />
+              </Route>
+              <Route path={paths.earthSciences}>
+                <EarthSciences />
+              </Route>
+              <Route path={paths.chemistry}>
+                <Chemistry />
+              </Route>
+              <Route path={paths.medicine}>
+                <Medicine />
+              </Route>
+              <Route path={paths.home} exact>
+                <Homepage />
+              </Route>
+              <Route path={paths.explore} exact>
+                <Explore />
+              </Route>
+              <Route path={paths.error404}>
+                <Error404 />
+              </Route>
+              <Redirect to={paths.error404} />
+            </Switch>
+          </Layout>
+        </Suspense>
+      </BrowserRouter>
+    </ThemeProvider>
+  );
 }
-
-export default withAuth0(App);

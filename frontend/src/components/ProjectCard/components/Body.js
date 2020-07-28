@@ -34,32 +34,39 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Body({ project }) {
+export default function Body({
+  project: {
+    projectName,
+    imageUrl,
+    firstName,
+    lastName,
+    university,
+    totalPledged,
+    goal,
+  },
+}) {
   const classes = useStyles();
   return (
     <div className={classes.cardBody}>
       <p className={classes.projectTitle}>
-        {project.title.length < maxTitleLength ? (
-          project.title
+        {projectName.length < maxTitleLength ? (
+          projectName.title
         ) : (
-          <Tooltip title={project.title} placement="top">
-            <span>{project.title.slice(0, maxTitleLength - 3) + "..."}</span>
+          <Tooltip title={projectName} placement="top">
+            <span>{projectName.slice(0, maxTitleLength - 3) + "..."}</span>
           </Tooltip>
         )}
       </p>
       <Avatar
         className={classes.avatar}
         alt="Researcher Avatar"
-        src={project.avatarUrl}
+        src={imageUrl}
       />
       <p className={classes.subtitle}>
-        {project.firstName} {project.lastName} <br />
-        {project.university}
+        {firstName} {lastName} <br />
+        {university}
       </p>
-      <FundsProgress
-        fundsRaised={project.fundsRaised}
-        fundsGoal={project.fundsGoal}
-      />
+      <FundsProgress fundsRaised={totalPledged} fundsGoal={goal} />
     </div>
   );
 }

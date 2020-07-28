@@ -3,7 +3,7 @@ import Layout from "./Layout";
 import Projects from "./Projects";
 
 const getIfUserOwnsProject = (user) => (project) =>
-  project.projectScientistId === user.projectScientistId;
+  project.projectScientistID === user.projectScientistID;
 
 const getMyProjects = (user, projects) =>
   projects.filter(getIfUserOwnsProject(user));

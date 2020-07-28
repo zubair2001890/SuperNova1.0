@@ -4,11 +4,14 @@ import { withStyles, Typography } from "@material-ui/core";
 import { withAuth0 } from "@auth0/auth0-react";
 
 import LogIn from "../../../pages/Login";
-import { fetchProjects } from "../../../store/slices/projects";
+import { fetchAllProjects } from "../../../store/allProjects";
 
 const styles = (theme) => ({
   layout: {
     padding: "0 1rem 2rem 1rem",
+    [theme.breakpoints.up("sm")]: {
+      padding: "0 3rem",
+    },
     [theme.breakpoints.up("lg")]: {
       padding: "0 7.5rem 2rem 7.5rem",
     },
@@ -42,7 +45,7 @@ const styles = (theme) => ({
 export class Layout extends Component {
   fetchProjects = () => {
     const { projects, fetchProjects } = this.props;
-    if (!projects.data.length) fetchProjects();
+    if (!projects.length) fetchProjects();
   };
 
   componentDidMount() {
@@ -80,10 +83,12 @@ export class Layout extends Component {
   }
 }
 
-const mapStateToProps = ({ projects }) => ({ projects });
+const mapStateToProps = ({ allProjects }) => ({ projects: allProjects });
 
 const StyledPage = withStyles(styles, { withTheme: true })(Layout);
 
 const WithAuthentication = withAuth0(StyledPage);
 
-export default connect(mapStateToProps, { fetchProjects })(WithAuthentication);
+export default connect(mapStateToProps, { fetchProjects: fetchAllProjects })(
+  WithAuthentication
+);

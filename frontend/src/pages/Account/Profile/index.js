@@ -11,7 +11,7 @@ import { withAuth0 } from "@auth0/auth0-react";
 
 const styles = (theme) => ({
   header: {
-    [theme.breakpoints.up("md")]: {
+    [theme.breakpoints.up("sm")]: {
       display: "flex",
     },
   },

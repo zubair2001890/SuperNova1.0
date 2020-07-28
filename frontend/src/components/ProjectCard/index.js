@@ -11,7 +11,7 @@ import {
 import defaultCardHeaderImage from "./assets/default-project-header-image.png";
 import { getProjectPath } from "../../helpers/createPaths";
 
-const defaultHeaderUrl = defaultCardHeaderImage;
+const defaultprojectImage = defaultCardHeaderImage;
 
 const useStyles = makeStyles((theme) => ({
   link: {
@@ -30,7 +30,12 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(3, 2, 3, 2),
   },
 }));
-const ProjectCard = ({ headerUrl = defaultHeaderUrl, body, className, id }) => {
+const ProjectCard = ({
+  projectImage = defaultprojectImage,
+  body,
+  className,
+  id,
+}) => {
   const classes = useStyles();
   const projectUrl = getProjectPath(id);
   return (
@@ -40,7 +45,7 @@ const ProjectCard = ({ headerUrl = defaultHeaderUrl, body, className, id }) => {
           <CardMedia
             className={classes.projectImage}
             title="Project Image"
-            image={headerUrl}
+            image={projectImage}
           />
           <CardContent className={classes.cardContent}>{body}</CardContent>
         </CardActionArea>
