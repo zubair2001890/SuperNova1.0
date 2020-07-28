@@ -48,26 +48,30 @@
 }
 
 @keyframes slideFadeLeft {
-  from{
+  from {
     transform: translateX(10vw);
     opacity: 0;
   }
-  to{
+  to {
     opacity: 1;
   }
 }
 
 @keyframes slideFadeRight {
-  from{
+  from {
     transform: translateX(-10vw);
     opacity: 0;
   }
-  to{
+  to {
     opacity: 1;
   }
 }
 
+html,
 body {
   /* reset userAgent stylesheet */
-  margin: 0 0 0 0;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
