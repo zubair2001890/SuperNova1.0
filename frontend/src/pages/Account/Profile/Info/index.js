@@ -14,7 +14,7 @@ const styles = (theme) => ({
     [theme.breakpoints.up("md")]: {
       marginBottom: "0",
     },
-    [theme.breakpoints.up("md")]: {
+    [theme.breakpoints.up("sm")]: {
       paddingRight: "2rem",
       borderRight: "2px solid black",
     },

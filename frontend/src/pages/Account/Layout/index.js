@@ -10,6 +10,9 @@ import { fetchAllProjects } from "../../../store/allProjects";
 const styles = (theme) => ({
   layout: {
     padding: "0 1rem",
+    [theme.breakpoints.up("sm")]: {
+      padding: "0 3rem",
+    },
     [theme.breakpoints.up("lg")]: {
       padding: "0 7.5rem",
     },
