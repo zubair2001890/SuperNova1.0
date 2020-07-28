@@ -5,6 +5,7 @@ import { setDarkTheme as setPageDarkTheme } from "../../store/slices/page";
 import HeaderCarousel from "../../components/HeaderCarousel";
 import useStyles from "./exploreSubFieldPageStyles";
 import InteractiveConstellation from "../../components/InteractiveConstellation";
+import Consumer, { StarProvider } from "./StarContext";
 
 export default (props) => {
   const classes = useStyles();
@@ -23,10 +24,9 @@ export default (props) => {
 
   function updateConstellation(currentSlide) {
     for (var i = 0; i < stars.length; i++) {
-      if (i == currentSlide) {
+      if (i === currentSlide) {
         stars[i] = 1;
-      }
-      else stars[i] = 0;
+      } else stars[i] = 0;
     }
   }
 
@@ -35,21 +35,31 @@ export default (props) => {
       <div className={classes.pageContainer}>
         <div className={classes.pageHeader}>
           <div className={classes.mockAppBarLayout} />
-          <div className={classes.constellationContainer}>
-            <InteractiveConstellation stars={stars} />
-          </div>
-          <div className={classes.carouselContainer}>
-            <HeaderCarousel
-              className={classes.carousel}
-              content={content}
-              centerMode="true"
-              centerSlidePercentage={50}
-              changeFunction={updateConstellation}
-            />
-            <Typography variant="h2" className={classes.subFieldTitle}>
-              {props.title}
-            </Typography>
-          </div>
+          <StarProvider>
+            <div className={classes.constellationContainer}>
+              <InteractiveConstellation stars={stars} />
+            </div>
+            <div className={classes.carouselContainer}>
+              <Consumer>
+                {(ctx) => {
+                  return (
+                      <HeaderCarousel
+                        className={classes.carousel}
+                        content={content}
+                        centerMode="true"
+                        centerSlidePercentage={50}
+                        infiniteLoop={false}
+                        onChange={ctx.updateConstellation}
+                      />
+                  );
+                }}
+              </Consumer>
+
+              <Typography variant="h2" className={classes.subFieldTitle}>
+                {props.title}
+              </Typography>
+            </div>
+          </StarProvider>
         </div>
       </div>
     </>

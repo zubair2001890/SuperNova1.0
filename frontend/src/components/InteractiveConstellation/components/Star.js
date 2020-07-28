@@ -5,7 +5,6 @@ const useStyles = makeStyles(() => ({
   star: {
     position: "absolute",
     height: "20%",
-    height: "20%",
   },
 }));
 

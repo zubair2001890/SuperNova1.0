@@ -8,14 +8,14 @@ export default (props) => {
       showArrows={true}
       showStatus={false}
       showIndicators={false}
-      infiniteLoop={true}
+      infiniteLoop={props.infiniteLoop == false ? false : true}
       showThumbs={false}
       autoPlay={false}
       useKeyboardArrows={true}
       className={props.className}
       centerMode={props.centerMode}
       centerSlidePercentage={props.centerSlidePercentage}
-      onChange={props.changeFunction}
+      onChange={props.onChange}
     >
         {/* props.content should be an array of divs, where each div will be a new slide */}
       {props.content}
