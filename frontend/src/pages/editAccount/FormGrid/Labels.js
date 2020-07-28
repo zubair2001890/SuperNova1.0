@@ -3,10 +3,14 @@ import { withStyles } from "@material-ui/core";
 import FieldsColumn from "./FieldsColumn";
 
 export class Labels extends Component {
-  renderLabel = ({ label, name, className }) => {
+  renderLabel = ({ label, name, className }, index) => {
     const { classes } = this.props;
     return (
-      <label htmlFor={name} className={`${classes.text} ${className}`}>
+      <label
+        htmlFor={name}
+        className={`${classes.text} ${className}`}
+        key={index}
+      >
         {label}
       </label>
     );
