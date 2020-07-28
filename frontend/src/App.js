@@ -3,18 +3,6 @@ import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import { ThemeProvider } from "@material-ui/core/styles";
 
 import Layout from "./components/Layout";
-import Explore from "./pages/Explore";
-import Biology from "./pages/Biology";
-import SocialSciences from "./pages/SocialSciences";
-import Physics from "./pages/Physics";
-import MathsAndStats from "./pages/MathsAndStats";
-import SpaceSciences from "./pages/SpaceSciences";
-import ComputerScience from "./pages/ComputerScience";
-import EngineeringAndTech from "./pages/EngineeringAndTech";
-import EarthSciences from "./pages/EarthSciences";
-import Chemistry from "./pages/Chemistry";
-import Medicine from "./pages/Medicine";
-
 import paths from "./constants/paths";
 import theme from "./theme";
 
@@ -36,6 +24,18 @@ const Profile = lazy(() => import("./pages/Account/Profile"));
 const Activity = lazy(() => import("./pages/Account/Activity"));
 const Overview = lazy(() => import("./pages/editAccount/Overview"));
 const AccountSettings = lazy(() => import("./pages/editAccount/Settings"));
+
+const Explore = lazy(() => import("./pages/Explore"));
+const Biology = lazy(() => import("./pages/Biology"));
+const SocialSciences = lazy(() => import("./pages/SocialSciences"));
+const Physics = lazy(() => import("./pages/Physics"));
+const MathsAndStats = lazy(() => import("./pages/MathsAndStats"));
+const SpaceSciences = lazy(() => import("./pages/SpaceSciences"));
+const ComputerScience = lazy(() => import("./pages/ComputerScience"));
+const EngineeringAndTech = lazy(() => import("./pages/EngineeringAndTech"));
+const EarthSciences = lazy(() => import("./pages/EarthSciences"));
+const Chemistry = lazy(() => import("./pages/Chemistry"));
+const Medicine = lazy(() => import("./pages/Medicine"));
 
 export default function App() {
   return (
