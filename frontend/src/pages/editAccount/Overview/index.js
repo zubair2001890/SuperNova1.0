@@ -6,9 +6,11 @@ import AvatarForm from "./AvatarForm/index";
 
 const useStyles = makeStyles((theme) => ({
   overview: {
+    display: "flex",
+    flexDirection: "column",
     [theme.breakpoints.up("md")]: {
-      display: "flex",
       alignItems: "start",
+      flexDirection: "row",
     },
   },
 }));

@@ -21,6 +21,13 @@ const useStyles = makeStyles((theme) => {
   return {
     avatarForm: {
       position: "relative",
+      order: 0,
+      marginBottom: "3rem",
+      marginRight: "auto",
+      [theme.breakpoints.up("md")]: {
+        order: 1,
+        marginBottom: 0,
+      },
     },
     picture: {
       width: pictureSize,
@@ -31,7 +38,7 @@ const useStyles = makeStyles((theme) => {
       },
     },
     input: {
-      visibility: "hidden",
+      opacity: 0,
       position: "absolute",
       top: 0,
       left: 0,

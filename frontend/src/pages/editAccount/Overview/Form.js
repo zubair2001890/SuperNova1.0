@@ -8,8 +8,10 @@ import FormGrid from "../FormGrid";
 const useStyles = makeStyles((theme) => ({
   form: {
     flexGrow: 1,
+    order: 1,
     [theme.breakpoints.up("md")]: {
       marginRight: "8.375rem",
+      order: 0,
     },
   },
 }));
