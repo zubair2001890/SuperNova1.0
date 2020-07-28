@@ -46,7 +46,6 @@ const styles = (theme) => ({
 export class Layout extends Component {
   fetchProjects = () => {
     const { projects, fetchProjects } = this.props;
-    console.log("projects", projects);
     if (!projects.length) fetchProjects();
   };
 
