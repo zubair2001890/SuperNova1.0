@@ -23,6 +23,7 @@ const Profile = lazy(() => import("./pages/Account/Profile"));
 const Activity = lazy(() => import("./pages/Account/Activity"));
 const Overview = lazy(() => import("./pages/editAccount/Overview"));
 const ScrollToTop = lazy(() => import("./components/ScrollToTop"));
+const AccountSettings = lazy(() => import("./pages/editAccount/Settings"));
 
 class App extends Component {
   // async componentDidMount() {
@@ -78,8 +79,11 @@ class App extends Component {
                 <Route path={paths.activity}>
                   <Activity />
                 </Route>
-                <Route path={paths.overview}>
+                <Route path={paths.overview} exact>
                   <Overview />
+                </Route>
+                <Route path={paths.settings}>
+                  <AccountSettings />
                 </Route>
                 <Route path={paths.error404}>
                   <Error404 />

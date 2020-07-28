@@ -1,24 +1,25 @@
 import React from "react";
 import Nav from "../../../components/account/Layout/Nav";
+import paths from "../../../constants/paths";
 
 export default function MainNav() {
   return (
     <Nav
       links={[
         {
-          to: "/",
+          to: paths.account,
           children: "Backed Projects",
         },
         {
-          to: "/my-projects",
+          to: paths.myProjects,
           children: "My Projects",
         },
         {
-          to: "/activity",
+          to: paths.activity,
           children: "Activity",
         },
         {
-          to: "/profile",
+          to: paths.profile,
           children: "Profile",
         },
       ]}

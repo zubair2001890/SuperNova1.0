@@ -26,7 +26,7 @@ export function Item({ to, children }) {
   return (
     <li className={classes.item}>
       <NavLink
-        to={`/account${to}`}
+        to={to}
         className={classes.link}
         activeClassName={classes["link--active"]}
         exact

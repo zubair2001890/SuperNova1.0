@@ -1,15 +1,27 @@
 import React from "react";
-import Group from "./Group";
+import { makeStyles } from "@material-ui/core";
+import Inputs from "./Inputs";
+import Labels from "./Labels";
 import SaveButton from "./Save";
 
-const renderField = (fieldData, index) => <Group {...fieldData} key={index} />;
+const useStyles = makeStyles((theme) => ({
+  form: {
+    maxWidth: "33.5rem",
+  },
+  inputsAndLabels: {
+    display: "flex",
+  },
+}));
 
-const renderFields = (fields) => fields.map(renderField);
-
-export default function FormGrid({ fields, handleSubmit, className = null }) {
+export default function FormGrid({ fields, handleSubmit, className = "" }) {
+  const classes = useStyles();
+  const formClasses = `${className} ${classes.form}`;
   return (
-    <form onSubmit={handleSubmit} className={className}>
-      {renderFields(fields)}
+    <form onSubmit={handleSubmit} className={formClasses}>
+      <div className={classes.inputsAndLabels}>
+        <Labels fields={fields} />
+        <Inputs fields={fields} />
+      </div>
       <SaveButton />
     </form>
   );
