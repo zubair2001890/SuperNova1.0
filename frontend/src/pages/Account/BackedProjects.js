@@ -19,7 +19,7 @@ const getBackedProjects = (user, projects) =>
 
 export default function BackedProjects(props) {
   return (
-    <Layout title="Projects I've donated to">
+    <Layout title="Projects I've donated to:">
       <Projects filterProjects={getBackedProjects} {...props} />
     </Layout>
   );
