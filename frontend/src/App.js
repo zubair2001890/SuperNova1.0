@@ -38,7 +38,7 @@ function App() {
             <Route path={paths.login}>
               <Login />
             </Route>
-            <Route path={paths.loginincorrect}>
+            <Route path={paths.loginIncorrect}>
               <LoginIncorrect />
             </Route>
             <Route path={paths.faq}>
