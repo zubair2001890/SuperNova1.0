@@ -34,7 +34,7 @@ export default () => {
 
   return (
     <>
-      <SubFieldPage title="SUBFIELD X" content={content} />
+      <SubFieldPage title="BIOLOGY 1" content={content} />
     </>
   );
 };

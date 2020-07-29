@@ -2,6 +2,8 @@ import React from "react";
 import Constellation from "../components/Constellation";
 import useStyles from "./FieldPage/exploreFieldPageStyles";
 import FieldPage from "./FieldPage";
+import { Link as RouterLink } from "react-router-dom";
+import paths from "../constants/paths";
 
 function Item(props) {
   return (
@@ -15,6 +17,7 @@ function Item(props) {
         subfield={props.item.name1}
         top="calc(5% + 10px)"
         left="calc(15% + 50px)"
+        path={paths.biology1}
       />
       <Constellation
         subfield={props.item.name3}
@@ -60,7 +63,7 @@ export default () => {
 
   return (
     <>
-      <FieldPage title="BIOLOGY" content={content}/>
+      <FieldPage title="BIOLOGY" content={content} />
     </>
   );
 };

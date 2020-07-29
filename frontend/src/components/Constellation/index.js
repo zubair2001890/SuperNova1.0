@@ -1,5 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core";
+import { Link as RouterLink } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   constellation: {
@@ -34,9 +35,14 @@ export default function Constellation(props) {
   const classes = useStyles();
 
   return (
-    <div className={classes.constellation} style={{ top: props.top, left: props.left }}>
-      <div className={classes.constellationImage} />
-      <div className={classes.subfieldName}>{props.subfield}</div>
-    </div>
+    <RouterLink to={props.path}>
+      <div
+        className={classes.constellation}
+        style={{ top: props.top, left: props.left }}
+      >
+        <div className={classes.constellationImage} />
+        <div className={classes.subfieldName}>{props.subfield}</div>
+      </div>
+    </RouterLink>
   );
 }

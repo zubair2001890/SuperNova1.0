@@ -26,7 +26,7 @@ import EarthSciences from "./pages/EarthSciences";
 import Chemistry from "./pages/Chemistry";
 import Medicine from "./pages/Medicine";
 import ScrollToTop from "./components/ScrollToTop";
-import RandomSubField from "./pages/RandomSubField";
+import Biology1 from "./pages/Biology1";
 
 function App() {
   return (
@@ -89,8 +89,8 @@ function App() {
             <Route path={paths.medicine}>
               <Medicine />
             </Route>
-            <Route path={paths.randomSubField}>
-              <RandomSubField />
+            <Route path={paths.biology1}>
+              <Biology1 />
             </Route>
             <Route path={paths.home} exact>
               <Homepage />

@@ -20,5 +20,5 @@ export default {
   medicine: "/explore/medicine",
   socialSciences: "/explore/socialsciences",
   engineeringAndTech: "/explore/engineeringandtech",
-  randomSubField: "/randomsubfield",
+  biology1: "/explore/biology1",
 };
