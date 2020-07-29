@@ -17,6 +17,7 @@ export default function Star(props) {
       src={props.star}
       className={classes.star}
       style={{ top: props.top, left: props.left }}
+      onClick={props.onClick}
     />
   );
 }

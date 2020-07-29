@@ -40,7 +40,7 @@ export default (props) => {
                         centerSlidePercentage={50}
                         infiniteLoop={false}
                         onChange={ctx.updateConstellation}
-                        selectedItem={ctx.selectedItem}
+                        selectedItem={ctx.currentSlide}
                       />
                   );
                 }}
