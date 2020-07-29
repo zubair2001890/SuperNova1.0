@@ -4,7 +4,7 @@ import {
   getProjectEditPath,
 } from "../helpers/createPaths";
 
-export default {
+let paths = {
   login: "/login",
   logout: "/logout",
   error404: "/not-found",
@@ -33,9 +33,34 @@ export default {
   medicine: "/explore/medicine",
   socialSciences: "/explore/socialsciences",
   engineeringAndTech: "/explore/engineeringandtech",
-  projectOverview: getProjectEditPath("/"),
-  projectScientists: getProjectEditPath("scientists"),
-  projectTimeline: getProjectEditPath("timeline-and-budget"),
-  projectMethods: getProjectEditPath("methods"),
-  projectLabNotes: getProjectEditPath("lab-notes"),
+  projects: {},
 };
+
+const addProjectPath = ([key, subPath]) => {
+  paths = {
+    ...paths,
+    projects: {
+      ...paths.projects,
+      [key]: {
+        route: getProjectEditPath(subPath),
+        createPath: (id) => getProjectEditPath(subPath, id),
+      },
+    },
+  };
+};
+
+const addProjectPaths = () => {
+  const projectPaths = {
+    home: "/",
+    scientists: "scientists",
+    timeline: "timeline-and-budget",
+    methods: "methods",
+    labNotes: "lab-notes",
+  };
+  const entries = Object.entries(projectPaths);
+  entries.forEach(addProjectPath);
+};
+
+addProjectPaths();
+
+export default paths;

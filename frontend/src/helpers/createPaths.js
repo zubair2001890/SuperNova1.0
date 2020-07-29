@@ -10,6 +10,6 @@ export const getEditPath = (subPath) => {
   return join(editPath, subPath);
 };
 
-export const getProjectEditPath = (subPath) => {
-  return join("/projects/:id/edit/", subPath);
+export const getProjectEditPath = (subPath, id = ":id") => {
+  return join(`/projects/${id}/edit/`, subPath);
 };
