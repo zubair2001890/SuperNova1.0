@@ -85,7 +85,7 @@ export default function Header({ darkTheme = true }) {
     setDrawerState({ ...drawerState, [anchor]: open });
   };
 
-  const { loginWithRedirect, user, isAuthenticated, logout } = useAuth0();
+  const { loginWithRedirect, isAuthenticated, logout } = useAuth0();
 
   return (
     <>
@@ -145,11 +145,11 @@ export default function Header({ darkTheme = true }) {
             </Button>
             <Button
               color="inherit"
-              onClick={() => isAuthenticated ? logout() : loginWithRedirect()}
+              onClick={() => (isAuthenticated ? logout() : loginWithRedirect())}
               size="large"
               className={classes.appBarRightLink}
             >
-              { isAuthenticated ? 'LOG OUT' : 'LOG IN' }
+              {isAuthenticated ? "LOG OUT" : "LOG IN"}
             </Button>
           </div>
         </Toolbar>
