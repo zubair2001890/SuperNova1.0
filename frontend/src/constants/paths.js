@@ -1,5 +1,6 @@
 export default {
   login: "/login",
+  loginincorrect: "/loginincorrect",
   createAccount: "/createaccount",
   error404: "/not-found",
   home: "/",

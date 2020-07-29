@@ -19,18 +19,32 @@ import EmailIcon from "@material-ui/icons/Email";
 const useStyles = makeStyles((theme) => ({
   root: {
     color: theme.palette.common.black,
+    paddingLeft: theme.spacing(1),
   },
   form: {
     marginTop: theme.spacing(6),
     marginBottom: theme.spacing(2),
   },
+  emailInput: {
+    marginTop: theme.spacing(4),
+    marginBottom: theme.spacing(3),
+    paddingLeft: theme.spacing(1),
+    paddingRight: theme.spacing(1),
+  },
+  passwordInput: {
+    marginTop: theme.spacing(1),
+    marginBottom: theme.spacing(4),
+    paddingLeft: theme.spacing(1),
+    paddingRight: theme.spacing(1),
+  },
   icons: {
     color: theme.palette.common.black,
     padding: theme.spacing(0),
   },
-  button: {
+  forgotPasswordButton: {
     color: theme.palette.secondary.main,
-    padding: theme.spacing(3, 0),
+    padding: theme.spacing(1, 1, 1, 1),
+    margin: theme.spacing(1, 0, 1, 0),
   },
 }));
 
@@ -63,7 +77,7 @@ export default () => {
         New to SuperNova? Create an Account
       </Typography>
 
-      <FormControl fullWidth className={classes.form}>
+      <FormControl fullWidth className={classes.emailInput}>
         <InputLabel className={classes.root} htmlFor="standard-adornment-email">
           Email
         </InputLabel>
@@ -84,7 +98,7 @@ export default () => {
         />
       </FormControl>
 
-      <FormControl fullWidth className={classes.form}>
+      <FormControl fullWidth className={classes.passwordInput}>
         <InputLabel
           className={classes.root}
           htmlFor="standard-adornment-password"
@@ -117,7 +131,7 @@ export default () => {
         />
       </FormControl>
 
-      <Button className={classes.button}>Forgot your password?</Button>
+      <Button className={classes.forgotPasswordButton}>Forgot your password?</Button>
     </>
   );
 };

@@ -50,6 +50,13 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: theme.spacing(1),
     justifyContent: "space-around",
   },
+  loginGridRow: {
+    alignItems: "center",
+    paddingTop: theme.spacing(1),
+    paddingBottom: theme.spacing(1),
+    justifyContent: "space-around",
+    height: 80,
+  },
   footerTitle: {
     color: "white",
     fontFamily: "avaMeridian",
@@ -72,23 +79,49 @@ function Footer(props) {
 
   return (
     <div className={classes.footer}>
-      <Grid container className={classes.gridRow}>
-        <Grid item xs={3} className={classes.whiteLineContainer}>
-          <div className={classes.whiteLine}></div>
-        </Grid>
-        <Grid item xs={2}>
-          <Typography className={clsx(classes.footerTitle, classes.gridItem)}>
-            SUPERNOVA
-          </Typography>
-        </Grid>
-        <Grid item xs={3} className={classes.whiteLineContainer}>
-          <div className={classes.whiteLine}></div>
-        </Grid>
-      </Grid>
+      {["/login", "/loginincorrect"].includes(props.location.pathname) ? (
+        // {props.location.pathname === "/login" ? (
+        <>
+          <Grid container className={classes.loginGridRow}>
+            <Grid item xs={3} className={classes.whiteLineContainer}>
+              <div className={classes.whiteLine}></div>
+            </Grid>
+            <Grid item xs={2}>
+              <Typography
+                className={clsx(classes.footerTitle, classes.gridItem)}
+              >
+                SUPERNOVA
+              </Typography>
+            </Grid>
+            <Grid item xs={3} className={classes.whiteLineContainer}>
+              <div className={classes.whiteLine}></div>
+            </Grid>
+          </Grid>
+        </>
+      ) : (
+        <>
+          <Grid container className={classes.gridRow}>
+            <Grid item xs={3} className={classes.whiteLineContainer}>
+              <div className={classes.whiteLine}></div>
+            </Grid>
+            <Grid item xs={2}>
+              <Typography
+                className={clsx(classes.footerTitle, classes.gridItem)}
+              >
+                SUPERNOVA
+              </Typography>
+            </Grid>
+            <Grid item xs={3} className={classes.whiteLineContainer}>
+              <div className={classes.whiteLine}></div>
+            </Grid>
+          </Grid>
+        </>
+      )}
 
-      <Grid container className={classes.gridRow}>
-        {props.location.pathname === "/login" ? null : (
-          <>
+      {["/login", "/loginincorrect"].includes(props.location.pathname) ? null : (
+        // {props.location.pathname === "/login" ? null : (
+        <>
+          <Grid container className={classes.gridRow}>
             <Grid item xs={4} className={classes.gridItem}>
               <MaterialLink
                 component={RouterLink}
@@ -116,10 +149,11 @@ function Footer(props) {
                 EXPLORE
               </MaterialLink>
             </Grid>{" "}
-          </>
-        )}
-      </Grid>
-      {props.location.pathname === "/login" ? null : (
+          </Grid>
+        </>
+      )}
+      {["/login", "/loginincorrect"].includes(props.location.pathname) ? null : (
+        // {props.location.pathname === "/login" ? null : (
         <>
           <Grid container spacing={2} className={classes.gridRow}>
             <Grid item xs={4} className={classes.gridItem}>

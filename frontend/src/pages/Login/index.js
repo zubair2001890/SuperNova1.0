@@ -10,9 +10,11 @@ import TwitterIcon from "@material-ui/icons/Twitter";
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    minHeight: "calc(100vh - 104px)",
-    padding: theme.spacing(35, 0, 0, 0),
+    minHeight: "calc(100vh - 80px)",
+    paddingTop: theme.spacing(32),
     margin: "auto auto",
+    width: 440,
+    maxHeight: 472,
   },
   socialIcons: {
     color: "white",
@@ -28,7 +30,7 @@ export default function Links() {
   const classes = useStyles();
 
   return (
-    <Grid item xs={12} sm={6} lg={4} className={classes.container}>
+    <Grid item className={classes.container}>
       <FormCard
         headerChildren={
           <>
