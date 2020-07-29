@@ -1,5 +1,5 @@
 import React from "react";
-import { makeStyles, Button } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
 import Star from "./components/Star";
 import unselectedStar from "./assets/constellationstarunselected/constellationstarunselected.png";
 import selectedStar from "./assets/constellationstarselected/constellationstarselected.png";
