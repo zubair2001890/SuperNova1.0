@@ -10,7 +10,7 @@ import TwitterIcon from "@material-ui/icons/Twitter";
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    minHeight: "100vh",
+    minHeight: "calc(100vh - 104px)",
     padding: theme.spacing(35, 0, 0, 0),
     margin: "auto auto",
   },
