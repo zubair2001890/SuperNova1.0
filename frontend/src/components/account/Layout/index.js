@@ -1,46 +1,7 @@
-import React, { Component } from "react";
+import EditLayout from "../../EditLayout";
 import { connect } from "react-redux";
-import { withStyles, Typography } from "@material-ui/core";
-import { withAuth0 } from "@auth0/auth0-react";
-
-import LogIn from "../../../pages/Login";
+import React, { Component } from "react";
 import { fetchAllProjects } from "../../../store/allProjects";
-
-const styles = (theme) => ({
-  layout: {
-    padding: "0 1rem 2rem 1rem",
-    [theme.breakpoints.up("sm")]: {
-      padding: "0 3rem",
-    },
-    [theme.breakpoints.up("lg")]: {
-      padding: "0 7.5rem 2rem 7.5rem",
-    },
-  },
-  container: {
-    marginTop: "7rem",
-    [theme.breakpoints.up("md")]: {
-      display: "flex",
-    },
-  },
-  content: {
-    width: "100%",
-    [theme.breakpoints.up("md")]: {
-      padding: "0 5.125rem",
-    },
-  },
-  title: {
-    font: "Bold 40px/49px Montserrat",
-    letterSpacing: "3.6px",
-    textTransform: "uppercase",
-    marginTop: "140px",
-  },
-  subtitle: {
-    font: "Bold 24px/29px Montserrat",
-    letterSpacing: "1.44px",
-    color: "#161515",
-    marginBottom: "3.3125rem",
-  },
-});
 
 export class Layout extends Component {
   fetchProjects = () => {
@@ -52,43 +13,13 @@ export class Layout extends Component {
     this.fetchProjects();
   }
 
-  renderPageTitle = () => {
-    const { title, classes } = this.props;
-    return (
-      title && (
-        <Typography variant="h2" className={classes.subtitle}>
-          {title}
-        </Typography>
-      )
-    );
-  };
-
   render() {
-    const { children, classes, auth0, Nav, mainTitle } = this.props;
-    if (!auth0.isAuthenticated) return <LogIn />;
-    return (
-      <div className={classes.layout}>
-        <Typography variant="h1" className={classes.title}>
-          {mainTitle}
-        </Typography>
-        <div className={classes.container}>
-          <Nav />
-          <div className={classes.content}>
-            {this.renderPageTitle()}
-            {children}
-          </div>
-        </div>
-      </div>
-    );
+    return <EditLayout {...this.props}></EditLayout>;
   }
 }
 
 const mapStateToProps = ({ allProjects }) => ({ projects: allProjects });
 
-const StyledPage = withStyles(styles, { withTheme: true })(Layout);
-
-const WithAuthentication = withAuth0(StyledPage);
-
 export default connect(mapStateToProps, { fetchProjects: fetchAllProjects })(
-  WithAuthentication
+  Layout
 );

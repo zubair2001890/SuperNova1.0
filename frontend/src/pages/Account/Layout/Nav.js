@@ -1,5 +1,5 @@
 import React from "react";
-import Nav from "../../../components/account/Layout/Nav";
+import Nav from "../../../components/EditLayout/Nav";
 import paths from "../../../constants/paths";
 
 export default function MainNav() {

@@ -37,6 +37,8 @@ const EarthSciences = lazy(() => import("./pages/EarthSciences"));
 const Chemistry = lazy(() => import("./pages/Chemistry"));
 const Medicine = lazy(() => import("./pages/Medicine"));
 
+const EditProjectOverview = lazy(() => import("./pages/editProject/Overview"));
+
 export default function App() {
   return (
     <ThemeProvider theme={theme}>
@@ -125,6 +127,9 @@ export default function App() {
               </Route>
               <Route path={paths.explore} exact>
                 <Explore />
+              </Route>
+              <Route path={paths.projectOverview} exact>
+                <EditProjectOverview />
               </Route>
               <Route path={paths.error404}>
                 <Error404 />

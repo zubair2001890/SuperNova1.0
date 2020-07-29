@@ -1,4 +1,8 @@
-import { getAccountUrl, getEditPath } from "../helpers/createPaths";
+import {
+  getAccountUrl,
+  getEditPath,
+  getProjectEditPath,
+} from "../helpers/createPaths";
 
 export default {
   login: "/login",
@@ -29,4 +33,9 @@ export default {
   medicine: "/explore/medicine",
   socialSciences: "/explore/socialsciences",
   engineeringAndTech: "/explore/engineeringandtech",
+  projectOverview: getProjectEditPath("/"),
+  projectScientists: getProjectEditPath("scientists"),
+  projectTimeline: getProjectEditPath("timeline-and-budget"),
+  projectMethods: getProjectEditPath("methods"),
+  projectLabNotes: getProjectEditPath("lab-notes"),
 };
