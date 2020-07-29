@@ -29,11 +29,6 @@ app.use((req, res, next) => {
     next();
 });
   
-// TODO: Move to ts project
-app.get('/products', (req, res, next) => {
-    res.status(200).json({ dummyProduct1: 'DUMMY_PRODUCT1' });
-});
-
 const publicApi: Express.Router = Express.Router();
 const privateApi: Express.Router = Express.Router();
 
