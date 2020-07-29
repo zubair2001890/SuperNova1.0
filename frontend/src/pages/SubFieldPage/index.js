@@ -20,16 +20,6 @@ export default (props) => {
 
   const content = props.content;
 
-  let stars = [1, 0, 0, 0, 0, 0, 0];
-
-  function updateConstellation(currentSlide) {
-    for (var i = 0; i < stars.length; i++) {
-      if (i === currentSlide) {
-        stars[i] = 1;
-      } else stars[i] = 0;
-    }
-  }
-
   return (
     <>
       <div className={classes.pageContainer}>
@@ -37,7 +27,7 @@ export default (props) => {
           <div className={classes.mockAppBarLayout} />
           <StarProvider>
             <div className={classes.constellationContainer}>
-              <InteractiveConstellation stars={stars} />
+              <InteractiveConstellation />
             </div>
             <div className={classes.carouselContainer}>
               <Consumer>
@@ -50,6 +40,7 @@ export default (props) => {
                         centerSlidePercentage={50}
                         infiniteLoop={false}
                         onChange={ctx.updateConstellation}
+                        selectedItem={ctx.selectedItem}
                       />
                   );
                 }}

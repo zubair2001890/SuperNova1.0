@@ -20,10 +20,8 @@ const useStyles = makeStyles(() => ({
 
 const isStarSelected = [unselectedStar, selectedStar];
 
-export default function InteractiveConstellation(props) {
+export default function InteractiveConstellation() {
   const classes = useStyles();
-
-  let stars = props.stars;
 
   return (
     <div className={classes.constellation}>
@@ -47,13 +45,6 @@ export default function InteractiveConstellation(props) {
           );
         }}
       </Consumer>
-      {/* <Star top="-1%" left="0%" star={isStarSelected[stars[0]]} />
-      <Star top="80%" left="10%" star={isStarSelected[stars[1]]} />
-      <Star top="9%" left="26%" star={isStarSelected[stars[2]]} />
-      <Star top="69%" left="32%" star={isStarSelected[stars[3]]} />
-      <Star top="40%" left="41%" star={isStarSelected[stars[4]]} />
-      <Star top="51%" left="70%" star={isStarSelected[stars[5]]} />
-      <Star top="40%" left="92%" star={isStarSelected[stars[6]]} /> */}
     </div>
   );
 }

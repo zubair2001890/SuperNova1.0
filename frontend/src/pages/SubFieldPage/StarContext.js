@@ -6,26 +6,16 @@ class StarProvider extends Component {
   state = {
     stars: [1, 0, 0, 0, 0, 0, 0],
     currentSlide: 0,
-    updateConstellation: (currentSlide) => {
-      for (var i = 0; i < this.state.stars.length; i++) {
-        if (i === currentSlide) {
-          let stars = [...this.state.stars];
-          let star = { ...stars[i] };
-          star = 1;
-          stars[i] = star;
-          this.setState({ stars });
-        } else {
-          let stars = [...this.state.stars];
-          let star = { ...stars[i] };
-          star = 0;
-          stars[i] = star;
-          this.setState({ stars });
-        }
-    }
-    console.log(this.state.stars);
+    updateCarousel: (selectedItem) => {
+      console.log(selectedItem);
     },
-    logStars: () => {
-      console.log(this.state.stars);
+    updateConstellation: (index) => {
+      let stars = [...this.state.stars];
+      let star = {...stars[index]};
+      stars = [0, 0, 0, 0, 0, 0, 0]
+      star = 1;
+      stars[index] = star;
+      this.setState({stars});
     },
   };
 
@@ -36,7 +26,7 @@ class StarProvider extends Component {
           stars: this.state.stars,
           currentSlide: this.state.currentSlide,
           updateConstellation: this.state.updateConstellation,
-          logStars: this.state.logStars,
+          updateCarousel: this.state.updateCarousel,
         }}
       >
         {this.props.children}
