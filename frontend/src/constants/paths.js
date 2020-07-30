@@ -1,5 +1,6 @@
 export default {
   login: "/login",
+  test: "/test",
   error404: "/not-found",
   home: "/",
   explore: "/explore",

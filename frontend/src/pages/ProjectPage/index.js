@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import {
   Typography,
   makeStyles,
@@ -7,13 +7,10 @@ import {
   Box,
   Grid,
   LinearProgress,
-  Avatar,
   Button,
 } from "@material-ui/core";
-import { useDispatch } from "react-redux";
-import { setDarkTheme as setPageDarkTheme } from "../../store/slices/page";
 import PropTypes from "prop-types";
-import ProjectMockData from "../../mockData/projects.json";
+import ProjectDetailsMockData from "../../mockData/projectsDetails.json";
 
 const useStyles = makeStyles((theme) => ({
   pageContent: {
@@ -66,7 +63,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(3),
   },
   raisedProgressBar: {
-    backgroundColor: "#000000",
+    backgroundColor: theme.palette.common.black,
     width: 238,
     height: 7,
     borderRadius: 50,
@@ -185,7 +182,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function TabPanel(props) {
+const TabPanel = (props) => {
   const classes = useStyles();
   const { children, value, index, ...other } = props;
 
@@ -201,7 +198,7 @@ function TabPanel(props) {
       {value === index && <Box p={3}>{children}</Box>}
     </div>
   );
-}
+};
 
 TabPanel.propTypes = {
   children: PropTypes.node,
@@ -209,16 +206,44 @@ TabPanel.propTypes = {
   value: PropTypes.any.isRequired,
 };
 
-function a11yProps(index) {
+const TabIndex = (index) => {
   return {
     id: `vertical-tab-${index}`,
     "aria-controls": `vertical-tabpanel-${index}`,
   };
-}
+};
 
-export default function ProjectX() {
+const formatStartDate = (dateStarted) => {
+  const dateObject = new Date(dateStarted);
+  let day = dateObject.getDate();
+  let month = dateObject.getMonth() + 1;
+  const year = dateObject.getFullYear();
+  // If day or month is less than 10 it should be prepended with a 0
+  if (day < 10) day = day.toString().concat("0").split("").reverse().join("");
+  if (month < 10)
+    month = month.toString().concat("0").split("").reverse().join("");
+  return `${day}/${month}/${year}`;
+};
+
+const formatPostedTime = (timePosted) => {
+  const dateObject = new Date(timePosted);
+  let day = dateObject.getDate();
+  let month = dateObject.getMonth() + 1;
+  const year = dateObject.getFullYear();
+  let HH = dateObject.getHours();
+  let MM = dateObject.getHours();
+  // If day, month, HH or MM is less than 10 it should be prepended with a 0
+  if (day < 10) day = day.toString().concat("0").split("").reverse().join("");
+  if (month < 10)
+    month = month.toString().concat("0").split("").reverse().join("");
+  if (HH < 10) HH = HH.toString().concat("0").split("").reverse().join("");
+  if (MM < 10) MM = MM.toString().concat("0").split("").reverse().join("");
+  return `Posted ${day}/${month}/${year} ${HH}:${MM}`;
+};
+
+export default () => {
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -241,27 +266,23 @@ export default function ProjectX() {
             },
           }}
         >
-          <Tab
-            label="OVERVIEW"
-            className={classes.tabLinks}
-            {...a11yProps(0)}
-          />
+          <Tab label="OVERVIEW" className={classes.tabLinks} {...TabIndex(0)} />
           <Tab
             label="LAB NOTES"
             className={classes.tabLinks}
-            {...a11yProps(1)}
+            {...TabIndex(1)}
           />
-          <Tab label="METHODS" className={classes.tabLinks} {...a11yProps(2)} />
+          <Tab label="METHODS" className={classes.tabLinks} {...TabIndex(2)} />
         </Tabs>
         <TabPanel value={value} index={0}>
           <div className={classes.center}>
             <Typography variant="h1" className={classes.pageTitle}>
-              This is where the project title goes.
+              {ProjectDetailsMockData[0].projectName}
             </Typography>
             <Grid container direction="row" className={classes.headerGrid}>
               <Grid item className={classes.imageContainer}>
                 <img
-                  src={ProjectMockData[0].projectImage}
+                  src={ProjectDetailsMockData[0].projectImage}
                   alt="Project"
                   style={{ width: "100%" }}
                 ></img>
@@ -273,7 +294,7 @@ export default function ProjectX() {
                     currency: "GBP",
                     maximumFractionDigits: 0,
                     minimumFractionDigits: 0,
-                  }).format(2048)}`}
+                  }).format(ProjectDetailsMockData[0].totalPledged)}`}
                 </Typography>
                 <Typography
                   variant="h3"
@@ -291,7 +312,7 @@ export default function ProjectX() {
                     currency: "GBP",
                     maximumFractionDigits: 0,
                     minimumFractionDigits: 0,
-                  }).format(8192)}`}{" "}
+                  }).format(ProjectDetailsMockData[0].goal)}`}{" "}
                   goal
                 </Typography>
                 <Typography
@@ -320,33 +341,12 @@ export default function ProjectX() {
                     fontSize: 24,
                     lineHeight: "29px",
                     fontWeight: 700,
+                    marginBottom: 24,
                   }}
                 >
-                  Project opened on 13/06/2019
+                  Project opened on{" "}
+                  {formatStartDate(ProjectDetailsMockData[0].startDate)}
                 </Typography>
-                <Grid container direction="row">
-                  <Grid item>
-                    <Avatar
-                      className={classes.avatar}
-                      alt="Project Backer"
-                      src={ProjectMockData[0].backerAvatarUrls[0]}
-                    />
-                  </Grid>
-                  <Grid item>
-                    <Avatar
-                      className={classes.avatar}
-                      alt="Project Backer"
-                      src={ProjectMockData[0].backerAvatarUrls[1]}
-                    />
-                  </Grid>
-                  <Grid item>
-                    <Avatar
-                      className={classes.avatar}
-                      alt="Project Backer"
-                      src={ProjectMockData[0].backerAvatarUrls[2]}
-                    />
-                  </Grid>
-                </Grid>
                 <Button
                   variant="contained"
                   className={classes.backProjectButton}
@@ -363,175 +363,115 @@ export default function ProjectX() {
               Project aims:
             </Typography>
             <Typography variant="body1" className={classes.subheadingParagraph}>
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum."
+              {ProjectDetailsMockData[0].projectDescription.aim}
             </Typography>
             <Typography component="h3" className={classes.subheadingTitle}>
               The Scientific Context of the Project:
             </Typography>
             <Typography variant="body1" className={classes.subheadingParagraph}>
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum."
+              {ProjectDetailsMockData[0].projectDescription.significance}
             </Typography>
             <Typography component="h3" className={classes.subheadingTitle}>
               Why the Scientist believes the research is important / valuable:
             </Typography>
             <Typography variant="body1" className={classes.subheadingParagraph}>
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum."
+              {ProjectDetailsMockData[0].projectDescription.value}
             </Typography>
             <Typography variant="h2" className={classes.subheading}>
               The Scientists
             </Typography>
             <Typography component="h5" className={classes.scientistName}>
-              Hugh Horowitz
+              {ProjectDetailsMockData[0].teamDescription.names[0]}
             </Typography>
             <Typography component="h6" className={classes.scientistTitle}>
-              Project Leader
+              {ProjectDetailsMockData[0].teamDescription.positions[0]}
             </Typography>
             <Typography variant="body1" className={classes.subheadingParagraph}>
-              "I've been researching stars for 24 years. This project is my
-              second in the Berlin Astrophysics department. I'm excited about
-              this project beacause..."
+              {ProjectDetailsMockData[0].teamDescription.bios[0]}
             </Typography>
             <Typography component="h5" className={classes.scientistName}>
-              Arthur Franklin
+              {ProjectDetailsMockData[0].teamDescription.names[1]}
             </Typography>
             <Typography component="h6" className={classes.scientistTitle}>
-              Theoretical advisor
+              {ProjectDetailsMockData[0].teamDescription.positions[1]}
             </Typography>
             <Typography variant="body1" className={classes.subheadingParagraph}>
-              "I've been researching stars for 24 years. This project is my
-              second in the Berlin Astrophysics department. I'm excited about
-              this project beacause..."
+              {ProjectDetailsMockData[0].teamDescription.bios[1]}
             </Typography>
             <Typography component="h5" className={classes.scientistName}>
-              Jada Williams
+              {ProjectDetailsMockData[0].teamDescription.names[2]}
             </Typography>
             <Typography component="h6" className={classes.scientistTitle}>
-              Observatory operator
+              {ProjectDetailsMockData[0].teamDescription.positions[2]}
             </Typography>
             <Typography variant="body1" className={classes.subheadingParagraph}>
-              "I've been researching stars for 24 years. This project is my
-              second in the Berlin Astrophysics department. I'm excited about
-              this project beacause..."
+              {ProjectDetailsMockData[0].teamDescription.bios[2]}
             </Typography>
             <Typography variant="h2" className={classes.subheading}>
               Timeline and Budget Breakdown
             </Typography>
             <Typography component="h3" className={classes.stageNumber}>
-              Stage 1:
+              Stage {ProjectDetailsMockData[0].timelineDescription.stages[0]}
             </Typography>
             <Typography component="h5" className={classes.stageTarget}>
-              Target £2048
+              Target £{ProjectDetailsMockData[0].timelineDescription.targets[0]}
             </Typography>
             <Typography component="h4" className={classes.stageHeading}>
-              Purchase of necessary equipment an data acquisition
+              {ProjectDetailsMockData[0].timelineDescription.stageHeadings[0]}
             </Typography>
             <Typography component="h5" className={classes.stageSubheading}>
               Aim:
             </Typography>
             <Typography variant="body1" className={classes.subheadingParagraph}>
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum."
+              {ProjectDetailsMockData[0].timelineDescription.content[0][0]}
             </Typography>
             <Typography component="h6" className={classes.stageSubheading2}>
               Fund allocation:
             </Typography>
             <Typography variant="body1" className={classes.subheadingParagraph}>
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum."
+              {ProjectDetailsMockData[0].timelineDescription.content[0][1]}
             </Typography>
             <Typography component="h3" className={classes.stageNumber}>
-              Stage 2:
+              Stage {ProjectDetailsMockData[0].timelineDescription.stages[1]}:
             </Typography>
             <Typography component="h5" className={classes.stageTarget}>
-              Target £2048
+              Target £{ProjectDetailsMockData[0].timelineDescription.targets[1]}
             </Typography>
             <Typography component="h4" className={classes.stageHeading}>
-              Purchase of necessary equipment an data acquisition
+              {ProjectDetailsMockData[0].timelineDescription.stageHeadings[1]}
             </Typography>
             <Typography component="h5" className={classes.stageSubheading}>
               Aim:
             </Typography>
             <Typography variant="body1" className={classes.subheadingParagraph}>
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum."
+              {ProjectDetailsMockData[0].timelineDescription.content[1][0]}
             </Typography>
             <Typography component="h6" className={classes.stageSubheading2}>
               Fund allocation:
             </Typography>
             <Typography variant="body1" className={classes.subheadingParagraph}>
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum."
+              {ProjectDetailsMockData[0].timelineDescription.content[1][1]}
             </Typography>
             <Typography component="h3" className={classes.stageNumber}>
-              Stage 3:
+              Stage {ProjectDetailsMockData[0].timelineDescription.stages[2]}:
             </Typography>
             <Typography component="h5" className={classes.stageTarget}>
-              Target £2048
+              Target £{ProjectDetailsMockData[0].timelineDescription.targets[2]}
             </Typography>
             <Typography component="h4" className={classes.stageHeading}>
-              Purchase of necessary equipment an data acquisition
+              {ProjectDetailsMockData[0].timelineDescription.stageHeadings[2]}
             </Typography>
             <Typography component="h5" className={classes.stageSubheading}>
               Aim:
             </Typography>
             <Typography variant="body1" className={classes.subheadingParagraph}>
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum."
+              {ProjectDetailsMockData[0].timelineDescription.content[2][0]}
             </Typography>
             <Typography component="h6" className={classes.stageSubheading2}>
               Fund allocation:
             </Typography>
             <Typography variant="body1" className={classes.subheadingParagraph}>
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum."
+              {ProjectDetailsMockData[0].timelineDescription.content[2][1]}
             </Typography>
           </div>
         </TabPanel>
@@ -542,28 +482,20 @@ export default function ProjectX() {
             </Typography>
             <div className={classes.containerRelative}>
               <Typography component="h6" className={classes.timePosted}>
-                Posted 24/08/2020 18:21
+                {formatPostedTime(
+                  ProjectDetailsMockData[0].labNotes.timePosted[0]
+                )}
               </Typography>
               <Typography variant="body1" className={classes.notesEntry}>
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum."
+                {ProjectDetailsMockData[0].labNotes.notes[0]}
               </Typography>
               <Typography component="h6" className={classes.timePosted}>
-                Posted 10/07/2020 18:59
+                {formatPostedTime(
+                  ProjectDetailsMockData[0].labNotes.timePosted[1]
+                )}
               </Typography>
               <Typography variant="body1" className={classes.notesEntry}>
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum."
+                {ProjectDetailsMockData[0].labNotes.notes[1]}
               </Typography>
             </div>
           </div>
@@ -575,40 +507,22 @@ export default function ProjectX() {
             </Typography>
             <div className={classes.containerRelative}>
               <Typography component="h6" className={classes.timePosted}>
-                Scientific Methods and Techniques:
+                {ProjectDetailsMockData[0].methodDescription.headings[0]}
               </Typography>
               <Typography variant="body1" className={classes.notesEntry}>
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum."
+                {ProjectDetailsMockData[0].methodDescription.content[0]}
               </Typography>
               <Typography component="h6" className={classes.timePosted}>
-                Details on Equipment:
+                {ProjectDetailsMockData[0].methodDescription.headings[1]}
               </Typography>
               <Typography variant="body1" className={classes.notesEntry}>
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum."
+                {ProjectDetailsMockData[0].methodDescription.content[1]}
               </Typography>
               <Typography component="h6" className={classes.timePosted}>
-                Further Scientific details:
+                {ProjectDetailsMockData[0].methodDescription.headings[2]}
               </Typography>
               <Typography variant="body1" className={classes.notesEntry}>
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum."
+                {ProjectDetailsMockData[0].methodDescription.content[2]}
               </Typography>
             </div>
           </div>
@@ -616,4 +530,4 @@ export default function ProjectX() {
       </div>
     </>
   );
-}
+};
