@@ -11,10 +11,10 @@ import TwitterIcon from "@material-ui/icons/Twitter";
 const useStyles = makeStyles((theme) => ({
   container: {
     minHeight: "calc(100vh - 80px)",
-    paddingTop: theme.spacing(32),
+    paddingTop: theme.spacing(25),
     margin: "auto auto",
-    width: 440,
-    maxHeight: 472,
+    width: 736,
+    maxHeight: 630,
   },
   socialIcons: {
     color: "white",
@@ -32,30 +32,19 @@ export default function Links() {
   return (
     <Grid item className={classes.container}>
       <FormCard
-      isLogin={true}
+      isLogin={false}
         headerChildren={
           <>
             <Typography variant="h4" component="h1" align="center">
-              LOGIN
+              CREATE AN ACCOUNT
             </Typography>
-            <Grid container wrap="nowrap" direction="row" justify="center">
-              <IconButton aria-label="settings">
-                <FacebookIcon className={classes.socialIcons} />
-              </IconButton>
-              <IconButton aria-label="settings">
-                <TwitterIcon className={classes.socialIcons} />
-              </IconButton>
-              <IconButton aria-label="settings">
-                <GoogleLogo />
-              </IconButton>
-            </Grid>
           </>
         }
         bodyChildren={<LoginForm />}
         footerChildren={
           <>
             <Button fullWidth size="large">
-              <Typography variant="h5">SIGN IN</Typography>
+              <Typography variant="h5">CREATE ACCOUNT</Typography>
             </Button>
           </>
         }

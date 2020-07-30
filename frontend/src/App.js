@@ -5,6 +5,7 @@ import Layout from "./components/Layout";
 import Homepage from "./pages/Homepage";
 import Login from "./pages/Login";
 import LoginIncorrect from "./pages/LoginIncorrect";
+import CreateAccount from "./pages/CreateAccount";
 import Error404 from "./pages/Error404";
 import Faq from "./pages/Faq";
 import paths from "./constants/paths";
@@ -40,6 +41,9 @@ function App() {
             </Route>
             <Route path={paths.loginIncorrect}>
               <LoginIncorrect />
+            </Route>
+            <Route path={paths.createAccount}>
+              <CreateAccount />
             </Route>
             <Route path={paths.faq}>
               <Faq />

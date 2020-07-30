@@ -79,8 +79,7 @@ function Footer(props) {
 
   return (
     <div className={classes.footer}>
-      {["/login", "/loginincorrect"].includes(props.location.pathname) ? (
-        // {props.location.pathname === "/login" ? (
+      {["/login", "/loginincorrect", "/createaccount"].includes(props.location.pathname) ? (
         <>
           <Grid container className={classes.loginGridRow}>
             <Grid item xs={3} className={classes.whiteLineContainer}>
@@ -118,8 +117,7 @@ function Footer(props) {
         </>
       )}
 
-      {["/login", "/loginincorrect"].includes(props.location.pathname) ? null : (
-        // {props.location.pathname === "/login" ? null : (
+      {["/login", "/loginincorrect", "/createaccount"].includes(props.location.pathname) ? null : (
         <>
           <Grid container className={classes.gridRow}>
             <Grid item xs={4} className={classes.gridItem}>
@@ -150,11 +148,6 @@ function Footer(props) {
               </MaterialLink>
             </Grid>{" "}
           </Grid>
-        </>
-      )}
-      {["/login", "/loginincorrect"].includes(props.location.pathname) ? null : (
-        // {props.location.pathname === "/login" ? null : (
-        <>
           <Grid container spacing={2} className={classes.gridRow}>
             <Grid item xs={4} className={classes.gridItem}>
               <MaterialLink

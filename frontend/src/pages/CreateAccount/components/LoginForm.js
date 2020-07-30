@@ -5,52 +5,65 @@ import { makeStyles } from "@material-ui/core/styles";
 import {
   Button,
   FormControl,
+  FormControlLabel,
   Input,
   InputLabel,
   IconButton,
   InputAdornment,
   Typography,
+  Checkbox,
 } from "@material-ui/core";
 
 import LockIcon from "@material-ui/icons/Lock";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
 import EmailIcon from "@material-ui/icons/Email";
+import PeopleIcon from "@material-ui/icons/People";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     color: theme.palette.common.gray,
-    paddingLeft: theme.spacing(1),
+    marginLeft: theme.spacing(16),
   },
   form: {
     marginTop: theme.spacing(6),
     marginBottom: theme.spacing(2),
   },
+  nameInput: {
+    marginTop: theme.spacing(13),
+    marginBottom: theme.spacing(4),
+    paddingLeft: theme.spacing(16),
+    paddingRight: theme.spacing(1),
+    width: 400,
+  },
   emailInput: {
     marginTop: theme.spacing(4),
-    marginBottom: theme.spacing(3),
-    paddingLeft: theme.spacing(1),
+    marginBottom: theme.spacing(4),
+    paddingLeft: theme.spacing(16),
     paddingRight: theme.spacing(1),
+    width: 400,
   },
   passwordInput: {
-    marginTop: theme.spacing(1),
+    marginTop: theme.spacing(4),
     marginBottom: theme.spacing(4),
-    paddingLeft: theme.spacing(1),
+    paddingLeft: theme.spacing(16),
     paddingRight: theme.spacing(1),
+    width: 400,
+  },
+  termsAndConditionsCheckbox: {
+    color: theme.palette.secondary.main,
+    padding: theme.spacing(1, 1, 1, 10),
+    margin: theme.spacing(1, 0, 1, 0),
   },
   icons: {
     color: theme.palette.common.black,
     padding: theme.spacing(0),
-  },
-  forgotPasswordButton: {
-    color: theme.palette.secondary.main,
-    padding: theme.spacing(1, 1, 1, 1),
-    margin: theme.spacing(1, 0, 1, 0),
   },
 }));
 
 export default () => {
   const classes = useStyles();
   const [values, setValues] = React.useState({
+    firstName: "",
     password: "",
     email: "",
     showPassword: false,
@@ -68,14 +81,29 @@ export default () => {
   };
   return (
     <>
-      <Typography
-        className={classes.form}
-        variant="subtitle2"
-        component="h1"
-        align="center"
-      >
-        New to SuperNova? Create an Account
-      </Typography>
+      <FormControl className={classes.nameInput}>
+        <InputLabel
+          className={classes.root}
+          htmlFor="standard-adornment-first-name"
+        >
+          First Name
+        </InputLabel>
+
+        <Input
+          onChange={handleChange("firstName")}
+          id="standard-adornment-first-name"
+          type="text"
+          value={values.firstName}
+          fullWidth
+          endAdornment={
+            <InputAdornment position="end">
+              <IconButton disabled edge="end">
+                <PeopleIcon className={classes.icons} />
+              </IconButton>
+            </InputAdornment>
+          }
+        />
+      </FormControl>
 
       <FormControl fullWidth className={classes.emailInput}>
         <InputLabel className={classes.root} htmlFor="standard-adornment-email">
@@ -131,7 +159,23 @@ export default () => {
         />
       </FormControl>
 
-      <Button className={classes.forgotPasswordButton}>Forgot your password?</Button>
+      <FormControl
+        fullWidth
+        className={classes.termsAndConditionsCheckbox}
+        required={true}
+      >
+        <FormControlLabel
+          control={
+            <Checkbox
+              name="termsAndConditions"
+              style ={{
+                color: "#666666",
+              }}
+            />
+          }
+          label="I have read and understood the terms and conditions"
+        />
+      </FormControl>
     </>
   );
 };
