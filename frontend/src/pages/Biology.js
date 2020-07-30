@@ -2,7 +2,6 @@ import React from "react";
 import Constellation from "../components/Constellation";
 import useStyles from "./FieldPage/exploreFieldPageStyles";
 import FieldPage from "./FieldPage";
-import { Link as RouterLink } from "react-router-dom";
 import paths from "../constants/paths";
 
 function Item(props) {
