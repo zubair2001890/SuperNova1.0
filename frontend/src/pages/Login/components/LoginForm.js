@@ -1,6 +1,8 @@
 import React from "react";
 
 import { makeStyles } from "@material-ui/core/styles";
+import { Link as RouterLink } from "react-router-dom";
+import paths from "../../../constants/paths";
 
 import {
   Button,
@@ -10,6 +12,7 @@ import {
   IconButton,
   InputAdornment,
   Typography,
+  Link as MaterialLink,
 } from "@material-ui/core";
 
 import LockIcon from "@material-ui/icons/Lock";
@@ -24,6 +27,7 @@ const useStyles = makeStyles((theme) => ({
   form: {
     marginTop: theme.spacing(6),
     marginBottom: theme.spacing(2),
+    color: theme.palette.common.black,
   },
   emailInput: {
     marginTop: theme.spacing(2),
@@ -68,14 +72,16 @@ export default () => {
   };
   return (
     <>
-      <Typography
-        className={classes.form}
-        variant="subtitle2"
-        component="h1"
-        align="center"
-      >
-        New to SuperNova? Create an Account
-      </Typography>
+      <MaterialLink component={RouterLink} to={paths.createAccount}>
+        <Typography
+          className={classes.form}
+          variant="subtitle2"
+          component="h1"
+          align="center"
+        >
+          New to SuperNova? Create an Account
+        </Typography>
+      </MaterialLink>
 
       <FormControl fullWidth className={classes.emailInput}>
         <InputLabel className={classes.root} htmlFor="standard-adornment-email">
@@ -131,7 +137,9 @@ export default () => {
         />
       </FormControl>
 
-      <Button className={classes.forgotPasswordButton}>Forgot your password?</Button>
+      <Button component={RouterLink} className={classes.forgotPasswordButton} to={paths.forgotPassword}>
+        Forgot your password?
+      </Button>
     </>
   );
 };
