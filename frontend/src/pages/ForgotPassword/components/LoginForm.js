@@ -16,24 +16,26 @@ import EmailIcon from "@material-ui/icons/Email";
 const useStyles = makeStyles((theme) => ({
   root: {
     color: theme.palette.common.gray,
-    marginLeft: theme.spacing(16),
+    marginLeft: theme.spacing(8),
   },
   form: {
     marginTop: theme.spacing(6),
     marginBottom: theme.spacing(2),
   },
   emailInput: {
-    marginTop: theme.spacing(10),
+    marginTop: theme.spacing(5),
     marginBottom: theme.spacing(10),
-    paddingLeft: theme.spacing(16),
+    paddingLeft: theme.spacing(8),
     paddingRight: theme.spacing(1),
     width: 400,
   },
   description: {
+    marginTop: theme.spacing(18),
+    marginBottom: theme.spacing(2),
     fontFamily: "Montserrat",
     fontWeight: 600,
-    paddingTop: theme.spacing(15),
-    width: "75%",
+    letterSpacing: 1.2,
+    width: "95%",
     margin: "auto",
   },
   icons: {
@@ -64,7 +66,6 @@ export default () => {
   return (
     <>
       <Typography
-        className={classes.form}
         component="h1"
         align="center"
         className={classes.description}

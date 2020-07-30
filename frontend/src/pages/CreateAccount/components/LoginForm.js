@@ -3,7 +3,6 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 
 import {
-  Button,
   FormControl,
   FormControlLabel,
   Input,
@@ -22,37 +21,40 @@ import PeopleIcon from "@material-ui/icons/People";
 const useStyles = makeStyles((theme) => ({
   root: {
     color: theme.palette.common.gray,
-    marginLeft: theme.spacing(16),
+    marginLeft: theme.spacing(6),
   },
   form: {
     marginTop: theme.spacing(6),
     marginBottom: theme.spacing(2),
   },
   nameInput: {
-    marginTop: theme.spacing(13),
-    marginBottom: theme.spacing(4),
-    paddingLeft: theme.spacing(16),
+    marginTop: theme.spacing(12),
+    marginBottom: theme.spacing(3),
+    paddingLeft: theme.spacing(6),
     paddingRight: theme.spacing(1),
-    width: 400,
+    width: 360,
   },
   emailInput: {
-    marginTop: theme.spacing(4),
-    marginBottom: theme.spacing(4),
-    paddingLeft: theme.spacing(16),
+    marginTop: theme.spacing(3),
+    marginBottom: theme.spacing(3),
+    paddingLeft: theme.spacing(6),
     paddingRight: theme.spacing(1),
-    width: 400,
+    width: 360,
   },
   passwordInput: {
-    marginTop: theme.spacing(4),
-    marginBottom: theme.spacing(4),
-    paddingLeft: theme.spacing(16),
+    marginTop: theme.spacing(3),
+    marginBottom: theme.spacing(3),
+    paddingLeft: theme.spacing(6),
     paddingRight: theme.spacing(1),
-    width: 400,
+    width: 360,
   },
   termsAndConditionsCheckbox: {
     color: theme.palette.secondary.main,
-    padding: theme.spacing(1, 1, 1, 10),
+    padding: theme.spacing(2, 1, 0, 4),
     margin: theme.spacing(1, 0, 1, 0),
+  },
+  termsAndConditionsText: {
+    fontSize: 15,
   },
   icons: {
     color: theme.palette.common.black,
@@ -168,12 +170,12 @@ export default () => {
           control={
             <Checkbox
               name="termsAndConditions"
-              style ={{
+              style = {{
                 color: "#666666",
               }}
             />
           }
-          label="I have read and understood the terms and conditions"
+          label={<Typography className={classes.termsAndConditionsText}>I have read and understood the terms and conditions</Typography>}
         />
       </FormControl>
     </>

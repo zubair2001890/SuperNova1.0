@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     minHeight: "calc(100vh - 80px)",
     paddingTop: theme.spacing(32),
     margin: "auto auto",
-    width: 440,
+    width: 436,
     maxHeight: 472,
   },
   socialIcons: {
@@ -21,7 +21,6 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     color: theme.palette.black,
-
     padding: theme.spacing(3, 0),
   },
 }));
@@ -32,7 +31,7 @@ export default function Links() {
   return (
     <Grid item className={classes.container}>
       <FormCard
-      isLogin={true}
+      loginType="login"
         headerChildren={
           <>
             <Typography variant="h4" component="h1" align="center">

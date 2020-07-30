@@ -7,17 +7,16 @@ import { Button, Grid, Typography } from "@material-ui/core";
 const useStyles = makeStyles((theme) => ({
   container: {
     minHeight: "calc(100vh - 80px)",
-    paddingTop: theme.spacing(25),
+    paddingTop: theme.spacing(30),
     margin: "auto auto",
-    width: 736,
-    maxHeight: 630,
+    width: 595,
+    maxHeight: 526,
   },
   socialIcons: {
     color: "white",
   },
   button: {
     color: theme.palette.black,
-
     padding: theme.spacing(3, 0),
   },
 }));
@@ -28,7 +27,7 @@ export default function Links() {
   return (
     <Grid item className={classes.container}>
       <FormCard
-      isLogin={false}
+      loginType="forgotpassword"
         headerChildren={
           <>
             <Typography variant="h4" component="h1" align="center">
