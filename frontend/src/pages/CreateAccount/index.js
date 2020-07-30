@@ -1,12 +1,8 @@
 import React from "react";
 import FormCard from "../../components/FormCard/index";
 import { makeStyles } from "@material-ui/core/styles";
-import { ReactComponent as GoogleLogo } from "../assets/google-plus.svg";
 import LoginForm from "./components/LoginForm";
-import { Button, Grid, IconButton, Typography } from "@material-ui/core";
-
-import FacebookIcon from "@material-ui/icons/Facebook";
-import TwitterIcon from "@material-ui/icons/Twitter";
+import { Button, Grid, Typography } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   container: {

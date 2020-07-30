@@ -1,12 +1,8 @@
 import React from "react";
 import FormCard from "../../components/FormCard/index";
 import { makeStyles } from "@material-ui/core/styles";
-import { ReactComponent as GoogleLogo } from "../assets/google-plus.svg";
 import LoginForm from "./components/LoginForm";
-import { Button, Grid, IconButton, Typography } from "@material-ui/core";
-
-import FacebookIcon from "@material-ui/icons/Facebook";
-import TwitterIcon from "@material-ui/icons/Twitter";
+import { Button, Grid, Typography } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -36,7 +32,7 @@ export default function Links() {
         headerChildren={
           <>
             <Typography variant="h4" component="h1" align="center">
-              CREATE AN ACCOUNT
+              FORGOT PASSWORD
             </Typography>
           </>
         }
@@ -44,7 +40,7 @@ export default function Links() {
         footerChildren={
           <>
             <Button fullWidth size="large">
-              <Typography variant="h5">CREATE ACCOUNT</Typography>
+              <Typography variant="h5">SEND LINK</Typography>
             </Button>
           </>
         }

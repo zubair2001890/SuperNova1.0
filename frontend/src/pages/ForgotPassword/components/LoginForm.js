@@ -3,21 +3,15 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 
 import {
-  Button,
   FormControl,
-  FormControlLabel,
   Input,
   InputLabel,
   IconButton,
   InputAdornment,
   Typography,
-  Checkbox,
 } from "@material-ui/core";
 
-import LockIcon from "@material-ui/icons/Lock";
-import LockOpenIcon from "@material-ui/icons/LockOpen";
 import EmailIcon from "@material-ui/icons/Email";
-import PeopleIcon from "@material-ui/icons/People";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,31 +22,19 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(6),
     marginBottom: theme.spacing(2),
   },
-  nameInput: {
-    marginTop: theme.spacing(13),
-    marginBottom: theme.spacing(4),
-    paddingLeft: theme.spacing(16),
-    paddingRight: theme.spacing(1),
-    width: 400,
-  },
   emailInput: {
-    marginTop: theme.spacing(4),
-    marginBottom: theme.spacing(4),
+    marginTop: theme.spacing(10),
+    marginBottom: theme.spacing(25),
     paddingLeft: theme.spacing(16),
     paddingRight: theme.spacing(1),
     width: 400,
   },
-  passwordInput: {
-    marginTop: theme.spacing(4),
-    marginBottom: theme.spacing(4),
-    paddingLeft: theme.spacing(16),
-    paddingRight: theme.spacing(1),
-    width: 400,
-  },
-  termsAndConditionsCheckbox: {
-    color: theme.palette.secondary.main,
-    padding: theme.spacing(1, 1, 1, 10),
-    margin: theme.spacing(1, 0, 1, 0),
+  description: {
+    fontFamily: "Montserrat",
+    fontWeight: 600,
+    paddingTop: theme.spacing(15),
+    width: "75%",
+    margin: "auto",
   },
   icons: {
     color: theme.palette.common.black,
@@ -81,29 +63,14 @@ export default () => {
   };
   return (
     <>
-      <FormControl className={classes.nameInput}>
-        <InputLabel
-          className={classes.root}
-          htmlFor="standard-adornment-first-name"
-        >
-          First Name
-        </InputLabel>
-
-        <Input
-          onChange={handleChange("firstName")}
-          id="standard-adornment-first-name"
-          type="text"
-          value={values.firstName}
-          fullWidth
-          endAdornment={
-            <InputAdornment position="end">
-              <IconButton disabled edge="end">
-                <PeopleIcon className={classes.icons} />
-              </IconButton>
-            </InputAdornment>
-          }
-        />
-      </FormControl>
+      <Typography
+        className={classes.form}
+        component="h1"
+        align="center"
+        className={classes.description}
+      >
+        Please enter the registered email address to receive a reset link
+      </Typography>
 
       <FormControl fullWidth className={classes.emailInput}>
         <InputLabel className={classes.root} htmlFor="standard-adornment-email">
@@ -123,57 +90,6 @@ export default () => {
               </IconButton>
             </InputAdornment>
           }
-        />
-      </FormControl>
-
-      <FormControl fullWidth className={classes.passwordInput}>
-        <InputLabel
-          className={classes.root}
-          htmlFor="standard-adornment-password"
-        >
-          Password
-        </InputLabel>
-
-        <Input
-          fullWidth
-          onChange={handleChange("password")}
-          id="standard-adornment-password"
-          type={values.showPassword ? "text" : "password"}
-          value={values.password}
-          endAdornment={
-            <InputAdornment>
-              <IconButton
-                edge="end"
-                aria-label="toggle password visibility"
-                onClick={handleClickShowPassword}
-                onMouseDown={handleMouseDownPassword}
-              >
-                {values.showPassword ? (
-                  <LockOpenIcon className={classes.icons} />
-                ) : (
-                  <LockIcon className={classes.icons} />
-                )}
-              </IconButton>
-            </InputAdornment>
-          }
-        />
-      </FormControl>
-
-      <FormControl
-        fullWidth
-        className={classes.termsAndConditionsCheckbox}
-        required={true}
-      >
-        <FormControlLabel
-          control={
-            <Checkbox
-              name="termsAndConditions"
-              style ={{
-                color: "#666666",
-              }}
-            />
-          }
-          label="I have read and understood the terms and conditions"
         />
       </FormControl>
     </>
