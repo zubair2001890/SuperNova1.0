@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
   },
   emailInput: {
     marginTop: theme.spacing(10),
-    marginBottom: theme.spacing(25),
+    marginBottom: theme.spacing(10),
     paddingLeft: theme.spacing(16),
     paddingRight: theme.spacing(1),
     width: 400,
