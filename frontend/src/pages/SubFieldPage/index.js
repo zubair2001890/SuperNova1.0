@@ -41,6 +41,7 @@ export default (props) => {
                         infiniteLoop={false}
                         onChange={ctx.updateConstellation}
                         selectedItem={ctx.currentSlide}
+                        onClickItem={ctx.updateConstellation}
                       />
                   );
                 }}

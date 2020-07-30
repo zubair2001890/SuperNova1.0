@@ -17,6 +17,7 @@ export default (props) => {
       centerSlidePercentage={props.centerSlidePercentage}
       onChange={props.onChange}
       selectedItem={props.selectedItem}
+      onClickItem={props.onClickItem}
     >
         {/* props.content should be an array of divs, where each div will be a new slide */}
       {props.content}
