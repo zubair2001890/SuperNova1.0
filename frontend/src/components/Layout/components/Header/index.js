@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import clsx from "clsx";
 import { Link as RouterLink } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
@@ -10,6 +11,7 @@ import paths from "../../../../constants/paths";
 import logoRed from "./assets/logo-red.svg";
 import logoBlack from "./assets/logo-black.svg";
 import logoWhite from "./assets/logo-white.svg";
+import { sendUpdateAccount } from "./../../../../store/slices/middlewareAPI/middlewareAPI"
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -64,6 +66,10 @@ export default function Header({ darkTheme = true }) {
 
   const [logoImg, setLogoImg] = useState(null);
 
+  const dispatch = useDispatch(); 
+  const { loginWithRedirect, isAuthenticated, logout, user, getAccessTokenSilently } = useAuth0();
+  
+
   useEffect(() => {
     setLogoImg(
       <img
@@ -72,6 +78,14 @@ export default function Header({ darkTheme = true }) {
         alt="supernova logo"
       />
     );
+
+    // Example for an authorized backend request
+    // if (isAuthenticated) {
+    //   getAccessTokenSilently({
+    //     audience: `https://${process.env.REACT_APP_AUTH0_DOMAIN}/api/v2/`,
+    //     scope: "read:current_user",
+    //   }).then(res => dispatch(sendUpdateAccount({ data: { test: 'all' }, authToken: res })));
+    // }
   }, [darkTheme, classes.logo, classes.logoFadeIn]);
 
   const toggleDrawer = (anchor, open) => (event) => {
@@ -85,7 +99,8 @@ export default function Header({ darkTheme = true }) {
     setDrawerState({ ...drawerState, [anchor]: open });
   };
 
-  const { loginWithRedirect, isAuthenticated, logout } = useAuth0();
+
+  console.log(user)
 
   return (
     <>
