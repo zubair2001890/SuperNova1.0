@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
 import {
   Typography,
   makeStyles,
@@ -11,6 +12,7 @@ import {
 } from "@material-ui/core";
 import PropTypes from "prop-types";
 import ProjectDetailsMockData from "../../mockData/projectsDetails.json";
+import LoginPage from "../../pages/Login";
 
 const useStyles = makeStyles((theme) => ({
   pageContent: {
@@ -242,6 +244,7 @@ const formatPostedTime = (timePosted) => {
 };
 
 export default () => {
+  const { isAuthenticated } = useAuth0();
   const classes = useStyles();
   const [value, setValue] = useState(0);
 
@@ -249,7 +252,7 @@ export default () => {
     setValue(newValue);
   };
 
-  return (
+  return isAuthenticated ? (
     <>
       <div className={classes.mockAppBarLayout} />
       <div className={classes.pageContent}>
@@ -529,5 +532,7 @@ export default () => {
         </TabPanel>
       </div>
     </>
+  ) : (
+    <LoginPage />
   );
 };
