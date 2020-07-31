@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 export const getFieldForNumber = function(fieldID: number)
 {
     let fieldsArray = [];
@@ -22,6 +24,7 @@ export const getSubFieldForNumber = function subFieldID(subFieldID: number)
     return subFieldsArray[subFieldID];
 }
 
+>>>>>>> e0ff23a36d49cd1b62e9c5eaf71176fdc3b0cc64
 export const addStringToArray = function (stringArray: Array<String>, newString: String)
 {   let currentArray = new Array();
     if (stringArray !== null && stringArray !== undefined)
