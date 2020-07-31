@@ -18,6 +18,10 @@ function Nav({ match }) {
       children: "Overview",
     },
     {
+      to: projects.about,
+      children: "About Project",
+    },
+    {
       to: projects.scientists,
       children: "Scientists",
     },

@@ -56,6 +56,7 @@ const addProjectPaths = () => {
     timeline: "timeline-and-budget",
     methods: "methods",
     labNotes: "lab-notes",
+    about: "about",
   };
   const entries = Object.entries(projectPaths);
   entries.forEach(addProjectPath);
