@@ -2,7 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core";
 import Inputs from "./Inputs";
 import Labels from "./Labels";
-import SaveButton from "./Save";
+import SaveButton from "../../../components/Save";
 
 const useStyles = makeStyles((theme) => ({
   form: {

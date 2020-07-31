@@ -1,9 +1,12 @@
 import React, { Component } from "react";
+import { reduxForm } from "redux-form";
 import { withRouter } from "react-router-dom";
 import { get } from "axios";
+import Grid from "@material-ui/core/Grid";
 
 import EditLayout from "../../../components/EditLayout";
 import Nav from "./Nav";
+import forms from "../../../constants/forms";
 
 export const ProjectContext = React.createContext();
 
@@ -16,8 +19,9 @@ export class EditProjectLayout extends Component {
 
   fetchProject = async () => {
     const { id } = this.props.match.params;
-    const { data } = await get(`/api/projects/${id}`);
-    return data;
+    const { data: results } = await get(`/api/projects/${id}`);
+    const [project] = results;
+    return project;
   };
 
   fetchAndSetProject = async () => {
@@ -35,11 +39,15 @@ export class EditProjectLayout extends Component {
     return (
       <EditLayout {...other} Nav={Nav}>
         <ProjectContext.Provider value={project}>
-          {children}
+          <Grid container justify="space-between">
+            {children}
+          </Grid>
         </ProjectContext.Provider>
       </EditLayout>
     );
   }
 }
 
-export default withRouter(EditProjectLayout);
+const ConnectedForm = reduxForm({ form: forms.editProject })(EditProjectLayout);
+
+export default withRouter(ConnectedForm);

@@ -1,32 +1,33 @@
 import React, { Component } from "react";
 import Grid from "@material-ui/core/Grid";
 import Group from "../../../../components/editProject/Group";
+import SelectField from "./SelectField";
+import SelectSubfields from "./SelectSubfield";
 
 export class Form extends Component {
   render() {
     return (
-      <Grid container justify="space-between">
+      <>
         <Grid item xs={12}>
-          <Group name="title" placeholder="Project title">
-            Title
-          </Group>
+          <Group name="title" placeholder="Project title" label="Title"></Group>
         </Grid>
         <Grid item xs={12} md={5}>
-          <Group name="field" placeholder="Select a field title...">
-            Field
-          </Group>
+          <SelectField />
         </Grid>
         <Grid item xs={12} md={5}>
-          <Group name="subfield" placeholder="Select a subfield...">
-            Subfield
-          </Group>
+          <SelectSubfields />
         </Grid>
-        <Grid item xs={12} md={5}>
-          <Group name="goal" type="number" placeholder="$100.00">
-            Goal
-          </Group>
+        <Grid container item xs={12}>
+          <Grid item xs={12} md={5}>
+            <Group
+              name="goal"
+              type="number"
+              placeholder="$100.00"
+              label="Goal"
+            ></Group>
+          </Grid>
         </Grid>
-      </Grid>
+      </>
     );
   }
 }

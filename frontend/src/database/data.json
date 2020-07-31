@@ -81,5 +81,25 @@
       ],
       "statusName": "Active"
     }
+  ],
+  "fields": [
+    {
+      "_id": 1,
+      "name": "Chemistry"
+    },
+    {
+      "_id": 2,
+      "name": "Medicine"
+    }
+  ],
+  "subfields": [
+    {
+      "_id": 1,
+      "name": "Chemistry 1"
+    },
+    {
+      "_id": 2,
+      "name": "Medicine 1"
+    }
   ]
 }

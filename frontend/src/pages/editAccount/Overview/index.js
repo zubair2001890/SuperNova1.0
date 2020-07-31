@@ -2,7 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core";
 import Layout from "../Layout";
 import Form from "./Form";
-import AvatarForm from "./AvatarForm/index";
+import AvatarForm from "./AvatarForm";
 
 const useStyles = makeStyles((theme) => ({
   overview: {
