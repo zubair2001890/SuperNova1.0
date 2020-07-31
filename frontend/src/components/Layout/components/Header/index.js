@@ -99,9 +99,6 @@ export default function Header({ darkTheme = true }) {
     setDrawerState({ ...drawerState, [anchor]: open });
   };
 
-
-  console.log(user)
-
   return (
     <>
       <LeftDrawer
