@@ -1,7 +1,10 @@
 const mongoose = require('mongoose')
 
 import {Project} from './models/Project'
+<<<<<<< HEAD
+=======
 import {UserAccount} from './models/UserAccount'
+>>>>>>> e0ff23a36d49cd1b62e9c5eaf71176fdc3b0cc64
 import { addStringToArray, arrayContainsString } from './helpers';
 
 mongoose.connect('mongodb://uoovwklzznl5qbd3vnmc:CKB9CbXz4cbJrrrCskwU@bosn1sg8zx8aq8n-mongodb.services.clever-cloud.com:27017/bosn1sg8zx8aq8n')
@@ -23,6 +26,10 @@ mongoose.connect('mongodb://uoovwklzznl5qbd3vnmc:CKB9CbXz4cbJrrrCskwU@bosn1sg8zx
             console.log(err);
             rejecter(null);
          }
+<<<<<<< HEAD
+         console.log("Returned projects = " + docs);
+=======
+>>>>>>> e0ff23a36d49cd1b62e9c5eaf71176fdc3b0cc64
          resolver(docs)
       });
       projectsQuery.sort({totalPledged: -1});
@@ -43,6 +50,10 @@ mongoose.connect('mongodb://uoovwklzznl5qbd3vnmc:CKB9CbXz4cbJrrrCskwU@bosn1sg8zx
            console.log(err);
            rejecter(null);
         }
+<<<<<<< HEAD
+        //console.log("Returned project = " + docs);
+=======
+>>>>>>> e0ff23a36d49cd1b62e9c5eaf71176fdc3b0cc64
         resolver(docs)
      });
      return promise;
@@ -62,6 +73,10 @@ mongoose.connect('mongodb://uoovwklzznl5qbd3vnmc:CKB9CbXz4cbJrrrCskwU@bosn1sg8zx
         console.log(err);
         rejecter(null);
      }
+<<<<<<< HEAD
+     console.log("Returned projects = " + docs);
+=======
+>>>>>>> e0ff23a36d49cd1b62e9c5eaf71176fdc3b0cc64
      resolver(docs)
   });
    return promise;
@@ -81,6 +96,10 @@ export const getProjectsBySubfieldID = async function(subfieldID: Number)
         console.log(err);
         rejecter(null);
      }
+<<<<<<< HEAD
+     //console.log("Returned project = " + docs);
+=======
+>>>>>>> e0ff23a36d49cd1b62e9c5eaf71176fdc3b0cc64
      resolver(docs)
   });
    return promise;
@@ -100,6 +119,10 @@ export const getProjectsBySubfieldID = async function(subfieldID: Number)
          console.log(err);
          rejecter(null);
       }
+<<<<<<< HEAD
+      //console.log("Returned project = " + docs);
+=======
+>>>>>>> e0ff23a36d49cd1b62e9c5eaf71176fdc3b0cc64
       resolver(docs)
    });
     return promise;
@@ -119,10 +142,16 @@ export const getProjectsBySubfieldID = async function(subfieldID: Number)
          console.log(err);
          rejecter(null);
       }
+<<<<<<< HEAD
+      //console.log("Returned project = " + docs);
+=======
+>>>>>>> e0ff23a36d49cd1b62e9c5eaf71176fdc3b0cc64
       resolver(docs)
    });
    return promise;
 } 
+<<<<<<< HEAD
+=======
 
 export const getProfileByID = function(profileID: String): Promise<any>
 {
@@ -142,6 +171,7 @@ export const getProfileByID = function(profileID: String): Promise<any>
   });
   return promise;
 } 
+>>>>>>> e0ff23a36d49cd1b62e9c5eaf71176fdc3b0cc64
  
 export const addAmountPledged = async function(projectID: String, newAmountPledged: number, newBacker: String)
 {
@@ -162,6 +192,11 @@ export const addAmountPledged = async function(projectID: String, newAmountPledg
    {
       backers = addStringToArray(backers, newBacker);
    }
+<<<<<<< HEAD
+   console.log("Backers = " + backers);
+   console.log("total = " + total);
+=======
+>>>>>>> e0ff23a36d49cd1b62e9c5eaf71176fdc3b0cc64
   let update = {totalPledged: total, backers: backers};
    await Project.findByIdAndUpdate(projectID, update, function(err, response)
    {
@@ -169,6 +204,10 @@ export const addAmountPledged = async function(projectID: String, newAmountPledg
       {
          console.log(err);
       }
+<<<<<<< HEAD
+      console.log("Response after updating the backers = " + response);
+=======
+>>>>>>> e0ff23a36d49cd1b62e9c5eaf71176fdc3b0cc64
    });
 }
 
