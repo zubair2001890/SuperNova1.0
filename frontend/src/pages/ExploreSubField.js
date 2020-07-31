@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { withRouter } from 'react-router-dom';
 import useStyles from "./SubFieldPage/exploreSubFieldPageStyles";
 import SubFieldPage from "./SubFieldPage";
 import Projects from "./SubFieldPage/components/ProjectsForCarousel";
@@ -8,7 +9,7 @@ import {
   selectData as selectProjectsData,
 } from "../store/slices/projects";
 
-export default () => {
+const Biology1 = (props) => {
   const dispatch = useDispatch();
   const classes = useStyles();
   const projectsData = useSelector(selectProjectsData);
@@ -34,7 +35,9 @@ export default () => {
 
   return (
     <>
-      <SubFieldPage title="BIOLOGY 1" content={content} />
+      <SubFieldPage title={props.location.state.title} content={content} />
     </>
   );
 };
+
+export default withRouter(Biology1);

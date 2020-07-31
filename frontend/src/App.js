@@ -26,7 +26,7 @@ import EarthSciences from "./pages/EarthSciences";
 import Chemistry from "./pages/Chemistry";
 import Medicine from "./pages/Medicine";
 import ScrollToTop from "./components/ScrollToTop";
-import Biology1 from "./pages/Biology1";
+import ExploreSubField from "./pages/ExploreSubField";
 
 function App() {
   return (
@@ -89,8 +89,8 @@ function App() {
             <Route path={paths.medicine}>
               <Medicine />
             </Route>
-            <Route path={paths.biology1}>
-              <Biology1 />
+            <Route path={paths.exploreSubField}>
+              <ExploreSubField />
             </Route>
             <Route path={paths.home} exact>
               <Homepage />

@@ -35,7 +35,9 @@ export default function Constellation(props) {
   const classes = useStyles();
 
   return (
-    <RouterLink to={props.path}>
+    <RouterLink
+    to={{ pathname: props.path, state: { title: props.subfield } }}
+    >
       <div
         className={classes.constellation}
         style={{ top: props.top, left: props.left }}
