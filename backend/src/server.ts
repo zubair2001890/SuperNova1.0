@@ -4,7 +4,8 @@ import bodyParser = require('body-parser');
 import Routes from './api/routes';
 import * as jwt from 'express-jwt';
 import * as jwksRsa from 'jwks-rsa';
-require('dotenv').config();
+import * as path from 'path';
+require('dotenv').config({ path: path.resolve(__dirname, '../.env')});
 
 const port: number = Number(process.env.PORT) || 5000; // port / default port
 
@@ -28,19 +29,33 @@ app.use((req, res, next) => {
     );
     next();
 });
+<<<<<<< HEAD
+=======
+
+app.use(Express.static(path.join(__dirname, 'website')))
+app.get("*", (req, res, next) => {
+    if (!req.path.includes('api')){
+        res.sendFile(require('path')
+            .resolve(__dirname, 'website', 'index.html'));
+    } else {
+        next();
+    }
+})
+>>>>>>> e0ff23a36d49cd1b62e9c5eaf71176fdc3b0cc64
   
 const publicApi: Express.Router = Express.Router();
 const privateApi: Express.Router = Express.Router();
 
+console.log(process.env.AUTH0_DOMAIN)
 var jwtCheck = jwt({
     secret: jwksRsa.expressJwtSecret({
         cache: true,
         rateLimit: true,
         jwksRequestsPerMinute: 5,
-        jwksUri: process.env.AUTH0_DOMAIN + '/.well-known/jwks.json'
+        jwksUri: `https://${process.env.AUTH0_DOMAIN}/.well-known/jwks.json`
   }),
-  audience: 'localhost',
-  issuer: process.env.AUTH0_DOMAIN,
+  audience: `https://${process.env.AUTH0_DOMAIN}/userinfo`,
+  issuer: `https://${process.env.AUTH0_DOMAIN}/`,
   algorithms: ['RS256']
 });
 
