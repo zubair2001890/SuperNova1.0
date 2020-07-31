@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 
 import {Project} from './models/Project'
+import {UserAccount} from './models/UserAccount'
 import { addStringToArray, arrayContainsString } from './helpers';
 
 mongoose.connect('mongodb://uoovwklzznl5qbd3vnmc:CKB9CbXz4cbJrrrCskwU@bosn1sg8zx8aq8n-mongodb.services.clever-cloud.com:27017/bosn1sg8zx8aq8n')
@@ -22,7 +23,6 @@ mongoose.connect('mongodb://uoovwklzznl5qbd3vnmc:CKB9CbXz4cbJrrrCskwU@bosn1sg8zx
             console.log(err);
             rejecter(null);
          }
-         console.log("Returned projects = " + docs);
          resolver(docs)
       });
       projectsQuery.sort({totalPledged: -1});
@@ -43,7 +43,6 @@ mongoose.connect('mongodb://uoovwklzznl5qbd3vnmc:CKB9CbXz4cbJrrrCskwU@bosn1sg8zx
            console.log(err);
            rejecter(null);
         }
-        //console.log("Returned project = " + docs);
         resolver(docs)
      });
      return promise;
@@ -63,7 +62,6 @@ mongoose.connect('mongodb://uoovwklzznl5qbd3vnmc:CKB9CbXz4cbJrrrCskwU@bosn1sg8zx
         console.log(err);
         rejecter(null);
      }
-     console.log("Returned projects = " + docs);
      resolver(docs)
   });
    return promise;
@@ -83,7 +81,6 @@ export const getProjectsBySubfieldID = async function(subfieldID: Number)
         console.log(err);
         rejecter(null);
      }
-     //console.log("Returned project = " + docs);
      resolver(docs)
   });
    return promise;
@@ -103,7 +100,6 @@ export const getProjectsBySubfieldID = async function(subfieldID: Number)
          console.log(err);
          rejecter(null);
       }
-      //console.log("Returned project = " + docs);
       resolver(docs)
    });
     return promise;
@@ -123,10 +119,28 @@ export const getProjectsBySubfieldID = async function(subfieldID: Number)
          console.log(err);
          rejecter(null);
       }
-      //console.log("Returned project = " + docs);
       resolver(docs)
    });
    return promise;
+} 
+
+export const getProfileByID = function(profileID: String): Promise<any>
+{
+   let resolver, rejecter;
+   const promise = new Promise((resolve, reject) => {
+     resolver = resolve;
+     rejecter = reject;
+   })
+   UserAccount.findById(profileID, function(err, docs)
+  {
+     if (err)
+     {
+        console.log(err);
+        rejecter(null);
+     }
+     resolver(docs)
+  });
+  return promise;
 } 
  
 export const addAmountPledged = async function(projectID: String, newAmountPledged: number, newBacker: String)
@@ -148,8 +162,6 @@ export const addAmountPledged = async function(projectID: String, newAmountPledg
    {
       backers = addStringToArray(backers, newBacker);
    }
-   console.log("Backers = " + backers);
-   console.log("total = " + total);
   let update = {totalPledged: total, backers: backers};
    await Project.findByIdAndUpdate(projectID, update, function(err, response)
    {
@@ -157,7 +169,6 @@ export const addAmountPledged = async function(projectID: String, newAmountPledg
       {
          console.log(err);
       }
-      console.log("Response after updating the backers = " + response);
    });
 }
 
