@@ -62,13 +62,27 @@ class ProjectsController {
       link.push(req.body.link);
     }
     let startDate: String = req.body.startDate;
+    let teamDescriptionArray = req.body.teamDescription;
+    let teamDescription = new Array<Object>();
+    let i = 0;
+    while (i < teamDescriptionArray.length)
+    {
+      let teamObject = {
+        name: teamDescriptionArray[i],
+        role: teamDescriptionArray[i + 1],
+        text: teamDescriptionArray[i + 2] 
+      };
+      teamDescription.push(teamObject);
+      i += 3;
+    } // The while loop ends here.
+
     let project = new Project({
       projectName: req.body.projectName,
-      projectDescription: req.body.project_description,
+      projectDescription: req.body.projectDescription,
       university: req.body.university,
       // To get rid of both of the slashes, I get an error message saying that String does not have a replaceAll method.
       startDate: startDate.replace("/","").replace("/",""), 
-      teamDescription: req.body.teamDescription,
+      teamDescription: teamDescription,
       methodDescription: req.body.methodDescription,
       timelineDescription: req.body.timelineDescription,
       projectImage: req.body.projectImage,
@@ -77,8 +91,12 @@ class ProjectsController {
       fieldName: req.body.fieldName,
       subfieldName: req.body.subfieldName,
       subfieldID: req.body.subfieldID,
-      firstName: req.body.teamDescription[0].split(" ")[0],
-      lastName: req.body.teamDescription[0].split(" ")[1].replace(",",""),
+      // The first name and last name fields now need replacing with different code to fetch them based on the projectScientistID using auth0, 
+      // I'm giving them a dummy first name and surname so that the code still compiles and runs.
+      firstName: "Joe",
+      lastName: "Bloggs",
+      //firstName: req.body.teamDescription[0].split(" ")[0], 
+      //lastName: req.body.teamDescription[0].split(" ")[1].replace(",",""),
       statusName: req.body.statusName,
       link: link,
       backers: new Array<String>()
