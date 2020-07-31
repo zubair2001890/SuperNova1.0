@@ -1,5 +1,6 @@
 export default {
   login: "/login",
+  test: "/test",
   error404: "/not-found",
   home: "/",
   explore: "/explore",
@@ -20,4 +21,5 @@ export default {
   medicine: "/explore/medicine",
   socialSciences: "/explore/socialsciences",
   engineeringAndTech: "/explore/engineeringandtech",
+  exploreSubField: "/explore/exploresubfield",
 };
