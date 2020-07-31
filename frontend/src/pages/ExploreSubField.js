@@ -19,16 +19,16 @@ const Biology1 = (props) => {
   }, [dispatch]);
 
   const content = [
-    <div className={classes.carouselSlide}>
+    <div className={classes.carouselSlide} key={0}>
       <Projects projectsData={projectsData.slice(0, 1)} />
     </div>,
-    <div className={classes.carouselSlide}>
+    <div className={classes.carouselSlide} key={1}>
       <Projects projectsData={projectsData.slice(1, 2)} />
     </div>,
-    <div className={classes.carouselSlide}>
+    <div className={classes.carouselSlide} key={2}>
       <Projects projectsData={projectsData.slice(2, 3)} />
     </div>,
-    <div className={classes.carouselSlide}>
+    <div className={classes.carouselSlide} key={3}>
       <Projects projectsData={projectsData.slice(3, 4)} />
     </div>,
   ];
