@@ -36,8 +36,8 @@ export default (props) => {
                       <HeaderCarousel
                         className={classes.carousel}
                         content={content}
-                        centerMode={false}
-                        centerSlidePercentage={100}
+                        centerMode={true}
+                        centerSlidePercentage={62}
                         infiniteLoop={true}
                         onChange={ctx.updateConstellation}
                         selectedItem={ctx.currentSlide}
