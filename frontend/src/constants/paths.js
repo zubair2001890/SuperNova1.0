@@ -23,4 +23,5 @@ export default {
   medicine: "/explore/medicine",
   socialSciences: "/explore/socialsciences",
   engineeringAndTech: "/explore/engineeringandtech",
+  exploreSubField: "/explore/exploresubfield",
 };
