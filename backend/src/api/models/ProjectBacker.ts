@@ -17,12 +17,9 @@ export const ProjectBacker = model('ProjectBacker', new Schema({
     pledged: {
         type: Number,
         required: true
-<<<<<<< HEAD
-=======
     },
     ts: { // The unix timestamp.
         type: Number,
         required: true
->>>>>>> 86164e3b8c9125e188061fb0af886930bfd0c43e
     }
 }));
