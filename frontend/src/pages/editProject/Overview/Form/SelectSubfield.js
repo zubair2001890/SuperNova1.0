@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import SelectWithData from "./SelectWithData";
-import Group from "../../../../components/editProject/Group";
+import Group from "./Group";
 
 const fieldName = "subfield";
 

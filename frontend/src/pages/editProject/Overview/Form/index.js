@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Grid from "@material-ui/core/Grid";
-import Group from "../../../../components/editProject/Group";
+import Group from "./Group";
 import SelectField from "./SelectField";
 import SelectSubfields from "./SelectSubfield";
 

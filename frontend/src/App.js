@@ -39,6 +39,7 @@ const Medicine = lazy(() => import("./pages/Medicine"));
 
 const EditProjectOverview = lazy(() => import("./pages/editProject/Overview"));
 const AboutProject = lazy(() => import("./pages/editProject/About"));
+const EditProjectTeam = lazy(() => import("./pages/editProject/Team"));
 
 export default function App() {
   const { projects } = paths;
@@ -135,6 +136,9 @@ export default function App() {
               </Route>
               <Route path={projects.about.route}>
                 <AboutProject />
+              </Route>
+              <Route path={projects.team.route}>
+                <EditProjectTeam />
               </Route>
               <Route path={paths.error404}>
                 <Error404 />

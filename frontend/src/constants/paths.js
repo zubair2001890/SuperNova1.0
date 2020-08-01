@@ -52,7 +52,7 @@ const addProjectPath = ([key, subPath]) => {
 const addProjectPaths = () => {
   const projectPaths = {
     home: "/",
-    scientists: "scientists",
+    team: "team",
     timeline: "timeline-and-budget",
     methods: "methods",
     labNotes: "lab-notes",

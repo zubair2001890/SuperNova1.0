@@ -2,6 +2,8 @@ import React from "react";
 import Layout from "../Layout";
 import TextArea from "../TextArea";
 import Save from "../Save";
+import { text, input } from "../../../styles/form";
+import { makeStyles } from "@material-ui/core";
 
 const inputs = [
   {
@@ -22,14 +24,31 @@ const inputs = [
   },
 ];
 
-const renderInput = (inputData, index) => (
-  <TextArea {...inputData} key={index} />
+const renderInput = (classes) => (inputData, index) => (
+  <TextArea {...inputData} key={index} customClasses={classes} />
 );
 
-const renderInputs = () => inputs.map(renderInput);
+const renderInputs = (classes) => inputs.map(renderInput(classes));
+
+const useStyles = makeStyles({
+  grid: {
+    "& + &": {
+      marginTop: "3.364375rem",
+    },
+  },
+  text: {
+    ...text,
+    marginBottom: "2.15625rem",
+  },
+  input: {
+    ...input,
+    minHeight: "13.1875rem",
+  },
+});
 
 export default function About() {
-  const inputs = renderInputs();
+  const classes = useStyles();
+  const inputs = renderInputs(classes);
   return (
     <Layout title="About this project">
       {inputs}

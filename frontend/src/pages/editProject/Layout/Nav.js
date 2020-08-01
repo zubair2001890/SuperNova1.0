@@ -22,8 +22,8 @@ function Nav({ match }) {
       children: "About Project",
     },
     {
-      to: projects.scientists,
-      children: "Scientists",
+      to: projects.team,
+      children: "Team",
     },
     {
       to: projects.timeline,

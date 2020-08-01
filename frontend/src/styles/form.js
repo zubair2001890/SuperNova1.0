@@ -22,3 +22,25 @@ export const icon = {
   alignItems: "center",
   justifyContent: "center",
 };
+
+export const text = {
+  ...title,
+  marginBottom: "1.46875rem",
+};
+
+const textMarginBottom = "0.9375rem";
+
+export const teamText = {
+  ...text,
+  marginBottom: textMarginBottom,
+};
+
+export const input = {
+  letterSpacing: "-0.06px",
+  font: "Regular 14px/17px AvertaDemo;",
+  border: "2px solid black",
+  padding: "1rem 1.125rem",
+  borderRadius: "0.25rem",
+  display: "inline-block",
+  flexGrow: 1,
+};

@@ -48,6 +48,16 @@ export class EditProjectLayout extends Component {
   }
 }
 
-const ConnectedForm = reduxForm({ form: forms.editProject })(EditProjectLayout);
+const ConnectedForm = reduxForm({
+  form: forms.editProject,
+  initialValues: {
+    team: [
+      {
+        name: "Albert Einstein",
+        role: "Scientist",
+      },
+    ],
+  },
+})(EditProjectLayout);
 
 export default withRouter(ConnectedForm);
