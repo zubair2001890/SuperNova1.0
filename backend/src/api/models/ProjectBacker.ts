@@ -21,5 +21,11 @@ export const ProjectBacker = model('ProjectBacker', new Schema({
     ts: { // The unix timestamp.
         type: Number,
         required: true
+    },
+    backerKey: {
+        type: String,
+        required: true,
+        minlength: 1,
+        maxlength: 50
     }
 }));

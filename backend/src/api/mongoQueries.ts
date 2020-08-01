@@ -150,7 +150,7 @@ export const getProfileByID = function(profileID: String): Promise<any>
   return promise;
 } 
  
-export const addAmountPledged = async function(projectID: String, newAmountPledged: number, newBackerID: String)
+export const addAmountPledged = async function(projectID: String, newAmountPledged: number, newBackerID: String, backerKey: String)
 {
    console.log("The addAmountPledged method has been called");
    let account = await this.getProfileByID(newBackerID);
@@ -186,7 +186,8 @@ export const addAmountPledged = async function(projectID: String, newAmountPledg
       projectID: projectID,
       userAccountID: newBackerID,
       pledged: newAmountPledged,
-      ts: new Date().getTime()
+      ts: new Date().getTime(),
+      backerKey: backerKey
    });
    projectBacker.save();
 }
