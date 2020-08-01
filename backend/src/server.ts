@@ -29,8 +29,6 @@ app.use((req, res, next) => {
     );
     next();
 });
-<<<<<<< HEAD
-=======
 
 app.use(Express.static(path.join(__dirname, 'website')))
 app.get("*", (req, res, next) => {
@@ -41,12 +39,10 @@ app.get("*", (req, res, next) => {
         next();
     }
 })
->>>>>>> e0ff23a36d49cd1b62e9c5eaf71176fdc3b0cc64
   
 const publicApi: Express.Router = Express.Router();
 const privateApi: Express.Router = Express.Router();
 
-console.log(process.env.AUTH0_DOMAIN)
 var jwtCheck = jwt({
     secret: jwksRsa.expressJwtSecret({
         cache: true,
