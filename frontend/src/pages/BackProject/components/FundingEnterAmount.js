@@ -22,28 +22,26 @@ const useStyles = makeStyles((theme) => ({
     border: "2px solid red",
     borderRadius: 10,
     padding: 30,
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
   },
   amount: {
     fontSize: 30,
   },
   title: {
-    paddingTop: 20,
     fontWeight: "bold",
     fontSize: 25,
     letterSpacing: 1.8,
   },
   description: {
-    paddingTop: 20,
-    fontSize: 25,
     letterSpacing: 1.8,
     fontSize: 14,
   },
   enterAmountText: {
-    paddingTop: 30,
     fontWeight: "bold",
   },
   fundingAmountInput: {
-    paddingTop: 20,
     height: 40,
     display: "flex",
     justifyContent: "space-between",
@@ -66,15 +64,11 @@ const CustomButton = withStyles((theme) => ({
   },
 }))(Button);
 
-function boxClicked() {
-  console.log("Box clicked");
-}
-
 export default function FundingEnterAmount(props) {
   const classes = useStyles();
 
   return (
-    <div className={classes.fundingOptionContainer} onClick={boxClicked}>
+    <div className={classes.fundingOptionContainer}>
       <Typography variant="h3" className={classes.option}>
         Option {props.optionNumber}:
       </Typography>

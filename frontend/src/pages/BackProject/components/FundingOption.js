@@ -36,15 +36,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function boxClicked() {
-  console.log("Box clicked");
-};
-
 export default function FundingOption(props) {
   const classes = useStyles();
 
   return (
-    <div className={classes.fundingOptionContainer} onClick={boxClicked}>
+    <div className={classes.fundingOptionContainer} onClick={props.onClick}>
       <Typography variant="h3" className={classes.option}>
         Option {props.optionNumber}:
       </Typography>
