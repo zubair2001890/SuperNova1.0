@@ -72,7 +72,7 @@ class BackProject extends Component {
 
     const items = [
       {
-        optionNumber: 0,
+        optionNumber: 1,
         amount: 5,
         title: "Thank you and scientists' updates",
         description:
