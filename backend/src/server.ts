@@ -29,6 +29,7 @@ app.use((req, res, next) => {
     );
     next();
 });
+<<<<<<< HEAD
 
 app.use(Express.static(path.join(__dirname, 'website')))
 app.get("*", (req, res, next) => {
@@ -39,6 +40,8 @@ app.get("*", (req, res, next) => {
         next();
     }
 })
+=======
+>>>>>>> 86164e3b8c9125e188061fb0af886930bfd0c43e
   
 const publicApi: Express.Router = Express.Router();
 const privateApi: Express.Router = Express.Router();

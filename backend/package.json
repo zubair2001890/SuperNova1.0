@@ -18,9 +18,12 @@
     "express-jwt-authz": "^2.4.0",
     "jwks-rsa": "^1.8.1",
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     "jwt-decode": "^2.2.0",
 >>>>>>> e0ff23a36d49cd1b62e9c5eaf71176fdc3b0cc64
+=======
+>>>>>>> 86164e3b8c9125e188061fb0af886930bfd0c43e
     "moment": "^2.27.0",
     "mongoose": "^5.9.24",
     "mysql": "^2.18.1",
