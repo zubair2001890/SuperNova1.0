@@ -12,26 +12,26 @@ const useStyles = makeStyles((theme) => ({
   },
   fundingBox: {
     width: 896,
-    height: 247,
+    height: 180,
     border: "2px solid gray",
     borderRadius: 10,
-    padding: 30,
+    padding: 25,
     "&:hover": {
       backgroundColor: "#ddd",
     },
   },
   amount: {
-    fontSize: 30,
+    fontSize: 25,
   },
   title: {
-    paddingTop: 40,
+    paddingTop: 25,
     fontWeight: "bold",
-    fontSize: 25,
+    fontSize: 20,
     letterSpacing: 1.8,
   },
   description: {
-    paddingTop: 40,
-    fontSize: 25,
+    paddingTop: 25,
+    fontSize: 20,
     letterSpacing: 1.8,
   },
 }));
@@ -41,7 +41,7 @@ export default function FundingOption(props) {
 
   return (
     <div className={classes.fundingOptionContainer} onClick={props.onClick}>
-      <Typography variant="h3" className={classes.option}>
+      <Typography variant="h4" className={classes.option}>
         Option {props.optionNumber}:
       </Typography>
       <div className={classes.fundingBox}>

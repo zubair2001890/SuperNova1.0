@@ -138,7 +138,7 @@ class BackProject extends Component {
         <Typography variant="body1" className={classes.projectScientist}>
           by Bernard Huang
         </Typography>
-        <Typography variant="h3" className={classes.subtitle}>
+        <Typography variant="h4" className={classes.subtitle}>
           Back this project
         </Typography>
         <div className={classes.fundingOptions}>

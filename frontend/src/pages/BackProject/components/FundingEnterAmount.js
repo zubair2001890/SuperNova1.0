@@ -18,20 +18,20 @@ const useStyles = makeStyles((theme) => ({
   },
   fundingBox: {
     width: 896,
-    height: 247,
+    height: 180,
     border: "2px solid red",
     borderRadius: 10,
-    padding: 30,
+    padding: 25,
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
   },
   amount: {
-    fontSize: 30,
+    fontSize: 25,
   },
   title: {
     fontWeight: "bold",
-    fontSize: 25,
+    fontSize: 20,
     letterSpacing: 1.8,
   },
   description: {
@@ -40,6 +40,7 @@ const useStyles = makeStyles((theme) => ({
   },
   enterAmountText: {
     fontWeight: "bold",
+    fontSize: 18,
   },
   fundingAmountInput: {
     height: 40,
@@ -69,7 +70,7 @@ export default function FundingEnterAmount(props) {
 
   return (
     <div className={classes.fundingOptionContainer}>
-      <Typography variant="h3" className={classes.option}>
+      <Typography variant="h4" className={classes.option}>
         Option {props.optionNumber}:
       </Typography>
       <div className={classes.fundingBox}>
