@@ -1,6 +1,7 @@
 import React from "react";
 import { makeStyles, Typography } from "@material-ui/core";
 import FundingOption from "./components/FundingOption";
+import FundingEnterAmount from "./components/FundingEnterAmount";
 
 const useStyles = makeStyles((theme) => ({
   pageContainer: {
@@ -33,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
 
 function createFundingOption(item) {
   return (
-    <FundingOption
+    <FundingEnterAmount
       optionNumber={item.optionNumber}
       amount={item.amount}
       title={item.title}

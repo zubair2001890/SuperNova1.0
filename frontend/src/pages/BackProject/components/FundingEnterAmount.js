@@ -1,5 +1,11 @@
 import React from "react";
-import { makeStyles, Typography } from "@material-ui/core";
+import {
+  makeStyles,
+  withStyles,
+  Typography,
+  TextField,
+  Button,
+} from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   fundingOptionContainer: {
@@ -13,34 +19,58 @@ const useStyles = makeStyles((theme) => ({
   fundingBox: {
     width: 896,
     height: 247,
-    border: "2px solid gray",
+    border: "2px solid red",
     borderRadius: 10,
     padding: 30,
-    "&:hover": {
-      backgroundColor: "#ddd",
-    },
   },
   amount: {
     fontSize: 30,
   },
   title: {
-    paddingTop: 40,
+    paddingTop: 20,
     fontWeight: "bold",
     fontSize: 25,
     letterSpacing: 1.8,
   },
   description: {
-    paddingTop: 40,
+    paddingTop: 20,
     fontSize: 25,
     letterSpacing: 1.8,
+    fontSize: 14,
+  },
+  enterAmountText: {
+    paddingTop: 30,
+    fontWeight: "bold",
+  },
+  fundingAmountInput: {
+    paddingTop: 20,
+    height: 40,
+    display: "flex",
+    justifyContent: "space-between",
   },
 }));
 
+const CustomButton = withStyles((theme) => ({
+  root: {
+    color: theme.palette.common.white,
+    backgroundColor: theme.palette.common.black,
+    fontSize: 16,
+    fontWeight: "bold",
+    "&:hover": {
+      color: theme.palette.common.black,
+      backgroundColor: "#ddd",
+      fontSize: 16,
+      fontWeight: "bold",
+      border: "1px solid black",
+    },
+  },
+}))(Button);
+
 function boxClicked() {
   console.log("Box clicked");
-};
+}
 
-export default function FundingOption(props) {
+export default function FundingEnterAmount(props) {
   const classes = useStyles();
 
   return (
@@ -58,6 +88,17 @@ export default function FundingOption(props) {
         <Typography className={classes.description}>
           {props.description}
         </Typography>
+        <Typography className={classes.enterAmountText}>
+          Enter Donation Amount:
+        </Typography>
+        <div className={classes.fundingAmountInput}>
+          <TextField
+            variant="outlined"
+            placeholder="£..."
+            style={{ height: 40 }}
+          />
+          <CustomButton variant="contained">Let's Go!</CustomButton>
+        </div>
       </div>
     </div>
   );
