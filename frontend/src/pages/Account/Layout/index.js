@@ -1,17 +1,25 @@
 import React, { Component } from "react";
 import AccountLayout from "../../../components/account/Layout";
 import Nav from "./Nav";
+import { subtitle } from "../../../styles/form";
+import { withStyles } from "@material-ui/core";
 
 export class Layout extends Component {
   render() {
+    const { classes, ...other } = this.props;
     return (
       <AccountLayout
         Nav={Nav}
         mainTitle="My Account"
-        {...this.props}
+        customClasses={classes}
+        {...other}
       ></AccountLayout>
     );
   }
 }
 
-export default Layout;
+const styles = {
+  subtitle,
+};
+
+export default withStyles(styles)(Layout);

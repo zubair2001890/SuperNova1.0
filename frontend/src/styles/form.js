@@ -1,3 +1,10 @@
+export const subtitle = {
+  fontWeight: "bold",
+  fontSize: "2.5rem",
+  fontFamily: "Montserrat, sans-serif",
+  marginBottom: "2.125rem",
+};
+
 export const title = {
   fontFamily: "Montserrat",
   fontSize: "1.25rem",

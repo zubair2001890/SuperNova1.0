@@ -7,10 +7,12 @@ import Grid from "@material-ui/core/Grid";
 import EditLayout from "../../../components/EditLayout";
 import Nav from "./Nav";
 import forms from "../../../constants/forms";
+import { withStyles } from "@material-ui/core";
+import { subtitle } from "../../../styles/form";
 
 export const ProjectContext = React.createContext();
 
-export class EditProjectLayout extends Component {
+export class Layout extends Component {
   state = {
     project: null,
   };
@@ -35,9 +37,14 @@ export class EditProjectLayout extends Component {
 
   render() {
     const { project } = this.state;
-    const { children, ...other } = this.props;
+    const { children, classes, ...other } = this.props;
     return (
-      <EditLayout {...other} Nav={Nav} mainTitle="Edit Project">
+      <EditLayout
+        {...other}
+        Nav={Nav}
+        mainTitle="Edit Project"
+        customClasses={classes}
+      >
         <ProjectContext.Provider value={project}>
           <Grid container justify="space-between">
             {children}
@@ -47,6 +54,18 @@ export class EditProjectLayout extends Component {
     );
   }
 }
+
+const styles = {
+  subtitle: {
+    ...subtitle,
+    letterSpacing: "0.4px",
+  },
+  content: {
+    maxWidth: "60rem",
+  },
+};
+
+const LayoutWithStyles = withStyles(styles)(Layout);
 
 const getEmptyStages = (amount) => {
   let stages = [];
@@ -68,6 +87,6 @@ const ConnectedForm = reduxForm({
     stages: getEmptyStages(3),
   },
   destroyOnUnmount: false,
-})(EditProjectLayout);
+})(LayoutWithStyles);
 
 export default withRouter(ConnectedForm);

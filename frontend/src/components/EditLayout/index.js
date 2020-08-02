@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { withAuth0 } from "@auth0/auth0-react";
 import { withStyles, Typography } from "@material-ui/core";
 
-import LogIn from "../../pages/Login";
+// import LogIn from "../../pages/Login";
 
 const styles = (theme) => {
   const layoutPaddingBottom = "11.700625rem";
@@ -20,10 +20,10 @@ const styles = (theme) => {
       marginTop: "7rem",
       [theme.breakpoints.up("md")]: {
         display: "flex",
+        justifyContent: "start",
       },
     },
     content: {
-      width: "100%",
       [theme.breakpoints.up("md")]: {
         padding: "0 5.125rem",
       },
@@ -34,25 +34,24 @@ const styles = (theme) => {
       textTransform: "uppercase",
       marginTop: "140px",
     },
-    subtitle: {
-      font: "Bold 24px/29px Montserrat",
-      letterSpacing: "1.44px",
-      color: "#161515",
-      marginBottom: "3.3125rem",
-    },
   };
 };
 
 class EditLayout extends Component {
   renderPageTitle = () => {
-    const { title, classes } = this.props;
+    const { title, customClasses } = this.props;
     return (
       title && (
-        <Typography variant="h2" className={classes.subtitle}>
+        <Typography variant="h2" className={customClasses.subtitle}>
           {title}
         </Typography>
       )
     );
+  };
+
+  getContentClasses = () => {
+    const { customClasses, classes } = this.props;
+    return `${customClasses.content} ${classes.content}`;
   };
 
   render() {
@@ -65,7 +64,7 @@ class EditLayout extends Component {
         </Typography>
         <div className={classes.container}>
           <Nav />
-          <div className={classes.content}>
+          <div className={this.getContentClasses()}>
             {this.renderPageTitle()}
             {children}
           </div>
