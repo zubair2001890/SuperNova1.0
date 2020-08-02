@@ -49,16 +49,20 @@ export const projectsSlice = createSlice({
       state.projectDetails = action.payload
     },
   },
-})
+});
 
 export const { setData, setLoading, setError } = projectsSlice.actions
 
 // Can be removed?
 const fetchMockProjects = () => async (dispatch) => {
+  console.log("fetchMockProjects function called");
+  console.log("env backend URL =" + process.env.REACT_APP_BACKEND_URL);
+  console.log(await getFeaturedProject());
   dispatch(setLoading(true))
-  const projects = await getFeaturedProject()
-  dispatch(setData(projects))
-  dispatch(setLoading(false))
+  const projects = await getFeaturedProject();
+  //console.log(projects);
+  dispatch(setData(projects));
+  dispatch(setLoading(false));
 }
 
 // export const fetchProjectsFromApi = () => (dispatch) => {

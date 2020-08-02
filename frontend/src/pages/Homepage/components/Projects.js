@@ -57,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 export default ({ projectsData, projectsLoading }) => {
-  const classes = useStyles()
+  const classes = useStyles();
   return (
     <div className={classes.sectionContainer}>
       <Typography variant="h2" className={classes.sectionTitle}>
@@ -65,10 +65,9 @@ export default ({ projectsData, projectsLoading }) => {
       </Typography>
       <div className={classes.projectCardsGrid}>
         {projectsLoading && <CircularProgress color="secondary" />}
-        {projectsData &&
-          projectsData.map((project) => (
-            <ProjectCard
-              key={project.id}
+        {projectsData && projectsData.map((project) => (
+          <ProjectCard
+              key={project._id}
               headerUrl={project.headerUrl}
               className={classes.card}
               body={
@@ -101,7 +100,7 @@ export default ({ projectsData, projectsLoading }) => {
                 </div>
               }
             />
-          ))}
+            ))}
       </div>
     </div>
   )
