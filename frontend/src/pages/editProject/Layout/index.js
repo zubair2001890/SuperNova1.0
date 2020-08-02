@@ -67,6 +67,7 @@ const ConnectedForm = reduxForm({
     ],
     stages: getEmptyStages(3),
   },
+  destroyOnUnmount: false,
 })(EditProjectLayout);
 
 export default withRouter(ConnectedForm);
