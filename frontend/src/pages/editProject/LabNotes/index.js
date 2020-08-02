@@ -3,12 +3,16 @@ import Layout from "../Layout";
 import TextAreaLg from "../TextAreaLg";
 import Save from "../Save";
 import UploadMedia from "./UploadMedia";
+import { Grid } from "@material-ui/core";
 
 export default function LabNotes() {
   return (
     <Layout title="Lab Notes">
-      <TextAreaLg label="Lab Commentary" name="labCommentary" />
+      <Grid item xs={12}>
+        <TextAreaLg label="Lab Commentary" name="labCommentary" />
+      </Grid>
       <Save />
+
       <UploadMedia />
     </Layout>
   );

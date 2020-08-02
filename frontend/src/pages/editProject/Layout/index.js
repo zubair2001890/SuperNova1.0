@@ -55,15 +55,18 @@ export class Layout extends Component {
   }
 }
 
-const styles = {
+const styles = (theme) => ({
   subtitle: {
     ...subtitle,
     letterSpacing: "0.4px",
   },
   content: {
     maxWidth: "60rem",
+    [theme.breakpoints.up("lg")]: {
+      width: "60rem",
+    },
   },
-};
+});
 
 const LayoutWithStyles = withStyles(styles)(Layout);
 

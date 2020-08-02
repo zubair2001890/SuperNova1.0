@@ -1,5 +1,5 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core";
+import { makeStyles, Grid } from "@material-ui/core";
 
 const useStyles = makeStyles({
   title: {
@@ -13,8 +13,8 @@ const useStyles = makeStyles({
 export default function UploadMedia() {
   const classes = useStyles();
   return (
-    <div>
+    <Grid item xs={12}>
       <h2 className={classes.title}>Upload Media</h2>
-    </div>
+    </Grid>
   );
 }
