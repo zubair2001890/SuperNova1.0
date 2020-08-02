@@ -26,7 +26,6 @@ export class AvatarForm extends Component {
   }
 }
 
-// To-do: add offset to icon
 const iconAtEdgePosition = `calc( -1 * ${iconOffset} )`;
 
 const styles = {

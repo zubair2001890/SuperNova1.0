@@ -16,7 +16,7 @@ const useStyles = makeStyles({
   icon,
 });
 
-export default function AvatarForm({ pictureClass }) {
+export default function AvatarForm({ pictureClass, ...other }) {
   const {
     user = { picture: "https://randomuser.me/api/portraits/men/31.jpg" },
   } = useAuth0();
@@ -28,6 +28,7 @@ export default function AvatarForm({ pictureClass }) {
       variant="circle"
       pictureClass={pictureClass}
       iconClass={classes.icon}
+      {...other}
     ></BaseAvatarForm>
   );
 }

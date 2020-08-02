@@ -37,7 +37,7 @@ export class EditProjectLayout extends Component {
     const { project } = this.state;
     const { children, ...other } = this.props;
     return (
-      <EditLayout {...other} Nav={Nav}>
+      <EditLayout {...other} Nav={Nav} mainTitle="Edit Project">
         <ProjectContext.Provider value={project}>
           <Grid container justify="space-between">
             {children}

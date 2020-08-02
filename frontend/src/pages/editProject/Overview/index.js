@@ -7,7 +7,7 @@ import Video from "./Video";
 
 export default function Overview() {
   return (
-    <Layout mainTitle="Edit Project" title="Overview">
+    <Layout title="Overview">
       <Form />
       <ProjectImage />
       <Video />
