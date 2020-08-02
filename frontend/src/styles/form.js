@@ -44,7 +44,8 @@ export const teamText = {
 
 export const input = {
   letterSpacing: "-0.06px",
-  font: "Regular 14px/17px AvertaDemo;",
+  fontFamily: "AvertaDemo",
+  fontSize: "0.875rem",
   border: "2px solid black",
   padding: "1rem 1.125rem",
   borderRadius: "0.25rem",
