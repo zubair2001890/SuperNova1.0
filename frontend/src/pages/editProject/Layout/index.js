@@ -48,6 +48,14 @@ export class EditProjectLayout extends Component {
   }
 }
 
+const getEmptyStages = (amount) => {
+  let stages = [];
+  for (let stageIndex = 0; stageIndex < amount; stageIndex++) {
+    stages.push({});
+  }
+  return stages;
+};
+
 const ConnectedForm = reduxForm({
   form: forms.editProject,
   initialValues: {
@@ -57,6 +65,7 @@ const ConnectedForm = reduxForm({
         role: "Scientist",
       },
     ],
+    stages: getEmptyStages(3),
   },
 })(EditProjectLayout);
 

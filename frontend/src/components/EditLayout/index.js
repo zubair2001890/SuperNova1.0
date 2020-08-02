@@ -4,41 +4,44 @@ import { withStyles, Typography } from "@material-ui/core";
 
 import LogIn from "../../pages/Login";
 
-const styles = (theme) => ({
-  layout: {
-    padding: "0 1rem 2rem 1rem",
-    [theme.breakpoints.up("sm")]: {
-      padding: "0 3rem",
+const styles = (theme) => {
+  const layoutPaddingBottom = "11.700625rem";
+  return {
+    layout: {
+      padding: `0 1rem ${layoutPaddingBottom} 1rem`,
+      [theme.breakpoints.up("sm")]: {
+        padding: `0 3rem ${layoutPaddingBottom} 3rem`,
+      },
+      [theme.breakpoints.up("lg")]: {
+        padding: `0 7.5rem ${layoutPaddingBottom} 7.5rem`,
+      },
     },
-    [theme.breakpoints.up("lg")]: {
-      padding: "0 7.5rem 2rem 7.5rem",
+    container: {
+      marginTop: "7rem",
+      [theme.breakpoints.up("md")]: {
+        display: "flex",
+      },
     },
-  },
-  container: {
-    marginTop: "7rem",
-    [theme.breakpoints.up("md")]: {
-      display: "flex",
+    content: {
+      width: "100%",
+      [theme.breakpoints.up("md")]: {
+        padding: "0 5.125rem",
+      },
     },
-  },
-  content: {
-    width: "100%",
-    [theme.breakpoints.up("md")]: {
-      padding: "0 5.125rem",
+    title: {
+      font: "Bold 40px/49px Montserrat",
+      letterSpacing: "3.6px",
+      textTransform: "uppercase",
+      marginTop: "140px",
     },
-  },
-  title: {
-    font: "Bold 40px/49px Montserrat",
-    letterSpacing: "3.6px",
-    textTransform: "uppercase",
-    marginTop: "140px",
-  },
-  subtitle: {
-    font: "Bold 24px/29px Montserrat",
-    letterSpacing: "1.44px",
-    color: "#161515",
-    marginBottom: "3.3125rem",
-  },
-});
+    subtitle: {
+      font: "Bold 24px/29px Montserrat",
+      letterSpacing: "1.44px",
+      color: "#161515",
+      marginBottom: "3.3125rem",
+    },
+  };
+};
 
 class EditLayout extends Component {
   renderPageTitle = () => {

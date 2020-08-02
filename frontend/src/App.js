@@ -40,6 +40,9 @@ const Medicine = lazy(() => import("./pages/Medicine"));
 const EditProjectOverview = lazy(() => import("./pages/editProject/Overview"));
 const AboutProject = lazy(() => import("./pages/editProject/About"));
 const EditProjectTeam = lazy(() => import("./pages/editProject/Team"));
+const EditProjectTimeline = lazy(() => import("./pages/editProject/Timeline"));
+const EditProjectMethods = lazy(() => import("./pages/editProject/Methods"));
+const EditProjectLabNotes = lazy(() => import("./pages/editProject/LabNotes"));
 
 export default function App() {
   const { projects } = paths;
@@ -139,6 +142,15 @@ export default function App() {
               </Route>
               <Route path={projects.team.route}>
                 <EditProjectTeam />
+              </Route>
+              <Route path={projects.timeline.route}>
+                <EditProjectTimeline />
+              </Route>
+              <Route path={projects.methods.route}>
+                <EditProjectMethods />
+              </Route>
+              <Route path={projects.labNotes.route}>
+                <EditProjectLabNotes />
               </Route>
               <Route path={paths.error404}>
                 <Error404 />
