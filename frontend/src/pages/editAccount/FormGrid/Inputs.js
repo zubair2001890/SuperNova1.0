@@ -3,7 +3,7 @@ import { Field } from "redux-form";
 import { withStyles } from "@material-ui/core";
 import FieldsColumn from "./FieldsColumn";
 
-const styles = {
+const styles = (theme) => ({
   column: {
     flexGrow: 1,
   },
@@ -14,8 +14,11 @@ const styles = {
     padding: "1.125rem",
     borderRadius: "0.25rem",
     display: "inline-block",
+    [theme.breakpoints.up("lg")]: {
+      width: "100%",
+    },
   },
-};
+});
 
 class Inputs extends Component {
   renderInput = (fieldData, index) => {

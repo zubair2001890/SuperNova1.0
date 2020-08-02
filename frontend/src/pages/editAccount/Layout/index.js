@@ -9,6 +9,10 @@ const useStyles = makeStyles({
     ...subtitle,
     letterSpacing: "3.6px",
   },
+  content: {
+    maxWidth: "54.8125rem",
+    width: "100%",
+  },
 });
 
 export default function Layout(props) {

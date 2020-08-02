@@ -32,7 +32,7 @@ const styles = (theme) => ({
   column: {
     marginRight: "1rem",
     [theme.breakpoints.up("sm")]: {
-      marginRight: "3.6875rem",
+      marginRight: "2rem",
     },
   },
   text: {
