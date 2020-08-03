@@ -16,12 +16,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const getProgressValue = ({ fundsRaised, fundsGoal }) => {
-  if (typeof fundsRaised === "number" && typeof fundsGoal === "number") {
+const getProgressValue = ({ fundsRaised=0, fundsGoal=0 }) => {
     return (fundsRaised / fundsGoal) * 100;
   }
-  return 0;
-};
 
 const getFundsProgressCaption = ({ fundsRaised, fundsGoal }) => {
   if (typeof fundsRaised === "number" && typeof fundsGoal === "number") {

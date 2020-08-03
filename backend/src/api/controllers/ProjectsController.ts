@@ -9,7 +9,14 @@ class ProjectsController {
     }
 
     public featured = async (req: Request, res: Response) => {
-      let featuredProjects = await getFeaturedProjects();
+      let featuredProjects = new Array();
+      let allProjects = await getFeaturedProjects();
+      allProjects.forEach(project => {
+        if ((project.totalPledged < project.goal) && (featuredProjects.length <= 4))
+        {
+          featuredProjects.push(project); // This code is now necessary because if a project has reached its goal, it should not feature.
+        }  
+      });
       res.send(featuredProjects);
     }
 

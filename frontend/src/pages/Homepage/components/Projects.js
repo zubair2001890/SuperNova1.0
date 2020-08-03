@@ -68,7 +68,7 @@ export default ({ projectsData, projectsLoading }) => {
         {projectsData && projectsData.map((project) => (
           <ProjectCard
               key={project._id}
-              headerUrl={project.headerUrl}
+              headerUrl={project.projectImage}
               className={classes.card}
               body={
                 <div className={classes.cardBody}>

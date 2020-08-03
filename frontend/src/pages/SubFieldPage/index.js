@@ -48,7 +48,7 @@ export default (props) => {
               </Consumer>
 
               <Typography variant="h2" className={classes.subFieldTitle}>
-                {props.title}
+                {props.projectName}
               </Typography>
             </div>
           </StarProvider>

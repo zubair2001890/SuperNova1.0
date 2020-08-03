@@ -16,31 +16,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const getProgressValue = ({ fundsRaised, fundsGoal }) => {
-  if (typeof fundsRaised === "number" && typeof fundsGoal === "number") {
-    if (fundsRaised > fundsGoal)
-    {
-      return 100;
-    }
-    else
-    {
-    return (fundsRaised / fundsGoal) * 100;
-    }
-  }
-  return 0;
-};
+const getProgressValue = ({ fundsRaised=0, fundsGoal=0 }) => {
+  return (fundsRaised / fundsGoal) * 100;
+    };
 
-const getFundsProgressCaption = ({ fundsRaised, fundsGoal }) => {
-  if (fundsRaised === undefined)
-  {
-    fundsRaised = 0;
-  }
-  
-  if (fundsGoal === undefined)
-  { 
-    fundsGoal = 0;
-  }
-    
+const getFundsProgressCaption = ({ fundsRaised=0, fundsGoal=0 }) => {
   return `${new Intl.NumberFormat("en-EN", {
       style: "currency",
       currency: "GBP",

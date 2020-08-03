@@ -8,8 +8,8 @@ export default (publicApi: Express.Router, privateApi: Express.Router) => {
   publicApi.route('/subfield/:field_name').get(projectsController.subFieldsByFieldName);
   publicApi.route('/project').get(projectsController.project);
   publicApi.route('/project/:project_id').get(projectsController.projectByProjectID);
-  privateApi.route('/createproject').put(projectsController.createProject);
-  privateApi.route('/updateproject/:project_id').post(projectsController.updateProject);
+  publicApi.route('/createproject').put(projectsController.createProject);
+  publicApi.route('/updateproject/:project_id').post(projectsController.updateProject);
 }
 
 

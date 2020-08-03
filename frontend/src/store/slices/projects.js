@@ -9,7 +9,7 @@ import {
   createProject,
   sendUpdateProject,
 } from './middlewareAPI/middlewareAPI'
-import { getProjects, getFeaturedProject } from './middlewareAPI/fetchAPI'
+import { getProjects, getFeaturedProjects } from './middlewareAPI/fetchAPI'
 
 export const projectsSlice = createSlice({
   name: 'projects',
@@ -57,10 +57,9 @@ export const { setData, setLoading, setError } = projectsSlice.actions
 const fetchMockProjects = () => async (dispatch) => {
   console.log("fetchMockProjects function called");
   console.log("env backend URL =" + process.env.REACT_APP_BACKEND_URL);
-  console.log(await getFeaturedProject());
+  console.log(await getFeaturedProjects());
   dispatch(setLoading(true))
-  const projects = await getFeaturedProject();
-  //console.log(projects);
+  const projects = await getFeaturedProjects();
   dispatch(setData(projects));
   dispatch(setLoading(false));
 }
