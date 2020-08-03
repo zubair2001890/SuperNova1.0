@@ -3,6 +3,7 @@ import { getAccountUrl, getEditPath } from "../helpers/createPaths";
 export default {
   login: "/login",
   logout: "/logout",
+  test: "/test",
   error404: "/not-found",
   home: "/",
   explore: "/explore",
@@ -29,4 +30,5 @@ export default {
   medicine: "/explore/medicine",
   socialSciences: "/explore/socialsciences",
   engineeringAndTech: "/explore/engineeringandtech",
+  exploreSubField: "/explore/exploresubfield",
 };

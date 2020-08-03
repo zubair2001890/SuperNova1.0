@@ -5,6 +5,7 @@ import projectsReducer from "./slices/projects";
 import { reduceProjects } from "./allProjects";
 import thunk from "redux-thunk";
 import { reducer as formReducer } from "redux-form";
+import profileReducer from "./slices/profile";
 
 export default configureStore({
   reducer: {
@@ -13,6 +14,7 @@ export default configureStore({
     projects: projectsReducer,
     form: formReducer,
     allProjects: reduceProjects,
+    profile: profileReducer,
   },
   middleware: [thunk],
 });

@@ -14,6 +14,7 @@ import {
   selectData as selectProjectsData,
   selectLoading as selectProjectsLoading,
 } from "../../store/slices/projects";
+import { fetchFeaturedProject } from "../../store/slices/middlewareAPI/middlewareAPI";
 
 const useStyles = makeStyles((theme) => ({
   pageContainer: {
@@ -33,6 +34,7 @@ export default () => {
     dispatch(setPageDarkTheme(true));
     dispatch(setPageParticles(true));
     dispatch(fetchProjects());
+    dispatch(fetchFeaturedProject());
     return () => {
       dispatch(setPageDarkTheme(false));
       dispatch(setPageParticles(false));
