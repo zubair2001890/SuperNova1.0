@@ -9,7 +9,7 @@ mongoose.connect('mongodb://uoovwklzznl5qbd3vnmc:CKB9CbXz4cbJrrrCskwU@bosn1sg8zx
     .then(() => console.log('Now connected to MongoDB!'))
     .catch(err => console.error('Something went wrong', err));
 
- export const getFeaturedProjects = async function(): Promise<any>
+ export const getAllProjects = async function(): Promise<any>
     {
        console.log("getProjectsSortedByTotalPledged method called");
        let resolver, rejecter;

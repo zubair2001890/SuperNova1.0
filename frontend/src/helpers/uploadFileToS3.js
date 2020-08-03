@@ -1,5 +1,5 @@
 import {sendUpdateAccount} from '../store/slices/middlewareAPI/middlewareAPI';
-
+const AWS = require('aws-sdk');
 export default uploadFileToS3 = function(fileContent, id)
 {
   const params = {

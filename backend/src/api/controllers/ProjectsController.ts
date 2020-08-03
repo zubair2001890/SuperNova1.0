@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import {Project} from '../models/Project';
-import {getProjectsBySubfieldID, getProjectsByProjectScientistID, getProjectsByFieldName, getProjectByProjectID, getFeaturedProjects, getAllSubfields} from '../mongoQueries'
+import {getProjectsBySubfieldID, getProjectsByProjectScientistID, getProjectsByFieldName, getProjectByProjectID, getAllProjects, getAllSubfields} from '../mongoQueries'
 import {addStringToArray} from '../helpers';
 import moment = require('moment');
 
@@ -9,7 +9,15 @@ class ProjectsController {
     }
 
     public featured = async (req: Request, res: Response) => {
-      let featuredProjects = await getFeaturedProjects();
+      let featuredProjects = new Array();
+      let allProjects = await getAllProjects(); // Sorted by totalPledged.
+      allProjects.forEach(function(project, index) 
+      {
+        if ((project.goal > project.totalPledged) && featuredProjects.length <= 4)
+        {
+          featuredProjects.push(project);
+        }
+      });
       res.send(featuredProjects);
     }
 
