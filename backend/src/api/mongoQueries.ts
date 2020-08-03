@@ -105,10 +105,7 @@ export const getProjectsBySubfieldID = async function(subfieldID: Number)
          console.log(err);
          rejecter(null);
       }
-<<<<<<< HEAD
       //console.log("Returned project = " + docs);
-=======
->>>>>>> 0371a491dbb3acd50a12a2a833b54d86517c96eb
       resolver(docs)
    });
     return promise;
