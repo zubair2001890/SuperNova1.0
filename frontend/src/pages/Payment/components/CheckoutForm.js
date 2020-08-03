@@ -7,7 +7,16 @@ import axios from "axios";
 const useStyles = makeStyles(() => ({
   formContainer: {
     marginTop: 160,
+    width: "50%",
+    height: 150,
+    margin: "auto",
   },
+  form: {
+      height: "100%",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "space-around"
+  }
 }));
 
 const CheckoutForm = ({ price, onSuccessfulCheckout }) => {
@@ -66,13 +75,13 @@ const CheckoutForm = ({ price, onSuccessfulCheckout }) => {
 
   return (
     <div className={classes.formContainer}>
-      <form onSubmit={handleFormSubmit}>
+      <form onSubmit={handleFormSubmit} className={classes.form}>
         <div>
           <label htmlFor="name">Name</label>
           <input name="name" type="text" placeholder="John Doe" required />
         </div>
         <CardSection />
-        <button>Submit</button>
+        <button style={{ width: 50 }}>Submit</button>
       </form>
     </div>
   );
