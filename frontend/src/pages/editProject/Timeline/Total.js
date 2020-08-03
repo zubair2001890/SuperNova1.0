@@ -3,13 +3,18 @@ import forms from "../../../constants/forms";
 import { connect } from "react-redux";
 import { makeStyles } from "@material-ui/core";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   total: {
     fontFamily: "Montserrat, sans-serif",
     fontWeight: 600,
     fontSize: "1.25rem",
+    marginTop: "1rem",
+    display: "block",
+    [theme.breakpoints.up("sm")]: {
+      marginTop: 0,
+    },
   },
-});
+}));
 
 function Total({ total }) {
   const classes = useStyles();

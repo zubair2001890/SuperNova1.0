@@ -7,7 +7,7 @@ import AddStage from "./AddStage";
 import Total from "./Total";
 import Save from "../Save";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   subheadline: {
     fontFamily: "Montserrat, sans-serif",
     fontWeight: 600,
@@ -20,12 +20,14 @@ const useStyles = makeStyles({
     marginTop: "1rem",
   },
   footer: {
-    display: "flex",
-    justifyContent: "space-between",
     marginTop: "7.275625rem",
     marginBottom: "5.424375rem",
+    [theme.breakpoints.up("sm")]: {
+      display: "flex",
+      justifyContent: "space-between",
+    },
   },
-});
+}));
 
 function Timeline({ fields }) {
   const classes = useStyles();
@@ -42,7 +44,7 @@ function Timeline({ fields }) {
         complete the project.
       </p>
       <Stages fields={fields} />
-      <Grid xs={12}>
+      <Grid item xs={12}>
         <div className={classes.footer}>
           <AddStage push={fields.push} />
           <Total />
