@@ -12,6 +12,8 @@ ReactDOM.render(
     domain={process.env.REACT_APP_AUTH0_DOMAIN}
     clientId={process.env.REACT_APP_AUTH0_CLIENTID}
     redirectUri={window.location.origin}
+    audience={`https://${process.env.REACT_APP_AUTH0_DOMAIN}/api/v2/`}
+    scope="read:current_user"
   >
     <Provider store={store}>
       <App />
@@ -24,4 +26,3 @@ ReactDOM.render(
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
-

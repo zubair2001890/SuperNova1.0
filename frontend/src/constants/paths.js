@@ -7,6 +7,7 @@ import {
 let paths = {
   login: "/login",
   logout: "/logout",
+  test: "/test",
   error404: "/not-found",
   home: "/",
   explore: "/explore",
@@ -34,6 +35,7 @@ let paths = {
   socialSciences: "/explore/socialsciences",
   engineeringAndTech: "/explore/engineeringandtech",
   projects: {},
+  exploreSubField: "/explore/exploresubfield",
 };
 
 const addProjectPath = ([key, subPath]) => {

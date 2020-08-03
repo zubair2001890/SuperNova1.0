@@ -36,6 +36,7 @@ const EngineeringAndTech = lazy(() => import("./pages/EngineeringAndTech"));
 const EarthSciences = lazy(() => import("./pages/EarthSciences"));
 const Chemistry = lazy(() => import("./pages/Chemistry"));
 const Medicine = lazy(() => import("./pages/Medicine"));
+const ExploreSubField = lazy(() => import("./pages/ExploreSubField"));
 
 const EditProjectOverview = lazy(() => import("./pages/editProject/Overview"));
 const AboutProject = lazy(() => import("./pages/editProject/About"));
@@ -133,6 +134,9 @@ export default function App() {
               </Route>
               <Route path={paths.explore} exact>
                 <Explore />
+              </Route>
+              <Route path={paths.exploreSubField}>
+                <ExploreSubField />
               </Route>
               <Route path={projects.home.route} exact>
                 <EditProjectOverview />
