@@ -37,6 +37,7 @@ const fetchPut = async (path, data, authToken) => {
 }
 
 const fetchGet = async (path, authToken) => {
+    console.log("fetchGet called with path " + path);
     let headers = { 
         'Content-Type': 'application/json' 
     };

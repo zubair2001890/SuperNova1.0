@@ -32,12 +32,12 @@ app.use((req, res, next) => {
 
 app.use(Express.static(path.join(__dirname, 'website')))
 app.get("*", (req, res, next) => {
-    if (!req.path.includes('api')){
-        res.sendFile(require('path')
-            .resolve(__dirname, 'website', 'index.html'));
-    } else {
-        next();
-    }
+  if (!req.path.includes('api')) {
+    res.sendFile(require('path')
+      .resolve(__dirname, 'website', 'index.html'));
+  } else {
+    next();
+  }
 })
 
 const publicApi: Express.Router = Express.Router()
