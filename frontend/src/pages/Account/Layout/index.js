@@ -19,7 +19,7 @@ export class Layout extends Component {
 }
 
 const styles = {
-  subtitle,
+  subtitle: { ...subtitle, letterSpacing: "1.44px" },
 };
 
 export default withStyles(styles)(Layout);

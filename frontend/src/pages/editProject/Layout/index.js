@@ -59,6 +59,7 @@ const styles = (theme) => ({
   subtitle: {
     ...subtitle,
     letterSpacing: "0.4px",
+    fontSize: "2.5rem",
   },
   content: {
     maxWidth: "60rem",
