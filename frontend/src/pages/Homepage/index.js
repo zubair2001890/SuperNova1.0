@@ -46,10 +46,7 @@ export default () => {
     <div className={classes.pageContainer}>
       <Intro scrollY={scrollY} />
       <SlidingParagraphs />
-      <Projects
-        projectsData={featuredProjects}
-        projectsLoading={projectsLoading}
-      />
+      <Projects projectsData={projectsData} projectsLoading={projectsLoading} />
     </div>
   );
 };
