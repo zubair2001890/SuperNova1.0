@@ -50,6 +50,8 @@ function Projects({ projects, filterProjects, auth0 }) {
 
 const WithAuth = withAuth0(Projects);
 
-const mapStateToProps = ({ allProjects }) => ({ projects: allProjects });
+const mapStateToProps = ({ projects }) => ({
+  projects: projects.data || [],
+});
 
 export default connect(mapStateToProps)(WithAuth);
