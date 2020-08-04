@@ -8,7 +8,11 @@ const useStyles = makeStyles({
     ...text,
     marginBottom: "1rem",
   },
-  input,
+  input: {
+    ...input,
+    boxSizing: "border-box",
+    height: "2.84375rem",
+  },
 });
 
 export default function Group(props) {

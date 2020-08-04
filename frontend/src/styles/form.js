@@ -46,9 +46,26 @@ export const input = {
   letterSpacing: "-0.06px",
   fontFamily: "AvertaDemo",
   fontSize: "0.875rem",
-  border: "2px solid black",
+  border: "1px solid black",
   padding: "1rem 1.125rem",
   borderRadius: "0.25rem",
   display: "inline-block",
   flexGrow: 1,
+};
+
+export const teamInput = {
+  ...input,
+  boxSizing: "border-box",
+  height: "2.84375rem",
+};
+
+export const timelineText = {
+  ...text,
+  marginBottom: "1.5625rem",
+};
+
+export const timelineInput = {
+  ...input,
+  height: "7.196875rem",
+  boxSizing: "border-box",
 };

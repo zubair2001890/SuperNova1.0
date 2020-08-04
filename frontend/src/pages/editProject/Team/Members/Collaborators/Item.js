@@ -3,7 +3,7 @@ import TeamBio from "../../TeamBio";
 import Role from "../../Role";
 import Group from "../../../../../components/editProject/Group";
 import { makeStyles } from "@material-ui/core";
-import { teamText, input } from "../../../../../styles/form";
+import { teamText, teamInput } from "../../../../../styles/form";
 
 const useStyles = makeStyles({
   item: {
@@ -12,7 +12,7 @@ const useStyles = makeStyles({
     },
   },
   text: teamText,
-  input,
+  input: teamInput,
 });
 
 export default function Item({ member }) {
@@ -24,8 +24,8 @@ export default function Item({ member }) {
         label="Name"
         customClasses={groupClasses}
       />
-      <Role member={member} customClasses={groupClasses} />
-      <TeamBio member={member} customClasses={groupClasses} />
+      <Role member={member} />
+      <TeamBio member={member} />
     </li>
   );
 }

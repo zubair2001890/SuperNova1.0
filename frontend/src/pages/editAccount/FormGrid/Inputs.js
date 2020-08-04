@@ -10,7 +10,7 @@ const styles = (theme) => ({
   input: {
     letterSpacing: "-0.06px",
     font: "Regular 14px/17px AvertaDemo;",
-    border: "2px solid black",
+    border: "1px solid black",
     padding: "1.125rem",
     borderRadius: "0.25rem",
     display: "inline-block",

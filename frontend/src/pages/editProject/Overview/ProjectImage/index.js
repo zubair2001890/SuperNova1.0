@@ -5,7 +5,10 @@ import { makeStyles } from "@material-ui/core";
 import { title } from "../../../../styles/form";
 
 const useStyles = makeStyles({
-  title,
+  title: {
+    ...title,
+    marginBottom: "2.9375rem",
+  },
 });
 
 export default function ProjectImage() {

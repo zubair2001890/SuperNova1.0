@@ -8,7 +8,10 @@ const useStyles = makeStyles({
     ...text,
     marginBottom: "1.28125rem",
   },
-  input,
+  input: {
+    ...input,
+    padding: "0.890625rem 1.25rem",
+  },
 });
 
 export default function Group(props) {

@@ -1,7 +1,8 @@
 import React from "react";
-import TextArea from "./TextArea";
+import Achievement from "./Achievement";
 import Group from "./Group";
 import { Grid, makeStyles } from "@material-ui/core";
+import Description from "./Description";
 
 const useStyles = makeStyles({
   title: {
@@ -36,17 +37,14 @@ export default function Item({ stage, member }) {
           />
         </Grid>
         <Grid item xs={12}>
-          <TextArea
+          <Achievement
             name={getName("achievement")}
             label="What will be achieved in this stage"
             placeholder="e.g. In Stage 1, I aim to procure all the required software for the project and will begin initial scouting of ..."
           />
         </Grid>
         <Grid item xs={12}>
-          <TextArea
-            label="Explain how the funds will be allocated in this stage"
-            name={getName("description")}
-          ></TextArea>
+          <Description getName={getName} />
         </Grid>
       </Grid>
     </div>

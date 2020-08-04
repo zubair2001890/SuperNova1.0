@@ -11,6 +11,7 @@ const useStyles = makeStyles({
   },
   input: {
     ...input,
+    boxSizing: "border-box",
     minHeight: "13.1875rem",
   },
   text: {

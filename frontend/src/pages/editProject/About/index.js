@@ -43,6 +43,7 @@ const useStyles = makeStyles({
   input: {
     ...input,
     minHeight: "13.1875rem",
+    boxSizing: "border-box",
   },
 });
 
