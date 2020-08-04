@@ -14,7 +14,7 @@ export const fetchFeaturedProject = createAsyncThunk(
 export const fetchProjects = createAsyncThunk(
   'project/Projects',
   async (parameters, thunkAPI) => {
-    if (!Array.isArray(parameters)) {
+    if (typeof parameters !== 'object' || Array.isArray(parameters)) {
       throw new Error('"parameters" must be an object of "parameter name" and "parameter value" pairs');
     }
     const response = await getProjects(parameters);
