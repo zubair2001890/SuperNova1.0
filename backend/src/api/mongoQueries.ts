@@ -1,14 +1,15 @@
 const mongoose = require('mongoose')
 
 import {Project} from './models/Project'
-import {UserAccount} from './models/UserAccount'
 import { addStringToArray, arrayContainsString } from './helpers';
+import {UserAccount} from './models/UserAccount';
+import { ProjectBacker } from './models/ProjectBacker';
 
 mongoose.connect('mongodb://uoovwklzznl5qbd3vnmc:CKB9CbXz4cbJrrrCskwU@bosn1sg8zx8aq8n-mongodb.services.clever-cloud.com:27017/bosn1sg8zx8aq8n')
     .then(() => console.log('Now connected to MongoDB!'))
     .catch(err => console.error('Something went wrong', err));
 
- export const getProjectsSortedByTotalPledged = async function(): Promise<any>
+ export const getFeaturedProjects = async function(): Promise<any>
     {
        console.log("getProjectsSortedByTotalPledged method called");
        let resolver, rejecter;
@@ -23,6 +24,7 @@ mongoose.connect('mongodb://uoovwklzznl5qbd3vnmc:CKB9CbXz4cbJrrrCskwU@bosn1sg8zx
             console.log(err);
             rejecter(null);
          }
+         console.log("Returned projects = " + docs);
          resolver(docs)
       });
       projectsQuery.sort({totalPledged: -1});
@@ -43,6 +45,7 @@ mongoose.connect('mongodb://uoovwklzznl5qbd3vnmc:CKB9CbXz4cbJrrrCskwU@bosn1sg8zx
            console.log(err);
            rejecter(null);
         }
+        //console.log("Returned project = " + docs);
         resolver(docs)
      });
      return promise;
@@ -62,6 +65,7 @@ mongoose.connect('mongodb://uoovwklzznl5qbd3vnmc:CKB9CbXz4cbJrrrCskwU@bosn1sg8zx
         console.log(err);
         rejecter(null);
      }
+     console.log("Returned projects = " + docs);
      resolver(docs)
   });
    return promise;
@@ -81,6 +85,7 @@ export const getProjectsBySubfieldID = async function(subfieldID: Number)
         console.log(err);
         rejecter(null);
      }
+     //console.log("Returned project = " + docs);
      resolver(docs)
   });
    return promise;
@@ -100,6 +105,7 @@ export const getProjectsBySubfieldID = async function(subfieldID: Number)
          console.log(err);
          rejecter(null);
       }
+      //console.log("Returned project = " + docs);
       resolver(docs)
    });
     return promise;
@@ -119,10 +125,11 @@ export const getProjectsBySubfieldID = async function(subfieldID: Number)
          console.log(err);
          rejecter(null);
       }
+      //console.log("Returned project = " + docs);
       resolver(docs)
    });
    return promise;
-} 
+}
 
 export const getProfileByID = function(profileID: String): Promise<any>
 {
@@ -143,9 +150,11 @@ export const getProfileByID = function(profileID: String): Promise<any>
   return promise;
 } 
  
-export const addAmountPledged = async function(projectID: String, newAmountPledged: number, newBacker: String)
+export const addAmountPledged = async function(projectID: String, newAmountPledged: number, newBackerID: String, backerKey: String)
 {
    console.log("The addAmountPledged method has been called");
+   let account = await this.getProfileByID(newBackerID);
+   let fullName =  account["firstName"] + " " + account["lastName"];
    let totalPledged = 0;
    let backers = new Array<String>();
    const selectedProject = await this.getProjectByProjectID(projectID);
@@ -158,10 +167,12 @@ export const addAmountPledged = async function(projectID: String, newAmountPledg
       backers = selectedProject["backers"];
    }
    let total = totalPledged + newAmountPledged;
-   if (!arrayContainsString(backers, newBacker))
+   if (!arrayContainsString(backers, fullName))
    {
-      backers = addStringToArray(backers, newBacker);
+      backers = addStringToArray(backers, fullName);
    }
+   console.log("Backers = " + backers);
+   console.log("total = " + total);
   let update = {totalPledged: total, backers: backers};
    await Project.findByIdAndUpdate(projectID, update, function(err, response)
    {
@@ -169,7 +180,16 @@ export const addAmountPledged = async function(projectID: String, newAmountPledg
       {
          console.log(err);
       }
+      console.log("Response after updating the backers = " + response);
    });
+   let projectBacker = new ProjectBacker({
+      projectID: projectID,
+      userAccountID: newBackerID,
+      pledged: newAmountPledged,
+      ts: new Date().getTime(),
+      backerKey: backerKey
+   });
+   projectBacker.save();
 }
 
  
