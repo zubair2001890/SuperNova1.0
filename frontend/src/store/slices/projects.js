@@ -77,4 +77,4 @@ export const selectFeaturedData = (state) => state.projects.featured
 export const selectLoading = (state) => state.projects.loading
 export const selectError = (state) => state.projects.error
 
-export default projectsSlice.reducer
+export default projectsSlice.reducer;
