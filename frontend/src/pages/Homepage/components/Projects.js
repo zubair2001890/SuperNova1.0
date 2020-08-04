@@ -1,9 +1,17 @@
 import React from "react";
-import { makeStyles, Typography, CircularProgress } from "@material-ui/core";
+import {
+  makeStyles,
+  Typography,
+  Avatar,
+  CircularProgress,
+  Tooltip,
+} from "@material-ui/core";
 import ProjectCard from "../../../components/ProjectCard";
-import Body from "../../../components/ProjectCard/components/Body";
+import FundsProgress from "../../../components/ProjectCard/components/FundsProgress";
 
-const useStyles = makeStyles(() => ({
+const maxTitleLength = 45;
+
+const useStyles = makeStyles((theme) => ({
   sectionContainer: { minHeight: "100vh" },
   sectionTitle: {
     color: "white",
@@ -19,6 +27,33 @@ const useStyles = makeStyles(() => ({
   card: {
     margin: "1rem",
   },
+  cardBody: {
+    "& > *": {
+      marginTop: 0,
+      marginBottom: 0,
+      "&:not(:last-child)": { marginBottom: theme.spacing(2) },
+    },
+  },
+  projectTitle: {
+    fontSize: 16,
+    letterSpacing: 0.96,
+    fontWeight: 700,
+    lineHeight: "19px",
+    fontFamily: "'Montserrat', sans-serif",
+    maxHeight: 36,
+    overflowY: "hidden",
+  },
+  avatar: {
+    width: 56,
+    height: 56,
+  },
+  subtitle: {
+    fontSize: 14,
+    letterSpacing: 1.12,
+    fontWeight: 500,
+    lineHeight: "18px",
+    fontFamily: "'Montserrat', sans-serif",
+  },
 }));
 
 export default ({ projectsData, projectsLoading }) => {
@@ -31,18 +66,42 @@ export default ({ projectsData, projectsLoading }) => {
       <div className={classes.projectCardsGrid}>
         {projectsLoading && <CircularProgress color="secondary" />}
         {projectsData &&
-          projectsData.map((project) => {
-            const { _id } = project;
-            return (
-              <ProjectCard
-                key={_id}
-                id={_id}
-                headerUrl={project.headerUrl}
-                className={classes.card}
-                body={<Body project={project} />}
-              />
-            );
-          })}
+          projectsData.map((project) => (
+            <ProjectCard
+              key={project._id}
+              headerUrl={project.projectImage}
+              className={classes.card}
+              body={
+                <div className={classes.cardBody}>
+                  <p className={classes.projectTitle}>
+                    {project.projectName.length < maxTitleLength ? (
+                      project.projectName
+                    ) : (
+                      <Tooltip title={project.projectName} placement="top">
+                        <span>
+                          {project.projectName.slice(0, maxTitleLength - 3) +
+                            "..."}
+                        </span>
+                      </Tooltip>
+                    )}
+                  </p>
+                  <Avatar
+                    className={classes.avatar}
+                    alt="Researcher Avatar"
+                    src={project.projectImage}
+                  />
+                  <p className={classes.subtitle}>
+                    {project.firstName} {project.lastName} <br />
+                    {project.university}
+                  </p>
+                  <FundsProgress
+                    fundsRaised={project.totalPledged}
+                    fundsGoal={project.goal}
+                  />
+                </div>
+              }
+            />
+          ))}
       </div>
     </div>
   );

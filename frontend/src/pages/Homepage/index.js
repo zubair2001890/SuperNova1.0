@@ -27,13 +27,14 @@ export default () => {
   const classes = useStyles();
   const scrollY = useWindowScrollY();
   const projectsData = useSelector(selectProjectsData);
-  const featuredProjects = projectsData.slice(0, 4);
+  // const featuredProjects = useSelector(selectFeaturedData)
   const projectsLoading = useSelector(selectProjectsLoading);
 
   useEffect(() => {
     dispatch(setPageDarkTheme(true));
     dispatch(setPageParticles(true));
     dispatch(fetchProjects());
+    // dispatch(fetchProjectsFromApi())
     dispatch(fetchFeaturedProject());
     return () => {
       dispatch(setPageDarkTheme(false));
