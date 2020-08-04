@@ -37,6 +37,7 @@ const fetchPut = async (path, data, authToken) => {
 }
 
 const fetchGet = async (path, authToken) => {
+    console.log("fetchGet called with path " + path);
     let headers = { 
         'Content-Type': 'application/json' 
     };
@@ -66,7 +67,7 @@ const addUrlParameters = (path, parameters) => {
     return path;
 }
 
-export const getFeaturedProject = async () => await fetchGet(`${process.env.REACT_APP_BACKEND_URL}/api/public/featured`);
+export const getFeaturedProjects = async () => await fetchGet(`${process.env.REACT_APP_BACKEND_URL}/api/public/featured`);
 
 export const getSubFields = async (fieldname) => await fetchGet(`${process.env.REACT_APP_BACKEND_URL}/api/public/featured/${fieldname}`);
 

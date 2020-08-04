@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+<<<<<<< HEAD
 const getProgressValue = ({ fundsRaised, fundsGoal }) => {
   if (typeof fundsRaised === "number" && typeof fundsGoal === "number") {
     if (fundsRaised > fundsGoal)
@@ -41,6 +42,13 @@ const getFundsProgressCaption = ({ fundsRaised, fundsGoal }) => {
     fundsGoal = 0;
   }
     
+=======
+const getProgressValue = ({ fundsRaised=0, fundsGoal=0 }) => {
+  return (fundsRaised / fundsGoal) * 100;
+    };
+
+const getFundsProgressCaption = ({ fundsRaised=0, fundsGoal=0 }) => {
+>>>>>>> 6832fe0bfbc1bad3df70441423bf8e0e4ddc4aa7
   return `${new Intl.NumberFormat("en-EN", {
       style: "currency",
       currency: "GBP",

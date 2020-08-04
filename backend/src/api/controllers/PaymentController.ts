@@ -11,7 +11,11 @@ class PaymentController {
         let projectID = req.body.projectID;
         let backerID = req.body.backerID;
         let optionKey = req.body.optionKey;
+<<<<<<< HEAD
         const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
+=======
+        const stripe = require('stripe')(process.env.STRIPE_KEY);
+>>>>>>> 6832fe0bfbc1bad3df70441423bf8e0e4ddc4aa7
         const paymentIntent = await stripe.paymentIntents.create({
             amount: amountPledged,
             currency: 'gbp',

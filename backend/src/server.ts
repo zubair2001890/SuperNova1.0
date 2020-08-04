@@ -28,6 +28,19 @@ app.use((req, res, next) => {
     'GET, POST, PATCH, DELETE, OPTIONS'
   )
   next()
+<<<<<<< HEAD
+=======
+})
+
+app.use(Express.static(path.join(__dirname, 'website')))
+app.get("*", (req, res, next) => {
+  if (!req.path.includes('api')) {
+    res.sendFile(require('path')
+      .resolve(__dirname, 'website', 'index.html'));
+  } else {
+    next();
+  }
+>>>>>>> 6832fe0bfbc1bad3df70441423bf8e0e4ddc4aa7
 })
 
 const publicApi: Express.Router = Express.Router()
