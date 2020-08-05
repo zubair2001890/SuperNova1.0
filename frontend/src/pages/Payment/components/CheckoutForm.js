@@ -4,18 +4,22 @@ import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import CardSection from "./CardSection";
 import axios from "axios";
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   formContainer: {
-    marginTop: 160,
-    width: "50%",
-    height: 150,
-    margin: "auto",
+    paddingBottom: theme.spacing(10),
   },
   form: {
-      height: "100%",
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "space-around"
+    height: "100%",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-around",
+  },
+  pledgeButton: {
+    backgroundColor: "rgb(0, 158, 116)",
+    border: "none",
+    color: "white",
+    fontSize: 16,
+    height: 50,
   }
 }));
 
@@ -54,7 +58,7 @@ const CheckoutForm = ({ price, onSuccessfulCheckout }) => {
     const { data: clientSecret } = await axios.post("/api/payment_intents", {
       amount: price * 100, //Price is in the lowest denomination, the price is one of the input props for the CheckoutForm
     });
-    console.log("clientSecret = "+ clientSecret);
+    console.log("clientSecret = " + clientSecret);
 
     const cardElement = elements.getElement(CardElement);
 
@@ -77,7 +81,7 @@ const CheckoutForm = ({ price, onSuccessfulCheckout }) => {
     <div className={classes.formContainer}>
       <form onSubmit={handleFormSubmit} className={classes.form}>
         <CardSection />
-        <button style={{ width: 50 }}>Submit</button>
+        <button className={classes.pledgeButton}>Pledge</button>
       </form>
     </div>
   );
