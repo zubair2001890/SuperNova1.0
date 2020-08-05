@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { makeStyles, Checkbox, Typography, FormControl, FormControlLabel } from "@material-ui/core";
+import {
+  makeStyles,
+  Checkbox,
+  Typography,
+  FormControl,
+  FormControlLabel,
+} from "@material-ui/core";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import CardSection from "./CardSection";
 import axios from "axios";
@@ -30,6 +36,10 @@ const useStyles = makeStyles((theme) => ({
   rememberCardText: {
     fontSize: 15,
   },
+  disclaimer: {
+    paddingTop: theme.spacing(2),
+    color: "#888888"
+  }
 }));
 
 const CheckoutForm = ({ price, onSuccessfulCheckout }) => {
@@ -91,24 +101,36 @@ const CheckoutForm = ({ price, onSuccessfulCheckout }) => {
       <form onSubmit={handleFormSubmit} className={classes.form}>
         <CardSection />
         <FormControl
-        fullWidth
-        className={classes.rememberCardCheckbox}
-        required={true}
-      >
-        <FormControlLabel
-          control={
-            <Checkbox
-              name="rememberCard"
-              style = {{
-                color: "#bbbbbb",
-              }}
-            />
-          }
-          label={<Typography className={classes.rememberCardText}>Remember this card for future pledges</Typography>}
-        />
-      </FormControl>
+          fullWidth
+          className={classes.rememberCardCheckbox}
+          required={true}
+        >
+          <FormControlLabel
+            control={
+              <Checkbox
+                name="rememberCard"
+                style={{
+                  color: "#bbbbbb",
+                }}
+              />
+            }
+            label={
+              <Typography className={classes.rememberCardText}>
+                Remember this card for future pledges
+              </Typography>
+            }
+          />
+        </FormControl>
         <button className={classes.pledgeButton}>Pledge</button>
       </form>
+      <Typography variant="body2" className={classes.disclaimer}>
+        Your payment information is processed through Stripe. To complete
+        transactions, we store the card type, last four digits, expiration date
+        and name on the card. By pledging you agree to Kickstarter's Terms of
+        Use, Privacy Policy and Cookie Policy. Our policies explain how we will
+        use and store your data and how you can control that use. You can edit
+        your settings here.
+      </Typography>
     </div>
   );
 };
