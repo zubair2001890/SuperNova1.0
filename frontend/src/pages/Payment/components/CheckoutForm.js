@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { makeStyles } from "@material-ui/core";
+import { makeStyles, Checkbox, Typography, FormControl, FormControlLabel } from "@material-ui/core";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import CardSection from "./CardSection";
 import axios from "axios";
@@ -21,7 +21,15 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 16,
     height: 50,
     marginTop: theme.spacing(4),
-  }
+  },
+  rememberCardCheckbox: {
+    color: theme.palette.common.black,
+    padding: theme.spacing(2, 1, 0, 0),
+    margin: theme.spacing(1, 0, 1, 0),
+  },
+  rememberCardText: {
+    fontSize: 15,
+  },
 }));
 
 const CheckoutForm = ({ price, onSuccessfulCheckout }) => {
@@ -82,6 +90,23 @@ const CheckoutForm = ({ price, onSuccessfulCheckout }) => {
     <div className={classes.formContainer}>
       <form onSubmit={handleFormSubmit} className={classes.form}>
         <CardSection />
+        <FormControl
+        fullWidth
+        className={classes.rememberCardCheckbox}
+        required={true}
+      >
+        <FormControlLabel
+          control={
+            <Checkbox
+              name="rememberCard"
+              style = {{
+                color: "#bbbbbb",
+              }}
+            />
+          }
+          label={<Typography className={classes.rememberCardText}>Remember this card for future pledges</Typography>}
+        />
+      </FormControl>
         <button className={classes.pledgeButton}>Pledge</button>
       </form>
     </div>
