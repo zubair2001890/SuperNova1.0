@@ -6,7 +6,6 @@ import {
   CardCvcElement,
 } from "@stripe/react-stripe-js";
 import { makeStyles } from "@material-ui/core";
-import { classicNameResolver } from "typescript";
 
 const useStyles = makeStyles((theme) => ({
   inputBlock: {
@@ -67,7 +66,6 @@ const cardElementOptions = {
 
 export default function CardSection() {
   const classes = useStyles();
-  // return <CardElement options={cardElementOptions} />;
   return (
     <>
       <div className={classes.inputBlock}>
