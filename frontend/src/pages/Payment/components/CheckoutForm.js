@@ -8,18 +8,22 @@ import {useDispatch} from "react-redux"
 
 const { loginWithRedirect, isAuthenticated, logout, user, getAccessTokenSilently } = useAuth0();
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   formContainer: {
-    marginTop: 160,
-    width: "50%",
-    height: 150,
-    margin: "auto",
+    paddingBottom: theme.spacing(10),
   },
   form: {
-      height: "100%",
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "space-around"
+    height: "100%",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-around",
+  },
+  pledgeButton: {
+    backgroundColor: "rgb(0, 158, 116)",
+    border: "none",
+    color: "white",
+    fontSize: 16,
+    height: 50,
   }
 }));
 
@@ -54,6 +58,7 @@ const CheckoutForm = ({ price, onSuccessfulCheckout }) => {
     };
 
     setProcessingTo(true); // So set processing to true when the transaction is happening.
+<<<<<<< HEAD
     const dispatch = useDispatch();
     const response = dispatch()
     if (isAuthenticated) {
@@ -67,6 +72,13 @@ const CheckoutForm = ({ price, onSuccessfulCheckout }) => {
       //amount: price * 100, //Price is in the lowest denomination, the price is one of the input props for the CheckoutForm
     //});
     //console.log("clientSecret = "+ clientSecret);
+=======
+
+    const { data: clientSecret } = await axios.post("/api/payment_intents", {
+      amount: price * 100, //Price is in the lowest denomination, the price is one of the input props for the CheckoutForm
+    });
+    console.log("clientSecret = " + clientSecret);
+>>>>>>> 9d35863d6b83769a30f8121c50e3be3312e0df7b
 
     const cardElement = elements.getElement(CardElement);
 
@@ -89,7 +101,7 @@ const CheckoutForm = ({ price, onSuccessfulCheckout }) => {
     <div className={classes.formContainer}>
       <form onSubmit={handleFormSubmit} className={classes.form}>
         <CardSection />
-        <button style={{ width: 50 }}>Submit</button>
+        <button className={classes.pledgeButton}>Pledge</button>
       </form>
     </div>
   );
