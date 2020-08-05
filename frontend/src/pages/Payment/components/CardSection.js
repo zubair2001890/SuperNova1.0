@@ -6,6 +6,7 @@ import {
   CardCvcElement,
 } from "@stripe/react-stripe-js";
 import { makeStyles } from "@material-ui/core";
+import paymentIcons from "../assets/payment-icons.png";
 
 const useStyles = makeStyles((theme) => ({
   inputBlock: {
@@ -21,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     width: "calc(100% - 12px)",
     "&:focus": {
       outline: "none",
-    }
+    },
   },
   inputField: {
     border: "1px solid",
@@ -32,6 +33,13 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(1),
     fontSize: 16,
     fontFamily: "Montserrat",
+  },
+  cardNumberRow: {
+    display: "flex",
+    justifyContent: "space-between",
+  },
+  paymentIconsImage: {
+    height: 20,
   },
   expirationAndSecurity: {
     display: "flex",
@@ -70,7 +78,10 @@ export default function CardSection() {
     <>
       <div className={classes.inputBlock}>
         <label>
-          <div className={classes.label}>Card number</div>
+          <div className={clsx(classes.label, classes.cardNumberRow)}>
+            <div>Card number</div>
+            <img src={paymentIcons} className={classes.paymentIconsImage} />
+          </div>
         </label>
         <div className={classes.inputField}>
           <CardNumberElement options={cardElementOptions} />

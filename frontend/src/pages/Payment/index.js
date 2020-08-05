@@ -15,9 +15,16 @@ const useStyles = makeStyles((theme) => ({
       paddingBottom: theme.spacing(10),
   },
   subtitle: {
+    display: "flex",
+    justifyContent: "space-between",
+  },
+  pledge: {
       letterSpacing: 1,
       fontSize: 20,
       paddingBottom: theme.spacing(2),
+  },
+  edit: {
+    fontSize: 16,
   }
 }));
 
@@ -32,7 +39,10 @@ export default () => {
   return (
     <div className={classes.pageContainer}>
       <Typography variant="h1" className={classes.title}>Payment</Typography>
-      <Typography variant="h6" className={classes.subtitle}>Pledge</Typography>
+      <div className={classes.subtitle}>
+      <Typography variant="h6" className={classes.pledge}>Pledge</Typography>
+      <Typography variant="h6" className={classes.edit}>Edit</Typography>
+      </div>
       <Elements stripe={stripePromise}>
         <CheckoutForm />
       </Elements>
