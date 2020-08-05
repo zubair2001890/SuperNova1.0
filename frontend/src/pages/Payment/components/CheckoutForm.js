@@ -5,6 +5,7 @@ import {
   Typography,
   FormControl,
   FormControlLabel,
+  Divider,
 } from "@material-ui/core";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import CardSection from "./CardSection";
@@ -38,7 +39,43 @@ const useStyles = makeStyles((theme) => ({
   },
   disclaimer: {
     paddingTop: theme.spacing(2),
-    color: "#888888"
+    color: "#888888",
+  },
+  pledgeDetails: {
+    height: 120,
+    backgroundColor: "#eeeeee",
+    border: "1px solid #bbbbbb",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-evenly",
+  },
+  pledgeDetailsTopRow: {
+    display: "flex",
+  },
+  reward: {
+    width: "25%",
+    paddingLeft: 17,
+  },
+  rewardDescription: {
+    width: "50%",
+  },
+  amountPledged: {
+    width: "25%",
+    textAlign: "right",
+    paddingRight: 17,
+  },
+  pledgeDetailsBottomRow: {
+    display: "flex",
+    justifyContent: "space-between",
+    padding: "0px 17px 0px 17px",
+  },
+  totalAmountLabel: {
+    fontFamily: "avertaDemo",
+    fontSize: 14,
+    fontWeight: "bold",
+  },
+  totalAmount: {
+    color: "rgb(36, 143, 109)",
   }
 }));
 
@@ -98,6 +135,27 @@ const CheckoutForm = ({ price, onSuccessfulCheckout }) => {
 
   return (
     <div className={classes.formContainer}>
+      <div className={classes.pledgeDetails}>
+        <div className={classes.pledgeDetailsTopRow}>
+          <div className={classes.reward}>
+            <Typography variant="body2">Reward</Typography>
+          </div>
+          <div className={classes.rewardDescription}>
+            <Typography variant="body2">Virtual thank you</Typography>
+          </div>
+          <div className={classes.amountPledged}>
+            <Typography variant="body2">£10.00</Typography>
+          </div>
+        </div>
+        <Divider variant="middle" />
+        <div className={classes.pledgeDetailsBottomRow}>
+          <div className={classes.totalAmountLabel}>Total amount
+          </div>
+          <div className={classes.totalAmount}>
+            <Typography variant="body2">£10.00</Typography>
+          </div>
+        </div>
+      </div>
       <form onSubmit={handleFormSubmit} className={classes.form}>
         <CardSection />
         <FormControl
