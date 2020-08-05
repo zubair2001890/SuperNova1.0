@@ -54,7 +54,7 @@ const CheckoutForm = ({ price, onSuccessfulCheckout }) => {
     const { data: clientSecret } = await axios.post("/api/payment_intents", {
       amount: price * 100, //Price is in the lowest denomination, the price is one of the input props for the CheckoutForm
     });
-    //console.log("clientSecret = "+ clientSecret);
+    console.log("clientSecret = "+ clientSecret);
 
     const cardElement = elements.getElement(CardElement);
 
@@ -70,16 +70,12 @@ const CheckoutForm = ({ price, onSuccessfulCheckout }) => {
     });
 
     onSuccessfulCheckout();
-    //console.log(confirmCardPayment); // This object should have a field status, with a value of "succeeded".
+    console.log(confirmCardPayment); // This object should have a field status, with a value of "succeeded".
   };
 
   return (
     <div className={classes.formContainer}>
       <form onSubmit={handleFormSubmit} className={classes.form}>
-        <div>
-          <label htmlFor="name">Cardholder name</label>
-          <input name="name" type="text" placeholder="Cardholder name" required />
-        </div>
         <CardSection />
         <button style={{ width: 50 }}>Submit</button>
       </form>
