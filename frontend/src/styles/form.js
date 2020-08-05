@@ -53,7 +53,7 @@ export const input = {
   flexGrow: 1,
 };
 
-export const teamInput = {
+export const formInput = {
   ...input,
   boxSizing: "border-box",
   height: "2.84375rem",

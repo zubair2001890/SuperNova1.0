@@ -4,6 +4,7 @@ import { post } from "axios";
 import { reduxForm } from "redux-form";
 import { useAuth0 } from "@auth0/auth0-react";
 import FormGrid from "../FormGrid";
+import { formInput, input } from "../../../styles/form";
 
 const useStyles = makeStyles((theme) => ({
   form: {
@@ -13,6 +14,15 @@ const useStyles = makeStyles((theme) => ({
       marginRight: "8.375rem",
       order: 0,
     },
+  },
+  input: {
+    ...formInput,
+    flexGrow: 0,
+  },
+  bio: {
+    ...input,
+    boxSizing: "border-box",
+    height: "9.130625rem",
   },
 }));
 
@@ -28,6 +38,7 @@ function FormGridWithFields(props) {
           type: "name",
           label: "Name",
           component: "input",
+          inputClass: classes.input,
         },
         {
           name: "email",
@@ -35,6 +46,7 @@ function FormGridWithFields(props) {
           type: "email",
           label: "Email",
           component: "input",
+          inputClass: classes.input,
         },
         {
           name: "institution",
@@ -42,6 +54,7 @@ function FormGridWithFields(props) {
           type: "text",
           label: "Institution",
           component: "input",
+          inputClass: classes.input,
         },
         {
           name: "bio",
@@ -49,6 +62,7 @@ function FormGridWithFields(props) {
           type: "text",
           component: "textarea",
           label: "Bio",
+          inputClass: classes.bio,
         },
       ]}
       {...props}

@@ -2,11 +2,11 @@ import React from "react";
 import Grid from "@material-ui/core/Grid";
 import Group from "../../../components/editProject/Group";
 import { makeStyles } from "@material-ui/core";
-import { text, teamInput, teamText } from "../../../styles/form";
+import { formInput, teamText } from "../../../styles/form";
 
 const useStyles = makeStyles({
   input: {
-    ...teamInput,
+    ...formInput,
     height: "2.84375rem",
     boxSizing: "border-box",
   },

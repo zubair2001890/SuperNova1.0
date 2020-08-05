@@ -39,9 +39,10 @@ const styles = (theme) => ({
     fontFamily: "Montserrat",
     fontSize: "0.875rem",
     fontWeight: 600,
-    display: "inline-block",
     letterSpacing: "-0.06px",
-    minHeight: "3.4375rem",
+    height: "2.84375rem",
+    display: "flex",
+    alignItems: "center",
   },
 });
 

@@ -2,18 +2,14 @@ import React, { Component } from "react";
 import { Field } from "redux-form";
 import { withStyles } from "@material-ui/core";
 import FieldsColumn from "./FieldsColumn";
+import { input } from "../../../styles/form";
 
 const styles = (theme) => ({
   column: {
     flexGrow: 1,
   },
   input: {
-    letterSpacing: "-0.06px",
-    font: "Regular 14px/17px AvertaDemo;",
-    border: "1px solid black",
-    padding: "1.125rem",
-    borderRadius: "0.25rem",
-    display: "inline-block",
+    ...input,
     [theme.breakpoints.up("lg")]: {
       width: "100%",
     },
@@ -23,11 +19,12 @@ const styles = (theme) => ({
 class Inputs extends Component {
   renderInput = (fieldData, index) => {
     const { classes } = this.props;
+    console.log(fieldData);
     return (
       <Field
         {...fieldData}
         key={index}
-        className={`${classes.input} ${fieldData.className}`}
+        className={`${classes.input} ${fieldData.className} ${fieldData.inputClass}`}
       />
     );
   };
