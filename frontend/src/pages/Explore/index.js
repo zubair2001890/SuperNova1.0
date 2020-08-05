@@ -54,6 +54,10 @@ const useStyles = makeStyles((theme) => ({
       fontSize: "2.78vh",
       lineHeight: "3.426vh",
     },
+    transition: "text-shadow 0.2s linear",
+    "&:hover": {
+      textShadow: "0 0 50px white",
+    },
   },
 
   medicineContainer: {
@@ -63,6 +67,11 @@ const useStyles = makeStyles((theme) => ({
     "@media (max-height:1080px)": {
       left: "calc(50% + 12.64vh)",
       top: "calc(50% - 34.4vh)",
+    },
+  },
+  medicineButton: {
+    "&:hover": {
+      color: "#C36692",
     },
   },
   physicsContainer: {
@@ -75,6 +84,11 @@ const useStyles = makeStyles((theme) => ({
       top: "calc(50% - 22.18vh)",
     },
   },
+  physicsButton: {
+    "&:hover": {
+      color: "#C77DE8",
+    },
+  },
   earthSciencesContainer: {
     position: "absolute",
     left: "calc(50% + 496px)",
@@ -82,6 +96,11 @@ const useStyles = makeStyles((theme) => ({
     "@media (max-height:1080px)": {
       left: "calc(50% + 45.93vh)",
       top: "calc(50% + 0.74vh)",
+    },
+  },
+  earthSciencesButton: {
+    "&:hover": {
+      color: "#3E7A3A",
     },
   },
   engineeringTechnologyContainer: {
@@ -93,6 +112,11 @@ const useStyles = makeStyles((theme) => ({
       top: "calc(50% + 27.64vh)",
     },
   },
+  engineeringAndTechButton: {
+    "&:hover": {
+      color: "#6DDFFE",
+    },
+  },
   computerScienceContainer: {
     position: "absolute",
     left: "calc(50% + 147px)",
@@ -100,6 +124,11 @@ const useStyles = makeStyles((theme) => ({
     "@media (max-height:1080px)": {
       left: "calc(50% + 13.61vh)",
       top: "calc(50% + 39.63vh)",
+    },
+  },
+  computerScienceButton: {
+    "&:hover": {
+      color: "#FFC061",
     },
   },
   socialSciencesContainer: {
@@ -111,6 +140,11 @@ const useStyles = makeStyles((theme) => ({
       top: "calc(50% + 39.63vh)",
     },
   },
+  socialSciencesButton: {
+    "&:hover": {
+      color: "#EE8883",
+    },
+  },
   mathsStatsContainer: {
     position: "absolute",
     left: "calc(50% - 395px)",
@@ -118,6 +152,11 @@ const useStyles = makeStyles((theme) => ({
     "@media (max-height:1080px)": {
       left: "calc(50% - 36.57vh)",
       top: "calc(50% + 27.64vh)",
+    },
+  },
+  mathsAndStatsButton: {
+    "&:hover": {
+      color: "#FCB1DA",
     },
   },
   spaceSciencesContainer: {
@@ -129,6 +168,11 @@ const useStyles = makeStyles((theme) => ({
       top: "calc(50% + 0.74vh)",
     },
   },
+  spaceSciencesButton: {
+    "&:hover": {
+      color: "#EE8883",
+    },
+  },
   biologyContainer: {
     position: "absolute",
     left: "calc(50% - 366.5px)",
@@ -138,6 +182,11 @@ const useStyles = makeStyles((theme) => ({
       top: "calc(50% - 22.18vh)",
     },
   },
+  biologyButton: {
+    "&:hover": {
+      color: "#92FEE1",
+    },
+  },
   chemistryContainer: {
     position: "absolute",
     left: "calc(50% - 132px)",
@@ -145,6 +194,11 @@ const useStyles = makeStyles((theme) => ({
     "@media (max-height:1080px)": {
       left: "calc(50% - 12.22vh)",
       top: "calc(50% - 34.3vh)",
+    },
+  },
+  chemistryButton: {
+    "&:hover": {
+      color: "#9890FF",
     },
   },
   center: {
@@ -176,60 +230,70 @@ export default () => {
       containerClass: classes.medicineContainer,
       label: "MEDICINE",
       index: 1,
+      buttonClass: classes.medicineButton,
     },
     {
       path: paths.physics,
       containerClass: classes.physicsContainer,
       label: "PHYSICS",
       index: 2,
+      buttonClass: classes.physicsButton,
     },
     {
       path: paths.earthSciences,
       containerClass: classes.earthSciencesContainer,
       label: "EARTH SCIENCES",
       index: 3,
+      buttonClass: classes.earthSciencesButton,
     },
     {
       path: paths.engineeringAndTech,
       containerClass: classes.engineeringTechnologyContainer,
       label: "ENGINEERING AND TECHNOLOGY",
       index: 4,
+      buttonClass: classes.engineeringAndTechButton,
     },
     {
       path: paths.computerScience,
       containerClass: classes.computerScienceContainer,
       label: "COMPUTER SCIENCE",
       index: 5,
+      buttonClass: classes.computerScienceButton,
     },
     {
       path: paths.socialSciences,
       containerClass: classes.socialSciencesContainer,
       label: "SOCIAL SCIENCES",
       index: 6,
+      buttonClass: classes.socialSciencesButton,
     },
     {
       path: paths.mathsAndStats,
       containerClass: classes.mathsStatsContainer,
       label: "MATHEMATICS AND STATISTICS",
       index: 7,
+      buttonClass: classes.mathsAndStatsButton,
     },
     {
       path: paths.spaceSciences,
       containerClass: classes.spaceSciencesContainer,
       label: "SPACE SCIENCES",
       index: 8,
+      buttonClass: classes.spaceSciencesButton,
     },
     {
       path: paths.biology,
       containerClass: classes.biologyContainer,
       label: "BIOLOGY",
       index: 9,
+      buttonClass: classes.biologyButton,
     },
     {
       path: paths.chemistry,
       containerClass: classes.chemistryContainer,
       label: "CHEMISTRY",
       index: 10,
+      buttonClass: classes.chemistryButton,
     },
   ];
 
@@ -251,7 +315,7 @@ export default () => {
                 <Button
                   component={RouterLink}
                   to={field.path}
-                  className={classes.fieldText}
+                  className={[classes.fieldText, field.buttonClass].join(" ")}
                 >
                   {field.label}
                 </Button>
