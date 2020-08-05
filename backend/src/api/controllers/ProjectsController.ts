@@ -92,16 +92,13 @@ class ProjectsController {
     let labNotes = null;
     await Project.findById(req.params.project_id, function (err, docs)
     {
-      console.log("selected project id = " + req.params.project_id);
-        if (err)
+      if (err)
         {
           console.log(err);
         }
-        console.log("selectedProject = " + docs);
         selectedProject = docs;
     });
-    console.log("update id = " + req.params.project_id);
-   for (let property in req.body) {
+    for (let property in req.body) {
     if (!req.body[property]) delete req.body[property] 
    }
    let update = req.body;
@@ -120,9 +117,42 @@ class ProjectsController {
       {
         console.log(err);
       }
-      console.log("Result of update operation = " + result);
-   });
+     });
     res.send({}); // Simply sending an empty object as per Apiary.
-  }
+  } //The updateProject function ends here.
+
+  public deleteProjectByScientist = async (req: Request, res: Response) => {
+    let selectedProject = null;
+    Project.findById(req.body.projectID, function (err, docs)
+    {
+      if (err)
+      {
+        console.log(err);
+      }
+      selectedProject = docs;
+      });
+      if (selectedProject.projectScientistID !== req.body.userID)
+      {
+        throw new Error("A project can only be deleted by the project scientist");
+      }
+      else
+      {
+    Project.findByIdAndDelete(req.body.projectId, function(err, output)
+    {
+      if (err)
+      {
+        console.log(err);
+      }
+    });
+      }
+    } // The deleteProjectByScientist function ends here.
+
+    public updateProjectStatus = async (req: Request, res: Response) => {
+      // Needs fleshing out.
+    }
+
+    public deleteProjectByAdmin = async (req: Request, res: Response) => {
+      // Needs fleshing out.
+    }
 }
 export default ProjectsController;

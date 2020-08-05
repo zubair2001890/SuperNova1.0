@@ -67,7 +67,7 @@ export const Project = model('Project', new Schema({
         requred: true
     },
     projectScientistID: {
-        type: Number,
+        type: String, // As it's going to be the ID of scientist, and therefore a String.
         requred: true
     },
     projectImage: {
