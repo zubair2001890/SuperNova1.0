@@ -2,7 +2,11 @@ import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import CardSection from "./CardSection";
+import {sendPayment} from "../../../store/slices/middlewareAPI/middlewareAPI"
 import axios from "axios";
+import {useDispatch} from "react-redux"
+
+const { loginWithRedirect, isAuthenticated, logout, user, getAccessTokenSilently } = useAuth0();
 
 const useStyles = makeStyles(() => ({
   formContainer: {
@@ -50,11 +54,19 @@ const CheckoutForm = ({ price, onSuccessfulCheckout }) => {
     };
 
     setProcessingTo(true); // So set processing to true when the transaction is happening.
-
-    const { data: clientSecret } = await axios.post("/api/payment_intents", {
-      amount: price * 100, //Price is in the lowest denomination, the price is one of the input props for the CheckoutForm
-    });
-    console.log("clientSecret = "+ clientSecret);
+    const dispatch = useDispatch();
+    const response = dispatch()
+    if (isAuthenticated) {
+      getAccessTokenSilently({
+         audience: `https://${process.env.REACT_APP_AUTH0_DOMAIN}/api/v2/`,
+         scope: "read:current_user",
+      })
+      .then(authToken => dispatch(sendPayment({ data: { amount: price * 100 }, authToken: authToken })));
+    }
+    //const { data: clientSecret } = await axios.post("/api/payment_intents", {
+      //amount: price * 100, //Price is in the lowest denomination, the price is one of the input props for the CheckoutForm
+    //});
+    //console.log("clientSecret = "+ clientSecret);
 
     const cardElement = elements.getElement(CardElement);
 
