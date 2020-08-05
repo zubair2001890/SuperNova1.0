@@ -16,7 +16,7 @@ const cardElementOptions = {
     },
     complete: {},
   },
-  hidePostalCode: true,
+  hidePostalCode: false,
 };
 
 export default function CardSection() {

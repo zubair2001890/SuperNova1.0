@@ -77,8 +77,8 @@ const CheckoutForm = ({ price, onSuccessfulCheckout }) => {
     <div className={classes.formContainer}>
       <form onSubmit={handleFormSubmit} className={classes.form}>
         <div>
-          <label htmlFor="name">Name</label>
-          <input name="name" type="text" placeholder="John Doe" required />
+          <label htmlFor="name">Cardholder name</label>
+          <input name="name" type="text" placeholder="Cardholder name" required />
         </div>
         <CardSection />
         <button style={{ width: 50 }}>Submit</button>
