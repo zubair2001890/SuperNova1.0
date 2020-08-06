@@ -67,11 +67,7 @@ const useStyles = makeStyles((theme) => ({
     border: "1px solid black",
     borderRadius: 4,
     "&:hover": {
-      color: theme.palette.common.black,
-      backgroundColor: "#ddd",
-      fontSize: 16,
-      fontWeight: "bold",
-      border: "1px solid black",
+      boxShadow: "2px 2px 2px gray",
     },
   }
 }));
