@@ -51,6 +51,7 @@ const useStyles = makeStyles((theme) => ({
   inputField: {
     width: 200,
     height: 40,
+    fontSize: 16,
     border: "1px solid black",
     borderRadius: 4,
     padding: "0px 10px 0px 10px",
@@ -100,7 +101,7 @@ export default function FundingEnterAmount(props) {
             style={{ height: 40 }}
             type="number"
           /> */}
-          <input type="number" className={classes.inputField} min={props.min} max={props.max} step={1} required="true" />
+          <input type="number" className={classes.inputField} placeholder="£..." min={props.min} max={props.max} step={1} required="true" />
           <button type="submit" className={classes.submitButton}>Let's Go!</button>
         </form>
       </div>

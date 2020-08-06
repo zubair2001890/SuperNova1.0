@@ -27,7 +27,7 @@ import Chemistry from "./pages/Chemistry";
 import Medicine from "./pages/Medicine";
 import ScrollToTop from "./components/ScrollToTop";
 import ExploreSubField from "./pages/ExploreSubField";
-import BackProject from "./pages/BackProject";
+import Payment from "./pages/Payment";
 
 function App() {
   return (
@@ -99,8 +99,8 @@ function App() {
             <Route path={paths.explore} exact>
               <Explore />
             </Route>
-            <Route path={paths.backProject}>
-              <BackProject />
+            <Route path={paths.payment}>
+              <Payment />
             </Route>
             <Route path={paths.error404}>
               <Error404 />
