@@ -1,20 +1,20 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { getFeaturedProject, getProjects, getSubFields, 
+import { getFeaturedProjects, getProjects, getSubFields, 
   getProjectDetails, getProfile, postUpdateAccount,
   putCreateProject, postUpdateProject } from './fetchAPI';
 
 export const fetchFeaturedProject = createAsyncThunk(
     'project/fetchFeaturedProject',
     async (thunkAPI) => {
-      const response = await getFeaturedProject();
-      return response;
+      const featuredProjects = await getFeaturedProjects();
+      return featuredProjects;
     }
 )
 
 export const fetchProjects = createAsyncThunk(
   'project/Projects',
   async (parameters, thunkAPI) => {
-    if (!Array.isArray(parameters)) {
+    if (typeof parameters !== 'object' || Array.isArray(parameters)) {
       throw new Error('"parameters" must be an object of "parameter name" and "parameter value" pairs');
     }
     const response = await getProjects(parameters);
