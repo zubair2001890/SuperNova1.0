@@ -13,8 +13,8 @@ const port: number = Number(process.env.PORT) || 5000 // port / default port
 const app: IExpress = Express()
 
 // Configuring express to use body-parser as middle-ware.
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 // CORS Headers => Required for cross-origin/ cross-server communication
 app.use((req, res, next) => {
@@ -28,6 +28,16 @@ app.use((req, res, next) => {
     'GET, POST, PATCH, DELETE, OPTIONS'
   )
   next()
+})
+
+app.use(Express.static(path.join(__dirname, 'website')))
+app.get("*", (req, res, next) => {
+  if (!req.path.includes('api')) {
+    res.sendFile(require('path')
+      .resolve(__dirname, 'website', 'index.html'));
+  } else {
+    next();
+  }
 })
 
 const publicApi: Express.Router = Express.Router()
@@ -57,4 +67,4 @@ Routes(publicApi, privateApi)
 
 app.listen(port)
 
-console.log(`Server running on port ${port}`)
+console.log(`Server running on port ${port}`);

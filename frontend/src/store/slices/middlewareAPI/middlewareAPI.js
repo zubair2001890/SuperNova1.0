@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { getFeaturedProjects, getProjects, getSubFields, 
   getProjectDetails, getProfile, postUpdateAccount,
-  putCreateProject, postUpdateProject } from './fetchAPI';
+  putCreateProject, postUpdateProject, postSendPayment} from './fetchAPI';
 
 export const fetchFeaturedProject = createAsyncThunk(
     'project/fetchFeaturedProject',
@@ -14,7 +14,7 @@ export const fetchFeaturedProject = createAsyncThunk(
 export const fetchProjects = createAsyncThunk(
   'project/Projects',
   async (parameters, thunkAPI) => {
-    if (!Array.isArray(parameters)) {
+    if (typeof parameters !== 'object' || Array.isArray(parameters)) {
       throw new Error('"parameters" must be an object of "parameter name" and "parameter value" pairs');
     }
     const response = await getProjects(parameters);
@@ -69,6 +69,13 @@ export const sendUpdateProject = createAsyncThunk(
   'account/UpdateAccount',
   async ({ data, authToken, projectID }, thunkAPI) => {
     const response = await postUpdateProject(data, authToken, projectID);
+    return response;
+  }
+)
+
+  export const sendPayment = createAsyncThunk('payment/Send',
+  async ({ data, authToken, userID }, thunkAPI) => {
+    const response = await postSendPayment(data, authToken, projectID);
     return response;
   }
 )

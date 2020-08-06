@@ -22,4 +22,5 @@ export default {
   socialSciences: "/explore/socialsciences",
   engineeringAndTech: "/explore/engineeringandtech",
   exploreSubField: "/explore/exploresubfield",
+  payment: "/payment",
 };
