@@ -82,3 +82,5 @@ export const postUpdateAccount = async (data, authToken) => await fetchPost(`${p
 export const putCreateProject = async (data, authToken) => await fetchPut(`${process.env.REACT_APP_BACKEND_URL}/api/private/createproject`, data, authToken);
 
 export const postUpdateProject = async (data, authToken, projectID) => await fetchPost(`${process.env.REACT_APP_BACKEND_URL}/api/private/updateproject/${projectID}`, data, authToken);
+
+export const postSendPayment = async (data, authToken, projectID) => await fetchPost(`${process.env.REACT_APP_BACKEND_URL}/api/private/payment/${projectID}`, data, authToken);
