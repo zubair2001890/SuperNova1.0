@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   },
   fundingBox: {
     width: 896,
-    height: 180,
+    height: 250,
     border: "2px solid red",
     borderRadius: 10,
     padding: 25,
@@ -42,10 +42,18 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "bold",
     fontSize: 18,
   },
-  fundingAmountInput: {
+  fundingAmountForm: {
     height: 40,
     display: "flex",
     justifyContent: "space-between",
+    marginBottom: 25,
+  },
+  inputField: {
+    width: 200,
+    height: 40,
+    border: "1px solid black",
+    borderRadius: 4,
+    padding: "0px 10px 0px 10px",
   },
   submitButton: {
     color: theme.palette.common.white,
@@ -54,7 +62,7 @@ const useStyles = makeStyles((theme) => ({
     textTransform: "uppercase",
     fontSize: 16,
     fontWeight: "bold",
-    width: 120,
+    width: 150,
     height: 40,
     border: "1px solid black",
     borderRadius: 4,
@@ -89,14 +97,14 @@ export default function FundingEnterAmount(props) {
         <Typography className={classes.enterAmountText}>
           Enter Donation Amount:
         </Typography>
-        <form className={classes.fundingAmountInput}>
+        <form className={classes.fundingAmountForm}>
           {/* <TextField
             variant="outlined"
             placeholder="£..."
             style={{ height: 40 }}
             type="number"
           /> */}
-          <input type="number" min={props.min} max={props.max} step={1} required="true" />
+          <input type="number" className={classes.inputField} min={props.min} max={props.max} step={1} required="true" />
           <button type="submit" className={classes.submitButton}>Let's Go!</button>
         </form>
       </div>

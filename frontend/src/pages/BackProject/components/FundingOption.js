@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
   },
   fundingBox: {
     width: 896,
-    height: 180,
+    height: 250,
     border: "2px solid gray",
     borderRadius: 10,
     padding: 25,
@@ -24,13 +24,13 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 25,
   },
   title: {
-    paddingTop: 25,
+    paddingTop: 35,
     fontWeight: "bold",
     fontSize: 20,
     letterSpacing: 1.8,
   },
   description: {
-    paddingTop: 25,
+    paddingTop: 35,
     fontSize: 20,
     letterSpacing: 1.5,
   },
