@@ -3,6 +3,7 @@ import { withStyles, Typography } from "@material-ui/core";
 import { withAuth0 } from "@auth0/auth0-react";
 
 import LogIn from "../../../pages/Login";
+import { getProfile } from "../../../store/slices/middlewareAPI/fetchAPI";
 
 const styles = (theme) => ({
   layout: {
@@ -41,6 +42,17 @@ const styles = (theme) => ({
 });
 
 export class Layout extends Component {
+  fetchProfileInfo = async () => {
+    const { sub } = this.props.auth0.user;
+    const response = await getProfile(sub);
+    console.log("backend profile", response);
+    return response;
+  };
+
+  componentDidMount() {
+    this.fetchProfileInfo();
+  }
+
   renderPageTitle = () => {
     const { title, classes } = this.props;
     return (
