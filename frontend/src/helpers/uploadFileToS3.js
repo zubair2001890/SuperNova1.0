@@ -16,7 +16,7 @@ export default uploadFileToS3 = function (fileContent, type, id) {
     secretAccessKey: process.env.SECRET_ACCESS_KEY
   });
 
-  s3.upload(params, funciton(err, data){
+  s3.upload(params, function (err, data) {
     handleUpload(err, data, type)
   });
 }
@@ -51,7 +51,6 @@ function handleUpload(err, data, type) {
       default:
         throw new Error("The String parameter passed in was not of the correct type.");
     }
-
   } // Ends the if block for if isAuthenticated()
 }
 

@@ -16,55 +16,31 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-<<<<<<< HEAD
 const getProgressValue = ({ fundsRaised, fundsGoal }) => {
   if (typeof fundsRaised === "number" && typeof fundsGoal === "number") {
-    if (fundsRaised > fundsGoal)
-    {
-      return 100;
-    }
+    return fundsRaised > fundsGoal ? 100 : (fundsRaised / fundsGoal) * 100;
+  }
     else
     {
-    return (fundsRaised / fundsGoal) * 100;
-    }
-  }
   return 0;
+    }
 };
 
-const getFundsProgressCaption = ({ fundsRaised, fundsGoal }) => {
-  if (fundsRaised === undefined)
-  {
-    fundsRaised = 0;
-  }
-  
-  if (fundsGoal === undefined)
-  { 
-    fundsGoal = 0;
-  }
-    
-=======
-const getProgressValue = ({ fundsRaised=0, fundsGoal=0 }) => {
-  return (fundsRaised / fundsGoal) * 100;
-    };
-
-const getFundsProgressCaption = ({ fundsRaised=0, fundsGoal=0 }) => {
->>>>>>> 6832fe0bfbc1bad3df70441423bf8e0e4ddc4aa7
-  return `${new Intl.NumberFormat("en-EN", {
-      style: "currency",
-      currency: "GBP",
-      maximumFractionDigits: 0,
-      minimumFractionDigits: 0,
-    }).format(fundsRaised)}
+const getFundsProgressCaption = ({ fundsRaised = 0, fundsGoal = 0 }) => {
+ return `${new Intl.NumberFormat("en-EN", {
+    style: "currency",
+    currency: "GBP",
+    maximumFractionDigits: 0,
+    minimumFractionDigits: 0,
+  }).format(fundsRaised)}
         raised of
         ${new Intl.NumberFormat("en-EN", {
-          style: "currency",
-          currency: "GBP",
-          maximumFractionDigits: 0,
-          minimumFractionDigits: 0,
-        }).format(fundsGoal)}
+    style: "currency",
+    currency: "GBP",
+    maximumFractionDigits: 0,
+    minimumFractionDigits: 0,
+  }).format(fundsGoal)}
         goal`;
-  
-  return "-";
 };
 
 const FundsProgress = ({ fundsRaised, fundsGoal }) => {
