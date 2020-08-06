@@ -48,7 +48,7 @@ class BackProject extends Component {
         return (
           <FundingOption
             optionNumber={item.optionNumber}
-            amount={item.amount}
+            amount={item.min}
             title={item.title}
             description={item.description}
             onClick={() => {this.state.onClick(index)}}
@@ -58,7 +58,8 @@ class BackProject extends Component {
         return (
           <FundingEnterAmount
             optionNumber={item.optionNumber}
-            amount={item.amount}
+            min={item.min}
+            max={item.max}
             title={item.title}
             description={item.description}
           />
@@ -73,7 +74,8 @@ class BackProject extends Component {
     const items = [
       {
         optionNumber: 1,
-        amount: 5,
+        min: 5,
+        max: 24,
         title: "Thank you and scientists' updates",
         description:
           "Receive a thank you from the scientist(s) be kept up to date with the scientist's progress on the research.",
@@ -81,7 +83,8 @@ class BackProject extends Component {
       },
       {
         optionNumber: 2,
-        amount: 25,
+        min: 25,
+        max: 49,
         title: "Explanations of concepts and Q&A",
         description:
           "Access higher level breakdown of scientific concepts and the chance to participate in regular Q&A sessions with the scientist(s).",
@@ -89,7 +92,8 @@ class BackProject extends Component {
       },
       {
         optionNumber: 3,
-        amount: 50,
+        min: 50,
+        max: 99,
         title:
           "In depth details of research with data, lab notes and methods/techniques",
         description:
@@ -98,7 +102,8 @@ class BackProject extends Component {
       },
       {
         optionNumber: 4,
-        amount: 100,
+        min: 100,
+        max: 249,
         title: "Acknowledgement in the resulting paper",
         description:
           "Get listed as a backer of the project in the final published paper by the scientist(s).",
@@ -106,7 +111,8 @@ class BackProject extends Component {
       },
       {
         optionNumber: 5,
-        amount: 250,
+        min: 250,
+        max: 499,
         title: "1 on 1 with scientist and personal thank you",
         description:
           "Receive the chance to talk 1 on 1 with the scientist and pick their brains about their research and related science. Discussing science, no matter your level, with the best in the field is an unforgettable experience.",
@@ -114,7 +120,8 @@ class BackProject extends Component {
       },
       {
         optionNumber: 6,
-        amount: 500,
+        min: 500,
+        max: 999,
         title: "SuperNova 'Top Backer' badge",
         description:
           "Become a certified 'Top Backer' on the SuperNova platform: one of our highest accolades to award demonstrations of extreme generosity towards the scientific cause.",
@@ -122,7 +129,7 @@ class BackProject extends Component {
       },
       {
         optionNumber: 7,
-        amount: 1000,
+        min: 1000,
         title: "SuperNova Hall of Fame and offical signed certificate",
         description:
           "Get inaugurated in the SuperNova Hall of Fame as a serious contributor to scientific research. Receive an official SuperNova certificate signed by *famous science person, SuperNova's founders and the scientist(s).",

@@ -47,14 +47,17 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "space-between",
   },
-}));
-
-const CustomButton = withStyles((theme) => ({
-  root: {
+  submitButton: {
     color: theme.palette.common.white,
     backgroundColor: theme.palette.common.black,
+    fontFamily: "avertaDemo",
+    textTransform: "uppercase",
     fontSize: 16,
     fontWeight: "bold",
+    width: 120,
+    height: 40,
+    border: "1px solid black",
+    borderRadius: 4,
     "&:hover": {
       color: theme.palette.common.black,
       backgroundColor: "#ddd",
@@ -62,8 +65,8 @@ const CustomButton = withStyles((theme) => ({
       fontWeight: "bold",
       border: "1px solid black",
     },
-  },
-}))(Button);
+  }
+}));
 
 export default function FundingEnterAmount(props) {
   const classes = useStyles();
@@ -75,7 +78,7 @@ export default function FundingEnterAmount(props) {
       </Typography>
       <div className={classes.fundingBox}>
         <Typography className={classes.amount} variant="h4">
-          £{props.amount} or more
+          £{props.min} or more
         </Typography>
         <Typography className={classes.title} variant="body1">
           {props.title}
@@ -86,14 +89,16 @@ export default function FundingEnterAmount(props) {
         <Typography className={classes.enterAmountText}>
           Enter Donation Amount:
         </Typography>
-        <div className={classes.fundingAmountInput}>
-          <TextField
+        <form className={classes.fundingAmountInput}>
+          {/* <TextField
             variant="outlined"
             placeholder="£..."
             style={{ height: 40 }}
-          />
-          <CustomButton variant="contained">Let's Go!</CustomButton>
-        </div>
+            type="number"
+          /> */}
+          <input type="number" min={props.min} max={props.max} required="true" />
+          <button type="submit" className={classes.submitButton}>Let's Go!</button>
+        </form>
       </div>
     </div>
   );
