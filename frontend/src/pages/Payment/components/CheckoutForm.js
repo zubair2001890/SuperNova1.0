@@ -5,8 +5,8 @@ import CardSection from "./CardSection";
 import {sendPayment} from "../../../store/slices/middlewareAPI/middlewareAPI"
 import axios from "axios";
 import {useDispatch} from "react-redux"
-
-const { loginWithRedirect, isAuthenticated, logout, user, getAccessTokenSilently } = useAuth0();
+//import { useAuth0 } from "@auth0/auth0-react";
+//const { loginWithRedirect, isAuthenticated, logout, user, getAccessTokenSilently } = useAuth0();
 
 const useStyles = makeStyles((theme) => ({
   formContainer: {
@@ -58,7 +58,7 @@ const CheckoutForm = ({ price, onSuccessfulCheckout }) => {
     };
 
     setProcessingTo(true); // So set processing to true when the transaction is happening.
-    const dispatch = useDispatch();
+    /*const dispatch = useDispatch();
     if (isAuthenticated) {
       getAccessTokenSilently({
          audience: `https://${process.env.REACT_APP_AUTH0_DOMAIN}/api/v2/`,
@@ -66,12 +66,13 @@ const CheckoutForm = ({ price, onSuccessfulCheckout }) => {
       })
       .then(authToken => dispatch(sendPayment({ data: { amount: price * 100 }, authToken: authToken })));
     }
+    */
     //const { data: clientSecret } = await axios.post("/api/payment_intents", {
       //amount: price * 100, //Price is in the lowest denomination, the price is one of the input props for the CheckoutForm
     //});
     //console.log("clientSecret = "+ clientSecret);
 
-    const cardElement = elements.getElement(CardElement);
+    /*const cardElement = elements.getElement(CardElement);
 
     const paymentMethodReq = await stripe.createPaymentMethod({
       type: "card",
@@ -86,6 +87,7 @@ const CheckoutForm = ({ price, onSuccessfulCheckout }) => {
 
     onSuccessfulCheckout();
     console.log(confirmCardPayment); // This object should have a field status, with a value of "succeeded".
+    */
   };
 
   return (

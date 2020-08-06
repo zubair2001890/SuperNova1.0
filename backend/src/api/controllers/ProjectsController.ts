@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { Project } from '../models/Project';
-import { getProjectsBySubfieldID, getProjectsByProjectScientistID, getProjectsByFieldName, getProjectByProjectID, getFeaturedProjects, getAllSubfields, getProfileByID } from '../mongoQueries'
+import { getProjectsBySubfieldID, getProjectsByProjectScientistID, getProjectsByFieldName, getProjectByProjectID, getProjectsSortedByTotalPledged, getAllSubfields, getProfileByID } from '../mongoQueries'
 import { addStringToArray, arrayContainsString } from '../helpers';
 import * as jwt_decode from 'jwt-decode';
 
@@ -12,7 +12,7 @@ class ProjectsController {
 
   public featured = async (req: Request, res: Response) => {
     let featuredProjects = new Array();
-    let allProjects = await getFeaturedProjects();
+    let allProjects = await getProjectsSortedByTotalPledged();
     allProjects.forEach(project => {
       if (((project.totalPledged < project.goal) || project.totalPledged === undefined) && (featuredProjects.length < 4)) {
         featuredProjects.push(project); // This code is now necessary because if a project has reached its goal, it should not feature.
