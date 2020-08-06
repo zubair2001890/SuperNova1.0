@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
   description: {
     paddingTop: 25,
     fontSize: 20,
-    letterSpacing: 1.8,
+    letterSpacing: 1.5,
   },
 }));
 

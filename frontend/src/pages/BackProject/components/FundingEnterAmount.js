@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
     letterSpacing: 1.8,
   },
   description: {
-    letterSpacing: 1.8,
+    letterSpacing: 1.5,
     fontSize: 14,
   },
   enterAmountText: {
