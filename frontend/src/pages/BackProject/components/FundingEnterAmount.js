@@ -96,7 +96,7 @@ export default function FundingEnterAmount(props) {
             style={{ height: 40 }}
             type="number"
           /> */}
-          <input type="number" min={props.min} max={props.max} required="true" />
+          <input type="number" min={props.min} max={props.max} step={1} required="true" />
           <button type="submit" className={classes.submitButton}>Let's Go!</button>
         </form>
       </div>
