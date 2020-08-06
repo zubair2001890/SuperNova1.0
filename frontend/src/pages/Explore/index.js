@@ -55,94 +55,96 @@ const useStyles = makeStyles((theme) => ({
       lineHeight: "3.426vh",
     },
   },
-  biologyContainer: {
+
+  medicineContainer: {
     position: "absolute",
-    top: "calc(50% - 37px/2 - 361px)",
-    left: "calc(50% - 161px/2 + 207px)",
+    left: "calc(50% + 136.5px)",
+    top: "calc(50% - 371.5px)",
     "@media (max-height:1080px)": {
-      top: "calc(50% - 35.14vh)",
-      left: "calc(50% + 11.71vh)",
-    },
-  },
-  socialSciencesContainer: {
-    position: "absolute",
-    top: "calc(50% - 74px/2 - 204px)",
-    left: "calc(50% - 176px/2 + 414px)",
-    "@media (max-height:1080px)": {
-      top: "calc(50% - 22.31vh)",
-      left: "calc(50% + 30.19vh)",
+      left: "calc(50% + 12.64vh)",
+      top: "calc(50% - 34.4vh)",
     },
   },
   physicsContainer: {
     position: "absolute",
-    top: "calc(50% - 37px/2 + 6px)",
-    left: "calc(50% - 152px/2 + 522px)",
+    left: "calc(50% + 384px)",
+    top: "calc(50% - 239.5px)",
+
     "@media (max-height:1080px)": {
-      top: "calc(50% - 1.16vh)",
-      left: "calc(50% + 41.23vh)",
-    },
-  },
-  mathsStatsContainer: {
-    position: "absolute",
-    top: "calc(50% - 111px/2 + 307px)",
-    left: "calc(50% - 264px/2 + 500px)",
-    "@media (max-height:1080px)": {
-      top: "calc(50% + 23.29vh)",
-      left: "calc(50% + 34.07vh)",
-    },
-  },
-  spaceSciencesContainer: {
-    position: "absolute",
-    top: "calc(50% - 74px/2 + 445px)",
-    left: "calc(50% - 176px/2 + 220px)",
-    "@media (max-height:1080px)": {
-      top: "calc(50% + 37.78vh)",
-      left: "calc(50% + 12.22vh)",
-    },
-  },
-  computerScienceContainer: {
-    position: "absolute",
-    top: "calc(50% - 74px/2 + 445px)",
-    left: "calc(50% - 200px/2 - 24px)",
-    "@media (max-height:1080px)": {
-      top: "calc(50% + 37.78vh)",
-      left: "calc(50% - 11.48vh)",
-    },
-  },
-  engineeringTechnologyContainer: {
-    position: "absolute",
-    top: "calc(50% - 111px/2 + 307px)",
-    left: "calc(50% - 260px/2 - 238px)",
-    "@media (max-height:1080px)": {
-      top: "calc(50% + 23.29vh)",
-      left: "calc(50% - 34.07vh)",
+      left: "calc(50% + 35.56vh)",
+      top: "calc(50% - 22.18vh)",
     },
   },
   earthSciencesContainer: {
     position: "absolute",
-    top: "calc(50% - 74px/2 + 24.5px)",
-    left: "calc(50% - 176px/2 - 358px)",
+    left: "calc(50% + 496px)",
+    top: "calc(50% + 8px)",
     "@media (max-height:1080px)": {
-      top: "calc(50% - 1.16vh)",
-      left: "calc(50% - 41.23vh)",
+      left: "calc(50% + 45.93vh)",
+      top: "calc(50% + 0.74vh)",
+    },
+  },
+  engineeringTechnologyContainer: {
+    position: "absolute",
+    left: "calc(50% + 446px)",
+    top: "calc(50% + 298.5px)",
+    "@media (max-height:1080px)": {
+      left: "calc(50% + 41.3vh)",
+      top: "calc(50% + 27.64vh)",
+    },
+  },
+  computerScienceContainer: {
+    position: "absolute",
+    left: "calc(50% + 147px)",
+    top: "calc(50% + 428px)",
+    "@media (max-height:1080px)": {
+      left: "calc(50% + 13.61vh)",
+      top: "calc(50% + 39.63vh)",
+    },
+  },
+  socialSciencesContainer: {
+    position: "absolute",
+    left: "calc(50% - 141px)",
+    top: "calc(50% + 428px)",
+    "@media (max-height:1080px)": {
+      left: "calc(50% - 13.06vh)",
+      top: "calc(50% + 39.63vh)",
+    },
+  },
+  mathsStatsContainer: {
+    position: "absolute",
+    left: "calc(50% - 395px)",
+    top: "calc(50% + 298.5px)",
+    "@media (max-height:1080px)": {
+      left: "calc(50% - 36.57vh)",
+      top: "calc(50% + 27.64vh)",
+    },
+  },
+  spaceSciencesContainer: {
+    position: "absolute",
+    left: "calc(50% - 483px)",
+    top: "calc(50% + 8px)",
+    "@media (max-height:1080px)": {
+      left: "calc(50% - 44.72vh)",
+      top: "calc(50% + 0.74vh)",
+    },
+  },
+  biologyContainer: {
+    position: "absolute",
+    left: "calc(50% - 366.5px)",
+    top: "calc(50% - 239.5px)",
+    "@media (max-height:1080px)": {
+      left: "calc(50% - 33.94vh)",
+      top: "calc(50% - 22.18vh)",
     },
   },
   chemistryContainer: {
     position: "absolute",
-    top: "calc(50% - 37px/2 - 222.5px)",
-    left: "calc(50% - 206px/2 - 223px)",
+    left: "calc(50% - 132px)",
+    top: "calc(50% - 371.5px)",
     "@media (max-height:1080px)": {
-      top: "calc(50% - 22.31vh)",
-      left: "calc(50% - 30.19vh)",
-    },
-  },
-  medicineContainer: {
-    position: "absolute",
-    top: "calc(50% - 37px/2 - 361px)",
-    left: "calc(50% - 179px/2 - 37px)",
-    "@media (max-height:1080px)": {
-      top: "calc(50% - 35.14vh)",
-      left: "calc(50% - 11.71vh)",
+      left: "calc(50% - 12.22vh)",
+      top: "calc(50% - 34.3vh)",
     },
   },
   center: {
@@ -170,63 +172,63 @@ export default () => {
 
   const fields = [
     {
-      path: paths.biology,
-      containerClass: classes.biologyContainer,
-      label: "BIOLOGY",
+      path: paths.medicine,
+      containerClass: classes.medicineContainer,
+      label: "MEDICINE",
       index: 1,
-    },
-    {
-      path: paths.socialSciences,
-      containerClass: classes.socialSciencesContainer,
-      label: "SOCIAL SCIENCES",
-      index: 2,
     },
     {
       path: paths.physics,
       containerClass: classes.physicsContainer,
       label: "PHYSICS",
-      index: 3,
-    },
-    {
-      path: paths.mathsAndStats,
-      containerClass: classes.mathsStatsContainer,
-      label: "MATHEMATICS AND STATISTICS",
-      index: 4,
-    },
-    {
-      path: paths.spaceSciences,
-      containerClass: classes.spaceSciencesContainer,
-      label: "SPACE SCIENCES",
-      index: 5,
-    },
-    {
-      path: paths.computerScience,
-      containerClass: classes.computerScienceContainer,
-      label: "COMPUTER SCIENCE",
-      index: 6,
-    },
-    {
-      path: paths.engineeringAndTech,
-      containerClass: classes.engineeringTechnologyContainer,
-      label: "ENGINEERING AND TECHNOLOGY",
-      index: 7,
+      index: 2,
     },
     {
       path: paths.earthSciences,
       containerClass: classes.earthSciencesContainer,
       label: "EARTH SCIENCES",
+      index: 3,
+    },
+    {
+      path: paths.engineeringAndTech,
+      containerClass: classes.engineeringTechnologyContainer,
+      label: "ENGINEERING AND TECHNOLOGY",
+      index: 4,
+    },
+    {
+      path: paths.computerScience,
+      containerClass: classes.computerScienceContainer,
+      label: "COMPUTER SCIENCE",
+      index: 5,
+    },
+    {
+      path: paths.socialSciences,
+      containerClass: classes.socialSciencesContainer,
+      label: "SOCIAL SCIENCES",
+      index: 6,
+    },
+    {
+      path: paths.mathsAndStats,
+      containerClass: classes.mathsStatsContainer,
+      label: "MATHEMATICS AND STATISTICS",
+      index: 7,
+    },
+    {
+      path: paths.spaceSciences,
+      containerClass: classes.spaceSciencesContainer,
+      label: "SPACE SCIENCES",
       index: 8,
+    },
+    {
+      path: paths.biology,
+      containerClass: classes.biologyContainer,
+      label: "BIOLOGY",
+      index: 9,
     },
     {
       path: paths.chemistry,
       containerClass: classes.chemistryContainer,
       label: "CHEMISTRY",
-      index: 9,
-    },
-    {
-      path: paths.medicine,
-      containerClass: classes.medicineContainer,
-      label: "MEDICINE",
       index: 10,
     },
   ];
