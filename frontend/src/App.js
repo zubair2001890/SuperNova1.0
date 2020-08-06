@@ -27,7 +27,7 @@ import Chemistry from "./pages/Chemistry";
 import Medicine from "./pages/Medicine";
 import ScrollToTop from "./components/ScrollToTop";
 import ExploreSubField from "./pages/ExploreSubField";
-import Payment from "./pages/Payment";
+import ConfirmPayment from "./pages/ConfirmPayment";
 
 function App() {
   return (
@@ -93,8 +93,8 @@ function App() {
             <Route path={paths.exploreSubField}>
               <ExploreSubField />
             </Route>
-            <Route path={paths.payment}>
-              <Payment />
+            <Route path={paths.confirmPayment}>
+              <ConfirmPayment />
             </Route>
             <Route path={paths.home} exact>
               <Homepage />
