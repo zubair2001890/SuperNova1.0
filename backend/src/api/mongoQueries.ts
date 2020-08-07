@@ -145,8 +145,15 @@ export const getProfileByID = function(profileID: String): Promise<any>
         console.log(err);
         rejecter(null);
      }
-     resolver(docs)
-  });
+     if (docs)
+     {
+      resolver(docs)
+     }
+     else
+     {
+        resolver({});
+     }
+   });
   return promise;
 } 
  
