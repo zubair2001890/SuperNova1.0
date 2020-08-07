@@ -1,5 +1,5 @@
 import React from "react";
-import Constellation from "../components/Constellation";
+import ConstellationOne from "../components/Constellations/ConstellationOne";
 import useStyles from "./FieldPage/exploreFieldPageStyles";
 import FieldPage from "./FieldPage";
 import paths from "../constants/paths";
@@ -7,19 +7,19 @@ import paths from "../constants/paths";
 function Item(props) {
   return (
     <>
-      <Constellation
+      <ConstellationOne
         subfield={props.item.name2}
         top="calc(60% - 20px)"
         left="calc(10% + 50px)"
         path={paths.exploreSubField}
       />
-      <Constellation
+      <ConstellationOne
         subfield={props.item.name1}
         top="calc(5% + 10px)"
         left="calc(15% + 50px)"
         path={paths.exploreSubField}
       />
-      <Constellation
+      <ConstellationOne
         subfield={props.item.name3}
         top="calc(52%)"
         left="calc(58%)"
@@ -64,7 +64,7 @@ export default () => {
 
   return (
     <>
-      <FieldPage title="CHEMISTRY" content={content}/>
+      <FieldPage title="CHEMISTRY" content={content} />
     </>
   );
 };

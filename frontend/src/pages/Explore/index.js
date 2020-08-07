@@ -216,7 +216,7 @@ export default () => {
     {
       path: paths.spaceSciences,
       containerClass: classes.spaceSciencesContainer,
-      label: "SPACE SCIENCES",
+      label: "SPACE SCIENC3ES",
       index: 8,
     },
     {

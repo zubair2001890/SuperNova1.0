@@ -5,7 +5,7 @@ const useStyles = makeStyles((theme) => ({
     ...theme.mixins.appBar,
   },
   pageHeader: {
-    height: "100vh",
+    height: 1080,
     width: "100%",
   },
   pageContainer: {
@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
   carouselContainer: {
     position: "absolute",
     width: "100%",
-    height: "100%",
+    height: 1080,
     top: 0,
     backgroundImage:
       "url(" +
@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
   },
   carouselSlide: {
     position: "relative",
-    height: "100vh",
+    height: 1080,
     top: 0,
   },
   fieldTitle: {
@@ -42,6 +42,24 @@ const useStyles = makeStyles((theme) => ({
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
+  },
+  center: {
+    margin: "0 auto",
+    maxWidth: 966,
+    paddingLeft: theme.spacing(2),
+    paddingRight: theme.spacing(2),
+    paddingTop: 92,
+    paddingBottom: 92,
+  },
+  pageTitle: {
+    marginTop: 78,
+    letterSpacing: "0.09em",
+  },
+  subheading: {
+    margin: "68px 0",
+  },
+  subheadingParagraph: {
+    paddingBottom: 48,
   },
 }));
 

@@ -53,6 +53,44 @@ export default (props) => {
           </div>
         </div>
       </div>
+      <div className={classes.center}>
+        <Typography variant="h1" className={classes.pageTitle} align="center">
+          {props.title}
+        </Typography>
+        <Typography variant="h2" className={classes.subheading}>
+          About Field X:
+        </Typography>
+        <Typography variant="body1" className={classes.subheadingParagraph}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id est laborum.
+        </Typography>
+        <Typography variant="h2" className={classes.subheading}>
+          Fearued Field X Projects:
+        </Typography>
+        <Typography variant="h2" className={classes.subheading}>
+          Fearued Field X Scientists:
+        </Typography>
+        <Typography variant="body1" className={classes.subheadingParagraph}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id est laborum.
+        </Typography>
+        <Typography variant="h2" className={classes.subheading}>
+          Educational Resources for Field X:
+        </Typography>
+        <Typography variant="h2" className={classes.subheading}>
+          All subfields:
+        </Typography>
+      </div>
     </>
   );
 };

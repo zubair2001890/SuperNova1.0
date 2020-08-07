@@ -5,15 +5,14 @@ import { Link as RouterLink } from "react-router-dom";
 const useStyles = makeStyles(() => ({
   constellation: {
     position: "absolute",
-    height: 400,
-    width: 240,
+    height: 187,
+    width: 257,
   },
   constellationImage: {
     position: "absolute",
     height: "100%",
     width: "100%",
-    backgroundImage:
-      "url(" + require("./assets/constellation/constellation.png") + ")",
+    backgroundImage: "url(" + require("../assets/constellation4.png") + ")",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
     backgroundSize: "cover",
@@ -31,13 +30,11 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export default function Constellation(props) {
+export default (props) => {
   const classes = useStyles();
 
   return (
-    <RouterLink
-    to={{ pathname: props.path, state: { title: props.subfield } }}
-    >
+    <RouterLink to={{ pathname: props.path, state: { title: props.subfield } }}>
       <div
         className={classes.constellation}
         style={{ top: props.top, left: props.left }}
@@ -47,4 +44,4 @@ export default function Constellation(props) {
       </div>
     </RouterLink>
   );
-}
+};
