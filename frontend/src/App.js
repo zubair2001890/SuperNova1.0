@@ -102,6 +102,9 @@ function App() {
             <Route path={paths.explore} exact>
               <Explore />
             </Route>
+            <Route path={paths.payment}>
+              <Payment />
+            </Route>
             <Route path={paths.error404}>
               <Error404 />
             </Route>
