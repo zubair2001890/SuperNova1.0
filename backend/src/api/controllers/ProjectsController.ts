@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { Project } from '../models/Project';
 import { getProjectsBySubfieldID, getProjectsByProjectScientistID, getProjectsByFieldName, getProjectByProjectID, getFeaturedProjects, getAllSubfields, getProfileByID } from '../mongoQueries'
-import { addStringToArray, arrayContainsString } from '../helpers';
+import { addStringToArray, addObjectToArray, arrayContainsString } from '../helpers';
 import * as jwt_decode from 'jwt-decode';
 
 class ProjectsController {
@@ -50,8 +50,7 @@ class ProjectsController {
     //let selectedProject = await getProjectsByFieldName("Biology");
     let selectedProject = await getProjectByProjectID(req.params.project_id);
     res.send(selectedProject);
-
-  }
+}
 
   public createProject = async (req: Request, res: Response) => {
     let link = [];
@@ -61,7 +60,7 @@ class ProjectsController {
     let startDate: String = req.body.startDate;
     let project = new Project({
       projectName: req.body.projectName,
-      projectDescription: req.body.project_description,
+      projectDescription: req.body.projectDescription,
       university: req.body.university,
       // To get rid of both of the slashes, I get an error message saying that String does not have a replaceAll method.
       startDate: startDate.replace("/", "").replace("/", ""),
@@ -71,14 +70,10 @@ class ProjectsController {
       projectImage: req.body.projectImage,
       goal: req.body.goal,
       projectScientistID: req.body.projectScientistId,
-      fieldName: req.body.fieldName,
-      subfieldName: req.body.subfieldName,
       subfieldID: req.body.subfieldID,
-      firstName: req.body.teamDescription[0].split(" ")[0],
-      lastName: req.body.teamDescription[0].split(" ")[1].replace(",", ""),
       statusName: req.body.statusName,
       link: link,
-      backers: new Array<String>()
+      backers: new Array<String>() // As a new project will not have any backers yet.
     });
     await project.save();
     let projectIDObject = await Project.findById(project._id, '_id').exec();
@@ -98,8 +93,11 @@ class ProjectsController {
     }
     let update = req.body;
     if (req.body.labNotes !== undefined) {
-      let labNotes = addStringToArray(selectedProject.labNotes, req.body.labNotes);
-      labNotes = addStringToArray(labNotes, Date.now().toString());
+      let labNote = req.body.labNotes;
+      let date = new Date();
+      let currentDate = date.getDate() + date.getMonth() + date.getFullYear();
+      labNote.date = currentDate;
+      let labNotes = addObjectToArray(selectedProject.labNotes, req.body.labNotes);
       update.labNotes = labNotes;
     }
     if (req.body.link !== undefined) {

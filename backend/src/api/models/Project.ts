@@ -1,5 +1,7 @@
 import { model } from "mongoose";
 import { Schema } from "mongoose";
+import {MethodDescription} from "./MethodDescription"
+import {ProjectDescription} from "./ProjectDescription"
 
 
 export const Project = model('Project', new Schema({
@@ -11,7 +13,7 @@ export const Project = model('Project', new Schema({
     },
 
     projectDescription: {
-        type: Array,
+        type: ProjectDescription,
         required: true,
     },
 
@@ -27,20 +29,7 @@ export const Project = model('Project', new Schema({
         required: false
     },
 
-    firstName: {
-        type: String,
-        required: true,
-        minlength: 1,
-        maxlength: 50
-    },
-
-    lastName: {
-        type: String,
-        required: true,
-        minlength: 1,
-        maxlength: 50
-    },
-    startDate: {
+   startDate: {
         type: String,
         required: true,
         minlength: 1,
@@ -81,7 +70,7 @@ export const Project = model('Project', new Schema({
         required: false,
     },
     methodDescription: {
-        type: Array,
+        type: MethodDescription,
         required: true,
     },
     timelineDescription: {
