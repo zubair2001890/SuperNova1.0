@@ -1,6 +1,6 @@
-import { createAsyncThunk } from '@reduxjs/toolkit'
+import { createAsyncThunk } from "@reduxjs/toolkit";
 import {
-  getFeaturedProjects,
+  getFeaturedProject,
   getProjects,
   getSubFields,
   getProjectDetails,
@@ -9,83 +9,83 @@ import {
   putCreateProject,
   postUpdateProject,
   postSendPayment,
-} from './fetchAPI'
+} from "./fetchAPI";
 
 export const fetchFeaturedProject = createAsyncThunk(
-  'project/fetchFeaturedProject',
+  "project/fetchFeaturedProject",
   async (thunkAPI) => {
-    const featuredProjects = await getFeaturedProjects()
-    return featuredProjects
+    const response = await getFeaturedProject();
+    return response;
   }
-)
+);
 
 export const fetchProjects = createAsyncThunk(
-  'project/Projects',
+  "project/Projects",
   async (parameters, thunkAPI) => {
-    if (typeof parameters !== 'object' || Array.isArray(parameters)) {
+    if (typeof parameters !== "object" || Array.isArray(parameters)) {
       throw new Error(
         '"parameters" must be an object of "parameter name" and "parameter value" pairs'
-      )
+      );
     }
-    const response = await getProjects(parameters)
-    return response
+    const response = await getProjects(parameters);
+    return response;
   }
-)
+);
 
 export const fetchSubFields = createAsyncThunk(
-  'project/Subfields',
+  "project/Subfields",
   async (fieldname, thunkAPI) => {
-    const response = await getSubFields(fieldname)
-    return response
+    const response = await getSubFields(fieldname);
+    return response;
   }
-)
+);
 
 export const fetchProjectDetails = createAsyncThunk(
-  'project/Details',
+  "project/Details",
   async (projectID, thunkAPI) => {
-    const response = await getProjectDetails(projectID)
-    return response
+    const response = await getProjectDetails(projectID);
+    return response;
   }
-)
+);
 
 // For the profile we use the sub value of the auth0 user object as the foreign key
 export const fetchProfile = createAsyncThunk(
-  'account/Profile',
+  "account/Profile",
   async (sub, thunkAPI) => {
-    const response = await getProfile(sub)
-    return response
+    const response = await getProfile(sub);
+    return response;
   }
-)
+);
 
 export const sendUpdateAccount = createAsyncThunk(
-  'account/UpdateAccount',
+  "account/UpdateAccount",
   async ({ data, authToken }, thunkAPI) => {
-    console.log(data, authToken, thunkAPI)
-    const response = await postUpdateAccount(data, authToken)
-    return response
+    console.log(data, authToken, thunkAPI);
+    const response = await postUpdateAccount(data, authToken);
+    return response;
   }
-)
+);
 
 export const createProject = createAsyncThunk(
-  'project/Create',
+  "project/Create",
   async ({ data, authToken }, thunkAPI) => {
-    const response = await putCreateProject(data, authToken)
-    return response
+    const response = await putCreateProject(data, authToken);
+    return response;
   }
-)
+);
 
 export const sendUpdateProject = createAsyncThunk(
-  'account/UpdateAccount',
+  "account/UpdateAccount",
   async ({ data, authToken, projectID }, thunkAPI) => {
-    const response = await postUpdateProject(data, authToken, projectID)
-    return response
+    const response = await postUpdateProject(data, authToken, projectID);
+    return response;
   }
-)
+);
 
 export const sendPayment = createAsyncThunk(
-  'payment/Send',
+  "payment/Send",
   async ({ data, authToken, projectID }, thunkAPI) => {
-    const response = await postSendPayment(data, authToken, projectID)
-    return response
+    const response = await postSendPayment(data, authToken, projectID);
+    return response;
   }
-)
+);

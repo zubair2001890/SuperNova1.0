@@ -1,15 +1,22 @@
 const mongoose = require('mongoose')
 
+<<<<<<< HEAD
 import { Project } from './models/Project'
 import { SubField } from './models/Subfield'
 import { addStringToArray, arrayContainsString } from './helpers';
 import { UserAccount } from './models/UserAccount';
 import { ProjectBacker } from './models/ProjectBacker';
+=======
+import {Project} from './models/Project'
+import {UserAccount} from './models/UserAccount'
+import { addStringToArray, arrayContainsString } from './helpers';
+>>>>>>> 1bfb89267de5775c870ab2aacac07d1fa6b9c9cd
 
 mongoose.connect('mongodb://uoovwklzznl5qbd3vnmc:CKB9CbXz4cbJrrrCskwU@bosn1sg8zx8aq8n-mongodb.services.clever-cloud.com:27017/bosn1sg8zx8aq8n')
    .then(() => console.log('Now connected to MongoDB!'))
    .catch(err => console.error('Something went wrong', err));
 
+<<<<<<< HEAD
 export const getFeaturedProjects = async function (): Promise<any> {
    let resolver, rejecter;
    const promise = new Promise((resolve, reject) => {
@@ -20,6 +27,27 @@ export const getFeaturedProjects = async function (): Promise<any> {
       if (err) {
          console.log(err);
          rejecter(null);
+=======
+ export const getProjectsSortedByTotalPledged = async function(): Promise<any>
+    {
+       console.log("getProjectsSortedByTotalPledged method called");
+       let resolver, rejecter;
+       const promise = new Promise((resolve, reject) => {
+         resolver = resolve;
+         rejecter = reject;
+       })
+      let projectsQuery = Project.find({}, function(err, docs)
+      {
+         if (err)
+         {
+            console.log(err);
+            rejecter(null);
+         }
+         resolver(docs)
+      });
+      projectsQuery.sort({totalPledged: -1});
+       return promise;
+>>>>>>> 1bfb89267de5775c870ab2aacac07d1fa6b9c9cd
       }
       console.log("Returned projects = " + docs);
       resolver(docs)
@@ -135,7 +163,7 @@ export const getProjectByProjectID = function (projectID: String): Promise<any> 
       }
    });
    return promise;
-}
+} 
 
 export const getProfileByID = function (profileID: String): Promise<any> {
    let resolver, rejecter;
@@ -172,25 +200,17 @@ export const addAmountPledged = async function (projectID: String, newAmountPled
       backers = selectedProject["backers"];
    }
    let total = totalPledged + newAmountPledged;
-   if (!arrayContainsString(backers, fullName)) {
+   if (!arrayContainsString(backers, fullName))
+   {
       backers = addStringToArray(backers, fullName);
    }
-   console.log("Backers = " + backers);
-   console.log("total = " + total);
-   let update = { totalPledged: total, backers: backers };
-   await Project.findByIdAndUpdate(projectID, update, function (err, response) {
-      if (err) {
+  let update = {totalPledged: total, backers: backers};
+   await Project.findByIdAndUpdate(projectID, update, function(err, response)
+   {
+      if (err)
+      {
          console.log(err);
       }
-      console.log("Response after updating the backers = " + response);
    });
-   let projectBacker = new ProjectBacker({
-      projectID: projectID,
-      userAccountID: newBackerID,
-      pledged: newAmountPledged,
-      ts: new Date().getTime(),
-      backerKey: backerKey
-   });
-   projectBacker.save();
 }
 
