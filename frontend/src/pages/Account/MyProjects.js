@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import Layout from "./Layout";
 import Projects from "./Projects";
 
-const getIfUserOwnsProject = (user) => (project) =>
-  project.projectScientistID === user.projectScientistID;
+const getIfUserOwnsProject = (account) => (project) =>
+  project.projectScientistID === account.projectScientistID;
 
-const getMyProjects = (user, projects) =>
-  projects.filter(getIfUserOwnsProject(user));
+const getMyProjects = (account, projects) =>
+  projects.filter(getIfUserOwnsProject(account));
 
 export default class MyProjects extends Component {
   render() {

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { withStyles } from "@material-ui/core";
 import Item from "./Item";
 
@@ -23,13 +24,9 @@ const styles = (theme) => ({
 
 export class Info extends Component {
   render() {
-    const { classes, user } = this.props;
-    const {
-      given_name,
-      family_name,
-      university = "None",
-      field_name = "None",
-    } = user;
+    const { classes, user, account } = this.props;
+    const { given_name, family_name } = user;
+    const { university = "None", field_name = "None" } = account;
     return (
       <div className={classes.info}>
         <Item>
@@ -42,4 +39,8 @@ export class Info extends Component {
   }
 }
 
-export default withStyles(styles, { withTheme: true })(Info);
+const StyledInfo = withStyles(styles, { withTheme: true })(Info);
+
+const mapStateToProps = ({ account }) => ({ account });
+
+export default connect(mapStateToProps)(StyledInfo);
