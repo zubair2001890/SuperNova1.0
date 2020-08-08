@@ -2,6 +2,7 @@
   "name": "supernova-frontend",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:5000",
   "dependencies": {
     "@auth0/auth0-react": "^1.0.0",
     "@emotion/core": "^10.0.28",
@@ -30,7 +31,6 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "react-stripe-checkout": "^2.6.3",
-    "redux-form": "^8.3.6",
     "stripe": "^8.81.0",
     "typescript": "^3.9.5"
   },
@@ -55,6 +55,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "prettier": {
+    "singleQuote": false,
+    "semi": true
   },
   "devDependencies": {}
 }

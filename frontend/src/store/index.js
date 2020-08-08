@@ -1,9 +1,8 @@
-import { configureStore } from '@reduxjs/toolkit'
-import { reducer as formReducer } from 'redux-form'
-import counterReducer from './slices/counter/counterSlice'
-import pageReducer from './slices/page'
-import projectsReducer from './slices/projects'
-import profileReducer from './slices/profile'
+import { configureStore } from "@reduxjs/toolkit";
+import counterReducer from "./slices/counter/counterSlice";
+import pageReducer from "./slices/page";
+import projectsReducer from "./slices/projects";
+import profileReducer from "./slices/profile";
 
 export default configureStore({
   reducer: {
@@ -11,6 +10,5 @@ export default configureStore({
     page: pageReducer,
     projects: projectsReducer,
     profile: profileReducer,
-    form: formReducer,
   },
-})
+});
