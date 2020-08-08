@@ -1,13 +1,13 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { getFeaturedProjects, getProjects, getSubFields, 
+import { getFeaturedProject, getProjects, getSubFields, 
   getProjectDetails, getProfile, postUpdateAccount,
   putCreateProject, postUpdateProject, postSendPayment} from './fetchAPI';
 
 export const fetchFeaturedProject = createAsyncThunk(
     'project/fetchFeaturedProject',
     async (thunkAPI) => {
-      const featuredProjects = await getFeaturedProjects();
-      return featuredProjects;
+      const response = await getFeaturedProject();
+      return response;
     }
 )
 

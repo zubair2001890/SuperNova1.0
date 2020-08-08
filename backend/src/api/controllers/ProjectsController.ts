@@ -5,12 +5,13 @@ import { addStringToArray, arrayContainsString } from '../helpers';
 import * as jwt_decode from 'jwt-decode';
 
 class ProjectsController {
+
+  private adminUsers = []; // This will need to be populated with the IDs of authorised admin users.
+
   constructor() {
   }
 
-  private adminUsers = []; // This will be populated with a list of the approved admin users.
-
-  public featured = async (req: Request, res: Response) => {
+    public featured = async (req: Request, res: Response) => {
     let featuredProjects = new Array();
     let allProjects = await getFeaturedProjects();
     allProjects.forEach(project => {
