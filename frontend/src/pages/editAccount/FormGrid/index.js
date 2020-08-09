@@ -1,6 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core";
-import Inputs from "./Inputs";
+import Inputs from "./Inputs/index";
 import Labels from "./Labels";
 import SaveButton from "./Save";
 

@@ -18,6 +18,23 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const matchFirstAndLastName = (name) => name.match(/(\w+) (\w+)/);
+
+const getIfIsEmpty = (string) => !string || !string.length;
+
+const validateIsNotEmpty = (value) => {
+  const isEmpty = getIfIsEmpty(value);
+  if (isEmpty) return "This value must not be left empty.";
+};
+
+const validateName = (name) => {
+  const isEmpty = getIfIsEmpty(name);
+  const hasFirstAndLastName = matchFirstAndLastName(name || "");
+  if (isEmpty || !hasFirstAndLastName) {
+    return 'You must provide a first and last name. Ex: "Tim Appleseed"';
+  }
+};
+
 function FormGridWithFields(props) {
   const classes = useStyles();
   return (
@@ -30,6 +47,8 @@ function FormGridWithFields(props) {
           type: "name",
           label: "Name",
           component: "input",
+          validate: validateName,
+          required: true,
         },
         {
           name: "email",
@@ -37,6 +56,8 @@ function FormGridWithFields(props) {
           type: "email",
           label: "Email",
           component: "input",
+          required: true,
+          validate: validateIsNotEmpty,
         },
         {
           name: "university",
@@ -59,7 +80,7 @@ function FormGridWithFields(props) {
 }
 
 const getFirstAndLastName = (name) => {
-  const match = name.match(/(\w+) (\w+)/);
+  const match = matchFirstAndLastName(name);
   return {
     firstName: match[1],
     lastName: match[2],
