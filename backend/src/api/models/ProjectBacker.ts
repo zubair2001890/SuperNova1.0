@@ -17,5 +17,11 @@ export const ProjectBacker = model('ProjectBacker', new Schema({
     pledged: {
         type: Number,
         required: true
-    }
+    },
+    backerKey : {
+        type: String,
+        required: true,
+        minlength: 1,
+        maxlength: 255
+    },
 }));
