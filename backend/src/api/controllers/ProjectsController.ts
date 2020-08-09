@@ -1,10 +1,6 @@
 import { Request, Response } from 'express';
 import {Project} from '../models/Project';
-<<<<<<< HEAD
 import {getProjectsBySubfieldID, getProjectsByProjectScientistID, getProjectsByFieldName, getProjectByProjectID, getAllProjects, getAllSubfields} from '../mongoQueries'
-=======
-import {getProjectsBySubfieldID, getProjectsByProjectScientistID, getProjectsByFieldName, getProjectByProjectID, getFeaturedProjects, getAllSubfields} from '../mongoQueries'
->>>>>>> 6832fe0bfbc1bad3df70441423bf8e0e4ddc4aa7
 import {addStringToArray} from '../helpers';
 import moment = require('moment');
 
@@ -14,7 +10,6 @@ class ProjectsController {
 
     public featured = async (req: Request, res: Response) => {
       let featuredProjects = new Array();
-<<<<<<< HEAD
       let allProjects = await getAllProjects(); // Sorted by totalPledged.
       allProjects.forEach(function(project, index) 
       {
@@ -22,14 +17,6 @@ class ProjectsController {
         {
           featuredProjects.push(project);
         }
-=======
-      let allProjects = await getFeaturedProjects();
-      allProjects.forEach(project => {
-        if (((project.totalPledged < project.goal) || project.totalPledged === undefined) && (featuredProjects.length < 4))
-        {
-          featuredProjects.push(project); // This code is now necessary because if a project has reached its goal, it should not feature.
-        }  
->>>>>>> 6832fe0bfbc1bad3df70441423bf8e0e4ddc4aa7
       });
       res.send(featuredProjects);
     }
