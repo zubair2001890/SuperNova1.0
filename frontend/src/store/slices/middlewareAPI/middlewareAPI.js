@@ -84,8 +84,8 @@ export const sendUpdateProject = createAsyncThunk(
 
 export const sendPayment = createAsyncThunk(
   "payment/Send",
-  async ({ data, authToken, projectID }, thunkAPI) => {
-    const response = await postSendPayment(data, authToken, projectID);
+  async ({ data, authToken}, thunkAPI) => {
+    const response = await postSendPayment(data, authToken);
     return response;
   }
 );
