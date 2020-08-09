@@ -1,9 +1,11 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core";
-import { post } from "axios";
-import { reduxForm } from "redux-form";
 import { useAuth0 } from "@auth0/auth0-react";
+import { connect } from "react-redux";
+import { makeStyles } from "@material-ui/core";
+import { reduxForm } from "redux-form";
 import FormGrid from "../FormGrid";
+import { postUpdateAccount } from "../../../store/slices/middlewareAPI/fetchAPI";
+import { fetchAccount } from "../../../store/account";
 
 const useStyles = makeStyles((theme) => ({
   form: {
@@ -37,7 +39,7 @@ function FormGridWithFields(props) {
           component: "input",
         },
         {
-          name: "institution",
+          name: "university",
           placeholder: "My University",
           type: "text",
           label: "Institution",
@@ -56,13 +58,54 @@ function FormGridWithFields(props) {
   );
 }
 
-const submit = async (values) => post("https://supernova.ac/users/id", values);
+const getFirstAndLastName = (name) => {
+  const match = name.match(/(\w+) (\w+)/);
+  return {
+    firstName: match[1],
+    lastName: match[2],
+  };
+};
 
-export default function Form() {
-  const { user } = useAuth0();
+const getSubmissionValues = (values) => {
+  const nameData = getFirstAndLastName(values.name);
+  return {
+    ...values,
+    ...nameData,
+  };
+};
+
+const updateAccount = async (getAccessTokenSilently, values) => {
+  const token = await getAccessTokenSilently();
+  const submissionValues = getSubmissionValues(values);
+  return postUpdateAccount(submissionValues, token);
+};
+
+const submit = (getAccessTokenSilently, user, fetchAccount) => async (
+  values
+) => {
+  await updateAccount(getAccessTokenSilently, values);
+  await fetchAccount(user.sub);
+};
+
+const getInitialValues = (account) => ({
+  ...account,
+  name: `${account.firstName} ${account.lastName}`,
+});
+
+function Form({ account, fetchAccount }) {
+  const initialValues = getInitialValues(account);
   const ConnectedForm = reduxForm({
-    initialValues: user,
+    initialValues,
     form: "editAccountOverview",
   })(FormGridWithFields);
-  return <ConnectedForm onSubmit={submit} />;
+  const { getAccessTokenSilently, user } = useAuth0();
+  return (
+    <ConnectedForm
+      onSubmit={submit(getAccessTokenSilently, user, fetchAccount)}
+    />
+  );
 }
+
+const mapStateToProps = ({ account }) => ({ account });
+
+export default connect(mapStateToProps, { fetchAccount })(Form);
