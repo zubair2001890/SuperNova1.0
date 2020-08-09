@@ -63,8 +63,8 @@ export default ({ projectsData }) => {
       {projectsData &&
         projectsData.map((project) => (
           <ProjectCard
-            key={project._id}
-            headerUrl={project.projectImage}
+            key={project.id}
+            headerUrl={project.headerUrl}
             aboutDescription={project.aboutDescription}
             significanceDescription={project.significanceDescription}
             details={
@@ -73,7 +73,7 @@ export default ({ projectsData }) => {
                   {project.title.length < maxTitleLength ? (
                     project.title
                   ) : (
-                    <Tooltip title={project.projectName} placement="top">
+                    <Tooltip title={project.title} placement="top">
                       <span>
                         {project.title.slice(0, maxTitleLength - 3) + "..."}
                       </span>
