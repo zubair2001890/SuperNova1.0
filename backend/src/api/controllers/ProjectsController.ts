@@ -1,35 +1,14 @@
 import { Request, Response } from 'express';
-<<<<<<< HEAD
 import { Project } from '../models/Project';
 import { getProjectsBySubfieldID, getProjectsByProjectScientistID, getProjectsByFieldName, getProjectByProjectID, getProjectsSortedByTotalPledged, getAllSubfields, getProfileByID } from '../mongoQueries'
 import { addStringToArray, arrayContainsString } from '../helpers';
 import * as jwt_decode from 'jwt-decode';
-=======
-import {Project} from '../models/Project';
-import {getProjectsBySubfieldID, getProjectsByProjectScientistID, getProjectsByFieldName, getProjectByProjectID, getProjectsSortedByTotalPledged, getAllSubfields} from '../mongoQueries'
-import {addStringToArray} from '../helpers';
-import moment = require('moment');
->>>>>>> 1bfb89267de5775c870ab2aacac07d1fa6b9c9cd
 
 class ProjectsController {
   constructor() {
   }
 
-<<<<<<< HEAD
   private adminUsers = []; // This will be populated with a list of the approved admin users.
-=======
-    public featured = async (req: Request, res: Response) => {
-      let projectsSortedByTotalPledged = await getProjectsSortedByTotalPledged(); // This works fine.
-      if (projectsSortedByTotalPledged === null || projectsSortedByTotalPledged.length === 0)
-      {
-        res.send({})
-      }
-      else
-      {
-        res.send(projectsSortedByTotalPledged[0]);
-      }
-    }
->>>>>>> 1bfb89267de5775c870ab2aacac07d1fa6b9c9cd
 
   public featured = async (req: Request, res: Response) => {
     let featuredProjects = new Array();
