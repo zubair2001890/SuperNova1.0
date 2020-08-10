@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { withStyles } from "@material-ui/core";
 import { connect } from "react-redux";
+import { getPictureUrl } from "../../../helpers/imageUrl";
 
 const styles = {
   avatar: {
@@ -18,7 +19,10 @@ export class Avatar extends Component {
       user: { given_name },
       account: { imageURL },
     } = this.props;
-    return <img src={imageURL} alt={given_name} className={classes.avatar} />;
+    const fullPictureUrl = getPictureUrl(imageURL);
+    return (
+      <img src={fullPictureUrl} alt={given_name} className={classes.avatar} />
+    );
   }
 }
 

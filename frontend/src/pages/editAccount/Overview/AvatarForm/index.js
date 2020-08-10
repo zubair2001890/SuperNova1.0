@@ -1,15 +1,65 @@
-import React, { useState } from "react";
-import icon from "./icon.png";
-import { makeStyles } from "@material-ui/core";
-import { post } from "axios";
-import { useAuth0 } from "@auth0/auth0-react";
+import React from "react";
 import Avatar from "@material-ui/core/Avatar";
+import icon from "./icon.png";
+import { connect } from "react-redux";
+import { post, put } from "axios";
+import { useAuth0 } from "@auth0/auth0-react";
+import { makeStyles } from "@material-ui/core";
+import { postUpdateAccount } from "../../../../store/slices/middlewareAPI/fetchAPI";
+import { getPictureUrl } from "../../../../helpers/imageUrl";
+import { fetchAccount } from "../../../../store/account";
 
-const handleChange = (setPicture) => async (event) => {
-  const { data } = await post("https://supernova.ac/users/id", {
-    imageURL: event.target.files[0],
+const getExtension = (fileName = "") => {
+  const match = fileName.match(/.+\.(\w+)/);
+  if (match) {
+    return match[1];
+  }
+  return "png";
+};
+
+const getSignedUrl = async (token, file) => {
+  const fileInfo = {
+    contentType: file.type,
+    extension: getExtension(file.name),
+  };
+  const requestConfigWithToken = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const { data } = await post(
+    "/api/private/upload/",
+    fileInfo,
+    requestConfigWithToken
+  );
+  return data;
+};
+
+const uploadImage = async (file, url) => {
+  await put(url, file, {
+    headers: {
+      "Content-Type": file.type,
+    },
   });
-  return setPicture(data.imageURL);
+};
+
+const updateProfileImage = async (key, token) => {
+  postUpdateAccount({ imageURL: key }, token);
+};
+
+const uploadImageAndUpdateAccount = async (getAccessTokenSilently, event) => {
+  const [file] = event.target.files;
+  const token = await getAccessTokenSilently();
+  const { url, key } = await getSignedUrl(token, file);
+  await uploadImage(file, url);
+  await updateProfileImage(key, token);
+};
+
+const handleChange = (fetchAccountWithSub, getAccessTokenSilently) => async (
+  event
+) => {
+  await uploadImageAndUpdateAccount(getAccessTokenSilently, event);
+  await fetchAccountWithSub();
 };
 
 const useStyles = makeStyles((theme) => {
@@ -65,14 +115,15 @@ const useStyles = makeStyles((theme) => {
   };
 });
 
-export default function AvatarForm() {
-  const { user } = useAuth0();
-  const [picture, setPicture] = useState(user.picture);
+function AvatarForm({ account, fetchAccount }) {
+  const { getAccessTokenSilently, user } = useAuth0();
+  const fullPictureUrl = getPictureUrl(account.imageURL);
   const classes = useStyles();
+  const fetchAccountWithSub = () => fetchAccount(user.sub);
   return (
     <div className={classes.avatarForm}>
       <Avatar
-        src={picture}
+        src={fullPictureUrl}
         variant="circle"
         className={classes.picture}
       ></Avatar>
@@ -80,10 +131,14 @@ export default function AvatarForm() {
         <img src={icon} alt="Camera icon" className={classes.iconImage} />
       </div>
       <input
-        onChange={handleChange(setPicture)}
+        onChange={handleChange(fetchAccountWithSub, getAccessTokenSilently)}
         className={classes.input}
         type="file"
       ></input>
     </div>
   );
 }
+
+const mapStateToProps = ({ account }) => ({ account });
+
+export default connect(mapStateToProps, { fetchAccount })(AvatarForm);
