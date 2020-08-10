@@ -24,9 +24,9 @@ const useStyles = makeStyles(() => ({
     fontSize: 30,
     letterSpacing: 2.6,
     fontWeight: "bold",
-    top: 200,
-    left: 200,
-    width: 300,
+    top: "10%",
+    left: "105%",
+    width: "max-content",
   },
 }));
 
