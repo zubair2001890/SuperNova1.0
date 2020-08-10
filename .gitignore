@@ -1,3 +1,7 @@
 aws-build/
+<<<<<<< HEAD
 **/node_modules
 node_modules
+=======
+node_modules/
+>>>>>>> e18215d9461e755913ad45c8e13bdd57d75c14ea

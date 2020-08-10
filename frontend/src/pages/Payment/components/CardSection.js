@@ -32,7 +32,11 @@ const useStyles = makeStyles((theme) => ({
   },
   security: {
     width: "49%",
+<<<<<<< HEAD
   },
+=======
+  }
+>>>>>>> e18215d9461e755913ad45c8e13bdd57d75c14ea
 }));
 
 const cardElementOptions = {
@@ -55,20 +59,32 @@ const cardElementOptions = {
 
 export default function CardSection() {
   const classes = useStyles();
+<<<<<<< HEAD
   return (
     <>
       <div className={classes.inputArea}>
         <label>
           <div className={classes.label}>Card number</div>
         </label>
+=======
+  // return <CardElement options={cardElementOptions} />;
+  return (
+    <>
+      <div className={classes.inputArea}>
+        <label><div className={classes.label}>Card number</div></label>
+>>>>>>> e18215d9461e755913ad45c8e13bdd57d75c14ea
         <div className={classes.inputField}>
           <CardNumberElement options={cardElementOptions} />
         </div>
       </div>
       <div className={classes.inputArea}>
+<<<<<<< HEAD
         <label htmlFor="name">
           <div className={classes.label}>Cardholder name</div>
         </label>
+=======
+        <label htmlFor="name"><div className={classes.label}>Cardholder name</div></label>
+>>>>>>> e18215d9461e755913ad45c8e13bdd57d75c14ea
         <div className={classes.inputField}>
           <input
             name="name"
@@ -81,26 +97,38 @@ export default function CardSection() {
       </div>
       <div className={classes.expirationAndSecurity}>
         <div className={clsx(classes.inputArea, classes.expiration)}>
+<<<<<<< HEAD
           <label>
             <div className={classes.label}>Expiration</div>
           </label>
+=======
+          <label><div className={classes.label}>Expiration</div></label>
+>>>>>>> e18215d9461e755913ad45c8e13bdd57d75c14ea
           <div className={classes.inputField}>
             <CardExpiryElement options={cardElementOptions} />
           </div>
         </div>
         <div className={clsx(classes.inputArea, classes.security)}>
+<<<<<<< HEAD
           <label>
             <div className={classes.label}>Security code</div>
           </label>
+=======
+          <label><div className={classes.label}>Security code</div></label>
+>>>>>>> e18215d9461e755913ad45c8e13bdd57d75c14ea
           <div className={classes.inputField}>
             <CardCvcElement options={cardElementOptions} />
           </div>
         </div>
       </div>
       <div className={classes.inputArea}>
+<<<<<<< HEAD
         <label htmlFor="zip">
           <div className={classes.label}>Zip/Postal Code</div>
         </label>
+=======
+        <label htmlFor="zip"><div className={classes.label}>Zip/Postal Code</div></label>
+>>>>>>> e18215d9461e755913ad45c8e13bdd57d75c14ea
         <div className={classes.inputField}>
           <input
             name="zip"
