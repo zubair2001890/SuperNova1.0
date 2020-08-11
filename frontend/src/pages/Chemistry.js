@@ -1,28 +1,44 @@
 import React from "react";
-import ConstellationOne from "../components/Constellations/ConstellationOne";
 import useStyles from "./FieldPage/exploreFieldPageStyles";
 import FieldPage from "./FieldPage";
 import paths from "../constants/paths";
+import ConstellationOne from "../components/Constellations/ConstellationOne";
+import ConstellationSeven from "../components/Constellations/ConstellationSeven";
+import ConstellationNine from "../components/Constellations/ConstellationNine";
+import ConstellationThree from "../components/Constellations/ConstellationThree";
 
-function Item(props) {
+function SlideOne(props) {
   return (
     <>
       <ConstellationOne
-        subfield={props.item.name2}
-        top="calc(60% - 20px)"
-        left="calc(10% + 50px)"
-        path={paths.exploreSubField}
-      />
-      <ConstellationOne
         subfield={props.item.name1}
-        top="calc(5% + 10px)"
-        left="calc(15% + 50px)"
+        left="calc(50% - 276px/2 - 360px)"
+        top="calc(50% - 147px/2 - 254.5px)"
         path={paths.exploreSubField}
       />
-      <ConstellationOne
+      <ConstellationSeven
+        subfield={props.item.name7}
+        left="calc(50% - 243px/2 - 481.5px)"
+        top="calc(50% - 322px/2 + 226px)"
+        path={paths.exploreSubField}
+      />
+      <ConstellationNine
+        subfield={props.item.name9}
+        left="calc(50% - 310px/2 + 480px)"
+        top="calc(50% - 206px/2 + 241px)"
+        path={paths.exploreSubField}
+      />
+    </>
+  );
+}
+
+function SlideTwo(props) {
+  return (
+    <>
+      <ConstellationThree
         subfield={props.item.name3}
-        top="calc(52%)"
-        left="calc(58%)"
+        left="calc(50% - 167px/2 - 570.5px)"
+        top="calc(50% - 299px/2 - 55.5px)"
         path={paths.exploreSubField}
       />
     </>
@@ -34,31 +50,21 @@ export default () => {
 
   var items = [
     {
-      name1: "CHEMISTRY 1",
-      name2: "CHEMISTRY 2",
-      name3: "CHEMISTRY 3",
+      name1: "ORGANIC CHEMISTRY",
+      name7: "INORGANIC CHEMISTRY",
+      name9: "PHYSICAL CHEMISTRY",
     },
     {
-      name1: "CHEMISTRY 4",
-      name2: "CHEMISTRY 5",
-      name3: "CHEMISTRY 6",
-    },
-    {
-      name1: "CHEMISTRY 7",
-      name2: "CHEMISTRY 8",
-      name3: "CHEMISTRY 9",
+      name3: "ANALYTICAL CHEMISTRY",
     },
   ];
 
   const content = [
     <div className={classes.carouselSlide}>
-      {<Item item={items[0]} titleStyle={classes.fieldTitle} />}
+      {<SlideOne item={items[0]} titleStyle={classes.fieldTitle} />}
     </div>,
     <div className={classes.carouselSlide}>
-      {<Item item={items[1]} titleStyle={classes.fieldTitle} />}
-    </div>,
-    <div className={classes.carouselSlide}>
-      {<Item item={items[2]} titleStyle={classes.fieldTitle} />}
+      {<SlideTwo item={items[1]} titleStyle={classes.fieldTitle} />}
     </div>,
   ];
 
