@@ -63,22 +63,59 @@ const addUrlParameters = (path, parameters) => {
     }
 
     return path;
-}
+  }
+};
 
-export const getFeaturedProject = async () => await fetchGet(`${process.env.REACT_APP_BACKEND_URL}/api/public/featured`);
+export const getFeaturedProject = async () =>
+  await fetchGet(`${process.env.REACT_APP_BACKEND_URL}/api/public/featured`);
 
-export const getSubFields = async (fieldname) => await fetchGet(`${process.env.REACT_APP_BACKEND_URL}/api/public/featured/${fieldname}`);
+export const getSubFields = async (fieldname) =>
+  await fetchGet(
+    `${process.env.REACT_APP_BACKEND_URL}/api/public/featured/${fieldname}`
+  );
 
-export const getProjects = async (parameters) => await fetchGet(addUrlParameters(`${process.env.REACT_APP_BACKEND_URL}/api/public/project`, parameters));
+export const getProjects = async (parameters) =>
+  await fetchGet(
+    addUrlParameters(
+      `${process.env.REACT_APP_BACKEND_URL}/api/public/project`,
+      parameters
+    )
+  );
 
-export const getProjectDetails = async (projectID) => await fetchGet(`${process.env.REACT_APP_BACKEND_URL}/api/public/project/${projectID}`);
+export const getProjectDetails = async (projectID) =>
+  await fetchGet(
+    `${process.env.REACT_APP_BACKEND_URL}/api/public/project/${projectID}`
+  );
 
-export const getProfile = async (profileSub) => await fetchGet(`${process.env.REACT_APP_BACKEND_URL}/api/public/profile/${profileSub}`);
+export const getProfile = async (profileSub) =>
+  await fetchGet(
+    `${process.env.REACT_APP_BACKEND_URL}/api/public/profile/${profileSub}`
+  );
 
-export const postUpdateAccount = async (data, authToken) => await fetchPost(`${process.env.REACT_APP_BACKEND_URL}/api/private/updateaccount`, data, authToken);
+export const postUpdateAccount = async (data, authToken) =>
+  await fetchPost(
+    `${process.env.REACT_APP_BACKEND_URL}/api/private/updateaccount`,
+    data,
+    authToken
+  );
 
-export const putCreateProject = async (data, authToken) => await fetchPut(`${process.env.REACT_APP_BACKEND_URL}/api/private/createproject`, data, authToken);
+export const putCreateProject = async (data, authToken) =>
+  await fetchPut(
+    `${process.env.REACT_APP_BACKEND_URL}/api/private/createproject`,
+    data,
+    authToken
+  );
 
-export const postUpdateProject = async (data, authToken, projectID) => await fetchPost(`${process.env.REACT_APP_BACKEND_URL}/api/private/updateproject/${projectID}`, data, authToken);
+export const postUpdateProject = async (data, authToken, projectID) =>
+  await fetchPost(
+    `${process.env.REACT_APP_BACKEND_URL}/api/private/updateproject/${projectID}`,
+    data,
+    authToken
+  );
 
-export const postSendPayment = async (data, authToken, projectID) => await fetchPost(`${process.env.REACT_APP_BACKEND_URL}/api/private/payment/${projectID}`, data, authToken);
+export const postSendPayment = async (data, authToken, projectID) =>
+  await fetchPost(
+    `${process.env.REACT_APP_BACKEND_URL}/api/private/payment/${projectID}`,
+    data,
+    authToken
+  );
