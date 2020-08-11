@@ -28,6 +28,7 @@ import Medicine from "./pages/Medicine";
 import ScrollToTop from "./components/ScrollToTop";
 import ExploreSubField from "./pages/ExploreSubField";
 import Payment from "./pages/Payment";
+import CheckoutForm from "./pages/Payment/components/CheckoutForm";
 
 function App() {
   return (
@@ -101,6 +102,12 @@ function App() {
             </Route>
             <Route path={paths.explore} exact>
               <Explore />
+            </Route>
+            <Route path={paths.payment}>
+              <Payment />
+            </Route>
+            <Route path={`${paths.checkout}/:project/:option`}>
+              <CheckoutForm />
             </Route>
             <Route path={paths.error404}>
               <Error404 />

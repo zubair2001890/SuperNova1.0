@@ -23,4 +23,5 @@ export default {
   engineeringAndTech: "/explore/engineeringandtech",
   exploreSubField: "/explore/exploresubfield",
   payment: "/payment",
+  checkout: "/checkout",
 };
