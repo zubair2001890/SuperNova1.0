@@ -70,10 +70,10 @@ export default (props) => {
           culpa qui officia deserunt mollit anim id est laborum.
         </Typography>
         <Typography variant="h2" className={classes.subheading}>
-          Fearued Field X Projects:
+          Featured Field X Projects:
         </Typography>
         <Typography variant="h2" className={classes.subheading}>
-          Fearued Field X Scientists:
+          Featured Field X Scientists:
         </Typography>
         <Typography variant="body1" className={classes.subheadingParagraph}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
