@@ -151,8 +151,7 @@ class BackProject extends Component {
           Back this project
         </Typography>
         <div className={classes.fundingOptions}>
-          {items.map((currentElement, index)=>{
-            this.state.createFundingOption(currentElement, index)
+          {items.map(this.state.createFundingOption)}
           })}
          </div>
         <Typography className={classes.note}>
