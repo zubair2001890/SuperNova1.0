@@ -1,22 +1,7 @@
-<<<<<<< HEAD
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import {
-  getFeaturedProject,
-  getProjects,
-  getSubFields,
-  getProjectDetails,
-  getProfile,
-  postUpdateAccount,
-  putCreateProject,
-  postUpdateProject,
-  postSendPayment,
-} from "./fetchAPI";
-=======
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { getFeaturedProject, getProjects, getSubFields, 
   getProjectDetails, getProfile, postUpdateAccount,
   putCreateProject, postUpdateProject, postSendPayment} from './fetchAPI';
->>>>>>> e18215d9461e755913ad45c8e13bdd57d75c14ea
 
 export const fetchFeaturedProject = createAsyncThunk(
   "project/fetchFeaturedProject",
@@ -87,17 +72,6 @@ export const sendUpdateProject = createAsyncThunk(
     const response = await postUpdateProject(data, authToken, projectID);
     return response;
   }
-<<<<<<< HEAD
-);
-
-export const sendPayment = createAsyncThunk(
-  "payment/Send",
-  async ({ data, authToken}, thunkAPI) => {
-    const response = await postSendPayment(data, authToken);
-    return response;
-  }
-);
-=======
 )
 
   export const sendPayment = createAsyncThunk('payment/Send',
@@ -106,4 +80,3 @@ export const sendPayment = createAsyncThunk(
     return response;
   }
 )
->>>>>>> e18215d9461e755913ad45c8e13bdd57d75c14ea

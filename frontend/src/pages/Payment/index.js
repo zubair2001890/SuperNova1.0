@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React,  {Component } from "react";
 import { withStyles, Typography } from "@material-ui/core";
 import FundingOption from "./components/FundingOption";
 import FundingEnterAmount from "./components/FundingEnterAmount";
@@ -151,9 +151,9 @@ class BackProject extends Component {
           Back this project
         </Typography>
         <div className={classes.fundingOptions}>
-          items.map((currentElement, index)=>{
+          {items.map((currentElement, index)=>{
             this.state.createFundingOption(currentElement, index)
-          })
+          })}
          </div>
         <Typography className={classes.note}>
           Note: you are free to opt out of any valid rewards later.
