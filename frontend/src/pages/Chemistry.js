@@ -47,6 +47,10 @@ function SlideTwo(props) {
 
 export default () => {
   const classes = useStyles();
+  const backgroundImageURL =
+    "url(" +
+    require("./FieldPage/assets/FP-chemistry_/FP-chemistry_.png") +
+    ")";
 
   var items = [
     {
@@ -70,7 +74,7 @@ export default () => {
 
   return (
     <>
-      <FieldPage title="CHEMISTRY" content={content} />
+      <FieldPage title="CHEMISTRY" content={content} bImageURL={backgroundImageURL} />
     </>
   );
 };

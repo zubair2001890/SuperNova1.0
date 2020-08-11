@@ -9,8 +9,6 @@ import ConstellationThree from "../components/Constellations/ConstellationThree"
 import ConstellationTwo from "../components/Constellations/ConstellationTwo";
 import ConstellationFour from "../components/Constellations/ConstellationFour";
 import ConstellationEight from "../components/Constellations/ConstellationEight";
-import ConstellationFive from "../components/Constellations/ConstellationFive";
-import ConstellationSix from "../components/Constellations/ConstellationSix";
 
 function SlideOne(props) {
   return (
@@ -77,6 +75,10 @@ function SlideThree(props) {
 
 export default () => {
   const classes = useStyles();
+  const backgroundImageURL =
+    "url(" +
+    require("./FieldPage/assets/FP-physics/FP-physics.png") +
+    ")";
 
   var items = [
     {
@@ -108,7 +110,7 @@ export default () => {
 
   return (
     <>
-      <FieldPage title="PHYSICS" content={content} />
+      <FieldPage title="PHYSICS" content={content} bImageURL={backgroundImageURL} />
     </>
   );
 };

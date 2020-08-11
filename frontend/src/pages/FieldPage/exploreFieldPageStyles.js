@@ -17,10 +17,6 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     height: 1080,
     top: 0,
-    backgroundImage:
-      "url(" +
-      require("../../components/Constellation/assets/background/background.png") +
-      ")",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
     backgroundSize: "cover",

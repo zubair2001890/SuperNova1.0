@@ -89,6 +89,10 @@ function SlideThree(props) {
 
 export default () => {
   const classes = useStyles();
+  const backgroundImageURL =
+    "url(" +
+    require("./FieldPage/assets/FP-social_Sciences/FP-social_Sciences.png") +
+    ")";
 
   var items = [
     {
@@ -122,7 +126,7 @@ export default () => {
 
   return (
     <>
-      <FieldPage title="SOCIAL SCIENCES" content={content} />
+      <FieldPage title="SOCIAL SCIENCES" content={content} bImageURL={backgroundImageURL} />
     </>
   );
 };

@@ -10,6 +10,8 @@ export default (props) => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
+  const backgroundImageURL = props.bImageURL;
+
   useEffect(() => {
     dispatch(setPageDarkTheme(true));
     return () => {
@@ -24,7 +26,7 @@ export default (props) => {
       <div className={classes.pageContainer}>
         <div className={classes.pageHeader}>
           <div className={classes.mockAppBarLayout} />
-          <div className={classes.carouselContainer}>
+          <div className={classes.carouselContainer} style={{ backgroundImage: backgroundImageURL }}>
             <Media
               query="(min-width: 1200px)"
               render={() => (
