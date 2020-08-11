@@ -37,7 +37,10 @@ const EarthSciences = lazy(() => import("./pages/EarthSciences"));
 const Chemistry = lazy(() => import("./pages/Chemistry"));
 const Medicine = lazy(() => import("./pages/Medicine"));
 const ExploreSubField = lazy(() => import("./pages/ExploreSubField"));
-const Payment = lazy(() => import("./pages/Payment"))
+const Payment = lazy(() => import("./pages/Payment"));
+const CheckoutForm = lazy(() =>
+  import("./pages/Payment/components/CheckoutForm")
+);
 
 export default function App() {
   return (
@@ -133,6 +136,9 @@ export default function App() {
               </Route>
               <Route path={paths.payment}>
                 <Payment />
+              </Route>
+              <Route path={`${paths.checkout}/:project/:option`}>
+                <CheckoutForm />
               </Route>
               <Route path={paths.error404}>
                 <Error404 />

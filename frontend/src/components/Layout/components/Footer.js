@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   footer: {
     width: "100%",
     // must be positioned to not be covered by particles
-    position: 'relative',
+    position: "relative",
     bottom: 0,
     backgroundColor: theme.palette.common.black,
   },
@@ -162,7 +162,7 @@ export default function Footer() {
         <Grid item xs={4} className={classes.gridItem}>
           <MaterialLink
             component={RouterLink}
-            to="/"
+            to={`${paths.checkout}/0/1`}
             className={classes.regularLink}
           >
             Funded Projects
