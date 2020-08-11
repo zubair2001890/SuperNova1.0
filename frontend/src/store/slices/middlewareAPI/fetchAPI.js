@@ -37,7 +37,6 @@ const fetchPut = async (path, data, authToken) => {
 }
 
 const fetchGet = async (path, authToken) => {
-    console.log("fetchGet called with path " + path);
     let headers = { 
         'Content-Type': 'application/json' 
     };
@@ -67,7 +66,7 @@ const addUrlParameters = (path, parameters) => {
     return path;
 }
 
-export const getFeaturedProjects = async () => await fetchGet(`${process.env.REACT_APP_BACKEND_URL}/api/public/featured`);
+export const getFeaturedProject = async () => await fetchGet(`${process.env.REACT_APP_BACKEND_URL}/api/public/featured`);
 
 export const getSubFields = async (fieldname) => await fetchGet(`${process.env.REACT_APP_BACKEND_URL}/api/public/featured/${fieldname}`);
 
@@ -82,3 +81,5 @@ export const postUpdateAccount = async (data, authToken) => await fetchPost(`${p
 export const putCreateProject = async (data, authToken) => await fetchPut(`${process.env.REACT_APP_BACKEND_URL}/api/private/createproject`, data, authToken);
 
 export const postUpdateProject = async (data, authToken, projectID) => await fetchPost(`${process.env.REACT_APP_BACKEND_URL}/api/private/updateproject/${projectID}`, data, authToken);
+
+export const postSendPayment = async (data, authToken, projectID) => await fetchPost(`${process.env.REACT_APP_BACKEND_URL}/api/private/payment/${projectID}`, data, authToken);

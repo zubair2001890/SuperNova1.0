@@ -37,6 +37,7 @@ const EarthSciences = lazy(() => import("./pages/EarthSciences"));
 const Chemistry = lazy(() => import("./pages/Chemistry"));
 const Medicine = lazy(() => import("./pages/Medicine"));
 const ExploreSubField = lazy(() => import("./pages/ExploreSubField"));
+const Payment = lazy(() => import("./pages/Payment"))
 
 export default function App() {
   return (
@@ -129,6 +130,9 @@ export default function App() {
               </Route>
               <Route path={paths.exploreSubField}>
                 <ExploreSubField />
+              </Route>
+              <Route path={paths.payment}>
+                <Payment />
               </Route>
               <Route path={paths.error404}>
                 <Error404 />
