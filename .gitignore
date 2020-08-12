@@ -1,2 +1,3 @@
-aws-build/
+settings.json
 node_modules
+aws-build/
