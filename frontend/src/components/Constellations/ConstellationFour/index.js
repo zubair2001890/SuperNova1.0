@@ -6,7 +6,7 @@ const useStyles = makeStyles(() => ({
   constellation: {
     position: "absolute",
     height: 187,
-    width: 257,
+    width: 275,
   },
   constellationImage: {
     position: "absolute",
@@ -16,6 +16,12 @@ const useStyles = makeStyles(() => ({
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
     backgroundSize: "cover",
+    "&:hover": {
+      backgroundImage:
+        "url(" + require("../assets/constellation4hoverstate.png") + ")",
+      height: "120%",
+      width: "120%",
+    },
   },
   subfieldName: {
     position: "relative",
@@ -27,6 +33,11 @@ const useStyles = makeStyles(() => ({
     top: "-20%",
     left: "40%",
     width: "max-content",
+    maxWidth: 400,
+    transition: "text-shadow 0.2s linear",
+    "&:hover": {
+      textShadow: "0 0 50px white",
+    },
   },
 }));
 

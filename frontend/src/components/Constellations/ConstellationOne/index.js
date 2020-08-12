@@ -19,6 +19,8 @@ const useStyles = makeStyles(() => ({
     "&:hover": {
       backgroundImage:
         "url(" + require("../assets/constellation1hoverstate.png") + ")",
+      height: "120%",
+      width: "120%",
     },
   },
   subfieldName: {
@@ -31,6 +33,10 @@ const useStyles = makeStyles(() => ({
     top: "5%",
     left: "58%",
     width: "max-content",
+    transition: "text-shadow 0.2s linear",
+    "&:hover": {
+      textShadow: "0 0 50px white",
+    },
   },
 }));
 
