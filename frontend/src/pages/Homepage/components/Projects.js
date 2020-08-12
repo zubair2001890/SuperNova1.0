@@ -65,79 +65,47 @@ export default ({ projectsData, projectsLoading }) => {
       </Typography>
       <div className={classes.projectCardsGrid}>
         {projectsLoading && <CircularProgress color="secondary" />}
-<<<<<<< HEAD
-        {projectsData && projectsData.map((project) => (
-          <ProjectCard
-            key={project._id}
-            headerUrl={project.projectImage}
-            className={classes.card}
-            body={
-              <div className={classes.cardBody}>
-                <p className={classes.projectTitle}>
-                  {project.projectName.length < maxTitleLength ? (
-                    project.projectName
-                  ) : (
-                      <Tooltip title={project.projectName} placement="top">
-=======
-        {projectsData &&
-          projectsData.map((project) => (
-            <ProjectCard
-              key={project.id}
-              headerUrl={project.headerUrl}
-              className={classes.card}
-              body={
-                <div className={classes.cardBody}>
-                  <p className={classes.projectTitle}>
-                    {project.title.length < maxTitleLength ? (
-                      project.title
-                    ) : (
-                      <Tooltip title={project.title} placement="top">
->>>>>>> 1bfb89267de5775c870ab2aacac07d1fa6b9c9cd
-                        <span>
-                          {project.title.slice(0, maxTitleLength - 3) + "..."}
-                        </span>
-                      </Tooltip>
-                    )}
-<<<<<<< HEAD
-                </p>
-                <Avatar
-                  className={classes.avatar}
-                  alt="Researcher Avatar"
-                  src={project.projectImage}
-                />
-                <p className={classes.subtitle}>
-                  {project.firstName} {project.lastName} <br />
-                  {project.university}
-                </p>
-                <FundsProgress
-                  fundsRaised={project.totalPledged}
-                  fundsGoal={project.goal}
-                />
-              </div>
-            }
-          />
-        ))}
-=======
-                  </p>
-                  <Avatar
-                    className={classes.avatar}
-                    alt="Researcher Avatar"
-                    src={project.avatarUrl}
-                  />
-                  <p className={classes.subtitle}>
-                    {project.firstName} {project.lastName} <br />
-                    {project.university}
-                  </p>
-                  <FundsProgress
-                    fundsRaised={project.fundsRaised}
-                    fundsGoal={project.fundsGoal}
-                  />
-                </div>
-              }
-            />
-          ))}
->>>>>>> 1bfb89267de5775c870ab2aacac07d1fa6b9c9cd
+        {projectsData && projectsData.map(renderProject(classes))}
       </div>
     </div>
   );
 };
+
+function renderProject(classes) {
+  return (project) => (
+    <ProjectCard
+      key={project._id}
+      headerUrl={project.projectImage}
+      className={classes.card}
+      id={project._id}
+      body={
+        <div className={classes.cardBody}>
+          <p className={classes.projectTitle}>
+            {project.projectName.length < maxTitleLength ? (
+              project.projectName
+            ) : (
+              <Tooltip title={project.projectName} placement="top">
+                <span>
+                  {project.projectName.slice(0, maxTitleLength - 3) + "..."}
+                </span>
+              </Tooltip>
+            )}
+          </p>
+          <Avatar
+            className={classes.avatar}
+            alt="Researcher Avatar"
+            src={project.projectImage}
+          />
+          <p className={classes.subtitle}>
+            {project.firstName} {project.lastName} <br />
+            {project.university}
+          </p>
+          <FundsProgress
+            fundsRaised={project.totalPledged}
+            fundsGoal={project.goal}
+          />
+        </div>
+      }
+    />
+  );
+}
