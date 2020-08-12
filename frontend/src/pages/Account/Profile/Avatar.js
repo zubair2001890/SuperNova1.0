@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { withStyles } from "@material-ui/core";
+import { connect } from "react-redux";
+import { getPictureUrl } from "../../../helpers/imageUrl";
 
 const styles = {
   avatar: {
@@ -14,10 +16,18 @@ export class Avatar extends Component {
   render() {
     const {
       classes,
-      user: { picture, given_name },
+      user: { given_name },
+      account: { imageURL },
     } = this.props;
-    return <img src={picture} alt={given_name} className={classes.avatar} />;
+    const fullPictureUrl = getPictureUrl(imageURL);
+    return (
+      <img src={fullPictureUrl} alt={given_name} className={classes.avatar} />
+    );
   }
 }
 
-export default withStyles(styles)(Avatar);
+const StyledAvatar = withStyles(styles)(Avatar);
+
+const mapStateToProps = ({ account }) => ({ account });
+
+export default connect(mapStateToProps)(StyledAvatar);

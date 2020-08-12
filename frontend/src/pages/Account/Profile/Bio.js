@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { withStyles } from "@material-ui/core";
+import { connect } from "react-redux";
 
 const styles = {
   bio: {
@@ -12,14 +13,18 @@ const styles = {
 
 export class Bio extends Component {
   render() {
-    const { user, classes } = this.props;
+    const { account, classes } = this.props;
     return (
       <section className={classes.bio}>
         <p>Bio:</p>
-        <p>{user.bio || "No biography"}</p>
+        <p>{account.bio || "No biography"}</p>
       </section>
     );
   }
 }
 
-export default withStyles(styles)(Bio);
+const StyledBio = withStyles(styles)(Bio);
+
+const mapStateToProps = ({ account }) => ({ account });
+
+export default connect(mapStateToProps)(StyledBio);

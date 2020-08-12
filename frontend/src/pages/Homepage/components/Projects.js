@@ -30,20 +30,20 @@ export default ({ projectsData, projectsLoading }) => {
       </Typography>
       <div className={classes.projectCardsGrid}>
         {projectsLoading && <CircularProgress color="secondary" />}
-        {projectsData &&
-          projectsData.map((project) => {
-            const { _id } = project;
-            return (
-              <ProjectCard
-                key={_id}
-                id={_id}
-                headerUrl={project.headerUrl}
-                className={classes.card}
-                body={<Body project={project} />}
-              />
-            );
-          })}
+        {projectsData && projectsData.map(renderProject(classes))}
       </div>
     </div>
   );
 };
+
+function renderProject(classes) {
+  return (project) => (
+    <ProjectCard
+      key={project._id}
+      headerUrl={project.projectImage}
+      className={classes.card}
+      id={project._id}
+      body={<Body project={project} />}
+    />
+  );
+}

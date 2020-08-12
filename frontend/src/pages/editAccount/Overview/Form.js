@@ -1,10 +1,13 @@
 import React from "react";
+import { connect } from "react-redux";
 import { makeStyles } from "@material-ui/core";
-import { post } from "axios";
 import { reduxForm } from "redux-form";
 import { useAuth0 } from "@auth0/auth0-react";
+
 import FormGrid from "../FormGrid";
 import { formInput, input } from "../../../styles/form";
+import { postUpdateAccount } from "../../../store/slices/middlewareAPI/fetchAPI";
+import { fetchAccount } from "../../../store/account";
 
 const useStyles = makeStyles((theme) => ({
   form: {
@@ -26,6 +29,23 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const matchFirstAndLastName = (name) => name.match(/(\w+) (\w+)/);
+
+const getIfIsEmpty = (string) => !string || !string.length;
+
+const validateIsNotEmpty = (value) => {
+  const isEmpty = getIfIsEmpty(value);
+  if (isEmpty) return "This value must not be left empty.";
+};
+
+const validateName = (name) => {
+  const isEmpty = getIfIsEmpty(name);
+  const hasFirstAndLastName = matchFirstAndLastName(name || "");
+  if (isEmpty || !hasFirstAndLastName) {
+    return 'You must provide a first and last name. Ex: "Tim Appleseed"';
+  }
+};
+
 function FormGridWithFields(props) {
   const classes = useStyles();
   return (
@@ -39,6 +59,8 @@ function FormGridWithFields(props) {
           label: "Name",
           component: "input",
           inputClass: classes.input,
+          validate: validateName,
+          required: true,
         },
         {
           name: "email",
@@ -49,7 +71,9 @@ function FormGridWithFields(props) {
           inputClass: classes.input,
         },
         {
-          name: "institution",
+          validate: validateIsNotEmpty,
+          required: true,
+          name: "university",
           placeholder: "My University",
           type: "text",
           label: "Institution",
@@ -70,13 +94,54 @@ function FormGridWithFields(props) {
   );
 }
 
-const submit = async (values) => post("https://supernova.ac/users/id", values);
+const getFirstAndLastName = (name) => {
+  const match = matchFirstAndLastName(name);
+  return {
+    firstName: match[1],
+    lastName: match[2],
+  };
+};
 
-export default function Form() {
-  const { user } = useAuth0();
+const getSubmissionValues = (values) => {
+  const nameData = getFirstAndLastName(values.name);
+  return {
+    ...values,
+    ...nameData,
+  };
+};
+
+const updateAccount = async (getAccessTokenSilently, values) => {
+  const token = await getAccessTokenSilently();
+  const submissionValues = getSubmissionValues(values);
+  return postUpdateAccount(submissionValues, token);
+};
+
+const submit = (getAccessTokenSilently, user, fetchAccount) => async (
+  values
+) => {
+  await updateAccount(getAccessTokenSilently, values);
+  await fetchAccount(user.sub);
+};
+
+const getInitialValues = (account) => ({
+  ...account,
+  name: `${account.firstName} ${account.lastName}`,
+});
+
+function Form({ account, fetchAccount }) {
+  const initialValues = getInitialValues(account);
   const ConnectedForm = reduxForm({
-    initialValues: user,
+    initialValues,
     form: "editAccountOverview",
   })(FormGridWithFields);
-  return <ConnectedForm onSubmit={submit} />;
+  const { getAccessTokenSilently, user } = useAuth0();
+  return (
+    <ConnectedForm
+      onSubmit={submit(getAccessTokenSilently, user, fetchAccount)}
+    />
+  );
 }
+
+const mapStateToProps = ({ account }) => ({ account });
+
+export default connect(mapStateToProps, { fetchAccount })(Form);

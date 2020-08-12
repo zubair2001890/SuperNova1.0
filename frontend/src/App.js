@@ -44,9 +44,14 @@ const EditProjectTeam = lazy(() => import("./pages/editProject/Team"));
 const EditProjectTimeline = lazy(() => import("./pages/editProject/Timeline"));
 const EditProjectMethods = lazy(() => import("./pages/editProject/Methods"));
 const EditProjectLabNotes = lazy(() => import("./pages/editProject/LabNotes"));
+const Payment = lazy(() => import("./pages/Payment"));
+const CheckoutForm = lazy(() =>
+  import("./pages/Payment/components/CheckoutForm")
+);
+
+const { projects } = paths;
 
 export default function App() {
-  const { projects } = paths;
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
@@ -155,6 +160,12 @@ export default function App() {
               </Route>
               <Route path={projects.labNotes.route}>
                 <EditProjectLabNotes />
+                </Route>
+              <Route path={paths.payment}>
+                <Payment />
+              </Route>
+              <Route path={`${paths.checkout}/:project/:option`}>
+                <CheckoutForm />
               </Route>
               <Route path={paths.error404}>
                 <Error404 />

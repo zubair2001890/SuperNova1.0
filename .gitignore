@@ -1,6 +1,3 @@
-frontend/node_modules/.bin/acorn
 settings.json
-frontend/.env.development
 node_modules
-.env
 aws-build/

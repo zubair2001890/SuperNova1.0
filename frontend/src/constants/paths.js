@@ -36,6 +36,8 @@ let paths = {
   engineeringAndTech: "/explore/engineeringandtech",
   projects: {},
   exploreSubField: "/explore/exploresubfield",
+  payment: "/payment",
+  checkout: "/checkout",
 };
 
 const addProjectPath = ([key, subPath]) => {
