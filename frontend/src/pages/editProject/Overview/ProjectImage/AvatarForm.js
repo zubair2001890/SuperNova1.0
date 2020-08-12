@@ -1,28 +1,40 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import { withStyles } from "@material-ui/core";
-import BaseAvatarForm from "../../../../components/AvatarForm";
+import PictureForm from "../../../../components/PictureForm";
 import { ProjectContext } from "../../Layout";
 import { icon, iconOffset } from "../../../../styles/form";
+import { postUpdateProject } from "../../../../store/slices/middlewareAPI/fetchAPI";
 
-export class AvatarForm extends Component {
+export class Form extends Component {
   static contextType = ProjectContext;
 
-  handleChange = () => {};
+  getProjectId = () => {
+    return this.props.match.params.id;
+  };
+
+  updateProjectImage = (key, token) => {
+    const projectId = this.getProjectId();
+    return postUpdateProject({ projectImage: key }, token, projectId);
+  };
+
+  useImage = async (key, token) => {
+    await this.updateProjectImage(key, token);
+    await this.context.fetchAndSetProject();
+  };
 
   render() {
     const { classes } = this.props;
-    if (this.context) {
-      return (
-        <BaseAvatarForm
-          defaultPicture={this.context.projectImage}
-          handleChange={this.handleChange}
-          variant="square"
-          pictureClass={classes.picture}
-          iconClass={classes.icon}
-        />
-      );
-    }
-    return null;
+    if (!this.context) return null;
+    return (
+      <PictureForm
+        useImage={this.useImage}
+        imageKey={this.context.projectImage}
+        variant="square"
+        pictureClass={classes.picture}
+        iconClass={classes.icon}
+      />
+    );
   }
 }
 
@@ -40,4 +52,6 @@ const styles = {
   },
 };
 
-export default withStyles(styles)(AvatarForm);
+const StyledForm = withStyles(styles)(Form);
+
+export default withRouter(StyledForm);

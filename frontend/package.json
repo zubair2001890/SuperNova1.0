@@ -38,7 +38,7 @@
   "scripts": {
     "start": "react-scripts start",
     "database": "json-server --watch src/database/data.json --routes src/database/routes.json --port 5000",
-    "dev": "concurrently \"npm run start\" \"npm run start --prefix ../backend\"",
+    "dev": "concurrently \"npm run start\" \"npm run start:watch --prefix ../backend\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

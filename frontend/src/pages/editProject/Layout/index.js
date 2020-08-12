@@ -1,43 +1,20 @@
 import React, { Component } from "react";
+import Grid from "@material-ui/core/Grid";
 import { reduxForm } from "redux-form";
 import { withRouter } from "react-router-dom";
-import { get } from "axios";
-import Grid from "@material-ui/core/Grid";
 
 import EditLayout from "../../../components/EditLayout";
 import Nav from "./Nav";
 import forms from "../../../constants/forms";
 import { withStyles } from "@material-ui/core";
 import { subtitle } from "../../../styles/form";
+import { getProjectDetails } from "../../../store/slices/middlewareAPI/fetchAPI";
 
 export const ProjectContext = React.createContext();
 
-export class Layout extends Component {
-  state = {
-    project: null,
-  };
-
-  setProject = (project) => this.setState({ project });
-
-  fetchProject = async () => {
-    const { id } = this.props.match.params;
-    const { data: results } = await get(`/api/projects/${id}`);
-    const [project] = results;
-    return project;
-  };
-
-  fetchAndSetProject = async () => {
-    const project = await this.fetchProject();
-    this.setProject(project);
-  };
-
-  componentDidMount() {
-    this.fetchAndSetProject();
-  }
-
+export class Content extends Component {
   render() {
-    const { project } = this.state;
-    const { children, classes, ...other } = this.props;
+    const { classes, children, ...other } = this.props;
     return (
       <EditLayout
         {...other}
@@ -45,11 +22,9 @@ export class Layout extends Component {
         mainTitle="Edit Project"
         customClasses={classes}
       >
-        <ProjectContext.Provider value={project}>
-          <Grid container justify="space-between">
-            {children}
-          </Grid>
-        </ProjectContext.Provider>
+        <Grid container justify="space-between">
+          {children}
+        </Grid>
       </EditLayout>
     );
   }
@@ -69,28 +44,63 @@ const styles = (theme) => ({
   },
 });
 
-const LayoutWithStyles = withStyles(styles)(Layout);
+const StyledContent = withStyles(styles)(Content);
 
-const getEmptyStages = (amount) => {
-  let stages = [];
-  for (let stageIndex = 0; stageIndex < amount; stageIndex++) {
-    stages.push({});
+export class Layout extends Component {
+  state = {
+    project: null,
+  };
+
+  setProject = (project) => this.setState({ project });
+
+  fetchProject = async () => {
+    const { id } = this.props.match.params;
+    return getProjectDetails(id);
+  };
+
+  fetchAndSetProject = async () => {
+    const project = await this.fetchProject();
+    this.setProject(project);
+  };
+
+  componentDidMount() {
+    this.fetchAndSetProject();
   }
-  return stages;
-};
 
-const ConnectedForm = reduxForm({
-  form: forms.editProject,
-  initialValues: {
-    team: [
-      {
-        name: "Albert Einstein",
-        role: "Scientist",
+  getProviderValues = () => ({
+    ...this.state.project,
+    fetchAndSetProject: this.fetchAndSetProject,
+  });
+
+  getEmptyStages = (amount) => {
+    let stages = [];
+    for (let stageIndex = 0; stageIndex < amount; stageIndex++) {
+      stages.push({});
+    }
+    return stages;
+  };
+
+  getForm = () => {
+    const { project } = this.state;
+    return reduxForm({
+      form: forms.editProject,
+      initialValues: {
+        ...project,
+        stages: this.getEmptyStages(3),
       },
-    ],
-    stages: getEmptyStages(3),
-  },
-  destroyOnUnmount: false,
-})(LayoutWithStyles);
+      destroyOnUnmount: false,
+    })(StyledContent);
+  };
 
-export default withRouter(ConnectedForm);
+  render() {
+    const ConnectedForm = this.getForm();
+    const { project } = this.state;
+    return (
+      <ProjectContext.Provider value={this.getProviderValues()}>
+        {project && <ConnectedForm {...this.props} />}
+      </ProjectContext.Provider>
+    );
+  }
+}
+
+export default withRouter(Layout);
