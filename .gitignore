@@ -1,2 +1,8 @@
+<<<<<<< HEAD
 aws-build/
 node_modules/
+=======
+settings.json
+node_modules
+aws-build/
+>>>>>>> 9beac6abcbb5706ebe0331a2043761802c0c1bea

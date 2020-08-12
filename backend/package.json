@@ -47,5 +47,9 @@
     ],
     "exec": "npm start",
     "ext": "ts"
+  },
+  "prettier": {
+    "singleQuote": false,
+    "semi": true
   }
 }
