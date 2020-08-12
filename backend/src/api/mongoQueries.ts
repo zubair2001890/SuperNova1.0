@@ -21,7 +21,6 @@ export const getFeaturedProjects = async function (): Promise<any> {
          console.log(err);
          rejecter(null);
       }
-      console.log("Returned projects = " + docs);
       resolver(docs)
    });
    projectsQuery.sort({ totalPledged: -1 });
