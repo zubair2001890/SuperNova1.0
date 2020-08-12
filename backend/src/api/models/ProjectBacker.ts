@@ -26,5 +26,11 @@ export const ProjectBacker = model(
       minlength: 1,
       maxlength: 255,
     },
+    optionKey: {
+      type: String,
+      required: true,
+      minlength: 1,
+      maxlength: 255,
+    },
   })
 );
