@@ -1,46 +1,3 @@
-<<<<<<< HEAD
-import React from "react";
-import { Typography, makeStyles } from "@material-ui/core";
-import { loadStripe } from "@stripe/stripe-js";
-import { Elements } from "@stripe/react-stripe-js";
-import CheckoutForm from "./components/CheckoutForm";
-
-const useStyles = makeStyles((theme) => ({
-  pageContainer: {
-    marginTop: 160,
-    width: "50%",
-    height: "100%",
-    margin: "auto",
-  },
-  title: {
-      paddingBottom: theme.spacing(10),
-  },
-  subtitle: {
-      letterSpacing: 1,
-      fontSize: 20,
-      paddingBottom: theme.spacing(2),
-  }
-}));
-
-const stripePromise = loadStripe(
-  "pk_test_51H7Hs0CJhabJ2fSRM7gMfnsInB3asKP17ENirlGHpbKGjHJnQR5ftp8B6AG4t0Z2KOHL8P2N4rvG0xgubuTVq0RS00nVHz409Y"
-);
-// const stripePromise = loadStripe(process.env.PUBLISHABLE_KEY)
-
-export default () => {
-  const classes = useStyles();
-
-  return (
-    <div className={classes.pageContainer}>
-      <Typography variant="h1" className={classes.title}>Payment</Typography>
-      <Typography variant="h6" className={classes.subtitle}>Pledge</Typography>
-      <Elements stripe={stripePromise}>
-        <CheckoutForm />
-      </Elements>
-    </div>
-  );
-}
-=======
 import React, { Component } from "react";
 import { withStyles, Typography } from "@material-ui/core";
 import FundingOption from "./components/FundingOption";
@@ -94,7 +51,9 @@ class BackProject extends Component {
             amount={item.min}
             title={item.title}
             description={item.description}
-            onClick={() => {this.state.onClick(index)}}
+            onClick={() => {
+              this.state.onClick(index);
+            }}
           />
         );
       } else {
@@ -192,13 +151,7 @@ class BackProject extends Component {
           Back this project
         </Typography>
         <div className={classes.fundingOptions}>
-          {this.state.createFundingOption(items[0], 0)}
-          {this.state.createFundingOption(items[1], 1)}
-          {this.state.createFundingOption(items[2], 2)}
-          {this.state.createFundingOption(items[3], 3)}
-          {this.state.createFundingOption(items[4], 4)}
-          {this.state.createFundingOption(items[5], 5)}
-          {this.state.createFundingOption(items[6], 6)}
+          {items.map(this.state.createFundingOption)}
         </div>
         <Typography className={classes.note}>
           Note: you are free to opt out of any valid rewards later.
@@ -209,4 +162,3 @@ class BackProject extends Component {
 }
 
 export default withStyles(useStyles)(BackProject);
->>>>>>> 58acac22d33233536d46bdb3387c40e703bf9e31

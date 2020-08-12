@@ -1,5 +1,8 @@
+import { getAccountUrl, getEditPath } from "../helpers/createPaths";
+
 export default {
   login: "/login",
+  logout: "/logout",
   test: "/test",
   error404: "/not-found",
   home: "/",
@@ -11,6 +14,12 @@ export default {
   contact: "/contactus",
   team: "/ourteam",
   informationPageX: "/topicx",
+  account: getAccountUrl(""),
+  myProjects: getAccountUrl("my-projects"),
+  profile: getAccountUrl("profile"),
+  activity: getAccountUrl("activity"),
+  overview: getEditPath(""),
+  settings: getEditPath("/settings"),
   biology: "/explore/biology",
   physics: "/explore/physics",
   mathsAndStats: "/explore/mathematicsandstats",
@@ -22,9 +31,6 @@ export default {
   socialSciences: "/explore/socialsciences",
   engineeringAndTech: "/explore/engineeringandtech",
   exploreSubField: "/explore/exploresubfield",
-<<<<<<< HEAD
   payment: "/payment",
-=======
-  payment: "/payment"
->>>>>>> 58acac22d33233536d46bdb3387c40e703bf9e31
+  checkout: "/checkout",
 };
