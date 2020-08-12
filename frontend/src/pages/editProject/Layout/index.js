@@ -1,20 +1,31 @@
 import React, { Component } from "react";
 import Grid from "@material-ui/core/Grid";
+import { withAuth0 } from "@auth0/auth0-react";
 import { reduxForm } from "redux-form";
 import { withRouter } from "react-router-dom";
+import { withStyles } from "@material-ui/core";
 
 import EditLayout from "../../../components/EditLayout";
 import Nav from "./Nav";
 import forms from "../../../constants/forms";
-import { withStyles } from "@material-ui/core";
 import { subtitle } from "../../../styles/form";
-import { getProjectDetails } from "../../../store/slices/middlewareAPI/fetchAPI";
+import {
+  getProjectDetails,
+  postUpdateProject,
+} from "../../../store/slices/middlewareAPI/fetchAPI";
 
 export const ProjectContext = React.createContext();
 
 export class Content extends Component {
+  static contextType = ProjectContext;
+
+  submitValues = (values) => {
+    const { updateProject } = this.context;
+    return updateProject(values);
+  };
+
   render() {
-    const { classes, children, ...other } = this.props;
+    const { classes, children, handleSubmit, ...other } = this.props;
     return (
       <EditLayout
         {...other}
@@ -23,7 +34,7 @@ export class Content extends Component {
         customClasses={classes}
       >
         <Grid container justify="space-between">
-          {children}
+          <form onSubmit={handleSubmit(this.submitValues)}>{children}</form>
         </Grid>
       </EditLayout>
     );
@@ -67,9 +78,18 @@ export class Layout extends Component {
     this.fetchAndSetProject();
   }
 
+  updateProject = async (data) => {
+    const { auth0, match } = this.props;
+    const token = await auth0.getAccessTokenSilently();
+    const { id } = match.params;
+    await postUpdateProject(data, token, id);
+    await this.fetchAndSetProject();
+  };
+
   getProviderValues = () => ({
     ...this.state.project,
     fetchAndSetProject: this.fetchAndSetProject,
+    updateProject: this.updateProject,
   });
 
   getEmptyStages = (amount) => {
@@ -80,21 +100,35 @@ export class Layout extends Component {
     return stages;
   };
 
-  getForm = () => {
+  getTeam = () => {
+    const { team } = this.state.project;
+    if (team && team.length) {
+      return team;
+    }
+    const emptyTeamMemberField = { role: "", name: "" };
+    return [emptyTeamMemberField];
+  };
+
+  getInitialValues = () => {
     const { project } = this.state;
+    return {
+      ...project,
+      team: this.getTeam(),
+      stages: this.getEmptyStages(3),
+    };
+  };
+
+  getForm = () => {
     return reduxForm({
       form: forms.editProject,
-      initialValues: {
-        ...project,
-        stages: this.getEmptyStages(3),
-      },
+      initialValues: this.getInitialValues(),
       destroyOnUnmount: false,
     })(StyledContent);
   };
 
   render() {
-    const ConnectedForm = this.getForm();
     const { project } = this.state;
+    const ConnectedForm = project ? this.getForm() : null;
     return (
       <ProjectContext.Provider value={this.getProviderValues()}>
         {project && <ConnectedForm {...this.props} />}
@@ -103,4 +137,8 @@ export class Layout extends Component {
   }
 }
 
-export default withRouter(Layout);
+const LayoutWithRouter = withRouter(Layout);
+
+const LayoutWithAuth = withAuth0(LayoutWithRouter);
+
+export default LayoutWithAuth;

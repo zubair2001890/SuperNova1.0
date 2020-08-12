@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import SelectWithData from "./SelectWithData";
 import Group from "./Group";
 
-const fieldName = "field";
+const fieldName = "fieldName";
 
 const FieldGroup = (props) => (
   <Group

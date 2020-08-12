@@ -9,7 +9,11 @@ export class Form extends Component {
     return (
       <>
         <Grid item xs={12}>
-          <Group name="title" placeholder="Project title" label="Title"></Group>
+          <Group
+            name="projectName"
+            placeholder="Project title"
+            label="Title"
+          ></Group>
         </Grid>
         <Grid item xs={12} md={5}>
           <SelectField />

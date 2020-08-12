@@ -4,23 +4,16 @@ import { withStyles } from "@material-ui/core";
 import PictureForm from "../../../../components/PictureForm";
 import { ProjectContext } from "../../Layout";
 import { icon, iconOffset } from "../../../../styles/form";
-import { postUpdateProject } from "../../../../store/slices/middlewareAPI/fetchAPI";
 
 export class Form extends Component {
   static contextType = ProjectContext;
 
-  getProjectId = () => {
-    return this.props.match.params.id;
-  };
-
-  updateProjectImage = (key, token) => {
-    const projectId = this.getProjectId();
-    return postUpdateProject({ projectImage: key }, token, projectId);
+  updateProjectImage = (key) => {
+    return this.context.updateProject({ projectImage: key });
   };
 
   useImage = async (key, token) => {
     await this.updateProjectImage(key, token);
-    await this.context.fetchAndSetProject();
   };
 
   render() {
