@@ -152,7 +152,6 @@ class BackProject extends Component {
         </Typography>
         <div className={classes.fundingOptions}>
           {items.map(this.state.createFundingOption)}
-          })}
          </div>
         <Typography className={classes.note}>
           Note: you are free to opt out of any valid rewards later.
