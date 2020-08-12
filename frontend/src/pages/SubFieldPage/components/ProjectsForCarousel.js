@@ -64,18 +64,18 @@ export default ({ projectsData }) => {
         projectsData.map((project) => (
           <ProjectCard
             key={project.id}
-            headerUrl={project.headerUrl}
+            headerUrl={project.projectImage}
             aboutDescription={project.aboutDescription}
             significanceDescription={project.significanceDescription}
             details={
               <div className={classes.cardBody}>
                 <p className={classes.projectTitle}>
-                  {project.title.length < maxTitleLength ? (
-                    project.title
+                  {project.projectName.length < maxTitleLength ? (
+                    project.projectName
                   ) : (
-                    <Tooltip title={project.title} placement="top">
+                    <Tooltip title={project.projectName} placement="top">
                       <span>
-                        {project.title.slice(0, maxTitleLength - 3) + "..."}
+                        {project.projectName.slice(0, maxTitleLength - 3) + "..."}
                       </span>
                     </Tooltip>
                   )}
@@ -84,7 +84,7 @@ export default ({ projectsData }) => {
                   <Avatar
                     className={classes.avatar}
                     alt="Researcher Avatar"
-                    src={project.avatarUrl}
+                    src={project.imageUrl}
                   />
                   <p className={classes.subtitle}>
                     {project.firstName} {project.lastName} <br />
@@ -93,8 +93,8 @@ export default ({ projectsData }) => {
                 </div>
                 <div className={classes.fundsProgress}>
                   <FundsProgress
-                    fundsRaised={project.fundsRaised}
-                    fundsGoal={project.fundsGoal}
+                    fundsRaised={project.totalPledged}
+                    fundsGoal={project.goal}
                   />
                 </div>
               </div>
