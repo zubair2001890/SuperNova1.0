@@ -1,56 +1,62 @@
-import { model } from "mongoose";
-import {Schema} from "mongoose";
+import { model } from 'mongoose'
+import { Schema } from 'mongoose'
 
-
-export const UserAccount = model('UserAccount', new Schema({
-    firstName : {
-        type: String,
-        required: true,
-        minlength: 1,
-        maxlength: 64
+export const UserAccount = model(
+  'UserAccount',
+  new Schema({
+    firstName: {
+      type: String,
+      required: true,
+      minlength: 1,
+      maxlength: 64,
     },
-    lastName : {
-        type: String,
-        required: true,
-        minlength: 1,
-        maxlength: 64
+    lastName: {
+      type: String,
+      required: true,
+      minlength: 1,
+      maxlength: 64,
     },
-    projectsSupported : {
-        type: Number,
-        required: true
+    projectsSupported: {
+      type: Number,
+      default: 0,
     },
-    totalAmountPledged : {
-        type: Number,
-        required: true
+    totalAmountPledged: {
+      type: Number,
+      default: 0,
     },
-    university : {
-        type: String,
-        required: true,
-        minLength: 1,
-        maxlength: 255
+    university: {
+      type: String,
+      minLength: 1,
+      maxlength: 255,
     },
-    dateJoined : {
-        type: Date,
-        required: true
+    dateJoined: {
+      type: Date,
+      default: Date.now,
     },
-    bio : {
-        type: String,
-        required: true,
-        minlength: 1,
-        maxlength: 2000 // 2,000 characters is an arbitrary number, I thought it should be enough.
+    bio: {
+      type: String,
+      minlength: 1,
+      maxlength: 2000, // 2,000 characters is an arbitrary number, I thought it should be enough.
     },
-    imageURL : {
-        type: String,
-        required: true,
-        minlength: 1,
-        maxlength: 2000 // 2,000 characters is an arbitrary number, I thought it should be enough.
+    imageURL: {
+      type: String,
+      minlength: 1,
+      maxlength: 2000, // 2,000 characters is an arbitrary number, I thought it should be enough.
     },
-    projectScientistID : {
-        type: Number,
-        required: false
+    projectScientistID: {
+      type: Number,
+      required: false,
     },
-    fieldName : {
-        type: String,
-        required: true
-    }
-}));
+    fieldName: {
+      type: String,
+    },
+    id: {
+      type: String,
+      required: true,
+    },
+    email: {
+      type: String,
+      required: true,
+    },
+  })
+)

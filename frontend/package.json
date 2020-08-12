@@ -2,6 +2,7 @@
   "name": "supernova-frontend",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:5000",
   "dependencies": {
     "@auth0/auth0-react": "^1.0.0",
     "@emotion/core": "^10.0.28",
@@ -18,7 +19,7 @@
     "auth0": "^2.27.1",
     "axios": "^0.19.2",
     "clsx": "^1.1.1",
-    "next": "^9.5.1",
+    "next": "^9.5.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-intersection-observer": "^8.26.2",
@@ -29,11 +30,16 @@
     "react-responsive-carousel": "^3.2.9",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
+    "redux": "^4.0.5",
+    "redux-form": "^8.3.6",
+    "redux-thunk": "^2.3.0",
     "stripe": "^8.81.0",
     "typescript": "^3.9.5"
   },
   "scripts": {
     "start": "react-scripts start",
+    "database": "json-server --watch src/database/data.json --routes src/database/routes.json --port 5000",
+    "dev": "concurrently \"npm run start\" \"npm run start --prefix ../backend\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -53,5 +59,11 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "json-server": "^0.16.1"
+  },
+  "prettier": {
+    "singleQuote": false,
+    "semi": true
+  }
 }
