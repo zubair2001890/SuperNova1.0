@@ -1,8 +1,10 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { withAuth0 } from "@auth0/auth0-react";
 import { withStyles, Typography } from "@material-ui/core";
 
-// import LogIn from "../../pages/Login";
+import LogIn from "../../pages/Login";
+import { fetchAccount } from "../../store/account";
 
 const styles = (theme) => {
   const layoutPaddingBottom = "11.700625rem";
@@ -55,8 +57,8 @@ class EditLayout extends Component {
   };
 
   render() {
-    const { children, classes, auth0, Nav, mainTitle } = this.props;
-    // if (!auth0.isAuthenticated) return <LogIn />;
+    const { children, classes, auth0, Nav, mainTitle, account } = this.props;
+    if (!auth0.isAuthenticated || !account) return <LogIn />;
     return (
       <div className={classes.layout}>
         <Typography variant="h1" className={classes.title}>
@@ -76,4 +78,8 @@ class EditLayout extends Component {
 
 const StyledPage = withStyles(styles, { withTheme: true })(EditLayout);
 
-export default withAuth0(StyledPage);
+const WithAuthentication = withAuth0(StyledPage);
+
+const mapStateToProps = ({ account }) => ({ account });
+
+export default connect(mapStateToProps, { fetchAccount })(WithAuthentication);

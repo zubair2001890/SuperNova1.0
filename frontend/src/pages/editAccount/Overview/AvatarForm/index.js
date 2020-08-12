@@ -58,6 +58,7 @@ const uploadImageAndUpdateAccount = async (getAccessTokenSilently, event) => {
 const handleChange = (fetchAccountWithSub, getAccessTokenSilently) => async (
   event
 ) => {
+  event.persist();
   await uploadImageAndUpdateAccount(getAccessTokenSilently, event);
   await fetchAccountWithSub();
 };

@@ -1,7 +1,58 @@
-import React, { useState } from "react";
+import React from "react";
+import { put, post } from "axios";
 import icon from "./icon.png";
 import { makeStyles } from "@material-ui/core";
 import Avatar from "@material-ui/core/Avatar";
+import { useAuth0 } from "@auth0/auth0-react";
+import { getPictureUrl } from "../../helpers/imageUrl";
+
+const getExtension = (fileName = "") => {
+  const match = fileName.match(/.+\.(\w+)/);
+  if (match) {
+    return match[1];
+  }
+  return "png";
+};
+
+const getSignedUrl = async (token, file) => {
+  const fileInfo = {
+    contentType: file.type,
+    extension: getExtension(file.name),
+  };
+  const requestConfigWithToken = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const { data } = await post(
+    "/api/private/upload/",
+    fileInfo,
+    requestConfigWithToken
+  );
+  return data;
+};
+
+const uploadImage = async (file, url) => {
+  await put(url, file, {
+    headers: {
+      "Content-Type": file.type,
+    },
+  });
+};
+
+const uploadImageAndGetKey = async (token, event) => {
+  const [file] = event.target.files;
+  const { url, key } = await getSignedUrl(token, file);
+  await uploadImage(file, url);
+  return key;
+};
+
+const handleChange = (getAccessTokenSilently, useImage) => async (event) => {
+  event.persist();
+  const token = await getAccessTokenSilently();
+  const key = await uploadImageAndGetKey(token, event);
+  await useImage(key, token);
+};
 
 const useStyles = makeStyles((theme) => {
   const iconImageSize = "2.5rem";
@@ -32,22 +83,27 @@ const useStyles = makeStyles((theme) => {
 });
 
 export default function AvatarForm({
-  defaultPicture,
-  handleChange,
+  imageKey,
+  useImage,
   variant,
   pictureClass = null,
   iconClass = null,
 }) {
-  const [picture, setPicture] = useState(defaultPicture);
   const classes = useStyles();
+  const { getAccessTokenSilently } = useAuth0();
+  const fullImageUrl = getPictureUrl(imageKey);
   return (
     <div className={classes.avatarForm}>
-      <Avatar src={picture} variant={variant} className={pictureClass}></Avatar>
+      <Avatar
+        src={fullImageUrl}
+        variant={variant}
+        className={pictureClass}
+      ></Avatar>
       <div className={iconClass}>
         <img src={icon} alt="Camera icon" className={classes.iconImage} />
       </div>
       <input
-        onChange={handleChange(setPicture)}
+        onChange={handleChange(getAccessTokenSilently, useImage)}
         className={classes.input}
         type="file"
       ></input>
