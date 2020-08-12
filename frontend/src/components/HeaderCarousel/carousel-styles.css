@@ -51,7 +51,7 @@
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  margin-left: 200px;
+  margin-left: 4vw;
 }
 .carousel .control-next.control-arrow {
   right: 0;
@@ -62,7 +62,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   transform: scaleX(-1);
-  margin-right: 200px;
+  margin-right: 4vw;
 }
 
 .carousel-root {
