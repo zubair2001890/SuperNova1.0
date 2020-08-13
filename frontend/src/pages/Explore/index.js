@@ -36,43 +36,45 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   fieldText: {
-    position: 'relative',
     margin: 0,
-    textAlign: 'center',
-    fontFamily: 'Montserrat',
-    color: 'white',
-    letterSpacing: '0.09em',
-    fontWeight: 700,
-    padding: 0,
-    height: 0,
-    overflow: 'visible',
-    transform: 'translate(-50%, -50%)',
-    fontSize: 30,
-    lineHeight: '37px',
+    display: 'block',
     '@media (max-height:1080px)': {
       fontSize: '2.78vh',
       lineHeight: '3.426vh',
     },
-    '& span': {
-      maxWidth: '16.0625rem',
-      '&:hover': {
-        WebkitBackgroundClip: 'text !important',
-        WebkitTextFillColor: 'transparent',
-        '& span': {
-          display: 'block',
-        },
-      },
-      '& span': {
-        display: 'none',
-      },
-    },
   },
   blurredLink: {
-    display: 'block',
+    display: 'none',
     filter: 'blur(0.625rem)',
     position: 'absolute',
     left: 0,
     right: 0,
+    top: 0,
+    bottom: 0,
+    margin: 0,
+  },
+  item: {
+    position: 'relative',
+    overflow: 'visible',
+    transform: 'translate(-50%, -50%)',
+    textDecoration: 'none',
+    '& p': {
+      textAlign: 'center',
+      fontFamily: 'Montserrat',
+      color: 'white',
+      letterSpacing: '0.09em',
+      fontWeight: 700,
+      padding: 0,
+      fontSize: 30,
+      lineHeight: '37px',
+    },
+    '&:hover': {
+      '& p': {
+        WebkitBackgroundClip: 'text !important',
+        WebkitTextFillColor: 'transparent',
+        display: 'block',
+      },
+    },
   },
   medicineContainer: {
     position: 'absolute',
@@ -82,9 +84,9 @@ const useStyles = makeStyles((theme) => ({
       left: 'calc(50% + 12.64vh)',
       top: 'calc(50% - 34.4vh)',
     },
-    '& span:hover': {
+    '&:hover a, &:hover p': {
       background:
-        'radial-gradient(closest-side at 50% 50%, #FFA1CF 0%, #FF76B7 64%, #FF419B 100%) 0% 0% no-repeat padding-box',
+        'transparent radial-gradient(closest-side at 60% 50%, #FFC1DF 0%, #FF76B7 64%, #FE2A8E 100%) 0% 0% no-repeat padding-box',
     },
   },
   physicsContainer: {
@@ -96,9 +98,9 @@ const useStyles = makeStyles((theme) => ({
       left: 'calc(50% + 35.56vh)',
       top: 'calc(50% - 22.18vh)',
     },
-    '& span:hover': {
+    '&:hover p': {
       background:
-        'transparent radial-gradient(closest-side at 50% 50%, #EBBFFF 0%, #D77DFF 66%, #C647FF 100%) 0% 0% no-repeat padding-box',
+        'transparent radial-gradient(closest-side at 50% 50%, #F3D8FF 0%, #D77DFF 66%, #BD2BFF 100%) 0% 0% no-repeat padding-box',
     },
   },
   earthSciencesContainer: {
@@ -109,7 +111,7 @@ const useStyles = makeStyles((theme) => ({
       left: 'calc(50% + 45.93vh)',
       top: 'calc(50% + 0.74vh)',
     },
-    '& span:hover': {
+    '&:hover p': {
       background:
         'transparent radial-gradient(closest-side at 50% 50%, #E3FFE1 0%, #6CFF61 100%) 0% 0% no-repeat padding-box',
     },
@@ -122,7 +124,7 @@ const useStyles = makeStyles((theme) => ({
       left: 'calc(50% + 41.3vh)',
       top: 'calc(50% + 27.64vh)',
     },
-    '& span:hover': {
+    '&:hover p': {
       background:
         'transparent radial-gradient(closest-side at 50% 50%, #BFF2FF 0%, #2AD1FF 100%) 0% 0% no-repeat padding-box',
     },
@@ -135,7 +137,7 @@ const useStyles = makeStyles((theme) => ({
       left: 'calc(50% + 13.61vh)',
       top: 'calc(50% + 39.63vh)',
     },
-    '& span:hover': {
+    '&:hover p': {
       background:
         'transparent radial-gradient(closest-side at 50% 50%, #FFE6C1 0%, #FFE3BB 4%, #FFB31C 95%, #FFA214 100%) 0% 0% no-repeat padding-box',
     },
@@ -148,7 +150,7 @@ const useStyles = makeStyles((theme) => ({
       left: 'calc(50% - 13.06vh)',
       top: 'calc(50% + 39.63vh)',
     },
-    '& span:hover': {
+    '&:hover p': {
       background:
         'transparent radial-gradient(closest-side at 50% 50%, #D1FFF8 0%, #00FFD8 100%) 0% 0% no-repeat padding-box',
     },
@@ -161,7 +163,7 @@ const useStyles = makeStyles((theme) => ({
       left: 'calc(50% - 36.57vh)',
       top: 'calc(50% + 27.64vh)',
     },
-    '& span:hover': {
+    '&:hover p': {
       background:
         'transparent radial-gradient(closest-side at 50% 50%, #FFD9EE 0%, #FF3EA7 100%) 0% 0% no-repeat padding-box',
     },
@@ -174,7 +176,7 @@ const useStyles = makeStyles((theme) => ({
       left: 'calc(50% - 44.72vh)',
       top: 'calc(50% + 0.74vh)',
     },
-    '& span:hover': {
+    '&:hover p': {
       background:
         'transparent radial-gradient(closest-side at 50% 50%, #FFC2C2 0%, #FF332A 100%) 0% 0% no-repeat padding-box',
     },
@@ -187,7 +189,7 @@ const useStyles = makeStyles((theme) => ({
       left: 'calc(50% - 33.94vh)',
       top: 'calc(50% - 22.18vh)',
     },
-    '& span:hover': {
+    '&:hover p': {
       background:
         'transparent radial-gradient(closest-side at 50% 50%, #D8FFF4 0%, #3EFFCB 100%) 0% 0% no-repeat padding-box',
     },
@@ -200,14 +202,11 @@ const useStyles = makeStyles((theme) => ({
       left: 'calc(50% - 12.22vh)',
       top: 'calc(50% - 34.3vh)',
     },
-    '& span:hover': {
+    '&:hover p': {
       background:
         'transparent radial-gradient(closest-side at 45% 50%, #E7E5FF 0%, #AAA5FF 59%, #867EFF 100%) 0% 0% no-repeat padding-box',
     },
   },
-  // medicine: {
-
-  // },
   center: {
     margin: '0 auto',
     maxWidth: 966,
@@ -307,18 +306,24 @@ export default () => {
         <div className={classes.pageHeader}>
           <div className={classes.mockAppBarLayout} />
           <div className={classes.fieldLinks}>
-            {fields.map((field) => (
-              <div className={field.containerClass} key={field.index}>
-                <Button
-                  component={RouterLink}
-                  to={field.path}
-                  className={classes.fieldText}
-                >
-                  {field.label}
-                  <span className={classes.blurredLink}>{field.label}</span>
-                </Button>
-              </div>
-            ))}
+            {fields.map((field) => {
+              const itemClasses = `${field.containerClass} ${classes.item}`
+              const labelWords = field.label.split(' ')
+              const brokenLabel = labelWords.map((word, index) => (
+                <>
+                  <span key={index}>{word}</span>
+                  <br />
+                </>
+              ))
+              return (
+                <RouterLink to={field.path} className={itemClasses}>
+                  <p className={classes.fieldText} key={field.index}>
+                    {brokenLabel}
+                  </p>
+                  <p className={classes.blurredLink}>{brokenLabel}</p>
+                </RouterLink>
+              )
+            })}
           </div>
         </div>
       </div>
