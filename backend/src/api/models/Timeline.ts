@@ -1,7 +1,7 @@
 import { model } from "mongoose";
 import { Schema } from "mongoose";
 
-export const Timeline = model('Timeline', new Schema({
+export const Timeline = new Schema({
     milestone: {
         type: String,
         required: true,
@@ -26,4 +26,4 @@ export const Timeline = model('Timeline', new Schema({
         minlength: 1,
         maxlength: 2000
     }
-}));
+});

@@ -2,6 +2,7 @@ import { model } from "mongoose";
 import { Schema } from "mongoose";
 import { MethodDescription } from "./MethodDescription";
 import { ProjectDescription } from "./ProjectDescription";
+import {Timeline} from "./Timeline";
 
 export const Project = model(
   "Project",
@@ -80,10 +81,7 @@ export const Project = model(
       required: false,
     },
     methodDescription: MethodDescription,
-    timelineDescription: {
-      type: Array,
-      required: false,
-    },
+    timelineDescription: Timeline,
     fieldName: {
       type: String,
       required: true,
