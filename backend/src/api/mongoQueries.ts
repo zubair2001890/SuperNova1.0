@@ -13,6 +13,22 @@ mongoose
   .then(() => console.log("Now connected to MongoDB!"))
   .catch((err) => console.error("Something went wrong", err));
 
+export const getAllProjects = async function (): Promise<any> {
+  let resolver, rejecter;
+  const promise = new Promise((resolve, reject) => {
+    resolver = resolve;
+    rejecter = reject;
+  });
+  let projectsQuery = Project.find({}, function (err, docs) {
+    if (err) {
+      console.log(err);
+      rejecter(null);
+    }
+    resolver(docs);
+  });
+  projectsQuery.sort({ totalPledged: -1 });
+  return promise;
+};
 export const getFeaturedProjects = async function (): Promise<any> {
   let resolver, rejecter;
   const promise = new Promise((resolve, reject) => {
