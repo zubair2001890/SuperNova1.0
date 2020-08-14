@@ -66,7 +66,7 @@ const addUrlParameters = (path, parameters) => {
   }
 };
 
-export const getFeaturedProject = async () =>
+export const getFeaturedProjects = async () =>
   await fetchGet(`${process.env.REACT_APP_BACKEND_URL}/api/public/featured`);
 
 export const getSubFields = async (fieldname) =>
