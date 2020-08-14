@@ -2,6 +2,7 @@ import React from "react";
 import Constellation from "../components/Constellation";
 import useStyles from "./FieldPage/exploreFieldPageStyles";
 import FieldPage from "./FieldPage";
+import paths from "../constants/paths";
 
 function Item(props) {
   return (
@@ -10,16 +11,19 @@ function Item(props) {
         subfield={props.item.name2}
         top="calc(60% - 20px)"
         left="calc(10% + 50px)"
+        path={paths.exploreSubField}
       />
       <Constellation
         subfield={props.item.name1}
         top="calc(5% + 10px)"
         left="calc(15% + 50px)"
+        path={paths.exploreSubField}
       />
       <Constellation
         subfield={props.item.name3}
         top="calc(50%)"
         left="calc(60%)"
+        path={paths.exploreSubField}
       />
     </>
   );

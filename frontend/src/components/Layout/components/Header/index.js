@@ -6,12 +6,14 @@ import { makeStyles } from "@material-ui/core/styles";
 import { AppBar, IconButton, Toolbar, Button } from "@material-ui/core";
 import { Menu as MenuIcon, Close as CloseIcon } from "@material-ui/icons";
 import { useAuth0 } from "@auth0/auth0-react";
+
 import LeftDrawer from "./components/LeftDrawer";
+import AvatarDropdown from "./components/Avatar";
 import paths from "../../../../constants/paths";
 import logoRed from "./assets/logo-red.svg";
 import logoBlack from "./assets/logo-black.svg";
 import logoWhite from "./assets/logo-white.svg";
-import { sendUpdateAccount } from "./../../../../store/slices/middlewareAPI/middlewareAPI"
+import { sendUpdateAccount } from "./../../../../store/slices/middlewareAPI/middlewareAPI";
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -47,6 +49,13 @@ const useStyles = makeStyles((theme) => ({
   appBarRight: {
     marginLeft: "auto",
     animation: "slideFadeUp 1.5s ease 2s backwards",
+    display: "flex",
+    flexWrap: "wrap",
+    flexDirection: "column",
+    alignItems: "center",
+    [theme.breakpoints.up("md")]: {
+      flexDirection: "row",
+    },
     "& > *:not(:last-child)": {
       marginRight: theme.spacing(4),
     },
@@ -66,9 +75,14 @@ export default function Header({ darkTheme = true }) {
 
   const [logoImg, setLogoImg] = useState(null);
 
-  const dispatch = useDispatch(); 
-  const { loginWithRedirect, isAuthenticated, logout, user, getAccessTokenSilently } = useAuth0();
-  
+  const dispatch = useDispatch();
+  const {
+    loginWithRedirect,
+    isAuthenticated,
+    logout,
+    user,
+    getAccessTokenSilently,
+  } = useAuth0();
 
   useEffect(() => {
     setLogoImg(
@@ -99,8 +113,7 @@ export default function Header({ darkTheme = true }) {
     setDrawerState({ ...drawerState, [anchor]: open });
   };
 
-
-  console.log(user)
+  console.log(user);
 
   return (
     <>
@@ -158,14 +171,18 @@ export default function Header({ darkTheme = true }) {
             >
               EXPLORE
             </Button>
-            <Button
-              color="inherit"
-              onClick={() => (isAuthenticated ? logout() : loginWithRedirect())}
-              size="large"
-              className={classes.appBarRightLink}
-            >
-              {isAuthenticated ? "LOG OUT" : "LOG IN"}
-            </Button>
+            {isAuthenticated ? (
+              <AvatarDropdown />
+            ) : (
+              <Button
+                color="inherit"
+                onClick={loginWithRedirect}
+                size="large"
+                className={classes.appBarRightLink}
+              >
+                LOG IN
+              </Button>
+            )}
           </div>
         </Toolbar>
       </AppBar>
