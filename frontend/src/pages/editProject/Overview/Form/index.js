@@ -1,11 +1,33 @@
 import React, { Component } from "react";
+import axios from "axios";
 import Grid from "@material-ui/core/Grid";
 import Group from "./Group";
 import SelectField from "./SelectField";
 import SelectSubfields from "./SelectSubfield";
 
 export class Form extends Component {
+  state = {
+    fields: null,
+  };
+
+  setFields = (fields) => this.setState({ fields });
+
+  fetchFields = async () => {
+    const { data } = await axios.get("/api/public/fields");
+    return data;
+  };
+
+  fetchAndSetFields = async () => {
+    const fields = await this.fetchFields();
+    this.setFields(fields);
+  };
+
+  componentDidMount() {
+    this.fetchAndSetFields();
+  }
+
   render() {
+    const { fields } = this.state;
     return (
       <>
         <Grid item xs={12}>
@@ -16,10 +38,10 @@ export class Form extends Component {
           ></Group>
         </Grid>
         <Grid item xs={12} md={5}>
-          <SelectField />
+          {fields && <SelectField fields={fields} />}
         </Grid>
         <Grid item xs={12} md={5}>
-          <SelectSubfields />
+          {fields && <SelectSubfields fields={fields} />}
         </Grid>
         <Grid container item xs={12}>
           <Grid item xs={12} md={5}>

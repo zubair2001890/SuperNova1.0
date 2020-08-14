@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import SelectWithData from "./SelectWithData";
+import Select from "./SelectWithData/Select";
 import Group from "./Group";
 
 const fieldName = "fieldName";
@@ -15,12 +15,13 @@ const FieldGroup = (props) => (
 
 export class SelectField extends Component {
   render() {
+    const { fields = [] } = this.props;
     return (
-      <SelectWithData
+      <Select
+        possibleResults={fields}
         name={fieldName}
-        apiUrl="/api/fields"
         Input={FieldGroup}
-      ></SelectWithData>
+      ></Select>
     );
   }
 }
