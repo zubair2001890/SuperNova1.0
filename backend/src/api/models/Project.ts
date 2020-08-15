@@ -2,8 +2,8 @@ import { model } from "mongoose";
 import { Schema } from "mongoose";
 import { MethodDescription } from "./MethodDescription";
 import { ProjectDescription } from "./ProjectDescription";
-import {Team} from "./Team"
-import {Timeline} from "./Timeline";
+import { Team } from "./Team";
+import { Timeline } from "./Timeline";
 
 export const Project = model(
   "Project",
@@ -14,7 +14,7 @@ export const Project = model(
       minlength: 1,
       maxlength: 255,
     },
-  projectDescription: ProjectDescription,
+    projectDescription: ProjectDescription,
     university: {
       type: String,
       required: true,
@@ -23,7 +23,7 @@ export const Project = model(
     },
 
     labNotes: {
-      type: Array,
+      type: String,
       required: false,
     },
     firstName: {
@@ -76,11 +76,11 @@ export const Project = model(
       maxlength: 255,
     },
     teamDescription: {
-      type: [{Team}],
+      type: [Team],
       required: false,
     },
     methodDescription: MethodDescription,
-    timelineDescription: Timeline,
+    timelineDescription: [Timeline],
     fieldName: {
       type: String,
       required: true,

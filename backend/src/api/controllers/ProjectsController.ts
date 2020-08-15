@@ -93,7 +93,6 @@ class ProjectsController {
   };
   public updateProject = async (req: Request, res: Response) => {
     let selectedProject = null;
-    let labNotes = null;
     await Project.findById(req.params.project_id, function (err, docs) {
       if (err) {
         console.log(err);
@@ -104,14 +103,6 @@ class ProjectsController {
       if (!req.body[property]) delete req.body[property];
     }
     let update = req.body;
-    if (req.body.labNotes !== undefined) {
-      let labNotes = addStringToArray(
-        selectedProject.labNotes,
-        req.body.labNotes
-      );
-      labNotes = addStringToArray(labNotes, Date.now().toString());
-      update.labNotes = labNotes;
-    }
     if (req.body.link !== undefined) {
       update.link = addStringToArray(selectedProject.link, req.body.link);
     }
