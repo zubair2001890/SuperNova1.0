@@ -58,7 +58,7 @@ function Timeline({ fields }) {
 export default function TimelineFieldArray() {
   return (
     <Layout title="Timeline and Budget">
-      <FieldArray component={Timeline} name="stages" />
+      <FieldArray component={Timeline} name="timelineDescription" />
     </Layout>
   );
 }

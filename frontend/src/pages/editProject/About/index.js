@@ -16,17 +16,25 @@ const inputs = [
   },
   {
     label: "Why is this research important / valuable?",
-    name: "importance",
+    name: "whyIsItImportant",
   },
   {
     label: "Any additional information",
-    name: "info",
+    name: "additionalInfo",
   },
 ];
 
-const renderInput = (classes) => (inputData, index) => (
-  <TextArea {...inputData} key={index} customClasses={classes} />
-);
+const renderInput = (classes) => ({ name, label }, index) => {
+  const fullName = `projectDescription.${name}`;
+  return (
+    <TextArea
+      name={fullName}
+      label={label}
+      key={index}
+      customClasses={classes}
+    />
+  );
+};
 
 const renderInputs = (classes) => inputs.map(renderInput(classes));
 

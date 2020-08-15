@@ -9,10 +9,9 @@ export default function LabNotes() {
   return (
     <Layout title="Lab Notes">
       <Grid item xs={12}>
-        <TextAreaLg label="Lab Commentary" name="labCommentary" />
+        <TextAreaLg label="Lab Commentary" name="labNotes" />
       </Grid>
       <Save />
-
       <UploadMedia />
     </Layout>
   );

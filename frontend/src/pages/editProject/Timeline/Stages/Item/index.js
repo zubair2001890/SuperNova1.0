@@ -38,7 +38,7 @@ export default function Item({ stage, member }) {
         </Grid>
         <Grid item xs={12}>
           <Achievement
-            name={getName("achievement")}
+            name={getName("whatWillBeAchieved")}
             label="What will be achieved in this stage"
             placeholder="e.g. In Stage 1, I aim to procure all the required software for the project and will begin initial scouting of ..."
           />

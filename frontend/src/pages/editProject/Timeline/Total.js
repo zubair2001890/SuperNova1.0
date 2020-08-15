@@ -23,12 +23,13 @@ function Total({ total }) {
 
 const addTotal = (total, { target = 0 }) => total + parseInt(target);
 
-const getTotal = (stages) => stages.reduce(addTotal, 0);
+const getTotal = (timelineDescription) =>
+  timelineDescription.reduce(addTotal, 0);
 
 const mapStateToProps = ({ form }) => {
   const { [forms.editProject]: editProjectForm } = form;
-  const { stages } = editProjectForm.values;
-  const total = getTotal(stages);
+  const { timelineDescription } = editProjectForm.values;
+  const total = getTotal(timelineDescription);
   return { total };
 };
 

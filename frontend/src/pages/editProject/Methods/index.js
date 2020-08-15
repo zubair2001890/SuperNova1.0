@@ -3,11 +3,13 @@ import Layout from "../Layout";
 import TextAreaLg from "../TextAreaLg";
 import Save from "../Save";
 
+const getName = (keyName) => `methodDescription.${keyName}`;
+
 const fields = [
   {
     label:
       "What Scientific methods and techniques will be used in this project?",
-    name: "methods",
+    name: "methodsAndTechniques",
   },
   {
     label: "Are there any interesting pieces of equipment being used?",
@@ -15,13 +17,14 @@ const fields = [
   },
   {
     label: "Any further Scientific information / comments about the project?",
-    name: "comments",
+    name: "furtherComments",
   },
 ];
 
-const renderField = (fieldData, index) => (
-  <TextAreaLg {...fieldData} key={index} />
-);
+const renderField = ({ name, label }, index) => {
+  const fullName = getName(name);
+  return <TextAreaLg name={fullName} label={label} key={index} />;
+};
 
 const renderFields = () => fields.map(renderField);
 

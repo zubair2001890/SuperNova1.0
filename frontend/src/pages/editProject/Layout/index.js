@@ -100,21 +100,36 @@ export class Layout extends Component {
     return stages;
   };
 
-  getTeam = () => {
-    const { team } = this.state.project;
-    if (team && team.length) {
-      return team;
+  getArrayOfValuesOrInitialValues = (fieldName, initialValues) => {
+    const { [fieldName]: field } = this.state.project;
+    if (field && field.length) {
+      return field;
     }
-    const emptyTeamMemberField = { role: "", name: "" };
-    return [emptyTeamMemberField];
+    return initialValues;
+  };
+
+  getTeam = () => {
+    const emptyTeamMemberField = [{ role: "", name: "" }];
+    return this.getArrayOfValuesOrInitialValues(
+      "teamDescription",
+      emptyTeamMemberField
+    );
+  };
+
+  getTimeline = () => {
+    const emptyStages = this.getEmptyStages(3);
+    return this.getArrayOfValuesOrInitialValues(
+      "timelineDescription",
+      emptyStages
+    );
   };
 
   getInitialValues = () => {
     const { project } = this.state;
     return {
       ...project,
-      team: this.getTeam(),
-      stages: this.getEmptyStages(3),
+      teamDescription: this.getTeam(),
+      timelineDescription: this.getTimeline(),
     };
   };
 

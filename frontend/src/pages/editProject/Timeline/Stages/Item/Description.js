@@ -16,7 +16,7 @@ export default function Description({ getName }) {
   return (
     <TextArea
       label="Explain how the funds will be allocated in this stage"
-      name={getName("description")}
+      name={getName("allocationOfFunds")}
       customClasses={classes}
     ></TextArea>
   );

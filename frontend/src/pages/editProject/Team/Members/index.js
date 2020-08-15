@@ -25,5 +25,5 @@ function List({ fields }) {
 }
 
 export default function Members() {
-  return <FieldArray name="team" component={List} />;
+  return <FieldArray name="teamDescription" component={List} />;
 }
