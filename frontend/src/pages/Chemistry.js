@@ -8,24 +8,25 @@ import ConstellationNine from "../components/Constellations/ConstellationNine";
 import ConstellationThree from "../components/Constellations/ConstellationThree";
 
 function SlideOne(props) {
+  console.log(props.item);
   return (
     <>
       <ConstellationOne
         subfield={props.item.name1}
-        left="calc(50% - 276px/2 - 360px)"
-        top="calc(50% - 147px/2 - 254.5px)"
+        left="calc(50% - 276px/2 - 300px)"
+        top="calc(50% - 147px/2 - 144.5px)"
         path={paths.exploreSubField}
       />
       <ConstellationSeven
         subfield={props.item.name7}
-        left="calc(50% - 243px/2 - 481.5px)"
-        top="calc(50% - 322px/2 + 226px)"
+        left="calc(50% - 243px/2 - 431.5px)"
+        top="calc(50% - 322px/2 + 196px)"
         path={paths.exploreSubField}
       />
       <ConstellationNine
         subfield={props.item.name9}
-        left="calc(50% - 310px/2 + 480px)"
-        top="calc(50% - 206px/2 + 241px)"
+        left="calc(50% - 310px/2 + 300px)"
+        top="calc(50% - 206px/2 + 211px)"
         path={paths.exploreSubField}
       />
     </>
@@ -37,8 +38,8 @@ function SlideTwo(props) {
     <>
       <ConstellationThree
         subfield={props.item.name3}
-        left="calc(50% - 167px/2 - 570.5px)"
-        top="calc(50% - 299px/2 - 55.5px)"
+        left="calc(50% - 167px/2 - 470.5px)"
+        top="calc(50% - 299px/2 - 30.5px)"
         path={paths.exploreSubField}
       />
     </>
@@ -74,7 +75,11 @@ export default () => {
 
   return (
     <>
-      <FieldPage title="CHEMISTRY" content={content} bImageURL={backgroundImageURL} />
+      <FieldPage
+        title="CHEMISTRY"
+        content={content}
+        bImageURL={backgroundImageURL}
+      />
     </>
   );
 };

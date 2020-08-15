@@ -5,17 +5,18 @@ const useStyles = makeStyles((theme) => ({
     ...theme.mixins.appBar,
   },
   pageHeader: {
-    height: 1080,
+    height: "100vh",
     width: "100%",
   },
   pageContainer: {
     position: "relative",
     margin: 0,
+    maxHeight: "100vh",
   },
   carouselContainer: {
     position: "absolute",
     width: "100%",
-    height: 1080,
+    height: "100vh",
     top: 0,
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
@@ -28,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
   },
   carouselSlide: {
     position: "relative",
-    height: 1080,
+    height: "100vh",
     top: 0,
   },
   fieldTitle: {

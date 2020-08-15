@@ -2,6 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core";
 import { Link as RouterLink } from "react-router-dom";
 
+// Constellation /explore/chemistry [ANALYTICAL CHEMISTRY]
 const useStyles = makeStyles(() => ({
   constellation: {
     position: "absolute",
@@ -10,28 +11,26 @@ const useStyles = makeStyles(() => ({
   },
   constellationImage: {
     position: "absolute",
-    height: "100%",
-    width: "100%",
+    height: "80%",
+    width: "80%",
     backgroundImage: "url(" + require("../assets/constellation3.png") + ")",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
     backgroundSize: "cover",
+    transition: "transform .4s",
     "&:hover": {
-      backgroundImage:
-        "url(" + require("../assets/constellation3hoverstate.png") + ")",
-      height: "120%",
-      width: "120%",
+      transform: "scale(1.5)",
     },
   },
   subfieldName: {
     position: "relative",
     color: "white",
     fontFamily: "Montserrat",
-    fontSize: 30,
+    fontSize: "1.5rem",
     letterSpacing: 2.6,
     fontWeight: "bold",
     top: "20%",
-    left: "110%",
+    left: "80%",
     width: "max-content",
     transition: "text-shadow 0.2s linear",
     "&:hover": {

@@ -141,6 +141,8 @@
   position: relative;
   margin: 0;
   overflow: hidden;
+  width: 100%;
+  height: 100vh;
 }
 .carousel.carousel-slider .control-arrow {
   top: 0;
