@@ -55,7 +55,6 @@ const cardElementOptions = {
 
 export default function CardSection() {
   const classes = useStyles();
-  // return <CardElement options={cardElementOptions} />;
   return (
     <>
       <div className={classes.inputArea}>
