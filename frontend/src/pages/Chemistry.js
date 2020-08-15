@@ -2,32 +2,33 @@ import React from "react";
 import useStyles from "./FieldPage/exploreFieldPageStyles";
 import FieldPage from "./FieldPage";
 import paths from "../constants/paths";
-import ConstellationOne from "../components/Constellations/ConstellationOne";
-import ConstellationSeven from "../components/Constellations/ConstellationSeven";
-import ConstellationNine from "../components/Constellations/ConstellationNine";
-import ConstellationThree from "../components/Constellations/ConstellationThree";
+import MasterConstellation from "../components/Constellations/MasterConstellation";
+import { constellationStylesDesktop } from "../components/Constellations/constellationStyles";
 
 function SlideOne(props) {
   console.log(props.item);
   return (
     <>
-      <ConstellationOne
+      <MasterConstellation
         subfield={props.item.name1}
         left="calc(50% - 276px/2 - 300px)"
         top="calc(50% - 147px/2 - 144.5px)"
         path={paths.exploreSubField}
+        constellationStyles={constellationStylesDesktop.constellation1}
       />
-      <ConstellationSeven
+      <MasterConstellation
         subfield={props.item.name7}
         left="calc(50% - 243px/2 - 431.5px)"
         top="calc(50% - 322px/2 + 196px)"
         path={paths.exploreSubField}
+        constellationStyles={constellationStylesDesktop.constellation7}
       />
-      <ConstellationNine
+      <MasterConstellation
         subfield={props.item.name9}
         left="calc(50% - 310px/2 + 300px)"
         top="calc(50% - 206px/2 + 211px)"
         path={paths.exploreSubField}
+        constellationStyles={constellationStylesDesktop.constellation9}
       />
     </>
   );
@@ -36,11 +37,12 @@ function SlideOne(props) {
 function SlideTwo(props) {
   return (
     <>
-      <ConstellationThree
+      <MasterConstellation
         subfield={props.item.name3}
         left="calc(50% - 167px/2 - 470.5px)"
         top="calc(50% - 299px/2 - 30.5px)"
         path={paths.exploreSubField}
+        constellationStyles={constellationStylesDesktop.constellation3}
       />
     </>
   );
