@@ -4,6 +4,8 @@ export const constellationStylesDesktop = {
       position: "absolute",
       height: 147,
       width: 276,
+      left: "calc(50% - 276px/2 - 360px)",
+      top: "calc(50% - 147px/2 - 254.5px)",
     },
     constellationImage: {
       position: "absolute",
@@ -39,6 +41,8 @@ export const constellationStylesDesktop = {
       position: "absolute",
       height: 181,
       width: 237,
+      left: "calc(50% - 237px/2 + 19.5px)",
+      top: "calc(50% - 181px/2 + 281.5px)",
     },
     constellationImage: {
       position: "absolute",
@@ -74,6 +78,8 @@ export const constellationStylesDesktop = {
       position: "absolute",
       height: 299,
       width: 167,
+      left: "calc(50% - 167px/2 - 570.5px)",
+      top: "calc(50% - 299px/2 - 55.5px)",
     },
     constellationImage: {
       position: "absolute",
@@ -109,6 +115,8 @@ export const constellationStylesDesktop = {
       position: "absolute",
       height: 187,
       width: 275,
+      left: "calc(50% - 275px/2 + 459.5px)",
+      top: "calc(50% - 187px/2 - 126.5px)",
     },
     constellationImage: {
       position: "absolute",
@@ -145,6 +153,8 @@ export const constellationStylesDesktop = {
       position: "absolute",
       height: 254,
       width: 196,
+      left: "calc(50% - 196px/2 + 42px)",
+      top: "calc(50% - 254px/2 + 298px)",
     },
     constellationImage: {
       position: "absolute",
@@ -214,6 +224,8 @@ export const constellationStylesDesktop = {
     constellation: {
       height: 322,
       width: 243,
+      left: "calc(50% - 243px/2 - 481.5px)",
+      top: "calc(50% - 322px/2 + 226px)",
     },
     constellationImage: {
       width: "80%",
@@ -249,6 +261,8 @@ export const constellationStylesDesktop = {
       position: "absolute",
       height: 199,
       width: 222,
+      left: "calc(50% - 222px/2 - 608px)",
+      top: "calc(50% - 199px/2 - 66.5px)",
     },
     constellationImage: {
       position: "absolute",
@@ -284,6 +298,8 @@ export const constellationStylesDesktop = {
       position: "absolute",
       height: 206,
       width: 310,
+      left: "calc(50% - 310px/2 + 480px)",
+      top: "calc(50% - 206px/2 + 241px)",
     },
     constellationImage: {
       position: "absolute",

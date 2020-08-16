@@ -10,22 +10,16 @@ function SlideOne(props) {
     <>
       <MasterConstellation
         subfield={props.item.name1}
-        left="calc(50% - 276px/2 - 360px)"
-        top="calc(50% - 147px/2 - 254.5px)"
         path={paths.exploreSubField}
         constellationStyles={constellationStylesDesktop.constellation1}
       />
       <MasterConstellation
         subfield={props.item.name7}
-        left="calc(50% - 243px/2 - 481.5px)"
-        top="calc(50% - 322px/2 + 226px)"
         path={paths.exploreSubField}
         constellationStyles={constellationStylesDesktop.constellation7}
       />
       <MasterConstellation
         subfield={props.item.name9}
-        left="calc(50% - 310px/2 + 480px)"
-        top="calc(50% - 206px/2 + 241px)"
         path={paths.exploreSubField}
         constellationStyles={constellationStylesDesktop.constellation9}
       />
@@ -38,22 +32,16 @@ function SlideTwo(props) {
     <>
       <MasterConstellation
         subfield={props.item.name3}
-        left="calc(50% - 167px/2 - 570.5px)"
-        top="calc(50% - 299px/2 - 55.5px)"
         path={paths.exploreSubField}
         constellationStyles={constellationStylesDesktop.constellation3}
       />
       <MasterConstellation
         subfield={props.item.name2}
-        left="calc(50% - 237px/2 + 19.5px)"
-        top="calc(50% - 181px/2 + 281.5px)"
         path={paths.exploreSubField}
         constellationStyles={constellationStylesDesktop.constellation2}
       />
       <MasterConstellation
         subfield={props.item.name4}
-        left="calc(50% - 275px/2 + 459.5px)"
-        top="calc(50% - 187px/2 - 126.5px)"
         path={paths.exploreSubField}
         constellationStyles={constellationStylesDesktop.constellation4}
       />
