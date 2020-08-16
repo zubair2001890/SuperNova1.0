@@ -6,5 +6,6 @@ const profileController = new ProfileController();
 
 export default (publicApi: Express.Router, privateApi: Express.Router) => {
     privateApi.route('/updateaccount').post(profileController.updateProfile);
+    privateApi.route('/upload').post(profileController.upload);
     publicApi.route('/profile/:profile_sub').get(profileController.getProfile);
-}
+    }
