@@ -19,10 +19,7 @@ export default (props) => {
 
   return (
     <RouterLink to={{ pathname: props.path, state: { title: props.subfield } }}>
-      <div
-        className={classes.constellation}
-        style={{ top: props.top, left: props.left }}
-      >
+      <div className={classes.constellation}>
         <div className={classes.constellationImage} />
         <div className={classes.subfieldName}>{props.subfield}</div>
       </div>
