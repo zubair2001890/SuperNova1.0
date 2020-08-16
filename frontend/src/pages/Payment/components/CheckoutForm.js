@@ -26,6 +26,7 @@ const styles = (theme) => ({
   pageContainer: {
     marginTop: 160,
     width: "50%",
+    minWidth: 500,
     height: "100%",
     margin: "auto",
     paddingBottom: theme.spacing(10),
