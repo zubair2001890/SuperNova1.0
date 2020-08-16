@@ -190,6 +190,8 @@ export const constellationStylesDesktop = {
       position: "absolute",
       height: 195,
       width: 298,
+      left: "calc(50% - 298px/2 + 403px)",
+      top: "calc(50% - 195px/2 - 165.5px)",
     },
     constellationImage: {
       position: "absolute",
