@@ -1,7 +1,7 @@
-
-import { createSlice } from '@reduxjs/toolkit'
-import projectsMockData from '../../mockData/projects.json'
-import sleep from '../../helpers/sleep'
+import { getProjects, getFeaturedProjects } from "./middlewareAPI/fetchAPI";
+import { createSlice } from "@reduxjs/toolkit";
+import projectsMockData from "../../mockData/projects.json";
+import sleep from "../../helpers/sleep";
 import {
   fetchFeaturedProject,
   fetchProjects,
@@ -9,12 +9,7 @@ import {
   fetchProjectDetails,
   createProject,
   sendUpdateProject,
-} from './middlewareAPI/middlewareAPI'
-import { getProjects, getFeaturedProjects } from './middlewareAPI/fetchAPI'
-import { createSlice } from "@reduxjs/toolkit";
-import projectsMockData from "../../mockData/projects.json";
-import sleep from "../../helpers/sleep";
-import { fetchFeaturedProject, fetchProjects, fetchSubFields, fetchProjectDetails, createProject, sendUpdateProject } from './middlewareAPI/middlewareAPI';
+} from "./middlewareAPI/middlewareAPI";
 
 export const projectsSlice = createSlice({
   name: "projects",
@@ -52,27 +47,26 @@ export const projectsSlice = createSlice({
     },
     [sendUpdateProject.fulfilled]: (state, action) => {
       state.projectDetails = action.payload;
-    }
-  }
+    },
+  },
 });
 
 export const { setData, setLoading, setError } = projectsSlice.actions;
-
 
 // Can be removed?
 const fetchMockProjects = () => async (dispatch) => {
   console.log("fetchMockProjects function called");
   console.log("env backend URL =" + process.env.REACT_APP_BACKEND_URL);
   console.log(await getFeaturedProjects());
-  dispatch(setLoading(true))
+  dispatch(setLoading(true));
   const projects = await getFeaturedProjects();
   dispatch(setData(projects));
 };
 
-export { fetchMockProjects as fetchProjects};
+export { fetchMockProjects as fetchProjects };
 
 export const selectData = (state) => state.projects.data;
 export const selectLoading = (state) => state.projects.loading;
 export const selectError = (state) => state.projects.error;
 
-export default projectsSlice.reducer
+export default projectsSlice.reducer;
