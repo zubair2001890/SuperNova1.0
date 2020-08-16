@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router";
+import { Link as RouterLink } from "react-router-dom";
 import {
   withStyles,
   Typography,
@@ -18,6 +19,8 @@ import { loadStripe } from "@stripe/stripe-js";
 
 import CardSection from "./CardSection";
 import { postSendPayment } from "../../../store/slices/middlewareAPI/fetchAPI";
+
+import paths from "../../../constants/paths";
 
 const styles = (theme) => ({
   pageContainer: {
@@ -41,6 +44,7 @@ const styles = (theme) => ({
   },
   edit: {
     fontSize: 16,
+    color: theme.palette.common.black,
   },
   pledgeDetails: {
     height: 120,
@@ -174,9 +178,11 @@ class CheckoutForm extends Component {
           <Typography variant="h6" className={classes.pledge}>
             Pledge
           </Typography>
-          <Typography variant="h6" className={classes.edit}>
-            Edit
-          </Typography>
+          <RouterLink to={paths.payment} className={classes.edit}>
+            <Typography variant="h6" className={classes.edit}>
+              Edit
+            </Typography>
+          </RouterLink>
         </div>
         <div className={classes.pledgeDetails}>
           <div className={classes.pledgeDetailsTopRow}>
@@ -206,19 +212,19 @@ class CheckoutForm extends Component {
             required={true}
           >
             <FormControlLabel
-            control={
-              <Checkbox
-              name="rememberCard"
-              style={{
-                color: "#bbbbbb",
-              }}
-              />
-            }
-            label={
-              <Typography className={classes.rememberCardText}>
-                Remember this card for future pledges
-              </Typography>
-            }
+              control={
+                <Checkbox
+                  name="rememberCard"
+                  style={{
+                    color: "#bbbbbb",
+                  }}
+                />
+              }
+              label={
+                <Typography className={classes.rememberCardText}>
+                  Remember this card for future pledges
+                </Typography>
+              }
             />
           </FormControl>
           <button className={classes.pledgeButton} type="submit">
@@ -226,12 +232,12 @@ class CheckoutForm extends Component {
           </button>
         </form>
         <Typography variant="body2" className={classes.disclaimer}>
-        Your payment information is processed through Stripe. To complete
-         transactions, we store the card type, last four digits, expiration date
-         and name on the card. By pledging you agree to Kickstarter's Terms of
-         Use, Privacy Policy and Cookie Policy. Our policies explain how we will
-         use and store your data and how you can control that use. You can edit
-         your settings here.
+          Your payment information is processed through Stripe. To complete
+          transactions, we store the card type, last four digits, expiration
+          date and name on the card. By pledging you agree to Kickstarter's
+          Terms of Use, Privacy Policy and Cookie Policy. Our policies explain
+          how we will use and store your data and how you can control that use.
+          You can edit your settings here.
         </Typography>
       </div>
     );
