@@ -50,6 +50,10 @@ class ProfileController {
       if (userProfile.isAdmin) {
         res.json(UserAccount.find({}));
       }
+      else
+      {
+        throw new Error("This user does not have admin privileges.");
+      }
     }
     catch (err)
     {
