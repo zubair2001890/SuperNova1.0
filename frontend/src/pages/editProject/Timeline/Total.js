@@ -1,0 +1,36 @@
+import React from "react";
+import forms from "../../../constants/forms";
+import { connect } from "react-redux";
+import { makeStyles } from "@material-ui/core";
+
+const useStyles = makeStyles((theme) => ({
+  total: {
+    fontFamily: "Montserrat, sans-serif",
+    fontWeight: 600,
+    fontSize: "1.25rem",
+    marginTop: "1rem",
+    display: "block",
+    [theme.breakpoints.up("sm")]: {
+      marginTop: 0,
+    },
+  },
+}));
+
+function Total({ total }) {
+  const classes = useStyles();
+  return <span className={classes.total}>Total Funding Goal = ${total}</span>;
+}
+
+const addTotal = (total, { target = 0 }) => total + parseInt(target);
+
+const getTotal = (timelineDescription) =>
+  timelineDescription.reduce(addTotal, 0);
+
+const mapStateToProps = ({ form }) => {
+  const { [forms.editProject]: editProjectForm } = form;
+  const { timelineDescription } = editProjectForm.values;
+  const total = getTotal(timelineDescription);
+  return { total };
+};
+
+export default connect(mapStateToProps)(Total);
