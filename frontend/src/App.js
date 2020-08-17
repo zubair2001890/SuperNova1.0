@@ -137,7 +137,7 @@ export default function App() {
               <Route path={`${paths.exploreSubField}/:_id/payment`}>
                 <Payment />
               </Route>
-              <Route path={`${paths.exploreSubField}/:_id/payment/${paths.checkout}`}>
+              <Route path={`${paths.exploreSubField}/:_id/payment${paths.checkout}`}>
                 <CheckoutForm />
               </Route>
               <Route path={paths.error404}>
