@@ -170,6 +170,8 @@ class CheckoutForm extends Component {
 
   render() {
     const { classes } = this.props;
+    const price = this.props.location.state.amount;
+
     return (
       <div className={classes.pageContainer}>
         <Typography variant="h1" className={classes.title}>
@@ -191,17 +193,17 @@ class CheckoutForm extends Component {
               <Typography variant="body2">Reward</Typography>
             </div>
             <div className={classes.rewardDescription}>
-              <Typography variant="body2">Virtual thank you</Typography>
+              <Typography variant="body2">{this.props.location.state.description}</Typography>
             </div>
             <div className={classes.amountPledged}>
-              <Typography variant="body2">£10.00</Typography>
+              <Typography variant="body2">£{price}.00</Typography>
             </div>
           </div>
           <Divider variant="middle" />
           <div className={classes.pledgeDetailsBottomRow}>
             <div className={classes.totalAmountLabel}>Total amount</div>
             <div className={classes.totalAmount}>
-              <Typography variant="body2">£10.00</Typography>
+              <Typography variant="body2">£{price}.00</Typography>
             </div>
           </div>
         </div>
