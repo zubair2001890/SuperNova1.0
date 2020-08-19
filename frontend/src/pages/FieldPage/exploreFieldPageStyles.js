@@ -11,16 +11,13 @@ const useStyles = makeStyles((theme) => ({
   pageContainer: {
     position: "relative",
     margin: 0,
+    maxHeight: "100vh",
   },
   carouselContainer: {
     position: "absolute",
     width: "100%",
-    height: "100%",
+    height: "100vh",
     top: 0,
-    backgroundImage:
-      "url(" +
-      require("../../components/Constellation/assets/background/background.png") +
-      ")",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
     backgroundSize: "cover",
@@ -42,6 +39,24 @@ const useStyles = makeStyles((theme) => ({
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
+  },
+  center: {
+    margin: "0 auto",
+    maxWidth: 966,
+    paddingLeft: theme.spacing(2),
+    paddingRight: theme.spacing(2),
+    paddingTop: 92,
+    paddingBottom: 92,
+  },
+  pageTitle: {
+    marginTop: 78,
+    letterSpacing: "0.09em",
+  },
+  subheading: {
+    margin: "68px 0",
+  },
+  subheadingParagraph: {
+    paddingBottom: 48,
   },
 }));
 

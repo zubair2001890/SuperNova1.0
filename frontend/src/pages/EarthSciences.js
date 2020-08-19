@@ -1,29 +1,82 @@
 import React from "react";
-import Constellation from "../components/Constellation";
 import useStyles from "./FieldPage/exploreFieldPageStyles";
 import FieldPage from "./FieldPage";
 import paths from "../constants/paths";
+import MasterConstellation from "../components/Constellations/MasterConstellation";
+import { constellationStylesDesktop } from "../components/Constellations/constellationStyles";
 
-function Item(props) {
+function SlideOne(props) {
   return (
     <>
-      <Constellation
-        subfield={props.item.name2}
-        top="calc(60% - 20px)"
-        left="calc(10% + 50px)"
-        path={paths.exploreSubField}
-      />
-      <Constellation
+      <MasterConstellation
         subfield={props.item.name1}
-        top="calc(5% + 10px)"
-        left="calc(15% + 50px)"
+        left="calc(50% - 276px/2 - 360px)"
+        top="calc(50% - 147px/2 - 254.5px)"
         path={paths.exploreSubField}
+        constellationStyles={constellationStylesDesktop.constellation1}
       />
-      <Constellation
-        subfield={props.item.name3}
-        top="calc(50%)"
-        left="calc(60% + 10px)"
+      <MasterConstellation
+        subfield={props.item.name7}
+        left="calc(50% - 243px/2 - 481.5px)"
+        top="calc(50% - 322px/2 + 226px)"
         path={paths.exploreSubField}
+        constellationStyles={constellationStylesDesktop.constellation7}
+      />
+      <MasterConstellation
+        subfield={props.item.name9}
+        left="calc(50% - 310px/2 + 480px)"
+        top="calc(50% - 206px/2 + 241px)"
+        path={paths.exploreSubField}
+        constellationStyles={constellationStylesDesktop.constellation9}
+      />
+    </>
+  );
+}
+
+function SlideTwo(props) {
+  return (
+    <>
+      <MasterConstellation
+        subfield={props.item.name3}
+        left="calc(50% - 167px/2 - 570.5px)"
+        top="calc(50% - 299px/2 - 55.5px)"
+        path={paths.exploreSubField}
+        constellationStyles={constellationStylesDesktop.constellation3}
+      />
+      <MasterConstellation
+        subfield={props.item.name2}
+        left="calc(50% - 237px/2 + 19.5px)"
+        top="calc(50% - 181px/2 + 281.5px)"
+        path={paths.exploreSubField}
+        constellationStyles={constellationStylesDesktop.constellation2}
+      />
+      <MasterConstellation
+        subfield={props.item.name4}
+        left="calc(50% - 275px/2 + 459.5px)"
+        top="calc(50% - 187px/2 - 126.5px)"
+        path={paths.exploreSubField}
+        constellationStyles={constellationStylesDesktop.constellation4}
+      />
+    </>
+  );
+}
+
+function SlideThree(props) {
+  return (
+    <>
+      <MasterConstellation
+        subfield={props.item.name8}
+        left="calc(50% - 222px/2 - 608px)"
+        top="calc(50% - 199px/2 - 66.5px)"
+        path={paths.exploreSubField}
+        constellationStyles={constellationStylesDesktop.constellation8}
+      />
+      <MasterConstellation
+        subfield={props.item.name5}
+        left="calc(50% - 196px/2 + 42px)"
+        top="calc(50% - 254px/2 + 298px)"
+        path={paths.exploreSubField}
+        constellationStyles={constellationStylesDesktop.constellation5}
       />
     </>
   );
@@ -31,40 +84,47 @@ function Item(props) {
 
 export default () => {
   const classes = useStyles();
+  const backgroundImageURL =
+    "url(" +
+    require("./FieldPage/assets/FP-earth_Sciences_/FP-earth_Sciences_.png") +
+    ")";
 
   var items = [
     {
-      name1: "EARTH SCIENCES 1",
-      name2: "EARTH SCIENCES 2",
-      name3: "EARTH SCIENCES 3",
+      name1: "GEOLOGY",
+      name7: "PHYSICAL GEOGRAPHY",
+      name9: "GEOPHYSICS",
     },
     {
-      name1: "EARTH SCIENCES 4",
-      name2: "EARTH SCIENCES 5",
-      name3: "EARTH SCIENCES 6",
+      name3: "GEOCHEMISTRY",
+      name2: "SOIL SCIENCE",
+      name4: "HYDROLOGY AND OCEANOLOGY",
     },
     {
-      name1: "EARTH SCIENCES 7",
-      name2: "EARTH SCIENCES 8",
-      name3: "EARTH SCIENCES 9",
+      name8: "GLACIOLOGY",
+      name5: "ATMOSPHERIC SCIENCES",
     },
   ];
 
   const content = [
     <div className={classes.carouselSlide}>
-      {<Item item={items[0]} titleStyle={classes.fieldTitle} />}
+      {<SlideOne item={items[0]} titleStyle={classes.fieldTitle} />}
     </div>,
     <div className={classes.carouselSlide}>
-      {<Item item={items[1]} titleStyle={classes.fieldTitle} />}
+      {<SlideTwo item={items[1]} titleStyle={classes.fieldTitle} />}
     </div>,
     <div className={classes.carouselSlide}>
-      {<Item item={items[2]} titleStyle={classes.fieldTitle} />}
+      {<SlideThree item={items[2]} titleStyle={classes.fieldTitle} />}
     </div>,
   ];
 
   return (
     <>
-      <FieldPage title="EARTH SCIENCES" content={content}/>
+      <FieldPage
+        title="EARTH SCIENCES"
+        content={content}
+        bImageURL={backgroundImageURL}
+      />
     </>
   );
 };
