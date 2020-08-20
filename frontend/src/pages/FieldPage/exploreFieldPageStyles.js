@@ -7,14 +7,12 @@ const useStyles = makeStyles((theme) => ({
   pageHeader: {
     height: 1080,
     width: "100%",
-    "@media (max-height:1080px)": {
-      height: "100vh",
-    },
+    height: "100vh",
+    maxHeight: 1080,
   },
   pageContainer: {
     position: "relative",
     margin: 0,
-    maxHeight: "100vh",
   },
   carouselContainer: {
     position: "absolute",
@@ -24,9 +22,8 @@ const useStyles = makeStyles((theme) => ({
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
     backgroundSize: "cover",
-    "@media (max-height:1080px)": {
-      height: "100vh",
-    },
+    height: "100vh",
+    maxHeight: 1080,
   },
   carousel: {
     position: "absolute",
@@ -37,9 +34,8 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
     height: 1080,
     top: 0,
-    "@media (max-height:1080px)": {
-      height: "100vh",
-    },
+    height: "100vh",
+    maxHeight: 1080,
   },
   fieldTitle: {
     position: "absolute",
