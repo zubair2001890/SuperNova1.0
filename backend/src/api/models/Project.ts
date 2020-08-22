@@ -33,7 +33,6 @@ export const Project = model('Project', new Schema({
         minlength: 1,
         maxlength: 50
     },
-
     lastName: {
         type: String,
         required: true,
@@ -103,6 +102,9 @@ export const Project = model('Project', new Schema({
     link: {
         type: Array,
         required: true,
+    },
+    isAdmin: {
+      type: Boolean,
+      required: false
     }
-
 }));
