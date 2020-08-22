@@ -1,6 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import projectsMockData from "../../mockData/projects.json";
-import sleep from "../../helpers/sleep";
 import { sendUpdateAccount, fetchProfile } from './middlewareAPI/middlewareAPI';
 
 export const profileSlice = createSlice({
