@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { Link as RouterLink } from 'react-router-dom'
-import { Typography, makeStyles, Button } from '@material-ui/core'
+import { Typography, makeStyles } from '@material-ui/core'
 import { useDispatch } from 'react-redux'
 import { setDarkTheme as setPageDarkTheme } from '../../store/slices/page'
 import paths from '../../constants/paths'
