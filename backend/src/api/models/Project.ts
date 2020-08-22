@@ -32,7 +32,6 @@ export const Project = model(
       minlength: 1,
       maxlength: 50,
     },
-
     lastName: {
       type: String,
       required: true,
@@ -94,8 +93,11 @@ export const Project = model(
       maxLength: 200,
     },
     link: {
-      type: Array,
-      required: true,
+        type: Array,
+        required: true,
     },
-  })
-);
+    isAdmin: {
+      type: Boolean,
+      required: false
+    }
+}));
