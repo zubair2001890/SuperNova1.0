@@ -64,7 +64,7 @@ export default ({ projectsData, projectsLoading }) => {
         FEATURED PROJECTS
       </Typography>
       <div className={classes.projectCardsGrid}>
-        {projectsLoading && <CircularProgress color="secondary" />}
+        {/*projectsLoading && <CircularProgress color="secondary" />*/}
         {projectsData && projectsData.map(renderProject(classes))}
       </div>
     </div>
