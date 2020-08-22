@@ -6,6 +6,10 @@ export const constellationStylesDesktop = {
       width: 276,
       left: "calc(50% - 276px/2 - 360px)",
       top: "calc(50% - 147px/2 - 254.5px)",
+      "@media (max-height:1080px)": {
+        left: "calc(50% - 46.11vh)",
+        top: "calc(50% - 30.37vh)",
+      },
     },
     constellationImage: {
       position: "absolute",
@@ -18,6 +22,8 @@ export const constellationStylesDesktop = {
       transition: "transform .4s",
       "&:hover": {
         transform: "scale(1.5)",
+        backgroundImage:
+          "url(" + require("./assets/constellation1hoverstate.png") + ")",
       },
     },
     subfieldName: {
@@ -43,6 +49,10 @@ export const constellationStylesDesktop = {
       width: 237,
       left: "calc(50% - 237px/2 + 19.5px)",
       top: "calc(50% - 181px/2 + 281.5px)",
+      "@media (max-height:1080px)": {
+        left: "calc(50% - 9.17vh)",
+        top: "calc(50% + 17.69vh)",
+      },
     },
     constellationImage: {
       position: "absolute",
@@ -55,6 +65,8 @@ export const constellationStylesDesktop = {
       transition: "transform .4s",
       "&:hover": {
         transform: "scale(1.5)",
+        backgroundImage:
+          "url(" + require("./assets/constellation2hoverstate.png") + ")",
       },
     },
     subfieldName: {
@@ -80,6 +92,10 @@ export const constellationStylesDesktop = {
       width: 167,
       left: "calc(50% - 167px/2 - 570.5px)",
       top: "calc(50% - 299px/2 - 55.5px)",
+      "@media (max-height:1080px)": {
+        left: "calc(50% - 60.56vh)",
+        top: "calc(50% - 18.98vh)",
+      },
     },
     constellationImage: {
       position: "absolute",
@@ -92,6 +108,8 @@ export const constellationStylesDesktop = {
       transition: "transform .4s",
       "&:hover": {
         transform: "scale(1.5)",
+        backgroundImage:
+          "url(" + require("./assets/constellation3hoverstate.png") + ")",
       },
     },
     subfieldName: {
@@ -117,6 +135,10 @@ export const constellationStylesDesktop = {
       width: 275,
       left: "calc(50% - 275px/2 + 459.5px)",
       top: "calc(50% - 187px/2 - 126.5px)",
+      "@media (max-height:1080px)": {
+        left: "calc(50% + 29.81vh)",
+        top: "calc(50% - 20.37vh)",
+      },
     },
     constellationImage: {
       position: "absolute",
@@ -129,6 +151,8 @@ export const constellationStylesDesktop = {
       transition: "transform .4s",
       "&:hover": {
         transform: "scale(1.5)",
+        backgroundImage:
+          "url(" + require("./assets/constellation4hoverstate.png") + ")",
       },
     },
     subfieldName: {
@@ -137,7 +161,6 @@ export const constellationStylesDesktop = {
       fontFamily: "Montserrat",
       fontSize: "1.5rem",
       letterSpacing: 2.6,
-      float: "right",
       fontWeight: "bold",
       top: "-20%",
       left: "30%",
@@ -156,6 +179,10 @@ export const constellationStylesDesktop = {
       width: 196,
       left: "calc(50% - 196px/2 + 42px)",
       top: "calc(50% - 254px/2 + 298px)",
+      "@media (max-height:1080px)": {
+        left: "calc(50% - 5.19vh)",
+        top: "calc(50% + 15.83vh)",
+      },
     },
     constellationImage: {
       position: "absolute",
@@ -168,6 +195,8 @@ export const constellationStylesDesktop = {
       transition: "transform .4s",
       "&:hover": {
         transform: "scale(1.5)",
+        backgroundImage:
+          "url(" + require("./assets/constellation5hoverstate.png") + ")",
       },
     },
     subfieldName: {
@@ -193,6 +222,10 @@ export const constellationStylesDesktop = {
       width: 298,
       left: "calc(50% - 298px/2 + 403px)",
       top: "calc(50% - 195px/2 - 165.5px)",
+      "@media (max-height:1080px)": {
+        left: "calc(50% + 23.52vh)",
+        top: "calc(50% - 24.35vh)",
+      },
     },
     constellationImage: {
       position: "absolute",
@@ -205,6 +238,8 @@ export const constellationStylesDesktop = {
       transition: "transform .4s",
       "&:hover": {
         transform: "scale(1.5)",
+        backgroundImage:
+          "url(" + require("./assets/constellation6hoverstate.png") + ")",
       },
     },
     subfieldName: {
@@ -213,7 +248,6 @@ export const constellationStylesDesktop = {
       fontFamily: "Montserrat",
       fontSize: "1.5rem",
       letterSpacing: 2.6,
-      float: "right",
       fontWeight: "bold",
       top: "-30%",
       left: "30%",
@@ -230,6 +264,10 @@ export const constellationStylesDesktop = {
       width: 243,
       left: "calc(50% - 243px/2 - 481.5px)",
       top: "calc(50% - 322px/2 + 226px)",
+      "@media (max-height:1080px)": {
+        left: "calc(50% - 55.83vh)",
+        top: "calc(50% + 6.02vh)",
+      },
     },
     constellationImage: {
       width: "80%",
@@ -241,6 +279,8 @@ export const constellationStylesDesktop = {
       transition: "transform .4s",
       "&:hover": {
         transform: "scale(1.5)",
+        backgroundImage:
+          "url(" + require("./assets/constellation7hoverstate.png") + ")",
       },
     },
     subfieldName: {
@@ -267,6 +307,10 @@ export const constellationStylesDesktop = {
       width: 222,
       left: "calc(50% - 222px/2 - 608px)",
       top: "calc(50% - 199px/2 - 66.5px)",
+      "@media (max-height:1080px)": {
+        left: "calc(50% - 66.57vh)",
+        top: "calc(50% - 15.37vh)",
+      },
     },
     constellationImage: {
       position: "absolute",
@@ -279,6 +323,8 @@ export const constellationStylesDesktop = {
       transition: "transform .4s",
       "&:hover": {
         transform: "scale(1.5)",
+        backgroundImage:
+          "url(" + require("./assets/constellation8hoverstate.png") + ")",
       },
     },
     subfieldName: {
@@ -304,6 +350,10 @@ export const constellationStylesDesktop = {
       width: 310,
       left: "calc(50% - 310px/2 + 480px)",
       top: "calc(50% - 206px/2 + 241px)",
+      "@media (max-height:1080px)": {
+        left: "calc(50% + 30.09vh)",
+        top: "calc(50% + 12.78vh)",
+      },
     },
     constellationImage: {
       position: "absolute",
@@ -316,6 +366,8 @@ export const constellationStylesDesktop = {
       transition: "transform .4s",
       "&:hover": {
         transform: "scale(1.5)",
+        backgroundImage:
+          "url(" + require("./assets/constellation9hoverstate.png") + ")",
       },
     },
     subfieldName: {
@@ -324,7 +376,6 @@ export const constellationStylesDesktop = {
       fontFamily: "Montserrat",
       fontSize: "1.5rem",
       letterSpacing: 2.6,
-      float: "right",
       fontWeight: "bold",
       top: "-32%",
       left: "20%",

@@ -22,6 +22,9 @@ function SlideOne(props) {
         subfield={props.item.name9}
         path={paths.exploreSubField}
         constellationStyles={constellationStylesDesktop.constellation9}
+        left="20%"
+        top="-49%"
+        width="382px"
       />
     </>
   );
@@ -34,6 +37,9 @@ function SlideTwo(props) {
         subfield={props.item.name3}
         path={paths.exploreSubField}
         constellationStyles={constellationStylesDesktop.constellation3}
+        left="33%"
+        top="-24%"
+        width="464px"
       />
       <MasterConstellation
         subfield={props.item.name2}
@@ -56,6 +62,9 @@ function SlideThree(props) {
         subfield={props.item.name8}
         path={paths.exploreSubField}
         constellationStyles={constellationStylesDesktop.constellation8}
+        left="30%"
+        top="-50%"
+        width="464px"
       />
     </>
   );
