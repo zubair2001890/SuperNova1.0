@@ -1,21 +1,21 @@
 import { model } from "mongoose";
-import {Schema} from "mongoose";
+import { Schema } from "mongoose";
 
 
 export const Project = model('Project', new Schema({
-    projectName : {
+    projectName: {
         type: String,
         required: true,
         minlength: 1,
         maxlength: 255
     },
-    
-    projectDescription : {
+
+    projectDescription: {
         type: Array,
         required: true,
     },
-    
-    university : {
+
+    university: {
         type: String,
         required: true,
         minlength: 1,
@@ -27,14 +27,13 @@ export const Project = model('Project', new Schema({
         required: false
     },
 
-    firstName : {
+    firstName: {
         type: String,
         required: true,
         minlength: 1,
         maxlength: 50
     },
-
-    lastName : {
+    lastName: {
         type: String,
         required: true,
         minlength: 1,
@@ -67,7 +66,7 @@ export const Project = model('Project', new Schema({
         requred: true
     },
     projectScientistID: {
-        type: Number,
+        type: String, // As it's going to be the ID of scientist, and therefore a String.
         requred: true
     },
     projectImage: {
@@ -83,7 +82,7 @@ export const Project = model('Project', new Schema({
     methodDescription: {
         type: Array,
         required: true,
-        },
+    },
     timelineDescription: {
         type: Array,
         required: false,
@@ -100,9 +99,12 @@ export const Project = model('Project', new Schema({
         minlength: 1,
         maxLength: 200
     },
-    link : {
+    link: {
         type: Array,
         required: true,
-        }
-    
-    }));
+    },
+    isAdmin: {
+      type: Boolean,
+      required: false
+    }
+}));
