@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import FormCard from "../../components/FormCard/index";
 import { makeStyles } from "@material-ui/core/styles";
 import { ReactComponent as GoogleLogo } from "../assets/google-plus.svg";
@@ -27,6 +27,13 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Links() {
   const classes = useStyles();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = () => {
+    console.log(email);
+    console.log(password);
+  }
 
   return (
     <Grid item className={classes.container}>
@@ -50,10 +57,10 @@ export default function Links() {
             </Grid>
           </>
         }
-        bodyChildren={<LoginForm />}
+        bodyChildren={<LoginForm email={email} password={password} onEmailChange={(e) => setEmail(e)} onPasswordChange={(e) => setPassword(e)} />}
         footerChildren={
           <>
-            <Button fullWidth size="large">
+            <Button fullWidth size="large" onClick={handleSubmit}>
               <Typography variant="h5">SIGN IN</Typography>
             </Button>
           </>

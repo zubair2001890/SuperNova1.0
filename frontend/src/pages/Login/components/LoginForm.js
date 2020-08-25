@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { makeStyles } from "@material-ui/core/styles";
 import { Link as RouterLink } from "react-router-dom";
@@ -52,20 +52,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default () => {
+export default (props) => {
   const classes = useStyles();
-  const [values, setValues] = React.useState({
-    password: "",
-    email: "",
-    showPassword: false,
-  });
-  const handleChange = (prop) => (event) => {
-    setValues({ ...values, [prop]: event.target.value });
-  };
-
-  const handleClickShowPassword = () => {
-    setValues({ ...values, showPassword: !values.showPassword });
-  };
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
@@ -89,10 +78,10 @@ export default () => {
         </InputLabel>
 
         <Input
-          onChange={handleChange("email")}
+          onChange={e => props.onEmailChange(e.target.value)}
           id="standard-adornment-email"
           type="email"
-          value={values.email}
+          value={props.email}
           fullWidth
           endAdornment={
             <InputAdornment position="end">
@@ -114,19 +103,19 @@ export default () => {
 
         <Input
           fullWidth
-          onChange={handleChange("password")}
+          onChange={e => props.onPasswordChange(e.target.value)}
           id="standard-adornment-password"
-          type={values.showPassword ? "text" : "password"}
-          value={values.password}
+          type={showPassword ? "text" : "password"}
+          value={props.password}
           endAdornment={
             <InputAdornment>
               <IconButton
                 edge="end"
                 aria-label="toggle password visibility"
-                onClick={handleClickShowPassword}
+                onClick={() => setShowPassword(!showPassword)}
                 onMouseDown={handleMouseDownPassword}
               >
-                {values.showPassword ? (
+                {showPassword ? (
                   <LockOpenIcon className={classes.icons} />
                 ) : (
                   <LockIcon className={classes.icons} />
