@@ -2,7 +2,7 @@ import React from "react";
 import FormCard from "../../components/FormCard/index";
 import { makeStyles } from "@material-ui/core/styles";
 import { ReactComponent as GoogleLogo } from "../assets/google-plus.svg";
-import LoginForm from "./components/LoginForm";
+import LoginForm from "./components/CreateAccountForm";
 import { Button, Grid, IconButton, Typography } from "@material-ui/core";
 
 import FacebookIcon from "@material-ui/icons/Facebook";

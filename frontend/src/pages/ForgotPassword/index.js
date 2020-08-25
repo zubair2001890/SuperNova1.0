@@ -1,7 +1,7 @@
 import React from "react";
 import FormCard from "../../components/FormCard/index";
 import { makeStyles } from "@material-ui/core/styles";
-import LoginForm from "./components/LoginForm";
+import LoginForm from "./components/ForgotPasswordForm";
 import { Button, Grid, Typography } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
