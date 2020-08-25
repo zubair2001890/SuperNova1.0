@@ -56,13 +56,6 @@ export default () => {
     setValues({ ...values, [prop]: event.target.value });
   };
 
-  const handleClickShowPassword = () => {
-    setValues({ ...values, showPassword: !values.showPassword });
-  };
-
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
   return (
     <>
       <Typography
