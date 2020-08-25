@@ -3,7 +3,6 @@ import {
   makeStyles,
   Typography,
   Avatar,
-  CircularProgress,
   Tooltip,
 } from "@material-ui/core";
 import ProjectCard from "../../../components/ProjectCard";
