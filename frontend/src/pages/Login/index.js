@@ -8,6 +8,9 @@ import { Button, Grid, IconButton, Typography } from "@material-ui/core";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import TwitterIcon from "@material-ui/icons/Twitter";
 
+import auth0 from "auth0-js";
+import params from "../../auth0-params.json";
+
 const useStyles = makeStyles((theme) => ({
   container: {
     minHeight: "calc(100vh - 80px)",
@@ -26,13 +29,36 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Links() {
+  let auth0Client = new auth0.WebAuth({
+    domain: params.domain,
+    clientID: params.clientId,
+    audience: params.apiAudience,
+    redirectUri: params.callbackUrl,
+    scope: params.scope,
+    responseType: "token id_token",
+  })
+
   const classes = useStyles();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = () => {
-    console.log(email);
-    console.log(password);
+  const handleSubmit = (e) => {
+    console.log("Logging in....");
+    e.preventDefault();
+    auth0Client.client.login({
+      realm: params.realm,
+      username: email,
+      password: password
+    }, (err, authResult) =>{
+      if (err) {
+        alert("Error: ", err.description);
+        return;
+      }
+      else if (authResult) {
+        console.log("Login success!")
+        window.origin = window.location.origin;
+      }
+    })
   }
 
   return (
