@@ -1,8 +1,8 @@
 {
-    "domain": "YOUR_DOMAIN_NAME",
-    "clientId": "YOUR_CLIENT_ID",
+    "domain": "dev-hmjb5olc.eu.auth0.com",
+    "clientId": "UW7VxF8l61wV2169vMPZtzp3UhNbFtpg",
     "callbackUrl": "http://localhost:3000",
-    "realm": "YOUR_DB_NAME",
-    "apiAudience": "YOUR_API_AUDIENCE",
+    "realm": "Username-Password-Authentication",
+    "apiAudience": "https://dev-hmjb5olc.eu.auth0.com/api/v2/",
     "scope":"read:current_user update:current_user_metadata"
 }

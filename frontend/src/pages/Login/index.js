@@ -51,12 +51,11 @@ export default function Links() {
       password: password
     }, (err, authResult) =>{
       if (err) {
-        alert("Error: ", err.description);
+        console.log("Login error");
         return;
       }
       else if (authResult) {
-        console.log("Login success!")
-        window.origin = window.location.origin;
+        console.log("Login success!");
       }
     })
   }
