@@ -78,11 +78,15 @@ const useStyles = makeStyles((theme) => ({
   },
   medicineContainer: {
     position: 'absolute',
-    left: 'calc(50% + 136.5px)',
+    left: 'calc(50% + 160px)',
     top: 'calc(50% - 371.5px)',
     '@media (max-height:1080px)': {
-      left: 'calc(50% + 12.64vh)',
+      left: 'calc(50% + 15vh)',
       top: 'calc(50% - 34.4vh)',
+    },
+    '@media (max-height:915px)': {
+      left: 'calc(50% + 15vh)',
+      top: "140px",
     },
     '&:hover a, &:hover p': {
       background:
@@ -119,10 +123,10 @@ const useStyles = makeStyles((theme) => ({
   engineeringTechnologyContainer: {
     position: 'absolute',
     left: 'calc(50% + 446px)',
-    top: 'calc(50% + 298.5px)',
+    top: 'calc(50% + 290px)',
     '@media (max-height:1080px)': {
       left: 'calc(50% + 41.3vh)',
-      top: 'calc(50% + 27.64vh)',
+      top: 'calc(50% + 27vh)',
     },
     '&:hover p': {
       background:
@@ -158,10 +162,10 @@ const useStyles = makeStyles((theme) => ({
   mathsStatsContainer: {
     position: 'absolute',
     left: 'calc(50% - 395px)',
-    top: 'calc(50% + 298.5px)',
+    top: 'calc(50% + 290px)',
     '@media (max-height:1080px)': {
       left: 'calc(50% - 36.57vh)',
-      top: 'calc(50% + 27.64vh)',
+      top: 'calc(50% + 27vh)',
     },
     '&:hover p': {
       background:
@@ -196,11 +200,15 @@ const useStyles = makeStyles((theme) => ({
   },
   chemistryContainer: {
     position: 'absolute',
-    left: 'calc(50% - 132px)',
+    left: 'calc(50% - 160px)',
     top: 'calc(50% - 371.5px)',
     '@media (max-height:1080px)': {
-      left: 'calc(50% - 12.22vh)',
+      left: 'calc(50% - 15vh)',
       top: 'calc(50% - 34.3vh)',
+    },
+    '@media (max-height:915px)': {
+      left: 'calc(50% - 15vh)',
+      top: "140px",
     },
     '&:hover p': {
       background:
