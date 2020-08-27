@@ -13,9 +13,9 @@ import { addStringToArray, arrayContainsString } from "../helpers";
 import * as jwt_decode from "jwt-decode";
 
 class ProjectsController {
-  constructor() {}
+  constructor() { }
 
- public featured = async (req: Request, res: Response) => {
+  public featured = async (req: Request, res: Response) => {
     let featuredProjects = new Array();
     let allProjects = await getFeaturedProjects();
     allProjects.forEach((project) => {
@@ -50,12 +50,14 @@ class ProjectsController {
       );
     } else if (req.query.project_id !== undefined) {
       projects = await getProjectByProjectID(req.query.project_id.toString());
+      if (projects.statusName !== "Active") {
+        projects = {};
+      }
     }
     res.send(projects);
   };
 
   public projectByProjectID = async (req: Request, res: Response) => {
-    //let selectedProject = await getProjectsByFieldName("Biology");
     let selectedProject = await getProjectByProjectID(req.params.project_id);
     res.send(selectedProject);
   };
@@ -150,8 +152,7 @@ class ProjectsController {
       req.header("Authorization").replace("Bearer ", "")
     ).sub;
     let userProfile = null;
-    try
-    {
+    try {
       userProfile = await getProfileByID(userId);
       if (userProfile.isAdmin) {
         Project.findByIdAndUpdate(
@@ -165,25 +166,23 @@ class ProjectsController {
         ); // findByIdAndUpdate block ends here.
         res.send({});
       } // Ends the if block.
-    else {
-      throw new Error(
-        "This user is not an admin user and therefore cannot update the project status."
-      );
+      else {
+        throw new Error(
+          "This user is not an admin user and therefore cannot update the project status."
+        );
+      }
+    }
+    catch (err) {
+      console.log(err);
     }
   }
-  catch (err)
-  {
-    console.log(err);
-  }
-} 
-  
+
   public deleteProjectByAdmin = async (req: Request, res: Response) => {
     const userId = jwt_decode(
       req.header("Authorization").replace("Bearer ", "")
     ).sub;
     let userProfile = null;
-    try
-    {
+    try {
       userProfile = await getProfileByID(userId);
       if (userProfile.isAdmin) {
         Project.findByIdAndDelete(req.params.project_id, function (err, output) {
@@ -192,13 +191,11 @@ class ProjectsController {
           }
         });
       } // Ends the if block for if isAdmin()
-      else
-      {
+      else {
         throw new Error("This user does not have admin privileges");
       }
     }
-    catch (err)
-    {
+    catch (err) {
       console.log(err);
     }
   }// The deleteProjectByAdmin function ends here.
