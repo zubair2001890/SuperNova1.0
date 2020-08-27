@@ -7,6 +7,7 @@ export default {
   logout: "/logout",
   test: "/test",
   error404: "/not-found",
+  loading: "/loading",
   home: "/",
   explore: "/explore",
   faq: "/faq",
