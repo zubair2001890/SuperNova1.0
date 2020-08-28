@@ -52,7 +52,6 @@ export default ({
   className,
   containerClassName,
   headerClassName,
-  footerClassName,
   headerChildren,
   bodyChildren,
   footerChildren,
@@ -82,8 +81,8 @@ export default ({
         </>
       )}
 
-      <div className={clsx(classes.body)}>{bodyChildren}</div>
-      <div className={clsx(classes.footer, footerClassName)}>
+      <div className={classes.body}>{bodyChildren}</div>
+      <div className={classes.footer}>
         {footerChildren}
       </div>
     </div>
