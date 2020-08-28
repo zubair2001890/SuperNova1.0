@@ -36,7 +36,7 @@ export default function Links() {
     redirectUri: params.callbackUrl,
     scope: params.scope,
     responseType: "token id_token",
-  })
+  });
 
   const classes = useStyles();
   const [email, setEmail] = useState("");
@@ -45,25 +45,29 @@ export default function Links() {
   const handleSubmit = (e) => {
     console.log("Logging in....");
     e.preventDefault();
-    auth0Client.client.login({
-      realm: params.realm,
-      username: email,
-      password: password
-    }, (err, authResult) =>{
-      if (err) {
-        console.log("Login error");
-        return;
+    auth0Client.client.login(
+      {
+        realm: params.realm,
+        username: email,
+        password: password,
+      },
+      (err, authResult) => {
+        if (err) {
+          console.log("Login error");
+          console.log(err);
+          return;
+        } else if (authResult) {
+          console.log("Login success!");
+          console.log(authResult);
+        }
       }
-      else if (authResult) {
-        console.log("Login success!");
-      }
-    })
-  }
+    );
+  };
 
   return (
     <Grid item className={classes.container}>
       <FormCard
-      loginType="login"
+        loginType="login"
         headerChildren={
           <>
             <Typography variant="h4" component="h1" align="center">
@@ -82,7 +86,14 @@ export default function Links() {
             </Grid>
           </>
         }
-        bodyChildren={<LoginForm email={email} password={password} onEmailChange={(e) => setEmail(e)} onPasswordChange={(e) => setPassword(e)} />}
+        bodyChildren={
+          <LoginForm
+            email={email}
+            password={password}
+            onEmailChange={(e) => setEmail(e)}
+            onPasswordChange={(e) => setPassword(e)}
+          />
+        }
         footerChildren={
           <>
             <Button fullWidth size="large" onClick={handleSubmit}>
