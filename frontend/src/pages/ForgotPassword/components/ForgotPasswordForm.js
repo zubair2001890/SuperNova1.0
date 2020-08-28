@@ -44,17 +44,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default () => {
+export default (props) => {
   const classes = useStyles();
-  const [values, setValues] = React.useState({
-    firstName: "",
-    password: "",
-    email: "",
-    showPassword: false,
-  });
-  const handleChange = (prop) => (event) => {
-    setValues({ ...values, [prop]: event.target.value });
-  };
 
   return (
     <>
@@ -72,10 +63,10 @@ export default () => {
         </InputLabel>
 
         <Input
-          onChange={handleChange("email")}
+          onChange={(e) => props.onEmailChange(e.target.value)}
           id="standard-adornment-email"
           type="email"
-          value={values.email}
+          value={props.email}
           fullWidth
           endAdornment={
             <InputAdornment position="end">
