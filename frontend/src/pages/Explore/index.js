@@ -384,3 +384,5 @@ export default () => {
     </>
   )
 }
+
+// Note: At <1200px, switch to mobile design
