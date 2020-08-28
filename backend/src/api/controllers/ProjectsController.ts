@@ -55,7 +55,6 @@ class ProjectsController {
   };
 
   public projectByProjectID = async (req: Request, res: Response) => {
-    //let selectedProject = await getProjectsByFieldName("Biology");
     let selectedProject = await getProjectByProjectID(req.params.project_id);
     res.send(selectedProject);
   };
@@ -66,12 +65,13 @@ class ProjectsController {
       link.push(req.body.link);
     }
     let startDate: String = req.body.startDate;
+    let whitespaceRegex = new RegExp(' ', 'g');
     let project = new Project({
       projectName: req.body.projectName,
       projectDescription: req.body.projectDescription,
       university: req.body.university,
       // To get rid of both of the slashes, I get an error message saying that String does not have a replaceAll method.
-      startDate: startDate.replace("/", "").replace("/", ""),
+      startDate: startDate.replace(whitespaceRegex, ''),
       teamDescription: req.body.teamDescription,
       methodDescription: req.body.methodDescription,
       timelineDescription: req.body.timelineDescription,
