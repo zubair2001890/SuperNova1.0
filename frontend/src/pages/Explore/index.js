@@ -67,6 +67,9 @@ const useStyles = makeStyles((theme) => ({
       padding: 0,
       fontSize: 30,
       lineHeight: '37px',
+      '@media (max-height:720px)': {
+        fontSize: 20,
+      },
     },
     '&:hover': {
       '& p': {
@@ -101,6 +104,10 @@ const useStyles = makeStyles((theme) => ({
     '@media (max-height:1080px)': {
       left: 'calc(50% + 35.56vh)',
       top: 'calc(50% - 22.18vh)',
+    },
+    '@media (max-height:720px)': {
+      left: 'calc(50% + 35.56vh)',
+      top: 'calc(50% - 15vh)',
     },
     '&:hover p': {
       background:
@@ -192,6 +199,10 @@ const useStyles = makeStyles((theme) => ({
     '@media (max-height:1080px)': {
       left: 'calc(50% - 33.94vh)',
       top: 'calc(50% - 22.18vh)',
+    },
+    '@media (max-height:720px)': {
+      left: 'calc(50% - 33.94vh)',
+      top: 'calc(50% - 15vh)',
     },
     '&:hover p': {
       background:
