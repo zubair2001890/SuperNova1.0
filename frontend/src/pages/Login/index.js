@@ -17,7 +17,6 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: theme.spacing(32),
     margin: "auto auto",
     width: 436,
-    maxHeight: 472,
   },
   socialIcons: {
     color: "white",
