@@ -138,24 +138,34 @@ class ProjectsController {
     const userId = jwt_decode(
       req.header("Authorization").replace("Bearer ", "")
     ).sub;
-    if (!arrayContainsString(this.adminUsers, userId)) {
+    let userProfile = null;
+    try
+    {
+      userProfile = await getProfileByID(userId);
+      if (userProfile.isAdmin) {
+        Project.findByIdAndUpdate(
+          req.params.project_id,
+          { statusName: req.body.statusName },
+          function (err, result) {
+            if (err) {
+              console.log(err);
+            }
+          }
+        ); // findByIdAndUpdate block ends here.
+        res.send({});
+      } // Ends the if block.
+    else {
       throw new Error(
         "This user is not an admin user and therefore cannot update the project status."
       );
-    } else {
-      Project.findByIdAndUpdate(
-        req.params.project_id,
-        { statusName: req.body.statusName },
-        function (err, result) {
-          if (err) {
-            console.log(err);
-          }
-        }
-      );
-      res.send({});
     }
-  };
-
+  }
+  catch (err)
+  {
+    console.log(err);
+  }
+} 
+  
   public deleteProjectByAdmin = async (req: Request, res: Response) => {
     const userId = jwt_decode(
       req.header("Authorization").replace("Bearer ", "")
@@ -176,7 +186,10 @@ class ProjectsController {
         throw new Error("This user does not have admin privileges");
       }
     }
-  } // The deleteProjectByAdmin function ends here.
-  
+    catch (err)
+    {
+      console.log(err);
+    }
+  }// The deleteProjectByAdmin function ends here.
 }
 export default ProjectsController;

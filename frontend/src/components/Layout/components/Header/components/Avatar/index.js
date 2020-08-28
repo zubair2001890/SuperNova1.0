@@ -31,12 +31,12 @@ function Avatar({ fetchAccount, account }) {
   const toggleOpen = () => setIsOpen(!isOpen);
   useEffect(() => {
     fetchAccount(user.sub);
-  }, []);
+  }, [fetchAccount, user]);
   if (!account) return null;
   const fullImageUrl = getPictureUrl(account.imageURL);
   return (
     <button onClick={toggleOpen} className={classes.avatar}>
-      <img src={fullImageUrl} alt="Profile picture" className={classes.image} />
+      <img src={fullImageUrl} alt="User profile" className={classes.image} />
       {isOpen && <Links />}
     </button>
   );

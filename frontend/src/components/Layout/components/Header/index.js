@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
 import clsx from "clsx";
 import { Link as RouterLink } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
@@ -13,7 +12,6 @@ import paths from "../../../../constants/paths";
 import logoRed from "./assets/logo-red.svg";
 import logoBlack from "./assets/logo-black.svg";
 import logoWhite from "./assets/logo-white.svg";
-import { sendUpdateAccount } from "./../../../../store/slices/middlewareAPI/middlewareAPI";
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -75,13 +73,9 @@ export default function Header({ darkTheme = true }) {
 
   const [logoImg, setLogoImg] = useState(null);
 
-  const dispatch = useDispatch();
   const {
     loginWithRedirect,
     isAuthenticated,
-    logout,
-    user,
-    getAccessTokenSilently,
   } = useAuth0();
 
   useEffect(() => {
@@ -112,8 +106,6 @@ export default function Header({ darkTheme = true }) {
 
     setDrawerState({ ...drawerState, [anchor]: open });
   };
-
-  console.log(user);
 
   return (
     <>
