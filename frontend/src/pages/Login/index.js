@@ -15,6 +15,7 @@ const useStyles = makeStyles((theme) => ({
   container: {
     minHeight: "calc(100vh - 80px)",
     paddingTop: theme.spacing(32),
+    paddingBottom: theme.spacing(2),
     margin: "auto auto",
     width: 436,
   },
@@ -44,7 +45,7 @@ export default function Links() {
   const handleSubmit = (e) => {
     console.log("Logging in....");
     e.preventDefault();
-    auth0Client.client.login(
+    auth0Client.login(
       {
         realm: params.realm,
         username: email,

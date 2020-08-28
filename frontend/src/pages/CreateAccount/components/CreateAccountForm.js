@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -62,25 +62,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default () => {
+export default (props) => {
   const classes = useStyles();
-  const [values, setValues] = React.useState({
-    firstName: "",
-    password: "",
-    email: "",
-    showPassword: false,
-  });
-  const handleChange = (prop) => (event) => {
-    setValues({ ...values, [prop]: event.target.value });
-  };
+  const [showPassword, setShowPassword] = useState(false);
 
-  const handleClickShowPassword = () => {
-    setValues({ ...values, showPassword: !values.showPassword });
-  };
-
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
   return (
     <>
       <FormControl className={classes.nameInput}>
@@ -92,10 +77,10 @@ export default () => {
         </InputLabel>
 
         <Input
-          onChange={handleChange("firstName")}
+          onChange={(e) => props.onUsernameChange(e.target.value)}
           id="standard-adornment-first-name"
           type="text"
-          value={values.firstName}
+          value={props.username}
           fullWidth
           endAdornment={
             <InputAdornment position="end">
@@ -113,10 +98,10 @@ export default () => {
         </InputLabel>
 
         <Input
-          onChange={handleChange("email")}
+          onChange={(e) => props.onEmailChange(e.target.value)}
           id="standard-adornment-email"
           type="email"
-          value={values.email}
+          value={props.email}
           fullWidth
           endAdornment={
             <InputAdornment position="end">
@@ -138,19 +123,18 @@ export default () => {
 
         <Input
           fullWidth
-          onChange={handleChange("password")}
+          onChange={(e) => props.onPasswordChange(e.target.value)}
           id="standard-adornment-password"
-          type={values.showPassword ? "text" : "password"}
-          value={values.password}
+          type={showPassword ? "text" : "password"}
+          value={props.password}
           endAdornment={
             <InputAdornment>
               <IconButton
                 edge="end"
                 aria-label="toggle password visibility"
-                onClick={handleClickShowPassword}
-                onMouseDown={handleMouseDownPassword}
+                onClick={() => setShowPassword(!showPassword)}
               >
-                {values.showPassword ? (
+                {showPassword ? (
                   <LockOpenIcon className={classes.icons} />
                 ) : (
                   <LockIcon className={classes.icons} />
@@ -160,7 +144,6 @@ export default () => {
           }
         />
       </FormControl>
-
       <FormControl
         fullWidth
         className={classes.termsAndConditionsCheckbox}
@@ -169,13 +152,19 @@ export default () => {
         <FormControlLabel
           control={
             <Checkbox
+            checked={props.isChecked}
+            onChange={props.onCheckboxChange}
               name="termsAndConditions"
-              style = {{
+              style={{
                 color: "#666666",
               }}
             />
           }
-          label={<Typography className={classes.termsAndConditionsText}>I have read and understood the terms and conditions</Typography>}
+          label={
+            <Typography className={classes.termsAndConditionsText}>
+              I have read and understood the terms and conditions
+            </Typography>
+          }
         />
       </FormControl>
     </>

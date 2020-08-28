@@ -1,13 +1,14 @@
 import React from "react";
 import FormCard from "../../components/FormCard/index";
 import { makeStyles } from "@material-ui/core/styles";
-import LoginForm from "./components/ForgotPasswordForm";
+import ForgotPasswordForm from "./components/ForgotPasswordForm";
 import { Button, Grid, Typography } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   container: {
     minHeight: "calc(100vh - 80px)",
     paddingTop: theme.spacing(30),
+    paddingBottom: theme.spacing(2),
     margin: "auto auto",
     width: 595,
   },
@@ -34,7 +35,7 @@ export default function Links() {
             </Typography>
           </>
         }
-        bodyChildren={<LoginForm />}
+        bodyChildren={<ForgotPasswordForm />}
         footerChildren={
           <>
             <Button fullWidth size="large">

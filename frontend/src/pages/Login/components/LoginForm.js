@@ -56,9 +56,6 @@ export default (props) => {
   const classes = useStyles();
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
   return (
     <>
       <MaterialLink component={RouterLink} to={paths.createAccount}>
@@ -113,7 +110,6 @@ export default (props) => {
                 edge="end"
                 aria-label="toggle password visibility"
                 onClick={() => setShowPassword(!showPassword)}
-                onMouseDown={handleMouseDownPassword}
               >
                 {showPassword ? (
                   <LockOpenIcon className={classes.icons} />
