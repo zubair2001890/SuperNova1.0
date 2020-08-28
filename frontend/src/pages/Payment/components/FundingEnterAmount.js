@@ -82,8 +82,8 @@ export default function FundingEnterAmount(props) {
       state: {
         amount: amount,
         description: props.title,
-      }
-    })
+      },
+    });
   };
 
   return (
