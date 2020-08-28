@@ -55,7 +55,6 @@ class ProjectsController {
   };
 
   public projectByProjectID = async (req: Request, res: Response) => {
-    //let selectedProject = await getProjectsByFieldName("Biology");
     let selectedProject = await getProjectByProjectID(req.params.project_id);
     res.send(selectedProject);
   };
@@ -66,20 +65,19 @@ class ProjectsController {
       link.push(req.body.link);
     }
     let startDate: String = req.body.startDate;
+    let whitespaceRegex = new RegExp(' ', 'g');
     let project = new Project({
       projectName: req.body.projectName,
-      projectDescription: req.body.project_description,
+      projectDescription: req.body.projectDescription,
       university: req.body.university,
       // To get rid of both of the slashes, I get an error message saying that String does not have a replaceAll method.
-      startDate: startDate.replace("/", "").replace("/", ""),
+      startDate: startDate.replace(whitespaceRegex, ''),
       teamDescription: req.body.teamDescription,
       methodDescription: req.body.methodDescription,
       timelineDescription: req.body.timelineDescription,
       projectImage: req.body.projectImage,
       goal: req.body.goal,
       projectScientistID: req.body.projectScientistId,
-      fieldName: req.body.fieldName,
-      subfieldName: req.body.subfieldName,
       subfieldID: req.body.subfieldID,
       firstName: req.body.teamDescription[0].split(" ")[0],
       lastName: req.body.teamDescription[0].split(" ")[1].replace(",", ""),
@@ -93,7 +91,6 @@ class ProjectsController {
   };
   public updateProject = async (req: Request, res: Response) => {
     let selectedProject = null;
-    let labNotes = null;
     await Project.findById(req.params.project_id, function (err, docs) {
       if (err) {
         console.log(err);
@@ -104,14 +101,6 @@ class ProjectsController {
       if (!req.body[property]) delete req.body[property];
     }
     let update = req.body;
-    if (req.body.labNotes !== undefined) {
-      let labNotes = addStringToArray(
-        selectedProject.labNotes,
-        req.body.labNotes
-      );
-      labNotes = addStringToArray(labNotes, Date.now().toString());
-      update.labNotes = labNotes;
-    }
     if (req.body.link !== undefined) {
       update.link = addStringToArray(selectedProject.link, req.body.link);
     }
