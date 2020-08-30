@@ -75,11 +75,14 @@ export const Project = model(
       maxlength: 255,
     },
     teamDescription: {
-      type: [Team],
+      type: Array,
       required: false,
     },
     methodDescription: MethodDescription,
-    timelineDescription: [Timeline],
+    timelineDescription: {
+      type: Array,
+      required: false,
+    },
     fieldName: {
       type: String,
       required: true,
