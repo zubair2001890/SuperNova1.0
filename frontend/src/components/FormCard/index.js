@@ -52,11 +52,6 @@ export default ({
   className,
   containerClassName,
   headerClassName,
-<<<<<<< HEAD
-=======
-  bodyClassName,
-  footerClassName,
->>>>>>> 8cdec6efe8152eaa492ba7d5d0cb4fedc608f7cc
   headerChildren,
   bodyChildren,
   footerChildren,
@@ -86,13 +81,8 @@ export default ({
         </>
       )}
 
-<<<<<<< HEAD
       <div className={classes.body}>{bodyChildren}</div>
       <div className={classes.footer}>
-=======
-      <div className={clsx(classes.body, bodyClassName)}>{bodyChildren}</div>
-      <div className={clsx(classes.footer, footerClassName)}>
->>>>>>> 8cdec6efe8152eaa492ba7d5d0cb4fedc608f7cc
         {footerChildren}
       </div>
     </div>
