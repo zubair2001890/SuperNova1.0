@@ -24,10 +24,14 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.common.gray,
     paddingLeft: theme.spacing(1),
   },
-  form: {
+  createAccountLink: {
     marginTop: theme.spacing(6),
     marginBottom: theme.spacing(2),
     color: theme.palette.common.black,
+  },
+  errorMessage: {
+    color: theme.palette.secondary.main,
+    fontSize: 16,
   },
   emailInput: {
     marginTop: theme.spacing(2),
@@ -60,7 +64,7 @@ export default (props) => {
     <>
       <MaterialLink component={RouterLink} to={paths.createAccount}>
         <Typography
-          className={classes.form}
+          className={classes.createAccountLink}
           variant="subtitle2"
           component="h1"
           align="center"
@@ -68,6 +72,8 @@ export default (props) => {
           New to SuperNova? Create an Account
         </Typography>
       </MaterialLink>
+
+      {props.incorrectDetails && <Typography className={classes.errorMessage}>Incorrect email or password</Typography>}
 
       <FormControl fullWidth className={classes.emailInput}>
         <InputLabel className={classes.root} htmlFor="standard-adornment-email">

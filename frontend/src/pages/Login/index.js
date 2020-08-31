@@ -41,6 +41,11 @@ export default function Links() {
   const classes = useStyles();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [incorrect, setIncorrect] = useState(false);
+
+  const handleIncorrect = () => {
+    setIncorrect(true);
+  }
 
   const handleSubmit = (e) => {
     console.log("Logging in....");
@@ -53,11 +58,9 @@ export default function Links() {
       },
       (err, authResult) => {
         if (err) {
-          console.log("Login error");
-          console.log(err);
+          handleIncorrect();
           return;
         } else if (authResult) {
-          console.log("Login success!");
           console.log(authResult);
         }
       }
@@ -92,6 +95,7 @@ export default function Links() {
             password={password}
             onEmailChange={(e) => setEmail(e)}
             onPasswordChange={(e) => setPassword(e)}
+            incorrectDetails={incorrect}
           />
         }
         footerChildren={
