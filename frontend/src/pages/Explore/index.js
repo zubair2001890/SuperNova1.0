@@ -67,6 +67,9 @@ const useStyles = makeStyles((theme) => ({
       padding: 0,
       fontSize: 30,
       lineHeight: '37px',
+      '@media (max-height:720px)': {
+        fontSize: 20,
+      },
     },
     '&:hover': {
       '& p': {
@@ -78,11 +81,15 @@ const useStyles = makeStyles((theme) => ({
   },
   medicineContainer: {
     position: 'absolute',
-    left: 'calc(50% + 136.5px)',
+    left: 'calc(50% + 160px)',
     top: 'calc(50% - 371.5px)',
     '@media (max-height:1080px)': {
-      left: 'calc(50% + 12.64vh)',
+      left: 'calc(50% + 15vh)',
       top: 'calc(50% - 34.4vh)',
+    },
+    '@media (max-height:915px)': {
+      left: 'calc(50% + 15vh)',
+      top: "140px",
     },
     '&:hover a, &:hover p': {
       background:
@@ -97,6 +104,10 @@ const useStyles = makeStyles((theme) => ({
     '@media (max-height:1080px)': {
       left: 'calc(50% + 35.56vh)',
       top: 'calc(50% - 22.18vh)',
+    },
+    '@media (max-height:720px)': {
+      left: 'calc(50% + 35.56vh)',
+      top: 'calc(50% - 15vh)',
     },
     '&:hover p': {
       background:
@@ -119,10 +130,10 @@ const useStyles = makeStyles((theme) => ({
   engineeringTechnologyContainer: {
     position: 'absolute',
     left: 'calc(50% + 446px)',
-    top: 'calc(50% + 298.5px)',
+    top: 'calc(50% + 290px)',
     '@media (max-height:1080px)': {
       left: 'calc(50% + 41.3vh)',
-      top: 'calc(50% + 27.64vh)',
+      top: 'calc(50% + 27vh)',
     },
     '&:hover p': {
       background:
@@ -158,10 +169,10 @@ const useStyles = makeStyles((theme) => ({
   mathsStatsContainer: {
     position: 'absolute',
     left: 'calc(50% - 395px)',
-    top: 'calc(50% + 298.5px)',
+    top: 'calc(50% + 290px)',
     '@media (max-height:1080px)': {
       left: 'calc(50% - 36.57vh)',
-      top: 'calc(50% + 27.64vh)',
+      top: 'calc(50% + 27vh)',
     },
     '&:hover p': {
       background:
@@ -189,6 +200,10 @@ const useStyles = makeStyles((theme) => ({
       left: 'calc(50% - 33.94vh)',
       top: 'calc(50% - 22.18vh)',
     },
+    '@media (max-height:720px)': {
+      left: 'calc(50% - 33.94vh)',
+      top: 'calc(50% - 15vh)',
+    },
     '&:hover p': {
       background:
         'transparent radial-gradient(closest-side at 50% 50%, #D8FFF4 0%, #3EFFCB 100%) 0% 0% no-repeat padding-box',
@@ -196,11 +211,15 @@ const useStyles = makeStyles((theme) => ({
   },
   chemistryContainer: {
     position: 'absolute',
-    left: 'calc(50% - 132px)',
+    left: 'calc(50% - 160px)',
     top: 'calc(50% - 371.5px)',
     '@media (max-height:1080px)': {
-      left: 'calc(50% - 12.22vh)',
+      left: 'calc(50% - 15vh)',
       top: 'calc(50% - 34.3vh)',
+    },
+    '@media (max-height:915px)': {
+      left: 'calc(50% - 15vh)',
+      top: "140px",
     },
     '&:hover p': {
       background:
@@ -365,3 +384,5 @@ export default () => {
     </>
   )
 }
+
+// Note: At <1200px, switch to mobile design
