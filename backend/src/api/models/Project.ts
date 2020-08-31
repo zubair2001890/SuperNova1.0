@@ -85,13 +85,13 @@ export const Project = model(
     },
     fieldName: {
       type: String,
-      required: true,
+      required: false,
       minlength: 1,
       maxLength: 200,
     },
     subfieldName: {
       type: String,
-      required: true,
+      required: false,
       minlength: 1,
       maxLength: 200,
     },
