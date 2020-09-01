@@ -28,6 +28,12 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.black,
     padding: theme.spacing(3, 0),
   },
+  successMessage: {
+    color: theme.palette.secondary.main,
+    textAlign: "center",
+    fontSize: 18,
+    paddingBottom: theme.spacing(2),
+  },
 }));
 
 export default function Links() {
@@ -64,12 +70,9 @@ export default function Links() {
       alert(
         "Please read and agree to the terms and conditions before making an account"
       );
-    } else if (username === "") {
+    } else if (username === "" || email === "" || password === "") {
       handleEmpty(true);
-    } else if (email === "") {
-      handleEmpty(true);
-    } else if (password === "") {
-      handleEmpty(true);
+      handleIncorrect(false, false);
     } else {
       e.preventDefault();
       handleEmpty(false);
@@ -142,8 +145,18 @@ export default function Links() {
         }
         footerChildren={
           <>
+            {validDetails && (
+              <Typography className={classes.successMessage}>
+                Account successfully created!
+              </Typography>
+            )}
             {validDetails ? (
-              <Button component={RouterLink} fullWidth size="large" to={paths.login}>
+              <Button
+                component={RouterLink}
+                fullWidth
+                size="large"
+                to={paths.login}
+              >
                 <Typography variant="h5">LOG IN</Typography>
               </Button>
             ) : (
