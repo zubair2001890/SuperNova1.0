@@ -48,7 +48,6 @@ export default function Links() {
   }
 
   const handleSubmit = (e) => {
-    console.log("Logging in....");
     e.preventDefault();
     auth0Client.login(
       {
