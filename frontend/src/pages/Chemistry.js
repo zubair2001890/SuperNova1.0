@@ -6,7 +6,6 @@ import MasterConstellation from "../components/Constellations/MasterConstellatio
 import { constellationStylesDesktop } from "../components/Constellations/constellationStyles";
 
 function SlideOne(props) {
-  console.log(props.item);
   return (
     <>
       <MasterConstellation
