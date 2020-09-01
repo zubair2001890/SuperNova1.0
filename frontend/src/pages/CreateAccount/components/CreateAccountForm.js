@@ -139,7 +139,7 @@ export default (props) => {
       {props.invalidPassword && (
         <Typography className={classes.errorMessage}>
           Password must be at least 8 characters and should contain
-          alphanumerical characters.
+          alphanumerical characters, including capitals.
         </Typography>
       )}
 
