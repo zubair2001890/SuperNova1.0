@@ -71,14 +71,14 @@ export default (props) => {
       <FormControl className={classes.nameInput}>
         <InputLabel
           className={classes.root}
-          htmlFor="standard-adornment-first-name"
+          htmlFor="standard-adornment-full-name"
         >
-          First Name
+          Full Name
         </InputLabel>
 
         <Input
           onChange={(e) => props.onUsernameChange(e.target.value)}
-          id="standard-adornment-first-name"
+          id="standard-adornment-full-name"
           type="text"
           value={props.username}
           fullWidth
