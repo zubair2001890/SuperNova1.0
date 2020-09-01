@@ -21,24 +21,17 @@ export const Project = model(
       minlength: 1,
       maxlength: 255,
     },
-
     labNotes: {
       type: String,
       required: false,
     },
-    firstName: {
+    fullName: {
       type: String,
       required: true,
       minlength: 1,
-      maxlength: 50,
+      maxlength: 80,
     },
-    lastName: {
-      type: String,
-      required: true,
-      minlength: 1,
-      maxlength: 50,
-    },
-    startDate: {
+      startDate: {
       type: String,
       required: true,
       minlength: 1,
