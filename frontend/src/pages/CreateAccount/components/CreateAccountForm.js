@@ -111,7 +111,7 @@ export default (props) => {
 
       {props.invalidEmail && (
         <Typography className={classes.errorMessage}>
-          Please enter a valid email address.
+          Please enter a valid/new email address.
         </Typography>
       )}
 
