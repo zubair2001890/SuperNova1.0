@@ -4,6 +4,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import { ReactComponent as GoogleLogo } from "../assets/google-plus.svg";
 import CreateAccountForm from "./components/CreateAccountForm";
 import { Button, Grid, IconButton, Typography } from "@material-ui/core";
+import { Link as RouterLink } from "react-router-dom";
+import paths from "../../constants/paths";
 
 import FacebookIcon from "@material-ui/icons/Facebook";
 import TwitterIcon from "@material-ui/icons/Twitter";
@@ -45,10 +47,16 @@ export default function Links() {
   const [isChecked, setIsChecked] = useState(false);
   const [invalidEmail, setInvalidEmail] = useState(false);
   const [invalidPassword, setInvalidPassword] = useState(false);
+  const [emptyField, setEmptyField] = useState(false);
+  const [validDetails, setValidDetails] = useState(false);
 
   const handleIncorrect = (emailValid, passwordValid) => {
     setInvalidEmail(emailValid);
     setInvalidPassword(passwordValid);
+  };
+
+  const handleEmpty = (isEmpty) => {
+    setEmptyField(isEmpty);
   };
 
   const handleSubmit = (e) => {
@@ -57,13 +65,14 @@ export default function Links() {
         "Please read and agree to the terms and conditions before making an account"
       );
     } else if (username === "") {
-      alert("Full name field is required");
+      handleEmpty(true);
     } else if (email === "") {
-      alert("Email field is required");
+      handleEmpty(true);
     } else if (password === "") {
-      alert("Password field is required");
+      handleEmpty(true);
     } else {
       e.preventDefault();
+      handleEmpty(false);
       auth0Client.signup(
         {
           connection: params.realm,
@@ -83,6 +92,7 @@ export default function Links() {
           } else if (authResult) {
             console.log(authResult);
             handleIncorrect(false, false);
+            setValidDetails(true);
           }
         }
       );
@@ -127,13 +137,20 @@ export default function Links() {
             onCheckboxChange={toggleChecked}
             invalidEmail={invalidEmail}
             invalidPassword={invalidPassword}
+            emptyField={emptyField}
           />
         }
         footerChildren={
           <>
-            <Button fullWidth size="large" onClick={handleSubmit}>
-              <Typography variant="h5">CREATE ACCOUNT</Typography>
-            </Button>
+            {validDetails ? (
+              <Button component={RouterLink} fullWidth size="large" to={paths.login}>
+                <Typography variant="h5">LOG IN</Typography>
+              </Button>
+            ) : (
+              <Button fullWidth size="large" onClick={handleSubmit}>
+                <Typography variant="h5">CREATE ACCOUNT</Typography>
+              </Button>
+            )}
           </>
         }
       />
