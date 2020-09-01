@@ -190,7 +190,9 @@ export default function Header({ darkTheme = true }) {
             ) : (
               <Button
                 color="inherit"
-                onClick={loginWithRedirect}
+                // onClick={loginWithRedirect}
+                component={RouterLink}
+                to={paths.login}
                 size="large"
                 className={classes.appBarRightLink}
               >
