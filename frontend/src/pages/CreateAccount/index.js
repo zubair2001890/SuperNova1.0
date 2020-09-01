@@ -43,14 +43,26 @@ export default function Links() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isChecked, setIsChecked] = useState(false);
+  const [invalidEmail, setInvalidEmail] = useState(false);
+  const [invalidPassword, setInvalidPassword] = useState(false);
+
+  const handleIncorrect = (emailValid, passwordValid) => {
+    setInvalidEmail(emailValid);
+    setInvalidPassword(passwordValid);
+  };
 
   const handleSubmit = (e) => {
     if (!isChecked) {
       alert(
         "Please read and agree to the terms and conditions before making an account"
       );
+    } else if (username === "") {
+      alert("Full name field is required");
+    } else if (email === "") {
+      alert("Email field is required");
+    } else if (password === "") {
+      alert("Password field is required");
     } else {
-      console.log("Creating an account....");
       e.preventDefault();
       auth0Client.signup(
         {
@@ -61,12 +73,16 @@ export default function Links() {
         },
         (err, authResult) => {
           if (err) {
-            console.log("Create account error");
-            console.log(err);
-            return;
+            if (typeof err.description === "string") {
+              handleIncorrect(true, false);
+              return;
+            } else {
+              handleIncorrect(false, true);
+              return;
+            }
           } else if (authResult) {
-            console.log("Create account success!");
             console.log(authResult);
+            handleIncorrect(false, false);
           }
         }
       );
@@ -109,6 +125,8 @@ export default function Links() {
             onPasswordChange={(e) => setPassword(e)}
             isChecked={isChecked}
             onCheckboxChange={toggleChecked}
+            invalidEmail={invalidEmail}
+            invalidPassword={invalidPassword}
           />
         }
         footerChildren={

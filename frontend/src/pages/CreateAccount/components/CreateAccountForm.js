@@ -34,12 +34,22 @@ const useStyles = makeStyles((theme) => ({
     paddingRight: theme.spacing(1),
     width: 360,
   },
+  invalidEmailMessage: {
+    color: theme.palette.secondary.main,
+    fontSize: 16,
+    paddingLeft: theme.spacing(6),
+  },
   emailInput: {
     marginTop: theme.spacing(3),
     marginBottom: theme.spacing(3),
     paddingLeft: theme.spacing(6),
     paddingRight: theme.spacing(1),
     width: 360,
+  },
+  invalidPasswordMessage: {
+    color: theme.palette.secondary.main,
+    fontSize: 16,
+    paddingLeft: theme.spacing(6),
   },
   passwordInput: {
     marginTop: theme.spacing(3),
@@ -92,6 +102,8 @@ export default (props) => {
         />
       </FormControl>
 
+      {props.invalidEmail && <Typography className={classes.invalidEmailMessage}>Please enter a valid email address.</Typography>}
+
       <FormControl fullWidth className={classes.emailInput}>
         <InputLabel className={classes.root} htmlFor="standard-adornment-email">
           Email
@@ -112,6 +124,8 @@ export default (props) => {
           }
         />
       </FormControl>
+
+      {props.invalidPassword && <Typography className={classes.invalidPasswordMessage}>Password must be at least 8 characters and should contain alphanumerical characters.</Typography>}
 
       <FormControl fullWidth className={classes.passwordInput}>
         <InputLabel

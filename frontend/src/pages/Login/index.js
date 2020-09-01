@@ -43,8 +43,8 @@ export default function Links() {
   const [password, setPassword] = useState("");
   const [incorrect, setIncorrect] = useState(false);
 
-  const handleIncorrect = () => {
-    setIncorrect(true);
+  const handleIncorrect = (isInvalid) => {
+    setIncorrect(isInvalid);
   }
 
   const handleSubmit = (e) => {
@@ -57,7 +57,7 @@ export default function Links() {
       },
       (err, authResult) => {
         if (err) {
-          handleIncorrect();
+          handleIncorrect(true);
           return;
         } else if (authResult) {
           console.log(authResult);
