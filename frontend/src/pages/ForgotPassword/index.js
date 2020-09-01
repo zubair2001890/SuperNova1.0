@@ -3,6 +3,8 @@ import FormCard from "../../components/FormCard/index";
 import { makeStyles } from "@material-ui/core/styles";
 import ForgotPasswordForm from "./components/ForgotPasswordForm";
 import { Button, Grid, Typography } from "@material-ui/core";
+import { Link as RouterLink } from "react-router-dom";
+import paths from "../../constants/paths";
 
 import auth0 from "auth0-js";
 import params from "../../auth0-params.json";
@@ -17,6 +19,12 @@ const useStyles = makeStyles((theme) => ({
   },
   socialIcons: {
     color: "white",
+  },
+  successMessage: {
+    color: theme.palette.secondary.main,
+    fontSize: 16,
+    textAlign: "center",
+    paddingBottom: theme.spacing(2),
   },
   button: {
     color: theme.palette.black,
@@ -36,9 +44,19 @@ export default function Links() {
 
   const classes = useStyles();
   const [email, setEmail] = useState("");
+  const [invalidEmail, setInvalidEmail] = useState(false);
+  const [successful, setSuccessful] = useState(false);
+
+  const emailRegex = new RegExp(
+    /^[\w.!#$%&'*+-/=?^_`{}|]+@[\w-]{1,253}\.[a-zA-Z0-9-]{1,63}$/,
+    ""
+  );
 
   const handleSubmit = (e) => {
-    console.log("Sending reset email....");
+    if (!emailRegex.test(email)) {
+      setInvalidEmail(true);
+    } else {
+      setInvalidEmail(false);
       e.preventDefault();
       auth0Client.changePassword(
         {
@@ -47,15 +65,13 @@ export default function Links() {
         },
         (err, authResult) => {
           if (err) {
-            console.log("Reset password error");
-            console.log(err);
             return;
           } else if (authResult) {
-            console.log("Reset password success!");
-            console.log(authResult);
+            setSuccessful(true);
           }
         }
       );
+    }
   };
 
   return (
@@ -73,13 +89,30 @@ export default function Links() {
           <ForgotPasswordForm
             email={email}
             onEmailChange={(e) => setEmail(e)}
+            invalidEmail={invalidEmail}
           />
         }
         footerChildren={
           <>
-            <Button fullWidth size="large" onClick={handleSubmit}>
-              <Typography variant="h5">SEND LINK</Typography>
-            </Button>
+            {successful && (
+              <Typography className={classes.successMessage}>
+                We've just sent you an email with a link to reset your password.
+              </Typography>
+            )}
+            {successful ? (
+              <Button
+                component={RouterLink}
+                fullWidth
+                size="large"
+                to={paths.login}
+              >
+                <Typography variant="h5">LOG IN</Typography>
+              </Button>
+            ) : (
+              <Button fullWidth size="large" onClick={handleSubmit}>
+                <Typography variant="h5">SEND LINK</Typography>
+              </Button>
+            )}
           </>
         }
       />
