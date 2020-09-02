@@ -9,7 +9,7 @@ import FacebookIcon from "@material-ui/icons/Facebook";
 import TwitterIcon from "@material-ui/icons/Twitter";
 
 import params from "../../auth0-params.json";
-import { auth0Client } from "../../index";
+import auth from "../../Auth";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -33,6 +33,7 @@ export default function Links() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [incorrect, setIncorrect] = useState(false);
+  // const auth = new Auth();
 
   const handleIncorrect = (isInvalid) => {
     setIncorrect(isInvalid);
@@ -40,21 +41,7 @@ export default function Links() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    auth0Client.login(
-      {
-        realm: params.realm,
-        username: email,
-        password: password,
-      },
-      (err, authResult) => {
-        if (err) {
-          handleIncorrect(true);
-          return;
-        } else {
-          handleIncorrect(false);
-        }
-      }
-    );
+    auth.login(params.realm, email, password, handleIncorrect);
   };
 
   return (

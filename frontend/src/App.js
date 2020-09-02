@@ -1,6 +1,7 @@
 import React, { Suspense, lazy } from "react";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import { ThemeProvider } from "@material-ui/core/styles";
+import auth from "./Auth";
 
 import Layout from "./components/Layout";
 import paths from "./constants/paths";
@@ -44,7 +45,14 @@ const CheckoutForm = lazy(() =>
   import("./pages/Payment/components/CheckoutForm")
 );
 
+// const auth = new Auth();
+
+// const handleAuthentication = ({location}) => {
+//   auth.handleAuthentication();
+// }
+
 export default function App() {
+  auth.handleAuthentication();
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
@@ -52,6 +60,13 @@ export default function App() {
           <ScrollToTop />
           <Layout>
             <Switch>
+              {/* <Route
+                path={paths.error404}
+                render={(props) => {
+                  handleAuthentication(props);
+                  return <Error404 {...props} />;
+                }}
+              /> */}
               <Route path={paths.login}>
                 <Login />
               </Route>

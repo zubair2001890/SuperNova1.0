@@ -11,7 +11,7 @@ import FacebookIcon from "@material-ui/icons/Facebook";
 import TwitterIcon from "@material-ui/icons/Twitter";
 
 import params from "../../auth0-params.json";
-import { auth0Client } from "../../index";
+import auth from "../../Auth";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -46,6 +46,7 @@ export default function Links() {
   const [invalidPassword, setInvalidPassword] = useState(false);
   const [emptyField, setEmptyField] = useState(false);
   const [validDetails, setValidDetails] = useState(false);
+  // const auth = new Auth();
 
   const handleIncorrect = (emailValid, passwordValid) => {
     setInvalidEmail(emailValid);
@@ -67,28 +68,7 @@ export default function Links() {
     } else {
       e.preventDefault();
       handleEmpty(false);
-      auth0Client.signup(
-        {
-          connection: params.realm,
-          username: username,
-          email: email,
-          password: password,
-        },
-        (err, authResult) => {
-          if (err) {
-            if (typeof err.description === "string") {
-              handleIncorrect(true, false);
-              return;
-            } else {
-              handleIncorrect(false, true);
-              return;
-            }
-          } else {
-            handleIncorrect(false, false);
-            setValidDetails(true);
-          }
-        }
-      );
+      auth.signup(params.realm, username, email, password, handleIncorrect, setValidDetails);
     }
   };
 

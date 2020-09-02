@@ -7,7 +7,7 @@ import { Link as RouterLink } from "react-router-dom";
 import paths from "../../constants/paths";
 
 import params from "../../auth0-params.json";
-import { auth0Client } from "../../index";
+import auth from "../../Auth";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -37,6 +37,7 @@ export default function Links() {
   const [email, setEmail] = useState("");
   const [invalidEmail, setInvalidEmail] = useState(false);
   const [successful, setSuccessful] = useState(false);
+  // const auth = new Auth();
 
   const emailRegex = new RegExp(
     /^[\w.!#$%&'*+-/=?^_`{}|]+@[\w-]{1,253}\.[a-zA-Z0-9-]{1,63}$/,
@@ -49,19 +50,7 @@ export default function Links() {
     } else {
       setInvalidEmail(false);
       e.preventDefault();
-      auth0Client.changePassword(
-        {
-          connection: params.realm,
-          email: email,
-        },
-        (err, authResult) => {
-          if (err) {
-            return;
-          } else {
-            setSuccessful(true);
-          }
-        }
-      );
+      auth.changePassword(params.realm, email, setSuccessful)
     }
   };
 

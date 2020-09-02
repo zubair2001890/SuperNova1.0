@@ -5,7 +5,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { AppBar, IconButton, Toolbar, Button } from "@material-ui/core";
 import { Menu as MenuIcon, Close as CloseIcon } from "@material-ui/icons";
 import { useAuth0 } from "@auth0/auth0-react";
-import { auth0Client } from "../../../../index";
+import auth from "../../../../Auth";
 
 import LeftDrawer from "./components/LeftDrawer";
 import AvatarDropdown from "./components/Avatar";
@@ -67,23 +67,24 @@ const useStyles = makeStyles((theme) => ({
 const getInitialLogoSrc = (darkTheme) => (darkTheme ? logoWhite : logoBlack);
 
 export default function Header({ darkTheme = true }) {
-  auth0Client.checkSession({}, (err, authResult) => {
-    if (err) {
-      console.log(err);
-      return;
-    } else {
-      console.log("checkSession authResult:");
-      console.log(authResult);
-      auth0Client.client.userInfo(authResult.accessToken, (err, user) => {
-        if (err) {
-          return;
-        } else {
-          console.log("checkSession, userInfo result:");
-          console.log(user);
-        }
-      });
-    }
-  });
+  // console.log(auth.getAccessToken());
+  // auth0Client.checkSession({}, (err, authResult) => {
+  //   if (err) {
+  //     console.log(err);
+  //     return;
+  //   } else {
+  //     console.log("checkSession authResult:");
+  //     console.log(authResult);
+  //     auth0Client.client.userInfo(authResult.accessToken, (err, user) => {
+  //       if (err) {
+  //         return;
+  //       } else {
+  //         console.log("checkSession, userInfo result:");
+  //         console.log(user);
+  //       }
+  //     });
+  //   }
+  // });
 
   const classes = useStyles({ darkTheme });
   const [drawerState, setDrawerState] = useState({
@@ -179,8 +180,18 @@ export default function Header({ darkTheme = true }) {
             >
               EXPLORE
             </Button>
-            {isAuthenticated ? (
-              <AvatarDropdown />
+            {auth.isAuthenticated() ? (
+              // <AvatarDropdown />
+              <Button
+                color="inherit"
+                onClick={auth.logout}
+                component={RouterLink}
+                to={paths.home}
+                size="large"
+                className={classes.appBarRightLink}
+              >
+                LOG OUT
+              </Button>
             ) : (
               <Button
                 color="inherit"
