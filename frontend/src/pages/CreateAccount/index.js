@@ -10,8 +10,8 @@ import paths from "../../constants/paths";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import TwitterIcon from "@material-ui/icons/Twitter";
 
-import auth0 from "auth0-js";
 import params from "../../auth0-params.json";
+import { auth0Client } from "../../index";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -37,15 +37,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Links() {
-  let auth0Client = new auth0.WebAuth({
-    domain: params.domain,
-    clientID: params.clientId,
-    audience: params.apiAudience,
-    redirectUri: params.callbackUrl,
-    scope: params.scope,
-    responseType: "token id_token",
-  });
-
   const classes = useStyles();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");

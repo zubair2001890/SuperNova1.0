@@ -5,8 +5,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { AppBar, IconButton, Toolbar, Button } from "@material-ui/core";
 import { Menu as MenuIcon, Close as CloseIcon } from "@material-ui/icons";
 import { useAuth0 } from "@auth0/auth0-react";
-import auth0 from "auth0-js";
-import params from "../../../../auth0-params.json";
+import { auth0Client } from "../../../../index";
 
 import LeftDrawer from "./components/LeftDrawer";
 import AvatarDropdown from "./components/Avatar";
@@ -68,23 +67,18 @@ const useStyles = makeStyles((theme) => ({
 const getInitialLogoSrc = (darkTheme) => (darkTheme ? logoWhite : logoBlack);
 
 export default function Header({ darkTheme = true }) {
-  let auth0Client = new auth0.WebAuth({
-    domain: params.domain,
-    clientID: params.clientId,
-    audience: params.apiAudience,
-    redirectUri: params.callbackUrl,
-    scope: params.scope,
-    responseType: "token id_token",
-  });
-
-  auth0Client.parseHash({}, (err, authResult) => {
+  auth0Client.checkSession({}, (err, authResult) => {
     if (err) {
+      console.log(err);
       return;
-    } else if (authResult) {
+    } else {
+      console.log("checkSession authResult:");
+      console.log(authResult);
       auth0Client.client.userInfo(authResult.accessToken, (err, user) => {
         if (err) {
           return;
         } else if (user) {
+          console.log("checkSession, userInfo result:");
           console.log(user);
         }
       });

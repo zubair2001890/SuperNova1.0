@@ -6,8 +6,8 @@ import { Button, Grid, Typography } from "@material-ui/core";
 import { Link as RouterLink } from "react-router-dom";
 import paths from "../../constants/paths";
 
-import auth0 from "auth0-js";
 import params from "../../auth0-params.json";
+import { auth0Client } from "../../index";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -33,15 +33,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Links() {
-  let auth0Client = new auth0.WebAuth({
-    domain: params.domain,
-    clientID: params.clientId,
-    audience: params.apiAudience,
-    redirectUri: params.callbackUrl,
-    scope: params.scope,
-    responseType: "token id_token",
-  });
-
   const classes = useStyles();
   const [email, setEmail] = useState("");
   const [invalidEmail, setInvalidEmail] = useState(false);
