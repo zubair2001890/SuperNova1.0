@@ -77,7 +77,7 @@ export default function Header({ darkTheme = true }) {
       auth0Client.client.userInfo(authResult.accessToken, (err, user) => {
         if (err) {
           return;
-        } else if (user) {
+        } else {
           console.log("checkSession, userInfo result:");
           console.log(user);
         }

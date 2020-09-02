@@ -50,7 +50,7 @@ export default function Links() {
         if (err) {
           handleIncorrect(true);
           return;
-        } else if (authResult) {
+        } else {
           handleIncorrect(false);
         }
       }

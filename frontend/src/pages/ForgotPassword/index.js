@@ -57,7 +57,7 @@ export default function Links() {
         (err, authResult) => {
           if (err) {
             return;
-          } else if (authResult) {
+          } else {
             setSuccessful(true);
           }
         }

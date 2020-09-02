@@ -83,7 +83,7 @@ export default function Links() {
               handleIncorrect(false, true);
               return;
             }
-          } else if (authResult) {
+          } else {
             handleIncorrect(false, false);
             setValidDetails(true);
           }
