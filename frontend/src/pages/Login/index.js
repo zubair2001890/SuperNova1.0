@@ -51,7 +51,7 @@ export default function Links() {
           handleIncorrect(true);
           return;
         } else if (authResult) {
-          console.log(authResult);
+          handleIncorrect(false);
         }
       }
     );

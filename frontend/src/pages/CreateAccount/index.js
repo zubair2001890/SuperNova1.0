@@ -84,7 +84,6 @@ export default function Links() {
               return;
             }
           } else if (authResult) {
-            console.log(authResult);
             handleIncorrect(false, false);
             setValidDetails(true);
           }
