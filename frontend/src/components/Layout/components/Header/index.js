@@ -38,6 +38,7 @@ const useStyles = makeStyles((theme) => ({
     animation: "slideFadeUp 1.5s ease 2s backwards",
     [theme.breakpoints.down('sm')]: {
       margin: 0,
+      height: "50%",
     },
   },
   logoContainer: {
@@ -76,6 +77,9 @@ const useStyles = makeStyles((theme) => ({
   },
   appBarRightLink: {
     ...theme.mixins.navLinkPrimary,
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 12,
+    },
   },
 }));
 
