@@ -4,7 +4,6 @@ import { Link as RouterLink } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import { AppBar, IconButton, Toolbar, Button } from "@material-ui/core";
 import { Menu as MenuIcon, Close as CloseIcon } from "@material-ui/icons";
-import { useAuth0 } from "@auth0/auth0-react";
 import auth from "../../../../Auth";
 
 //media queries
@@ -93,7 +92,6 @@ export default function Header({ darkTheme = true }) {
 
   const [logoImg, setLogoImg] = useState(null);
 
-  const { loginWithRedirect, isAuthenticated } = useAuth0();
   //media queries
   const theme = useTheme();
   const matchesMediaQuery = useMediaQuery(theme.breakpoints.down("sm"));
@@ -200,7 +198,6 @@ export default function Header({ darkTheme = true }) {
             ) : (
               <Button
                 color="inherit"
-                // onClick={loginWithRedirect}
                 component={RouterLink}
                 to={paths.login}
                 size="large"
