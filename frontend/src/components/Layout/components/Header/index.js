@@ -86,25 +86,6 @@ const useStyles = makeStyles((theme) => ({
 const getInitialLogoSrc = (darkTheme) => (darkTheme ? logoWhite : logoBlack);
 
 export default function Header({ darkTheme = true }) {
-  // console.log(auth.getAccessToken());
-  // auth0Client.checkSession({}, (err, authResult) => {
-  //   if (err) {
-  //     console.log(err);
-  //     return;
-  //   } else {
-  //     console.log("checkSession authResult:");
-  //     console.log(authResult);
-  //     auth0Client.client.userInfo(authResult.accessToken, (err, user) => {
-  //       if (err) {
-  //         return;
-  //       } else {
-  //         console.log("checkSession, userInfo result:");
-  //         console.log(user);
-  //       }
-  //     });
-  //   }
-  // });
-
   const classes = useStyles({ darkTheme });
   const [drawerState, setDrawerState] = useState({
     left: false,

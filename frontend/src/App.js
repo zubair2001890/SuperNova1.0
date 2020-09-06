@@ -53,6 +53,7 @@ const CheckoutForm = lazy(() =>
 
 export default function App() {
   auth.handleAuthentication();
+
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>

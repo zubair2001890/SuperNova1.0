@@ -135,37 +135,36 @@ class Auth {
 
   getAccessToken() {
     //   Return access token
-    // return this.accessToken;
     const accessToken = localStorage.getItem("access_token");
     if (!accessToken) {
-        console.log("No access token to retrieve");
+      console.log("getAccessToken: No access token to retrieve");
+      return;
     }
     return accessToken;
   }
 
   getIdToken() {
     //   Return JWT ID token
-    // return this.idToken;
     const idToken = localStorage.getItem("id_token");
     if (!idToken) {
-        console.log("No ID token to retrieve");
+      console.log("getIdToken: No ID token to retrieve");
+      return;
     }
     return idToken;
   }
 
   getExpiration() {
     //   Return access token expiration time
-    // return new Date(this.expiresAt);
     const expiresAt = localStorage.getItem("expires_at");
     if (!expiresAt) {
-        console.log("No expiration time to retrieve");
+      console.log("getExpiration: No expiration time to retrieve");
+      return;
     }
     return expiresAt;
   }
 
   isAuthenticated() {
     //   Return true or false, depending whether or not the user is authenticated
-    // let expiresAt = this.expiresAt;
     let expiresAt = JSON.parse(localStorage.getItem("expires_at"));
     return new Date().getTime() < expiresAt;
   }
@@ -179,20 +178,29 @@ class Auth {
     localStorage.setItem("access_token", authResult.accessToken);
     localStorage.setItem("id_token", authResult.idToken);
     localStorage.setItem("expires_at", expiresAt);
+    this.auth0Client.client.userInfo(authResult.accessToken, (err, user) => {
+      if (err) {
+        console.log("setSession: Couldn't get user info");
+        return;
+      } else {
+        localStorage.setItem("user", JSON.stringify(user));
+      }
+    });
   }
 
   getUserInfo() {
     //   Return user info if it can be obtained, otherwise return undefined
-    if (!this.accessToken) {
-      console.log("getUserInfo error: No access token set.");
+    if (!this.getAccessToken()) {
+      console.log("getUserInfo: No access token set.");
+      return;
     } else {
-      this.auth0Client.client.userInfo(this.accessToken, (err, user) => {
+      this.auth0Client.client.userInfo(this.getAccessToken(), (err, user) => {
         if (err) {
-          console.log("userInfo error:");
+          console.log("getUserInfo:");
           console.log(err);
           return;
         } else {
-          console.log("userInfo result:");
+          console.log("getUserInfo:");
           console.log(user);
           localStorage.setItem("user", JSON.stringify(user));
           return user;
