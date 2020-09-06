@@ -45,12 +45,6 @@ const CheckoutForm = lazy(() =>
   import("./pages/Payment/components/CheckoutForm")
 );
 
-// const auth = new Auth();
-
-// const handleAuthentication = ({location}) => {
-//   auth.handleAuthentication();
-// }
-
 export default function App() {
   auth.handleAuthentication();
 
@@ -61,13 +55,6 @@ export default function App() {
           <ScrollToTop />
           <Layout>
             <Switch>
-              {/* <Route
-                path={paths.error404}
-                render={(props) => {
-                  handleAuthentication(props);
-                  return <Error404 {...props} />;
-                }}
-              /> */}
               <Route path={paths.login}>
                 <Login />
               </Route>
