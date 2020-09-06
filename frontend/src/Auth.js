@@ -119,6 +119,31 @@ class Auth {
     });
   }
 
+  setSession(authResult) {
+    //   Use the results from handleAuthentication() to set up the user's browser session
+    let expiresAt = authResult.expiresIn * 1000 + new Date().getTime();
+    this.accessToken = authResult.accessToken;
+    this.idToken = authResult.idToken;
+    this.expiresAt = expiresAt;
+    localStorage.setItem("access_token", authResult.accessToken);
+    localStorage.setItem("id_token", authResult.idToken);
+    localStorage.setItem("expires_at", expiresAt);
+    this.auth0Client.client.userInfo(authResult.accessToken, (err, user) => {
+      if (err) {
+        console.log("setSession: Couldn't get user info");
+        return;
+      } else {
+        localStorage.setItem("user", JSON.stringify(user));
+      }
+    });
+  }
+
+  isAuthenticated() {
+    //   Return true or false, depending whether or not the user is authenticated
+    let expiresAt = JSON.parse(localStorage.getItem("expires_at"));
+    return new Date().getTime() < expiresAt;
+  }
+
   getAccessToken() {
     //   Return access token
     const accessToken = localStorage.getItem("access_token");
@@ -149,50 +174,14 @@ class Auth {
     return expiresAt;
   }
 
-  isAuthenticated() {
-    //   Return true or false, depending whether or not the user is authenticated
-    let expiresAt = JSON.parse(localStorage.getItem("expires_at"));
-    return new Date().getTime() < expiresAt;
-  }
-
-  setSession(authResult) {
-    //   Use the results from handleAuthentication() to set of the user's browser session
-    let expiresAt = authResult.expiresIn * 1000 + new Date().getTime();
-    this.accessToken = authResult.accessToken;
-    this.idToken = authResult.idToken;
-    this.expiresAt = expiresAt;
-    localStorage.setItem("access_token", authResult.accessToken);
-    localStorage.setItem("id_token", authResult.idToken);
-    localStorage.setItem("expires_at", expiresAt);
-    this.auth0Client.client.userInfo(authResult.accessToken, (err, user) => {
-      if (err) {
-        console.log("setSession: Couldn't get user info");
-        return;
-      } else {
-        localStorage.setItem("user", JSON.stringify(user));
-      }
-    });
-  }
-
   getUserInfo() {
-    //   Return user info if it can be obtained, otherwise return undefined
-    if (!this.getAccessToken()) {
-      console.log("getUserInfo: No access token set");
+    //   Return user info
+    const user = localStorage.getItem("user");
+    if (!user) {
+      console.log("getUserInfo: No user info to retrieve");
       return;
-    } else {
-      this.auth0Client.client.userInfo(this.getAccessToken(), (err, user) => {
-        if (err) {
-          console.log("getUserInfo:");
-          console.log(err);
-          return;
-        } else {
-          console.log("getUserInfo:");
-          console.log(user);
-          localStorage.setItem("user", JSON.stringify(user));
-          return user;
-        }
-      });
     }
+    return JSON.parse(user);
   }
 }
 
