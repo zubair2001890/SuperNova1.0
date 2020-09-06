@@ -92,6 +92,7 @@ class Auth {
   }
 
   changePassword(connection, email, setSuccessful) {
+    // Send the user an email via which they can reset their password
     this.auth0Client.changePassword(
       {
         connection: connection,
@@ -116,21 +117,6 @@ class Auth {
         this.setSession(authResult);
       }
     });
-    // This block could be used to poll Auth0 to see if the user's session is still active
-    // If it is still active, then keep the user logged in, otherwise the user logs out when refreshing the page
-
-    // this.auth0Client.checkSession({}, (err, authResult) => {
-    //   if (err) {
-    //     console.log("checkSession error:");
-    //     console.log(err);
-    //     return;
-    //   } else {
-    //     console.log("handleAuthentication was successful");
-    //     console.log("checkSession authResult:");
-    //     console.log(authResult);
-    //     this.setSession(authResult);
-    //   }
-    // });
   }
 
   getAccessToken() {
@@ -191,7 +177,7 @@ class Auth {
   getUserInfo() {
     //   Return user info if it can be obtained, otherwise return undefined
     if (!this.getAccessToken()) {
-      console.log("getUserInfo: No access token set.");
+      console.log("getUserInfo: No access token set");
       return;
     } else {
       this.auth0Client.client.userInfo(this.getAccessToken(), (err, user) => {
