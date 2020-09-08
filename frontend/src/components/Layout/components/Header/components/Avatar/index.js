@@ -30,9 +30,8 @@ function Avatar({ fetchAccount, account }) {
   const classes = useStyles();
   const toggleOpen = () => setIsOpen(!isOpen);
   useEffect(() => {
-    // console.log("Fetching user profile");
     fetchAccount(user.sub);
-  }, [fetchAccount, user]);
+  }, []);
   if (!account) {
     // console.log("No account on backend, using Auth0 profile");
     return (
