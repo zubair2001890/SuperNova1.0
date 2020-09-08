@@ -4,6 +4,7 @@ import { makeStyles } from "@material-ui/core";
 import Links from "./Links";
 import { fetchAccount } from "../../../../../../store/account";
 import { getPictureUrl } from "../../../../../../helpers/imageUrl";
+import { getProfile } from "../../../../../../store/slices/middlewareAPI/fetchAPI";
 import auth from "../../../../../../Auth";
 
 const useStyles = makeStyles(() => {
@@ -30,9 +31,12 @@ function Avatar({ fetchAccount, account }) {
   const classes = useStyles();
   const toggleOpen = () => setIsOpen(!isOpen);
   useEffect(() => {
-    fetchAccount(user.sub);
+    // console.log("Fetching user profile");
+    // fetchAccount(user.sub);
+    getProfile(user.sub);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  if (!account) {
+  if (!account || !Object.keys(account).length) {
     // console.log("No account on backend, using Auth0 profile");
     return (
       <div onClick={toggleOpen} className={classes.avatar}>
@@ -40,15 +44,17 @@ function Avatar({ fetchAccount, account }) {
         {isOpen && <Links />}
       </div>
     );
+  } else {
+    const fullImageUrl = getPictureUrl(account.imageURL);
+    // console.log("Using backend profile");
+    // console.log("Image URL is: " + fullImageUrl);
+    return (
+      <div onClick={toggleOpen} className={classes.avatar}>
+        <img src={fullImageUrl} alt="User profile" className={classes.image} />
+        {isOpen && <Links />}
+      </div>
+    );
   }
-  const fullImageUrl = getPictureUrl(account.imageURL);
-  // console.log("Using backend profile");
-  return (
-    <div onClick={toggleOpen} className={classes.avatar}>
-      <img src={fullImageUrl} alt="User profile" className={classes.image} />
-      {isOpen && <Links />}
-    </div>
-  );
 }
 
 const mapStateToProps = ({ account }) => ({ account });
