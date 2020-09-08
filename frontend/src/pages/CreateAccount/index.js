@@ -46,7 +46,6 @@ export default function Links() {
   const [invalidPassword, setInvalidPassword] = useState(false);
   const [emptyField, setEmptyField] = useState(false);
   const [validDetails, setValidDetails] = useState(false);
-  // const auth = new Auth();
 
   const handleIncorrect = (emailValid, passwordValid) => {
     setInvalidEmail(emailValid);

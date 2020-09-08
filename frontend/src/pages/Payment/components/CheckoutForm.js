@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router";
 import { withStyles } from "@material-ui/core";
-import { withAuth0 } from "@auth0/auth0-react";
+import auth from "../../../Auth";
 import {
   Elements,
   ElementsConsumer,
@@ -37,8 +37,8 @@ class CheckoutForm extends Component {
   };
 
   fetchIntent = async () => {
-    const { auth0, match } = this.props;
-    const { getAccessTokenSilently } = auth0;
+    const { match } = this.props;
+    const getAccessTokenSilently = auth.getAccessToken;
     const { project, option } = match.params;
     const token = await getAccessTokenSilently();
     return postSendPayment({ projectID: project, optionKey: option }, token);
@@ -106,10 +106,8 @@ class CheckoutForm extends Component {
 
 const FormWithRouter = withRouter(CheckoutForm);
 
-const FormWithAuthentication = withAuth0(FormWithRouter);
-
 const StyledForm = withStyles(styles, { withTheme: true })(
-  FormWithAuthentication
+  FormWithRouter
 );
 
 const FormWithElementsProvider = (props) => {

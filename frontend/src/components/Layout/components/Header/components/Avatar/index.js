@@ -4,7 +4,6 @@ import { makeStyles } from "@material-ui/core";
 import Links from "./Links";
 import { fetchAccount } from "../../../../../../store/account";
 import { getPictureUrl } from "../../../../../../helpers/imageUrl";
-import { getProfile } from "../../../../../../store/slices/middlewareAPI/fetchAPI";
 import auth from "../../../../../../Auth";
 
 const useStyles = makeStyles(() => {
@@ -32,8 +31,7 @@ function Avatar({ fetchAccount, account }) {
   const toggleOpen = () => setIsOpen(!isOpen);
   useEffect(() => {
     // console.log("Fetching user profile");
-    // fetchAccount(user.sub);
-    getProfile(user.sub);
+    fetchAccount(user.sub);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   if (!account || !Object.keys(account).length) {

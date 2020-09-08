@@ -1,5 +1,5 @@
 import React from "react";
-import { useAuth0 } from "@auth0/auth0-react";
+import auth from "../../../Auth";
 import { connect } from "react-redux";
 import { makeStyles } from "@material-ui/core";
 import { reduxForm } from "redux-form";
@@ -119,7 +119,8 @@ function Form({ account, fetchAccount }) {
     initialValues,
     form: "editAccountOverview",
   })(FormGridWithFields);
-  const { getAccessTokenSilently, user } = useAuth0();
+  const getAccessTokenSilently = auth.getAccessToken;
+  const user = auth.getUserInfo();
   return (
     <ConnectedForm
       onSubmit={submit(getAccessTokenSilently, user, fetchAccount)}

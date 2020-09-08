@@ -33,7 +33,6 @@ export default function Links() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [incorrect, setIncorrect] = useState(false);
-  // const auth = new Auth();
 
   const handleIncorrect = (isInvalid) => {
     setIncorrect(isInvalid);

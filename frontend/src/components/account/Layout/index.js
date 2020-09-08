@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withStyles, Typography } from "@material-ui/core";
-import { withAuth0 } from "@auth0/auth0-react";
+import auth from "../../../Auth";
 
 import LogIn from "../../../pages/Login";
 import { fetchAccount } from "../../../store/account";
@@ -44,8 +44,8 @@ const styles = (theme) => ({
 
 export class Layout extends Component {
   fetchAccountIfEmpty = async () => {
-    const { fetchAccount, account, auth0 } = this.props;
-    const { user } = auth0;
+    const { fetchAccount, account } = this.props;
+    const user = auth.getUserInfo();
     if (!account && user) fetchAccount(user.sub);
   };
 
@@ -65,8 +65,8 @@ export class Layout extends Component {
   };
 
   render() {
-    const { children, classes, auth0, Nav, mainTitle, account } = this.props;
-    if (!auth0.isAuthenticated || !account) return <LogIn />;
+    const { children, classes, Nav, mainTitle, account } = this.props;
+    if (!auth.isAuthenticated() || !account) return <LogIn />;
     return (
       <div className={classes.layout}>
         <Typography variant="h1" className={classes.title}>
@@ -86,8 +86,6 @@ export class Layout extends Component {
 
 const StyledPage = withStyles(styles, { withTheme: true })(Layout);
 
-const WithAuthentication = withAuth0(StyledPage);
-
 const mapStateToProps = ({ account }) => ({ account });
 
-export default connect(mapStateToProps, { fetchAccount })(WithAuthentication);
+export default connect(mapStateToProps, { fetchAccount })(StyledPage);
