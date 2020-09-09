@@ -1,12 +1,9 @@
-import React, { Component } from "react";
+import React, { Component, useEffect } from "react";
 import Layout from "./Layout/index";
 import { makeStyles } from "@material-ui/core";
-import { fetchPendingProjects, fetchFeaturedProject } from "../../store/slices/middlewareAPI/middlewareAPI";
-import { useAuth0 } from "@auth0/auth0-react";
-//import { getPendingProjects } from "./adminHelpers";
+import { fetchPendingProjects} from "../../store/slices/middlewareAPI/middlewareAPI";
 import { useDispatch, useSelector } from "react-redux";
-import {unwrapResult} from '@reduxjs/toolkit';
-import { getFeaturedProjects } from "./adminHelpers";
+import {selectData as selectPendingProjectsData} from "../../store/slices/pendingProjects"  
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -25,27 +22,24 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Admin() {
+export default () => {
   const classes = useStyles();
   const dispatch = useDispatch();
-  let featuredProjects = null;
-  console.log(getFeaturedProjects(dispatch).length);
+  const pendingProjectsData = useSelector(selectPendingProjectsData);
+
+  useEffect(() => {
+    dispatch(fetchPendingProjects());
+  }, [dispatch]);
   
-  //dispatch(fetchFeaturedProject()).then(unwrapResult).then(data => (populateUI(data)));
-  
-  //dispatch(fetchPendingProjects()).then(unwrapResult).then(data => console.log({data}));
   return (
     <Layout title="Admin">
-      <div id="pendingProjects"> 
-        </div>
+      <ProjectsList pendingProjects={pendingProjectsData}/>
     </Layout>
   );
 }
 
-function populateUI(classes, projectsArray)
-{
-  document.getElementById("pendingProjects").innerText = projectsArray.toString();
-}
+
+
   
     
     

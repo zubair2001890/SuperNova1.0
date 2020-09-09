@@ -51,7 +51,6 @@ export const projectsSlice = createSlice({
 
 export const { setData, setLoading, setError } = projectsSlice.actions;
 
-// Can be removed?
 const fetchMockProjects = () => async (dispatch) => {
   dispatch(setLoading(true));
   const projects = await getFeaturedProjects();
