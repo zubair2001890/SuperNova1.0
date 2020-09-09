@@ -31,7 +31,7 @@ export const Project = model(
       minlength: 1,
       maxlength: 80,
     },
-      startDate: {
+    startDate: {
       type: String,
       required: true,
       minlength: 1,
@@ -89,11 +89,11 @@ export const Project = model(
       maxLength: 200,
     },
     link: {
-        type: Array,
-        required: true,
+      type: Array,
+      required: true,
     },
     isAdmin: {
       type: Boolean,
       required: false
     }
-}));
+  }));

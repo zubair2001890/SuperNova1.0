@@ -15,7 +15,8 @@ import {
   LinkedIn as LinkedInIcon,
 } from "@material-ui/icons";
 import clsx from "clsx";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import paths from "../../../constants/paths";
 
 const useStyles = makeStyles((theme) => ({
@@ -23,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     color: "white",
   },
   bottomNavBar: {
-    backgroundColor: theme.palette.common.black,
+    backgroundColor: "transparent",
     paddingTop: theme.spacing(2),
   },
   footer: {
@@ -31,15 +32,24 @@ const useStyles = makeStyles((theme) => ({
     // must be positioned to not be covered by particles
     position: "relative",
     bottom: 0,
-    backgroundColor: theme.palette.common.black,
+    backgroundImage: "url(" + require("./assets/footer.png") + ")",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center",
+    backgroundSize: "cover",
   },
   regularLink: {
     ...theme.mixins.navLinkSecondary,
     color: "white",
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 10,
+    },
   },
   boldLink: {
     color: "white",
     ...theme.mixins.navLinkPrimary,
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 12,
+    },
   },
   gridItem: {
     textAlign: "center",
@@ -49,6 +59,9 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: theme.spacing(4),
     paddingBottom: theme.spacing(1),
     justifyContent: "space-around",
+    [theme.breakpoints.down('sm')]: {
+      paddingTop: theme.spacing(2),
+    },
   },
   loginGridRow: {
     alignItems: "center",
@@ -62,6 +75,11 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: "avaMeridian",
     fontSize: "2vw",
     letterSpacing: 2.97,
+    [theme.breakpoints.down('sm')]: {
+      fontSize: "3vw",
+      display: "flex",
+      justifyContent: "center",
+    },
   },
   whiteLine: {
     width: "100%",
@@ -76,6 +94,9 @@ const useStyles = makeStyles((theme) => ({
 
 function Footer(props) {
   const classes = useStyles();
+  //media queries
+  const theme = useTheme();
+  const matchesMediaQuery = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
     <div className={classes.footer}>
@@ -147,8 +168,8 @@ function Footer(props) {
                 EXPLORE
               </MaterialLink>
             </Grid>{" "}
-          </Grid>
-          <Grid container spacing={2} className={classes.gridRow}>
+          </Grid> 
+          <Grid container spacing={matchesMediaQuery ? 0 : 2} className={classes.gridRow}>
             <Grid item xs={4} className={classes.gridItem}>
               <MaterialLink
                 component={RouterLink}
