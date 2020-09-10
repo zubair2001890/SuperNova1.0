@@ -12,5 +12,6 @@ export default (publicApi: Express.Router, privateApi: Express.Router) => {
   privateApi.route("/createproject").put(projectsController.createProject);
   privateApi.route("/updateproject/:project_id").post(projectsController.updateProject);
   privateApi.route("/updateprojectstatus/:project_id").post(projectsController.updateProjectStatus);
-  privateApi.route("deleteprojectbyadmin/:project_id").post(projectsController.deleteProjectByAdmin);
+  privateApi.route("/deleteprojectbyadmin/:project_id").post(projectsController.deleteProjectByAdmin);
+  privateApi.route("/getpendingprojects").get(projectsController.pendingProjects);
 };
