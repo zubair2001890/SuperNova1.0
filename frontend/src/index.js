@@ -5,11 +5,14 @@ import App from "./App";
 import store from "./store";
 import { Provider } from "react-redux";
 import * as serviceWorker from "./serviceWorker";
+import { AuthProvider } from "./AuthContext";
 
 ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
+  <AuthProvider>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </AuthProvider>,
   document.getElementById("root")
 );
 
