@@ -186,16 +186,6 @@ export default function Header({ darkTheme = true }) {
             )}
             {auth.isAuthenticated() ? (
               <AvatarDropdown />
-              // <Button
-              //   color="inherit"
-              //   onClick={auth.logout}
-              //   component={RouterLink}
-              //   to={paths.home}
-              //   size="large"
-              //   className={classes.appBarRightLink}
-              // >
-              //   LOG OUT
-              // </Button>
             ) : (
               <Button
                 color="inherit"

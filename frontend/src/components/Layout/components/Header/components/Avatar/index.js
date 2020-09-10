@@ -1,12 +1,14 @@
 import React, { useState, useEffect, useContext } from "react";
 import { connect } from "react-redux";
-import { makeStyles } from "@material-ui/core";
+import { Link as RouterLink } from "react-router-dom";
+import { makeStyles, Button } from "@material-ui/core";
 import Links from "./Links";
 import { fetchAccount } from "../../../../../../store/account";
 import { getPictureUrl } from "../../../../../../helpers/imageUrl";
 import { AuthContext } from "../../../../../../AuthContext";
+import paths from "../../../../../../constants/paths";
 
-const useStyles = makeStyles(() => {
+const useStyles = makeStyles((theme) => {
   const avatarSize = "3.875rem";
   return {
     avatar: {
@@ -20,6 +22,12 @@ const useStyles = makeStyles(() => {
       width: avatarSize,
       height: avatarSize,
       borderRadius: "50%",
+    },
+    logoutButton: {
+      ...theme.mixins.navLinkPrimary,
+      [theme.breakpoints.down("sm")]: {
+        fontSize: 12,
+      },
     },
   };
 });
@@ -38,7 +46,18 @@ function Avatar({ fetchAccount, account }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [auth.arrived]);
   if (user === undefined) {
-    return null;
+    return (
+      <Button
+        color="inherit"
+        onClick={auth.logout}
+        component={RouterLink}
+        to={paths.home}
+        size="large"
+        className={classes.logoutButton}
+      >
+        LOG OUT
+      </Button>
+    );
   }
   if (!account || !Object.keys(account).length) {
     // console.log("No account on backend, using Auth0 profile");
