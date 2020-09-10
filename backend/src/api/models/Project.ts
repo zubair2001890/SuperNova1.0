@@ -21,22 +21,15 @@ export const Project = model(
       minlength: 1,
       maxlength: 255,
     },
-
     labNotes: {
       type: String,
       required: false,
     },
-    firstName: {
+    fullName: {
       type: String,
       required: true,
       minlength: 1,
-      maxlength: 50,
-    },
-    lastName: {
-      type: String,
-      required: true,
-      minlength: 1,
-      maxlength: 50,
+      maxlength: 80,
     },
     startDate: {
       type: String,
@@ -96,11 +89,11 @@ export const Project = model(
       maxLength: 200,
     },
     link: {
-        type: Array,
-        required: true,
+      type: Array,
+      required: true,
     },
     isAdmin: {
       type: Boolean,
       required: false
     }
-}));
+  }));

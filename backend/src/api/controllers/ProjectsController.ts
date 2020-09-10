@@ -73,7 +73,6 @@ class ProjectsController {
       projectName: req.body.projectName,
       projectDescription: req.body.projectDescription,
       university: req.body.university,
-      // To get rid of both of the slashes, I get an error message saying that String does not have a replaceAll method.
       startDate: startDate.replace(whitespaceRegex, ''),
       teamDescription: req.body.teamDescription,
       methodDescription: req.body.methodDescription,
@@ -82,8 +81,7 @@ class ProjectsController {
       goal: req.body.goal,
       projectScientistID: req.body.projectScientistId,
       subfieldID: req.body.subfieldID,
-      firstName: req.body.teamDescription[0].split(" ")[0],
-      lastName: req.body.teamDescription[0].split(" ")[1].replace(",", ""),
+      fullName: req.body.teamDescription[0].name,
       statusName: req.body.statusName,
       link: link,
       backers: new Array<String>(),
