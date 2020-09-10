@@ -55,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default ({ projectsData, projectsLoading }) => {
+export default ({ projectsData}) => {
   const classes = useStyles();
   return (
     <div className={classes.sectionContainer}>
@@ -63,7 +63,6 @@ export default ({ projectsData, projectsLoading }) => {
         FEATURED PROJECTS
       </Typography>
       <div className={classes.projectCardsGrid}>
-        {/*projectsLoading && <CircularProgress color="secondary" />*/}
         {projectsData && projectsData.map(renderProject(classes))}
       </div>
     </div>
@@ -83,12 +82,12 @@ function renderProject(classes) {
             {project.projectName.length < maxTitleLength ? (
               project.projectName
             ) : (
-              <Tooltip title={project.projectName} placement="top">
-                <span>
-                  {project.projectName.slice(0, maxTitleLength - 3) + "..."}
-                </span>
-              </Tooltip>
-            )}
+                <Tooltip title={project.projectName} placement="top">
+                  <span>
+                    {project.projectName.slice(0, maxTitleLength - 3) + "..."}
+                  </span>
+                </Tooltip>
+              )}
           </p>
           <Avatar
             className={classes.avatar}
