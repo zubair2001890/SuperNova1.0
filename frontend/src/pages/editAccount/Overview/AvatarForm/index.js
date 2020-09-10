@@ -8,6 +8,7 @@ import { makeStyles } from "@material-ui/core";
 import { postUpdateAccount } from "../../../../store/slices/middlewareAPI/fetchAPI";
 import { getPictureUrl } from "../../../../helpers/imageUrl";
 import { fetchAccount } from "../../../../store/account";
+import AWS from "aws-sdk";
 
 const getExtension = (fileName = "") => {
   const match = fileName.match(/.+\.(\w+)/);
@@ -35,32 +36,46 @@ const getSignedUrl = async (token, file) => {
   return data;
 };
 
-const uploadImage = async (file, url) => {
-  await put(url, file, {
-    headers: {
-      "Content-Type": file.type,
-    },
+const updateProfileImage = async (file, token) => {
+  if (file.size > 100000000) //I.e. 100MB
+  {
+    throw new Error("The image is too large.");
+    return;
+  }
+  const s3 = new AWS.S3({
+    accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.REACT_APP_SECRET_ACCESS_KEY
   });
-};
 
-const updateProfileImage = async (key, token) => {
-  postUpdateAccount({ imageURL: key }, token);
-};
+  const params = {
+    Bucket: process.env.REACT_APP_AWS_BUCKET_NAME,
+    Key: Date.now().toString() + "." + getExtension(file.name),
+    Body: file
+  };
+// Uploading files to the bucket
+s3.upload(params, function(err, data) {
+  if (err) {
+      throw err;
+  }
+  if (data.Location)
+  {
+    postUpdateAccount({ imageURL: data.Location }, token);
+    return data.Location;
+  }
+});
+}
 
 const uploadImageAndUpdateAccount = async (getAccessTokenSilently, event) => {
   const [file] = event.target.files;
   const token = await getAccessTokenSilently();
-  const { url, key } = await getSignedUrl(token, file);
-  await uploadImage(file, url);
-  await updateProfileImage(key, token);
+  updateProfileImage(file, token);
 };
 
-const handleChange = (fetchAccountWithSub, getAccessTokenSilently) => async (
+const handleChange = (getAccessTokenSilently) => async (
   event
 ) => {
   await uploadImageAndUpdateAccount(getAccessTokenSilently, event);
-  await fetchAccountWithSub();
-};
+  };
 
 const useStyles = makeStyles((theme) => {
   const pictureSize = "8rem";
@@ -125,7 +140,7 @@ function AvatarForm({ account, fetchAccount }) {
   return (
     <div className={classes.avatarForm}>
       <Avatar
-        src={fullPictureUrl}
+        src={account.imageURL}
         variant="circle"
         className={classes.picture}
       ></Avatar>
@@ -133,7 +148,7 @@ function AvatarForm({ account, fetchAccount }) {
         <img src={icon} alt="Camera icon" className={classes.iconImage} />
       </div>
       <input
-        onChange={handleChange(fetchAccountWithSub, getAccessTokenSilently)}
+        onChange={handleChange(getAccessTokenSilently)}
         className={classes.input}
         type="file"
       ></input>
