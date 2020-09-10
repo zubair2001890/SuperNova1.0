@@ -34,8 +34,9 @@ app.use(Express.static(path.join(__dirname, 'website')))
 app.get('*', (req, res, next) => {
   if (!req.path.includes('api')) {
     let path = require('path');
+    let fs = require('fs');
     let indexPath = path.resolve(__dirname, 'website', 'index.html');
-    if (path.existsSync(indexPath))
+    if (fs.existsSync(indexPath))
     {
       res.sendFile(indexPath);
     }
