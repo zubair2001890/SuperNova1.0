@@ -123,6 +123,7 @@ export const AuthProvider = ({ children }) => {
         return;
       } else {
         localStorage.setItem("user", JSON.stringify(user));
+        setArrived(true);
       }
     });
   };

@@ -31,10 +31,15 @@ function Avatar({ fetchAccount, account }) {
   const classes = useStyles();
   const toggleOpen = () => setIsOpen(!isOpen);
   useEffect(() => {
-    // console.log("Fetching user profile");
-    fetchAccount(user.sub);
+    const user = auth.getUserInfo();
+    if (user !== undefined) {
+      fetchAccount(user.sub);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [auth.arrived]);
+  if (user === undefined) {
+    return null;
+  }
   if (!account || !Object.keys(account).length) {
     // console.log("No account on backend, using Auth0 profile");
     return (
