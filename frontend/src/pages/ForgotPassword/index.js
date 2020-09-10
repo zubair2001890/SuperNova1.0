@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import FormCard from "../../components/FormCard/index";
 import { makeStyles } from "@material-ui/core/styles";
 import ForgotPasswordForm from "./components/ForgotPasswordForm";
@@ -7,7 +7,7 @@ import { Link as RouterLink } from "react-router-dom";
 import paths from "../../constants/paths";
 
 import params from "../../auth0-params.json";
-import auth from "../../Auth";
+import { AuthContext } from "../../AuthContext";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -33,6 +33,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Links() {
+  const auth = useContext(AuthContext);
   const classes = useStyles();
   const [email, setEmail] = useState("");
   const [invalidEmail, setInvalidEmail] = useState(false);

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import FormCard from "../../components/FormCard/index";
 import { makeStyles } from "@material-ui/core/styles";
 import { ReactComponent as GoogleLogo } from "../assets/google-plus.svg";
@@ -11,7 +11,7 @@ import FacebookIcon from "@material-ui/icons/Facebook";
 import TwitterIcon from "@material-ui/icons/Twitter";
 
 import params from "../../auth0-params.json";
-import auth from "../../Auth";
+import { AuthContext } from "../../AuthContext";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -37,6 +37,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Links() {
+  const auth = useContext(AuthContext);
   const classes = useStyles();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
