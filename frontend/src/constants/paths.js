@@ -2,9 +2,12 @@ import { getAccountUrl, getEditPath } from "../helpers/createPaths";
 
 export default {
   login: "/login",
+  createAccount: "/createaccount",
+  forgotPassword: "/forgotpassword",
   logout: "/logout",
   test: "/test",
   error404: "/not-found",
+  loading: "/loading",
   home: "/",
   explore: "/explore",
   faq: "/faq",

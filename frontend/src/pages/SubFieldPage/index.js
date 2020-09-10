@@ -33,16 +33,16 @@ export default (props) => {
               <Consumer>
                 {(ctx) => {
                   return (
-                      <HeaderCarousel
-                        className={classes.carousel}
-                        content={content}
-                        centerMode={true}
-                        centerSlidePercentage={62}
-                        infiniteLoop={true}
-                        onChange={ctx.updateConstellation}
-                        selectedItem={ctx.currentSlide}
-                        onClickItem={ctx.updateConstellation}
-                      />
+                    <HeaderCarousel
+                      className={classes.carousel}
+                      content={content}
+                      centerMode={true}
+                      centerSlidePercentage={62}
+                      infiniteLoop={true}
+                      onChange={ctx.updateConstellation}
+                      selectedItem={ctx.currentSlide}
+                      onClickItem={ctx.updateConstellation}
+                    />
                   );
                 }}
               </Consumer>

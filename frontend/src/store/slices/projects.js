@@ -1,7 +1,5 @@
-import { getProjects, getFeaturedProjects } from "./middlewareAPI/fetchAPI";
+import { getFeaturedProjects } from "./middlewareAPI/fetchAPI";
 import { createSlice } from "@reduxjs/toolkit";
-import projectsMockData from "../../mockData/projects.json";
-import sleep from "../../helpers/sleep";
 import {
   fetchFeaturedProject,
   fetchProjects,
@@ -55,9 +53,6 @@ export const { setData, setLoading, setError } = projectsSlice.actions;
 
 // Can be removed?
 const fetchMockProjects = () => async (dispatch) => {
-  console.log("fetchMockProjects function called");
-  console.log("env backend URL =" + process.env.REACT_APP_BACKEND_URL);
-  console.log(await getFeaturedProjects());
   dispatch(setLoading(true));
   const projects = await getFeaturedProjects();
   dispatch(setData(projects));

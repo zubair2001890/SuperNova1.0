@@ -1,10 +1,7 @@
 import React from "react";
 import {
   makeStyles,
-  withStyles,
   Typography,
-  TextField,
-  Button,
 } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
@@ -95,12 +92,6 @@ export default function FundingEnterAmount(props) {
           Enter Donation Amount:
         </Typography>
         <form className={classes.fundingAmountForm}>
-          {/* <TextField
-            variant="outlined"
-            placeholder="£..."
-            style={{ height: 40 }}
-            type="number"
-          /> */}
           <input type="number" className={classes.inputField} placeholder="£..." min={props.min} max={props.max} step={1} required="true" />
           <button type="submit" className={classes.submitButton}>Let's Go!</button>
         </form>
