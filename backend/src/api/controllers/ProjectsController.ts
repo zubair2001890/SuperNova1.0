@@ -50,6 +50,9 @@ class ProjectsController {
       );
     } else if (req.query.project_id !== undefined) {
       projects = await getProjectByProjectID(req.query.project_id.toString());
+      if (projects.statusName !== "Active") {
+        projects = {};
+      }
     }
     res.send(projects);
   };
@@ -184,5 +187,29 @@ class ProjectsController {
       console.log(err);
     }
   }// The deleteProjectByAdmin function ends here.
-}
+
+  public pendingProjects = async(req: Request, res: Response) => {
+    const userId = jwt_decode(
+      req.header("Authorization").replace("Bearer ", "")
+    ).sub;
+    let userProfile = null;
+    try {
+      userProfile = await getProfileByID(userId);
+      if (userProfile.isAdmin) {
+        Project.find({projectStatus: "Pending"}, function (err, docs) {
+          if (err) {
+            console.log(err);
+          }
+          res.send(docs);
+        });
+      } // Ends the if block for if isAdmin()
+      else {
+        throw new Error("This user does not have admin privileges");
+      }
+    }
+    catch (err) {
+      console.log(err);
+    }
+  }
+  }
 export default ProjectsController;
