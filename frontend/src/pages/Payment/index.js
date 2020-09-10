@@ -1,4 +1,4 @@
-import React,  {Component } from "react";
+import React, { Component } from "react";
 import { withStyles, Typography } from "@material-ui/core";
 import FundingOption from "./components/FundingOption";
 import FundingEnterAmount from "./components/FundingEnterAmount";
