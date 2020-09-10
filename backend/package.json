@@ -17,6 +17,7 @@
     "express": "^4.17.1",
     "express-jwt": "^6.0.0",
     "express-jwt-authz": "^2.4.0",
+    "fs": "0.0.1-security",
     "jwks-rsa": "^1.8.1",
     "jwt-decode": "^2.2.0",
     "moment": "^2.27.0",
