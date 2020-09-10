@@ -5,6 +5,7 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import Layout from "./components/Layout";
 import paths from "./constants/paths";
 import theme from "./theme";
+import Loading from "./pages/Loading";
 
 const Homepage = lazy(() => import("./pages/Homepage"));
 const Login = lazy(() => import("./pages/Login"));
@@ -48,7 +49,7 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
-        <Suspense fallback={<p>Loading...</p>}>
+        <Suspense fallback={<Loading />}>
           <ScrollToTop />
           <Layout>
             <Switch>
