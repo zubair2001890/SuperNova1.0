@@ -11,7 +11,7 @@ const Homepage = lazy(() => import("./pages/Homepage"));
 const Login = lazy(() => import("./pages/Login"));
 const CreateAccount = lazy(() => import("./pages/CreateAccount"));
 const ForgotPassword = lazy(() => import("./pages/ForgotPassword"));
-const Error404 = lazy(() => import("./pages/Error404"));
+const Error404 = lazy(() => import("./pages/Error404/Error404"));
 const Faq = lazy(() => import("./pages/Faq"));
 const Mission = lazy(() => import("./pages/Mission"));
 const Terms = lazy(() => import("./pages/Terms"));
