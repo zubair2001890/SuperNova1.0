@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withStyles, Typography } from "@material-ui/core";
-import auth from "../../../Auth";
+import { AuthContext } from "../../../AuthContext";
 
 import LogIn from "../../../pages/Login";
 import { fetchAccount } from "../../../store/account";
@@ -43,15 +43,17 @@ const styles = (theme) => ({
 });
 
 export class Layout extends Component {
+  static contextType = AuthContext;
+  componentDidMount() {
+    this.fetchAccountIfEmpty();
+  };
+
   fetchAccountIfEmpty = async () => {
+    const auth = this.context;
     const { fetchAccount, account } = this.props;
     const user = auth.getUserInfo();
     if (!account && user) fetchAccount(user.sub);
   };
-
-  componentDidMount() {
-    this.fetchAccountIfEmpty();
-  }
 
   renderPageTitle = () => {
     const { title, classes } = this.props;
@@ -65,6 +67,7 @@ export class Layout extends Component {
   };
 
   render() {
+    const auth = this.context;
     const { children, classes, Nav, mainTitle, account } = this.props;
     if (!auth.isAuthenticated() || !account) return <LogIn />;
     return (

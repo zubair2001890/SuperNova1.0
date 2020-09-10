@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { connect } from "react-redux";
 import { makeStyles } from "@material-ui/core";
 import Links from "./Links";
 import { fetchAccount } from "../../../../../../store/account";
 import { getPictureUrl } from "../../../../../../helpers/imageUrl";
-import auth from "../../../../../../Auth";
+import { AuthContext } from "../../../../../../AuthContext";
 
 const useStyles = makeStyles(() => {
   const avatarSize = "3.875rem";
@@ -25,6 +25,7 @@ const useStyles = makeStyles(() => {
 });
 
 function Avatar({ fetchAccount, account }) {
+  const auth = useContext(AuthContext);
   const user = auth.getUserInfo();
   const [isOpen, setIsOpen] = useState(false);
   const classes = useStyles();

@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import clsx from "clsx";
 import { Link as RouterLink } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import { AppBar, IconButton, Toolbar, Button } from "@material-ui/core";
 import { Menu as MenuIcon, Close as CloseIcon } from "@material-ui/icons";
-import auth from "../../../../Auth";
+import { AuthContext } from "../../../../AuthContext";
 
 //media queries
 import { useTheme } from "@material-ui/core/styles";
@@ -85,6 +85,7 @@ const useStyles = makeStyles((theme) => ({
 const getInitialLogoSrc = (darkTheme) => (darkTheme ? logoWhite : logoBlack);
 
 export default function Header({ darkTheme = true }) {
+  const auth = useContext(AuthContext);
   const classes = useStyles({ darkTheme });
   const [drawerState, setDrawerState] = useState({
     left: false,

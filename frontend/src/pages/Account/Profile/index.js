@@ -7,7 +7,7 @@ import Avatar from "./Avatar";
 import Bio from "./Bio";
 import Edit from "./Edit";
 import Stats from "./Stats";
-import auth from "../../../Auth";
+import { AuthContext } from "../../../AuthContext";
 
 const styles = (theme) => ({
   header: {
@@ -18,7 +18,9 @@ const styles = (theme) => ({
 });
 
 export class Profile extends Component {
+  static contextType = AuthContext;
   render() {
+    const auth = this.context;
     const { classes } = this.props;
     const user = auth.getUserInfo();
     return (

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router";
 import { withStyles } from "@material-ui/core";
-import auth from "../../../Auth";
+import { AuthContext } from "../../../AuthContext";
 import {
   Elements,
   ElementsConsumer,
@@ -32,11 +32,13 @@ const styles = (theme) => ({
 });
 
 class CheckoutForm extends Component {
+  static contextType = AuthContext;
   handleError = (error) => {
     console.error(error);
   };
 
   fetchIntent = async () => {
+    const auth = this.context;
     const { match } = this.props;
     const getAccessTokenSilently = auth.getAccessToken;
     const { project, option } = match.params;

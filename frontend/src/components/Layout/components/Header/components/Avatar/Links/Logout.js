@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import NavItem from "./NavItem";
-import auth from "../../../../../../../Auth";
+import { AuthContext } from "../../../../../../../AuthContext";
 
 export default function Logout() {
+  const auth = useContext(AuthContext);
   return (
     <NavItem Component="button" onClick={auth.logout}>
       Logout

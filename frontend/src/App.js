@@ -1,7 +1,7 @@
-import React, { Suspense, lazy } from "react";
+import React, { Suspense, lazy, useContext } from "react";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import { ThemeProvider } from "@material-ui/core/styles";
-import auth from "./Auth";
+import { AuthContext } from "./AuthContext";
 
 import Layout from "./components/Layout";
 import paths from "./constants/paths";
@@ -46,6 +46,7 @@ const CheckoutForm = lazy(() =>
 );
 
 export default function App() {
+  const auth = useContext(AuthContext);
   auth.handleAuthentication();
 
   return (

@@ -1,5 +1,5 @@
-import React from "react";
-import auth from "../../../Auth";
+import React, { useContext } from "react";
+import { AuthContext } from "../../../AuthContext";
 import { connect } from "react-redux";
 import { makeStyles } from "@material-ui/core";
 import { reduxForm } from "redux-form";
@@ -114,6 +114,7 @@ const getInitialValues = (account) => ({
 });
 
 function Form({ account, fetchAccount }) {
+  const auth = useContext(AuthContext);
   const initialValues = getInitialValues(account);
   const ConnectedForm = reduxForm({
     initialValues,
