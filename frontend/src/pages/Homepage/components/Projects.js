@@ -76,6 +76,8 @@ function renderProject(classes) {
       headerUrl={project.projectImage}
       className={classes.card}
       id={project._id}
+      fieldName={project.fieldName}
+      subfieldName={project.subfieldName}
       body={
         <div className={classes.cardBody}>
           <p className={classes.projectTitle}>

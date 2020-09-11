@@ -44,6 +44,7 @@ const Payment = lazy(() => import("./pages/Payment"));
 const CheckoutForm = lazy(() =>
   import("./pages/Payment/components/CheckoutForm")
 );
+const Project = lazy(() => import("./pages/ProjectPage"));
 
 export default function App() {
   return (
@@ -104,43 +105,40 @@ export default function App() {
               <Route path={paths.settings}>
                 <AccountSettings />
               </Route>
-              <Route path={paths.biology}>
+              <Route path={paths.biology} exact>
                 <Biology />
               </Route>
-              <Route path={paths.socialSciences}>
+              <Route path={paths.socialSciences} exact>
                 <SocialSciences />
               </Route>
-              <Route path={paths.physics}>
+              <Route path={paths.physics} exact>
                 <Physics />
               </Route>
-              <Route path={paths.mathsAndStats}>
+              <Route path={paths.mathsAndStats} exact>
                 <MathsAndStats />
               </Route>
-              <Route path={paths.spaceSciences}>
+              <Route path={paths.spaceSciences} exact>
                 <SpaceSciences />
               </Route>
-              <Route path={paths.computerScience}>
+              <Route path={paths.computerScience} exact>
                 <ComputerScience />
               </Route>
-              <Route path={paths.engineeringAndTech}>
+              <Route path={paths.engineeringAndTech} exact>
                 <EngineeringAndTech />
               </Route>
-              <Route path={paths.earthSciences}>
+              <Route path={paths.earthSciences} exact>
                 <EarthSciences />
               </Route>
-              <Route path={paths.chemistry}>
+              <Route path={paths.chemistry} exact>
                 <Chemistry />
               </Route>
-              <Route path={paths.medicine}>
+              <Route path={paths.medicine} exact>
                 <Medicine />
-              </Route>
-              <Route path={paths.home} exact>
-                <Homepage />
               </Route>
               <Route path={paths.explore} exact>
                 <Explore />
               </Route>
-              <Route path={paths.exploreSubField}>
+              <Route path={paths.exploreSubField} exact>
                 <ExploreSubField />
               </Route>
               <Route path={paths.payment}>
@@ -148,6 +146,9 @@ export default function App() {
               </Route>
               <Route path={`${paths.checkout}/:project/:option`}>
                 <CheckoutForm />
+              </Route>
+              <Route path={`${paths.explore}/:fieldName/:subfieldName/:id`}>
+                <Project />
               </Route>
               <Route path={paths.error404}>
                 <Error404 />

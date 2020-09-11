@@ -35,9 +35,11 @@ const ProjectCard = ({
   body,
   className,
   id,
+  fieldName,
+  subfieldName
 }) => {
   const classes = useStyles();
-  const projectUrl = getProjectPath(id);
+  const projectUrl = `/explore/${fieldName}/${subfieldName}/${id}`;
   return (
     <Link to={projectUrl} className={classes.link}>
       <Card className={clsx(classes.card, className)} variant="outlined">
