@@ -9,7 +9,6 @@ import Projects from "./components/Projects";
 import {
   fetchProjects,
   selectData as selectProjectsData,
-  selectLoading as selectProjectsLoading,
 } from "../../store/slices/projects";
 import { fetchFeaturedProject } from "../../store/slices/middlewareAPI/middlewareAPI";
 
@@ -30,7 +29,6 @@ export default () => {
   const classes = useStyles();
   const scrollY = useWindowScrollY();
   const projectsData = useSelector(selectProjectsData);
-  const projectsLoading = useSelector(selectProjectsLoading);
 
   useEffect(() => {
     dispatch(setPageDarkTheme(true));
