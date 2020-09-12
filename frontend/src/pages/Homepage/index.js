@@ -1,10 +1,7 @@
 import React, { useEffect } from "react";
 import { makeStyles } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  setDarkTheme as setPageDarkTheme,
-  setParticles as setPageParticles,
-} from "../../store/slices/page";
+import { setDarkTheme as setPageDarkTheme } from "../../store/slices/page";
 import useWindowScrollY from "../../hooks/useWindowScrollY";
 import Intro from "./components/Intro";
 import SlidingParagraphs from "./components/SlidingParagraphs";
@@ -19,6 +16,12 @@ import { fetchFeaturedProject } from "../../store/slices/middlewareAPI/middlewar
 const useStyles = makeStyles((theme) => ({
   pageContainer: {
     backgroundColor: theme.palette.common.black,
+    backgroundImage: "url(" + require("./assets/homepage_background.png") + ")",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center",
+    backgroundSize: "cover",
+    display: "flex",
+    flexDirection: "column",
   },
 }));
 
@@ -31,12 +34,10 @@ export default () => {
 
   useEffect(() => {
     dispatch(setPageDarkTheme(true));
-    dispatch(setPageParticles(true));
     dispatch(fetchProjects());
     dispatch(fetchFeaturedProject());
     return () => {
       dispatch(setPageDarkTheme(false));
-      dispatch(setPageParticles(false));
     };
   }, [dispatch]);
 
