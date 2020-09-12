@@ -7,7 +7,7 @@ const maxTitleLength = 45;
 
 const useStyles = makeStyles((theme) => ({
   sectionContainer: {
-    minHeight: "100vh",
+    minHeight: "calc(100vh - 200px)",
     backgroundColor: "white",
     padding: "100px 0px",
     opacity: 1,
