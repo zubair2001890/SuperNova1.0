@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme) => {
       transform: "translateX(-50%)",
       height: "100%",
       transition: "height", // TODO: add proper transition ?
+      zIndex: 0,
     },
   };
 });

@@ -1,19 +1,20 @@
 import React from "react";
-import {
-  makeStyles,
-  Typography,
-  Avatar,
-  Tooltip,
-} from "@material-ui/core";
+import { makeStyles, Typography, Avatar, Tooltip } from "@material-ui/core";
 import ProjectCard from "../../../components/ProjectCard";
 import FundsProgress from "../../../components/ProjectCard/components/FundsProgress";
 
 const maxTitleLength = 45;
 
 const useStyles = makeStyles((theme) => ({
-  sectionContainer: { minHeight: "100vh" },
+  sectionContainer: {
+    minHeight: "100vh",
+    backgroundColor: "white",
+    padding: "100px 0px",
+    opacity: 1,
+    zIndex: 100,
+  },
   sectionTitle: {
-    color: "white",
+    color: "black",
     textAlign: "center",
     letterSpacing: "0.09em",
     marginBottom: "10rem",
@@ -55,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default ({ projectsData}) => {
+export default ({ projectsData }) => {
   const classes = useStyles();
   return (
     <div className={classes.sectionContainer}>
@@ -82,12 +83,12 @@ function renderProject(classes) {
             {project.projectName.length < maxTitleLength ? (
               project.projectName
             ) : (
-                <Tooltip title={project.projectName} placement="top">
-                  <span>
-                    {project.projectName.slice(0, maxTitleLength - 3) + "..."}
-                  </span>
-                </Tooltip>
-              )}
+              <Tooltip title={project.projectName} placement="top">
+                <span>
+                  {project.projectName.slice(0, maxTitleLength - 3) + "..."}
+                </span>
+              </Tooltip>
+            )}
           </p>
           <Avatar
             className={classes.avatar}
