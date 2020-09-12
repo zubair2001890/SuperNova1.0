@@ -22,11 +22,17 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.common.white,
     animation: "slideFadeUp 1.5s ease 1s backwards",
     fontSize: 100,
+    '@media (max-width:1000px)': {
+      fontSize: 70,
+    },
   },
   subtitle: {
     animation: "slideFadeUp 1.5s ease 2s backwards",
     fontSize: 45,
     textAlign: "center",
+    '@media (max-width:1000px)': {
+      fontSize: 30,
+    },
   },
   createExplore: {
     display: "flex",
@@ -36,6 +42,9 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     animation: "slideFadeUp 1.5s ease 2s backwards",
     fontSize: 35,
+    '@media (max-width:1000px)': {
+      fontSize: 20,
+    },
   },
   growVerticalBar: {
     flex: "0 0 auto",
