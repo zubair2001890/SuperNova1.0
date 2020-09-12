@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     letterSpacing: 10,
     color: theme.palette.common.white,
     animation: "slideFadeUp 1.5s ease 1s backwards",
-    fontSize: 125,
+    fontSize: 100,
   },
   subtitle: {
     animation: "slideFadeUp 1.5s ease 2s backwards",
