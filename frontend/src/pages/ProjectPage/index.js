@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import {
   Typography,
   makeStyles,
@@ -11,7 +13,14 @@ import {
   Button,
 } from "@material-ui/core";
 import PropTypes from "prop-types";
+import {
+  setDarkTheme as setPageDarkTheme,
+} from "../../store/slices/page";
 import ProjectDetailsMockData from "../../mockData/projectsDetails.json";
+import {
+  fetchProject,
+  selectData as selectProjectData,
+} from "../../store/slices/projectDetails";
 import LoginPage from "../../pages/Login";
 
 const useStyles = makeStyles((theme) => ({
@@ -246,11 +255,23 @@ const formatPostedTime = (timePosted) => {
 export default () => {
   const { isAuthenticated } = useAuth0();
   const classes = useStyles();
+  const dispatch = useDispatch();
   const [value, setValue] = useState(0);
+  const { id: projectId } = useParams();
+  const projectData = useSelector(selectProjectData);
 
+  console.log("ProjectData: ", projectData)
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  useEffect(() => {
+    dispatch(setPageDarkTheme(true));
+    dispatch(fetchProject(projectId));
+    return () => {
+      dispatch(setPageDarkTheme(false));
+    };
+  }, [dispatch, projectId]);
 
   return isAuthenticated ? (
     <>
@@ -280,12 +301,12 @@ export default () => {
         <TabPanel value={value} index={0}>
           <div className={classes.center}>
             <Typography variant="h1" className={classes.pageTitle}>
-              {ProjectDetailsMockData[0].projectName}
+              {projectData.projectName}
             </Typography>
             <Grid container direction="row" className={classes.headerGrid}>
               <Grid item className={classes.imageContainer}>
                 <img
-                  src={ProjectDetailsMockData[0].projectImage}
+                  src={projectData.projectImage}
                   alt="Project"
                   style={{ width: "100%" }}
                 ></img>
@@ -297,7 +318,7 @@ export default () => {
                     currency: "GBP",
                     maximumFractionDigits: 0,
                     minimumFractionDigits: 0,
-                  }).format(ProjectDetailsMockData[0].totalPledged)}`}
+                  }).format(projectData.totalPledged)}`}
                 </Typography>
                 <Typography
                   variant="h3"
@@ -315,7 +336,7 @@ export default () => {
                     currency: "GBP",
                     maximumFractionDigits: 0,
                     minimumFractionDigits: 0,
-                  }).format(ProjectDetailsMockData[0].goal)}`}{" "}
+                  }).format(projectData.goal)}`}{" "}
                   goal
                 </Typography>
                 <Typography
@@ -348,7 +369,7 @@ export default () => {
                   }}
                 >
                   Project opened on{" "}
-                  {formatStartDate(ProjectDetailsMockData[0].startDate)}
+                  {formatStartDate(projectData.startDate)}
                 </Typography>
                 <Button
                   variant="contained"
@@ -384,7 +405,7 @@ export default () => {
               The Scientists
             </Typography>
             <Typography component="h5" className={classes.scientistName}>
-              {ProjectDetailsMockData[0].teamDescription.names[0]}
+              {projectData.teamDescription[0]}
             </Typography>
             <Typography component="h6" className={classes.scientistTitle}>
               {ProjectDetailsMockData[0].teamDescription.positions[0]}
