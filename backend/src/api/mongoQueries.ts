@@ -171,10 +171,6 @@ export const getProjectByProjectID = function (
       console.log(err);
       rejecter(null);
     }
-    if (err) {
-      console.log(err);
-      rejecter(null);
-    }
     if (docs) {
       resolver(docs);
     } else {
