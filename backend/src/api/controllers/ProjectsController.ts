@@ -4,6 +4,7 @@ import {
   getProjectsBySubfieldID,
   getProjectsByProjectScientistID,
   getProjectsByFieldName,
+  getProjectsBySubfieldName,
   getProjectByProjectID,
   getFeaturedProjects,
   getAllSubfields,
@@ -40,13 +41,19 @@ class ProjectsController {
     let projects = null;
     if (req.query.field_name !== undefined) {
       projects = await getProjectsByFieldName(req.query.field_name.toString());
-    } else if (req.query.subfield_id !== undefined) {
+    }
+    else if (req.query.subfield_id !== undefined) {
       projects = await getProjectsBySubfieldID(
         Number(req.query.subfield_id.toString())
       );
+    }
+    else if (req.query.subfield_name !== undefined) {
+      projects = await getProjectsBySubfieldName(
+        (req.query.subfield_name.toString())
+      );
     } else if (req.query.project_scientist_id !== undefined) {
       projects = await getProjectsByProjectScientistID(
-        Number(req.query.project_scientist_id.toString())
+        (req.query.project_scientist_id.toString())
       );
     } else if (req.query.project_id !== undefined) {
       projects = await getProjectByProjectID(req.query.project_id.toString());
@@ -80,6 +87,8 @@ class ProjectsController {
       projectImage: req.body.projectImage,
       goal: req.body.goal,
       projectScientistID: req.body.projectScientistId,
+      fieldName: req.body.fieldName,
+      subfieldName: req.body.subfieldName,
       subfieldID: req.body.subfieldID,
       fullName: req.body.teamDescription[0].name,
       statusName: req.body.statusName,
