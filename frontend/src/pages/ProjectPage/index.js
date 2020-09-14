@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -42,8 +42,7 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.common.black,
   },
   tabsPanel: {
-    minHeight: 2000,
-  },
+    minHeight: 2000, },
   center: {
     margin: "0 auto",
     maxWidth: 966,
@@ -65,6 +64,8 @@ const useStyles = makeStyles((theme) => ({
   },
   imageContainer: {
     minWidth: 500,
+    display: 'flex',
+    justifyContent: 'center',
   },
   projectDetails: {
     marginLeft: 100,
@@ -260,7 +261,6 @@ export default () => {
   const { id: projectId } = useParams();
   const projectData = useSelector(selectProjectData);
 
-  console.log("ProjectData: ", projectData)
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -273,6 +273,7 @@ export default () => {
     };
   }, [dispatch, projectId]);
 
+  console.log(projectData)
   return isAuthenticated ? (
     <>
       <div className={classes.mockAppBarLayout} />
@@ -308,7 +309,7 @@ export default () => {
                 <img
                   src={projectData.projectImage}
                   alt="Project"
-                  style={{ width: "100%" }}
+                  style={{ height: "100%" }}
                 ></img>
               </Grid>
               <Grid item className={classes.projectDetails}>
@@ -383,120 +384,72 @@ export default () => {
             <Typography variant="h2" className={classes.subheading}>
               About this Project
             </Typography>
-            <Typography component="h3" className={classes.subheadingTitle}>
-              Project aims:
-            </Typography>
-            <Typography variant="body1" className={classes.subheadingParagraph}>
-              {ProjectDetailsMockData[0].projectDescription.aim}
-            </Typography>
-            <Typography component="h3" className={classes.subheadingTitle}>
-              The Scientific Context of the Project:
-            </Typography>
-            <Typography variant="body1" className={classes.subheadingParagraph}>
-              {ProjectDetailsMockData[0].projectDescription.significance}
-            </Typography>
-            <Typography component="h3" className={classes.subheadingTitle}>
-              Why the Scientist believes the research is important / valuable:
-            </Typography>
-            <Typography variant="body1" className={classes.subheadingParagraph}>
-              {ProjectDetailsMockData[0].projectDescription.value}
-            </Typography>
-            <Typography variant="h2" className={classes.subheading}>
-              The Scientists
-            </Typography>
-            <Typography component="h5" className={classes.scientistName}>
-              {projectData.teamDescription[0]}
-            </Typography>
-            <Typography component="h6" className={classes.scientistTitle}>
-              {ProjectDetailsMockData[0].teamDescription.positions[0]}
-            </Typography>
-            <Typography variant="body1" className={classes.subheadingParagraph}>
-              {ProjectDetailsMockData[0].teamDescription.bios[0]}
-            </Typography>
-            <Typography component="h5" className={classes.scientistName}>
-              {ProjectDetailsMockData[0].teamDescription.names[1]}
-            </Typography>
-            <Typography component="h6" className={classes.scientistTitle}>
-              {ProjectDetailsMockData[0].teamDescription.positions[1]}
-            </Typography>
-            <Typography variant="body1" className={classes.subheadingParagraph}>
-              {ProjectDetailsMockData[0].teamDescription.bios[1]}
-            </Typography>
-            <Typography component="h5" className={classes.scientistName}>
-              {ProjectDetailsMockData[0].teamDescription.names[2]}
-            </Typography>
-            <Typography component="h6" className={classes.scientistTitle}>
-              {ProjectDetailsMockData[0].teamDescription.positions[2]}
-            </Typography>
-            <Typography variant="body1" className={classes.subheadingParagraph}>
-              {ProjectDetailsMockData[0].teamDescription.bios[2]}
-            </Typography>
-            <Typography variant="h2" className={classes.subheading}>
-              Timeline and Budget Breakdown
-            </Typography>
-            <Typography component="h3" className={classes.stageNumber}>
-              Stage {ProjectDetailsMockData[0].timelineDescription.stages[0]}
-            </Typography>
-            <Typography component="h5" className={classes.stageTarget}>
-              Target £{ProjectDetailsMockData[0].timelineDescription.targets[0]}
-            </Typography>
-            <Typography component="h4" className={classes.stageHeading}>
-              {ProjectDetailsMockData[0].timelineDescription.stageHeadings[0]}
-            </Typography>
-            <Typography component="h5" className={classes.stageSubheading}>
-              Aim:
-            </Typography>
-            <Typography variant="body1" className={classes.subheadingParagraph}>
-              {ProjectDetailsMockData[0].timelineDescription.content[0][0]}
-            </Typography>
-            <Typography component="h6" className={classes.stageSubheading2}>
-              Fund allocation:
-            </Typography>
-            <Typography variant="body1" className={classes.subheadingParagraph}>
-              {ProjectDetailsMockData[0].timelineDescription.content[0][1]}
-            </Typography>
-            <Typography component="h3" className={classes.stageNumber}>
-              Stage {ProjectDetailsMockData[0].timelineDescription.stages[1]}:
-            </Typography>
-            <Typography component="h5" className={classes.stageTarget}>
-              Target £{ProjectDetailsMockData[0].timelineDescription.targets[1]}
-            </Typography>
-            <Typography component="h4" className={classes.stageHeading}>
-              {ProjectDetailsMockData[0].timelineDescription.stageHeadings[1]}
-            </Typography>
-            <Typography component="h5" className={classes.stageSubheading}>
-              Aim:
-            </Typography>
-            <Typography variant="body1" className={classes.subheadingParagraph}>
-              {ProjectDetailsMockData[0].timelineDescription.content[1][0]}
-            </Typography>
-            <Typography component="h6" className={classes.stageSubheading2}>
-              Fund allocation:
-            </Typography>
-            <Typography variant="body1" className={classes.subheadingParagraph}>
-              {ProjectDetailsMockData[0].timelineDescription.content[1][1]}
-            </Typography>
-            <Typography component="h3" className={classes.stageNumber}>
-              Stage {ProjectDetailsMockData[0].timelineDescription.stages[2]}:
-            </Typography>
-            <Typography component="h5" className={classes.stageTarget}>
-              Target £{ProjectDetailsMockData[0].timelineDescription.targets[2]}
-            </Typography>
-            <Typography component="h4" className={classes.stageHeading}>
-              {ProjectDetailsMockData[0].timelineDescription.stageHeadings[2]}
-            </Typography>
-            <Typography component="h5" className={classes.stageSubheading}>
-              Aim:
-            </Typography>
-            <Typography variant="body1" className={classes.subheadingParagraph}>
-              {ProjectDetailsMockData[0].timelineDescription.content[2][0]}
-            </Typography>
-            <Typography component="h6" className={classes.stageSubheading2}>
-              Fund allocation:
-            </Typography>
-            <Typography variant="body1" className={classes.subheadingParagraph}>
-              {ProjectDetailsMockData[0].timelineDescription.content[2][1]}
-            </Typography>
+            {projectData.projectDescription.aims && (<Fragment>
+              <Typography component="h3" className={classes.subheadingTitle}>
+                Project aims:
+              </Typography>
+              <Typography variant="body1" className={classes.subheadingParagraph}>
+                {projectData.projectDescription.aims}
+              </Typography>
+            </Fragment>)}
+            {projectData.projectDescription.context && (<Fragment>
+              <Typography component="h3" className={classes.subheadingTitle}>
+                The Scientific Context of the Project:
+              </Typography>
+              <Typography variant="body1" className={classes.subheadingParagraph}>
+                {projectData.projectDescription.context}
+              </Typography>
+            </Fragment>)}
+            {projectData.projectDescription.whyIsItImportant && (<Fragment>
+              <Typography component="h3" className={classes.subheadingTitle}>
+                Why the Scientist believes the research is important / valuable:
+              </Typography>
+              <Typography variant="body1" className={classes.subheadingParagraph}>
+                {projectData.projectDescription.whyIsItImportant}
+              </Typography>
+            </Fragment>)}
+            {projectData.teamDescription.length && (<Fragment>
+              <Typography variant="h2" className={classes.subheading}>
+                The Scientists
+              </Typography>
+              {projectData.teamDescription.map(scientist => (
+                <Fragment>
+                  <Typography component="h5" className={classes.scientistName}>
+                    {scientist.name}
+                  </Typography>
+                  <Typography component="h6" className={classes.scientistTitle}>
+                    {scientist.role}
+                  </Typography>
+                  <Typography variant="body1" className={classes.subheadingParagraph}>
+                    {scientist.bio}
+                  </Typography>
+                </Fragment>
+              ))}
+            </Fragment>)}
+            {projectData.teamDescription.length && (<Fragment>
+              <Typography variant="h2" className={classes.subheading}>
+                Timeline and Budget Breakdown
+              </Typography>
+              {projectData.timelineDescription.map((stage, idx) => (
+                <Fragment>
+                  <Typography component="h3" className={classes.stageNumber}>
+                    Stage {idx + 1}
+                  </Typography>
+                  <Typography component="h5" className={classes.stageTarget}>
+                    Target {stage.target}
+                  </Typography>
+                  <Typography component="h4" className={classes.stageHeading}>
+                    {stage.milestone}
+                  </Typography>
+                  <Typography component="h5" className={classes.stageSubheading}>
+                    Aim:
+                  </Typography>
+                  <Typography variant="body1" className={classes.subheadingParagraph}>
+                    {stage.whatWillBeAchieved}
+                  </Typography>
+                </Fragment>
+              ))}
+            </Fragment>)}
           </div>
         </TabPanel>
         <TabPanel value={value} index={1}>
