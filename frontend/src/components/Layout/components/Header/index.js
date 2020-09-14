@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
     ...theme.mixins.appBar,
     position: "relative",
     [theme.breakpoints.down('sm')]: {
-      height: 58,
+      height: 56,
       padding: 0,
       flexDirection: "row-reverse",
       justifyContent: "space-between",
@@ -38,6 +38,8 @@ const useStyles = makeStyles((theme) => ({
     animation: "slideFadeUp 1.5s ease 2s backwards",
     [theme.breakpoints.down('sm')]: {
       margin: 0,
+      paddingTop: 0,
+      paddingBottom: 0,
     },
   },
   logoContainer: {
@@ -76,8 +78,9 @@ const useStyles = makeStyles((theme) => ({
   },
   appBarRightLink: {
     ...theme.mixins.navLinkPrimary,
+    fontSize: 24,
     [theme.breakpoints.down('sm')]: {
-      fontSize: 12,
+      fontSize: 18,
     },
   },
 }));

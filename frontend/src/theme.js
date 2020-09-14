@@ -21,7 +21,7 @@ export default createMuiTheme({
   // check default theme here https://material-ui.com/customization/default-theme/#default-theme;
   mixins: {
     appBar: {
-      height: 140,
+      height: 113,
       paddingLeft: 48,
       paddingRight: 48,
     },
