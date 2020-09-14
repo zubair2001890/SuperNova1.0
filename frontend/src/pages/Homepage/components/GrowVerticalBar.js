@@ -6,7 +6,7 @@ const useStyles = makeStyles((theme) => {
   return {
     container: {
       display: "inline-block",
-      height: 60,
+      height: 26,
       width: 50,
       position: "relative",
     },

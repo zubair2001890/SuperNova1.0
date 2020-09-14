@@ -4,7 +4,7 @@ import { makeStyles, useTheme, Typography, Button } from "@material-ui/core";
 import GrowVerticalBar from "./GrowVerticalBar";
 import AnimateArrows from "./AnimatedArrows";
 
-const createExploreMarginBottom = 50;
+const createExploreMarginBottom = 20;
 
 const useStyles = makeStyles((theme) => ({
   container: {
