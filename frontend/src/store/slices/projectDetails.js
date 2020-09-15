@@ -9,7 +9,7 @@ import {
 export const projectSlice = createSlice({
   name: "project",
   initialState: {
-    data: [],
+    data: { projectDescription: {}, teamDescription: {}, methodDescription: {} },
     loading: false,
     error: null,
   },

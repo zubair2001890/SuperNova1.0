@@ -14,9 +14,6 @@ import {
 } from "@material-ui/core";
 import PropTypes from "prop-types";
 import {
-  setDarkTheme as setPageDarkTheme,
-} from "../../store/slices/page";
-import {
   fetchProject,
   selectData as selectProjectData,
 } from "../../store/slices/projectDetails";
