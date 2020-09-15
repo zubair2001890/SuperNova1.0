@@ -16,7 +16,6 @@ import PropTypes from "prop-types";
 import {
   setDarkTheme as setPageDarkTheme,
 } from "../../store/slices/page";
-import ProjectDetailsMockData from "../../mockData/projectsDetails.json";
 import {
   fetchProject,
   selectData as selectProjectData,
@@ -65,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
   imageContainer: {
     minWidth: 500,
     display: 'flex',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
   },
   projectDetails: {
     marginLeft: 100,
@@ -266,14 +265,9 @@ export default () => {
   };
 
   useEffect(() => {
-    dispatch(setPageDarkTheme(true));
     dispatch(fetchProject(projectId));
-    return () => {
-      dispatch(setPageDarkTheme(false));
-    };
   }, [dispatch, projectId]);
 
-  console.log(projectData)
   return isAuthenticated ? (
     <>
       <div className={classes.mockAppBarLayout} />
@@ -458,22 +452,17 @@ export default () => {
               Lab Notes
             </Typography>
             <div className={classes.containerRelative}>
-              <Typography component="h6" className={classes.timePosted}>
-                {formatPostedTime(
-                  ProjectDetailsMockData[0].labNotes.timePosted[0]
-                )}
-              </Typography>
-              <Typography variant="body1" className={classes.notesEntry}>
-                {ProjectDetailsMockData[0].labNotes.notes[0]}
-              </Typography>
-              <Typography component="h6" className={classes.timePosted}>
-                {formatPostedTime(
-                  ProjectDetailsMockData[0].labNotes.timePosted[1]
-                )}
-              </Typography>
-              <Typography variant="body1" className={classes.notesEntry}>
-                {ProjectDetailsMockData[0].labNotes.notes[1]}
-              </Typography>
+              {projectData.labNotes && projectData.labNotes.map(note => (
+                <Fragment>
+                  <Typography component="h6" className={classes.timePosted}>
+                    {formatPostedTime(note.timePosted)}
+                  </Typography>
+                  <Typography variant="body1" className={classes.notesEntry}>
+                    {note.content}
+                  </Typography>
+                </Fragment>
+
+              ))}
             </div>
           </div>
         </TabPanel>
@@ -484,22 +473,22 @@ export default () => {
             </Typography>
             <div className={classes.containerRelative}>
               <Typography component="h6" className={classes.timePosted}>
-                {ProjectDetailsMockData[0].methodDescription.headings[0]}
+                Scientific Methods and Techniques:
               </Typography>
               <Typography variant="body1" className={classes.notesEntry}>
-                {ProjectDetailsMockData[0].methodDescription.content[0]}
+                {projectData.methodDescription.methodsAndTechniques}
               </Typography>
               <Typography component="h6" className={classes.timePosted}>
-                {ProjectDetailsMockData[0].methodDescription.headings[1]}
+                (Details on Equipment):
               </Typography>
               <Typography variant="body1" className={classes.notesEntry}>
-                {ProjectDetailsMockData[0].methodDescription.content[1]}
+                {projectData.methodDescription.equipment}
               </Typography>
               <Typography component="h6" className={classes.timePosted}>
-                {ProjectDetailsMockData[0].methodDescription.headings[2]}
+                Further Scientific Details:
               </Typography>
               <Typography variant="body1" className={classes.notesEntry}>
-                {ProjectDetailsMockData[0].methodDescription.content[2]}
+                {projectData.methodDescription.furtherComments}
               </Typography>
             </div>
           </div>
