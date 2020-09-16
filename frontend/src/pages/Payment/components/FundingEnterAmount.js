@@ -1,8 +1,8 @@
-import React from "react";
-import {
-  makeStyles,
-  Typography,
-} from "@material-ui/core";
+import React, { useState } from "react";
+import { makeStyles, Typography } from "@material-ui/core";
+
+import { useHistory } from "react-router";
+import paths from "../../../constants/paths";
 
 const useStyles = makeStyles((theme) => ({
   fundingOptionContainer: {
@@ -67,11 +67,24 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": {
       boxShadow: "2px 2px 2px gray",
     },
-  }
+  },
 }));
 
 export default function FundingEnterAmount(props) {
   const classes = useStyles();
+  const [amount, setAmount] = useState(0);
+  const history = useHistory();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    history.push({
+      pathname: `${paths.checkout}`,
+      state: {
+        amount: amount,
+        description: props.title,
+      },
+    });
+  };
 
   return (
     <div className={classes.fundingOptionContainer}>
@@ -91,9 +104,19 @@ export default function FundingEnterAmount(props) {
         <Typography className={classes.enterAmountText}>
           Enter Donation Amount:
         </Typography>
-        <form className={classes.fundingAmountForm}>
-          <input type="number" className={classes.inputField} placeholder="£..." min={props.min} max={props.max} step={1} required="true" />
-          <button type="submit" className={classes.submitButton}>Let's Go!</button>
+        <form onSubmit={handleSubmit} className={classes.fundingAmountForm}>
+          <input
+            type="number"
+            onChange={(e) => setAmount(e.target.value)}
+            className={classes.inputField}
+            min={props.min}
+            max={props.max}
+            step={1}
+            required="true"
+          />
+          <button type="submit" className={classes.submitButton}>
+            Let's Go!
+          </button>
         </form>
       </div>
     </div>
