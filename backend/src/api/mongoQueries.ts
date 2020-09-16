@@ -242,3 +242,20 @@ export const addAmountPledged = async function (
   });
   projectBacker.save();
 };
+
+export const getProjectBackers = async function(projectID: String): Promise<any>
+{
+  let resolver, rejecter;
+  const promise = new Promise((resolve, reject) => {
+    resolver = resolve;
+    rejecter = reject;
+  });
+  ProjectBacker.find({projectID: projectID}, function (err, docs) {
+    if (err) {
+      console.log(err);
+      rejecter(null);
+    }
+    resolver(docs);
+  });
+  return promise; 
+}

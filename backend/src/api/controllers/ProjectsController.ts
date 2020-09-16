@@ -9,9 +9,11 @@ import {
   getFeaturedProjects,
   getAllSubfields,
   getProfileByID,
+  getProjectBackers
 } from "../mongoQueries";
 import { addStringToArray, arrayContainsString } from "../helpers";
 import * as jwt_decode from "jwt-decode";
+import { UserAccount } from "../models/UserAccount";
 
 class ProjectsController {
   constructor() { }
@@ -74,6 +76,11 @@ class ProjectsController {
     if (req.body.link !== undefined) {
       link.push(req.body.link);
     }
+    let labNotes = [];
+    if (req.body.labNotes !== undefined)
+    {
+      labNotes = req.body.labNotes;
+    }
     let startDate: String = req.body.startDate;
     let whitespaceRegex = new RegExp(' ', 'g');
     let project = new Project({
@@ -94,8 +101,21 @@ class ProjectsController {
       statusName: req.body.statusName,
       link: link,
       backers: new Array<String>(),
+      labNotes: labNotes
     });
     await project.save();
+    UserAccount.findByIdAndUpdate(req.body.userID, {projectScientistID: req.body.projectScientistID}, 
+      function(err,result){
+        if (err)
+        {
+          console.log(err);
+        }
+        if (result)
+        {
+          console.log("Result after updating the UserAccount:");
+          console.log(result);
+        }
+    });
     let projectIDObject = await Project.findById(project._id, "_id").exec();
     res.send(projectIDObject);
   };
@@ -115,9 +135,7 @@ class ProjectsController {
       update.link = addStringToArray(selectedProject.link, req.body.link);
     }
     Project.findByIdAndUpdate(req.params.project_id, update, function (
-      err,
-      result
-    ) {
+      err,result) {
       if (err) {
         console.log(err);
       }
@@ -219,6 +237,10 @@ class ProjectsController {
     catch (err) {
       console.log(err);
     }
+  }
+
+  public projectBackers = async(req: Request, res: Response) => {
+    res.send(await getProjectBackers(req.query.project_id.toString()));
   }
   }
 export default ProjectsController;
