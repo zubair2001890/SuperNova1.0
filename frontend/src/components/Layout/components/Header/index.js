@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
 import clsx from "clsx";
 import { Link as RouterLink } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import { AppBar, IconButton, Toolbar, Button } from "@material-ui/core";
 import { Menu as MenuIcon, Close as CloseIcon } from "@material-ui/icons";
 import { useAuth0 } from "@auth0/auth0-react";
+//media queries
+import { useTheme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 import LeftDrawer from "./components/LeftDrawer";
 import AvatarDropdown from "./components/Avatar";
@@ -13,7 +15,7 @@ import paths from "../../../../constants/paths";
 import logoRed from "./assets/logo-red.svg";
 import logoBlack from "./assets/logo-black.svg";
 import logoWhite from "./assets/logo-white.svg";
-import { sendUpdateAccount } from "./../../../../store/slices/middlewareAPI/middlewareAPI";
+
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -25,9 +27,18 @@ const useStyles = makeStyles((theme) => ({
   toolBar: {
     ...theme.mixins.appBar,
     position: "relative",
+    [theme.breakpoints.down('sm')]: {
+      height: 58,
+      padding: 0,
+      flexDirection: "row-reverse",
+      justifyContent: "space-between",
+    },
   },
   toggleBtn: {
     animation: "slideFadeUp 1.5s ease 2s backwards",
+    [theme.breakpoints.down('sm')]: {
+      margin: 0,
+    },
   },
   logoContainer: {
     height: "80%",
@@ -59,9 +70,15 @@ const useStyles = makeStyles((theme) => ({
     "& > *:not(:last-child)": {
       marginRight: theme.spacing(4),
     },
+    [theme.breakpoints.down('sm')]: {
+      margin: 0,
+    },
   },
   appBarRightLink: {
     ...theme.mixins.navLinkPrimary,
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 12,
+    },
   },
 }));
 
@@ -75,14 +92,13 @@ export default function Header({ darkTheme = true }) {
 
   const [logoImg, setLogoImg] = useState(null);
 
-  const dispatch = useDispatch();
   const {
     loginWithRedirect,
     isAuthenticated,
-    logout,
-    user,
-    getAccessTokenSilently,
   } = useAuth0();
+  //media queries
+  const theme = useTheme();
+  const matchesMediaQuery = useMediaQuery(theme.breakpoints.down('sm'));
 
   useEffect(() => {
     setLogoImg(
@@ -112,8 +128,6 @@ export default function Header({ darkTheme = true }) {
 
     setDrawerState({ ...drawerState, [anchor]: open });
   };
-
-  console.log(user);
 
   return (
     <>
@@ -162,7 +176,7 @@ export default function Header({ darkTheme = true }) {
             {logoImg}
           </RouterLink>
           <div className={classes.appBarRight}>
-            <Button
+          {matchesMediaQuery ? null : <Button 
               color="inherit"
               component={RouterLink}
               to={paths.explore}
@@ -170,7 +184,7 @@ export default function Header({ darkTheme = true }) {
               className={classes.appBarRightLink}
             >
               EXPLORE
-            </Button>
+            </Button>}
             {isAuthenticated ? (
               <AvatarDropdown />
             ) : (

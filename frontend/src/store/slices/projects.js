@@ -1,7 +1,13 @@
+import { getFeaturedProjects } from "./middlewareAPI/fetchAPI";
 import { createSlice } from "@reduxjs/toolkit";
-import projectsMockData from "../../mockData/projects.json";
-import sleep from "../../helpers/sleep";
-import { fetchFeaturedProject, fetchProjects, fetchSubFields, fetchProjectDetails, createProject, sendUpdateProject } from './middlewareAPI/middlewareAPI';
+import {
+  fetchFeaturedProject,
+  fetchProjects,
+  fetchSubFields,
+  fetchProjectDetails,
+  createProject,
+  sendUpdateProject,
+} from "./middlewareAPI/middlewareAPI";
 
 export const projectsSlice = createSlice({
   name: "projects",
@@ -39,22 +45,20 @@ export const projectsSlice = createSlice({
     },
     [sendUpdateProject.fulfilled]: (state, action) => {
       state.projectDetails = action.payload;
-    }
-  }
+    },
+  },
 });
 
 export const { setData, setLoading, setError } = projectsSlice.actions;
 
-
 // Can be removed?
-const fetchMockProjects = () => (dispatch) => {
+const fetchMockProjects = () => async (dispatch) => {
   dispatch(setLoading(true));
-  sleep(1000);
-  dispatch(setData(projectsMockData));
-  dispatch(setLoading(false));
+  const projects = await getFeaturedProjects();
+  dispatch(setData(projects));
 };
 
-export { fetchMockProjects as fetchProjects};
+export { fetchMockProjects as fetchProjects };
 
 export const selectData = (state) => state.projects.data;
 export const selectLoading = (state) => state.projects.loading;

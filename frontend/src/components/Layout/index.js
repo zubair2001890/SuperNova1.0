@@ -33,6 +33,7 @@ export default ({ children }) => {
       )}
       <Header darkTheme={pageDarkTheme} />
       {children}
+      {console.log(children)}
       <Footer />
     </>
   );

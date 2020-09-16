@@ -23,15 +23,25 @@ export const getSubFieldForNumber = function subFieldID(subFieldID: number)
 }
 
 export const addStringToArray = function (stringArray: Array<String>, newString: String)
-{   let currentArray = new Array();
+{   let currentArray = new Array<String>();
     if (stringArray !== null && stringArray !== undefined)
     {
         currentArray = stringArray;
     }
-    console.log("typeof currentArray = " + typeof currentArray);
     currentArray.push(newString);
     return currentArray;
 }
+
+export const addObjectToArray = function (objectArray: Array<Object>, newObject: Object)
+{   let currentArray = new Array<Object>();
+    if (objectArray !== null && objectArray !== undefined)
+    {
+        currentArray = objectArray;
+    }
+    currentArray.push(newObject);
+    return currentArray;
+}
+
 
 export const arrayContainsString = function(stringArray: Array<String>, string: String)
 {

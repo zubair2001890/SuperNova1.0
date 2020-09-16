@@ -1,56 +1,66 @@
-import { Request, Response } from 'express';
-import { Project } from '../models/Project';
-import { getProjectsBySubfieldID, getProjectsByProjectScientistID, getProjectsByFieldName, getProjectByProjectID, getFeaturedProjects, getAllSubfields, getProfileByID } from '../mongoQueries'
-import { addStringToArray, arrayContainsString } from '../helpers';
-import * as jwt_decode from 'jwt-decode';
+import { Request, Response } from "express";
+import { Project } from "../models/Project";
+import {
+  getProjectsBySubfieldID,
+  getProjectsByProjectScientistID,
+  getProjectsByFieldName,
+  getProjectByProjectID,
+  getFeaturedProjects,
+  getAllSubfields,
+  getProfileByID,
+} from "../mongoQueries";
+import { addStringToArray, arrayContainsString } from "../helpers";
+import * as jwt_decode from "jwt-decode";
 
 class ProjectsController {
-  constructor() {
-  }
-
-  private adminUsers = []; // This will be populated with a list of the approved admin users.
+  constructor() { }
 
   public featured = async (req: Request, res: Response) => {
     let featuredProjects = new Array();
     let allProjects = await getFeaturedProjects();
-    allProjects.forEach(project => {
-      if (((project.totalPledged < project.goal) || project.totalPledged === undefined) && (featuredProjects.length < 4)) {
+    allProjects.forEach((project) => {
+      if (
+        (project.totalPledged < project.goal ||
+          project.totalPledged === undefined) &&
+        featuredProjects.length < 4
+      ) {
         featuredProjects.push(project); // This code is now necessary because if a project has reached its goal, it should not feature.
       }
     });
     res.send(featuredProjects);
-  }
+  };
 
   public subFieldsByFieldName = async (req: Request, res: Response) => {
-    let fieldName = req.params.field_name
+    let fieldName = req.params.field_name;
     const subFields = getAllSubfields(fieldName);
     res.send(subFields);
-  }
+  };
 
   public project = async (req: Request, res: Response) => {
-
     let projects = null;
     if (req.query.field_name !== undefined) {
       projects = await getProjectsByFieldName(req.query.field_name.toString());
-    }
-    else if (req.query.subfield_id !== undefined) {
-      projects = await getProjectsBySubfieldID(Number(req.query.subfield_id.toString()));
-    }
-    else if (req.query.project_scientist_id !== undefined) {
-      projects = await getProjectsByProjectScientistID(Number(req.query.project_scientist_id.toString()));
-    }
-    else if (req.query.project_id !== undefined) {
+    } else if (req.query.subfield_id !== undefined) {
+      projects = await getProjectsBySubfieldID(
+        Number(req.query.subfield_id.toString())
+      );
+    } else if (req.query.project_scientist_id !== undefined) {
+      projects = await getProjectsByProjectScientistID(
+        Number(req.query.project_scientist_id.toString())
+      );
+    } else if (req.query.project_id !== undefined) {
       projects = await getProjectByProjectID(req.query.project_id.toString());
+      if (projects.statusName !== "Active") {
+        projects = {};
+      }
     }
-    res.send(projects)
-  }
+    res.send(projects);
+  };
 
   public projectByProjectID = async (req: Request, res: Response) => {
-    //let selectedProject = await getProjectsByFieldName("Biology");
     let selectedProject = await getProjectByProjectID(req.params.project_id);
     res.send(selectedProject);
-
-  }
+  };
 
   public createProject = async (req: Request, res: Response) => {
     let link = [];
@@ -58,34 +68,30 @@ class ProjectsController {
       link.push(req.body.link);
     }
     let startDate: String = req.body.startDate;
+    let whitespaceRegex = new RegExp(' ', 'g');
     let project = new Project({
       projectName: req.body.projectName,
-      projectDescription: req.body.project_description,
+      projectDescription: req.body.projectDescription,
       university: req.body.university,
-      // To get rid of both of the slashes, I get an error message saying that String does not have a replaceAll method.
-      startDate: startDate.replace("/", "").replace("/", ""),
+      startDate: startDate.replace(whitespaceRegex, ''),
       teamDescription: req.body.teamDescription,
       methodDescription: req.body.methodDescription,
       timelineDescription: req.body.timelineDescription,
       projectImage: req.body.projectImage,
       goal: req.body.goal,
       projectScientistID: req.body.projectScientistId,
-      fieldName: req.body.fieldName,
-      subfieldName: req.body.subfieldName,
       subfieldID: req.body.subfieldID,
-      firstName: req.body.teamDescription[0].split(" ")[0],
-      lastName: req.body.teamDescription[0].split(" ")[1].replace(",", ""),
+      fullName: req.body.teamDescription[0].name,
       statusName: req.body.statusName,
       link: link,
-      backers: new Array<String>()
+      backers: new Array<String>(),
     });
     await project.save();
-    let projectIDObject = await Project.findById(project._id, '_id').exec();
+    let projectIDObject = await Project.findById(project._id, "_id").exec();
     res.send(projectIDObject);
-  }
+  };
   public updateProject = async (req: Request, res: Response) => {
     let selectedProject = null;
-    let labNotes = null;
     await Project.findById(req.params.project_id, function (err, docs) {
       if (err) {
         console.log(err);
@@ -93,24 +99,22 @@ class ProjectsController {
       selectedProject = docs;
     });
     for (let property in req.body) {
-      if (!req.body[property]) delete req.body[property]
+      if (!req.body[property]) delete req.body[property];
     }
     let update = req.body;
-    if (req.body.labNotes !== undefined) {
-      let labNotes = addStringToArray(selectedProject.labNotes, req.body.labNotes);
-      labNotes = addStringToArray(labNotes, Date.now().toString());
-      update.labNotes = labNotes;
-    }
     if (req.body.link !== undefined) {
       update.link = addStringToArray(selectedProject.link, req.body.link);
     }
-    Project.findByIdAndUpdate(req.params.project_id, update, function (err, result) {
+    Project.findByIdAndUpdate(req.params.project_id, update, function (
+      err,
+      result
+    ) {
       if (err) {
         console.log(err);
       }
     });
     res.send({}); // Simply sending an empty object as per Apiary.
-  } //The updateProject function ends here.
+  }; //The updateProject function ends here.
 
   public deleteProjectByScientist = async (req: Request, res: Response) => {
     let selectedProject = null;
@@ -122,44 +126,90 @@ class ProjectsController {
     });
     if (selectedProject.projectScientistID !== req.body.userID) {
       throw new Error("A project can only be deleted by the project scientist");
-    }
-    else {
+    } else {
       Project.findByIdAndDelete(req.params.project_id, function (err, output) {
         if (err) {
           console.log(err);
         }
       });
     }
-  } // The deleteProjectByScientist function ends here.
+  }; // The deleteProjectByScientist function ends here.
 
   public updateProjectStatus = async (req: Request, res: Response) => {
-    const userId = jwt_decode(req.header('Authorization').replace('Bearer ', '')).sub;
-    if (!arrayContainsString(this.adminUsers, userId)) {
-      throw new Error("This user is not an admin user and therefore cannot update the project status.");
+    const userId = jwt_decode(
+      req.header("Authorization").replace("Bearer ", "")
+    ).sub;
+    let userProfile = null;
+    try {
+      userProfile = await getProfileByID(userId);
+      if (userProfile.isAdmin) {
+        Project.findByIdAndUpdate(
+          req.params.project_id,
+          { statusName: req.body.statusName },
+          function (err, result) {
+            if (err) {
+              console.log(err);
+            }
+          }
+        ); // findByIdAndUpdate block ends here.
+        res.send({});
+      } // Ends the if block.
+      else {
+        throw new Error(
+          "This user is not an admin user and therefore cannot update the project status."
+        );
+      }
     }
-    else {
-      Project.findByIdAndUpdate(req.params.project_id, { statusName: req.body.statusName }, function (err, result) {
-        if (err) {
-          console.log(err);
-        }
-      });
-      res.send({});
+    catch (err) {
+      console.log(err);
     }
   }
 
   public deleteProjectByAdmin = async (req: Request, res: Response) => {
-    const userId = jwt_decode(req.header('Authorization').replace('Bearer ', '')).sub;
-    if (!arrayContainsString(this.adminUsers, userId)) {
-      throw new Error("This user is not an admin user and therefore cannot update the project status.");
+    const userId = jwt_decode(
+      req.header("Authorization").replace("Bearer ", "")
+    ).sub;
+    let userProfile = null;
+    try {
+      userProfile = await getProfileByID(userId);
+      if (userProfile.isAdmin) {
+        Project.findByIdAndDelete(req.params.project_id, function (err, output) {
+          if (err) {
+            console.log(err);
+          }
+        });
+      } // Ends the if block for if isAdmin()
+      else {
+        throw new Error("This user does not have admin privileges");
+      }
     }
-    else {
-      Project.findByIdAndDelete(req.params.project_id, function (err, output) {
-        if (err) {
-          console.log(err);
-        }
-      });
-    } // The else block ends here.
-    res.send({});
+    catch (err) {
+      console.log(err);
+    }
+  }// The deleteProjectByAdmin function ends here.
+
+  public pendingProjects = async(req: Request, res: Response) => {
+    const userId = jwt_decode(
+      req.header("Authorization").replace("Bearer ", "")
+    ).sub;
+    let userProfile = null;
+    try {
+      userProfile = await getProfileByID(userId);
+      if (userProfile.isAdmin) {
+        Project.find({projectStatus: "Pending"}, function (err, docs) {
+          if (err) {
+            console.log(err);
+          }
+          res.send(docs);
+        });
+      } // Ends the if block for if isAdmin()
+      else {
+        throw new Error("This user does not have admin privileges");
+      }
+    }
+    catch (err) {
+      console.log(err);
+    }
   }
-}
+  }
 export default ProjectsController;
