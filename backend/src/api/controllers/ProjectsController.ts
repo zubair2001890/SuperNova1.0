@@ -9,28 +9,50 @@ import {
   getFeaturedProjects,
   getAllSubfields,
   getProfileByID,
-  getProjectBackers
+  getProjectBackers,
+  getLabNotesForProject
 } from "../mongoQueries";
 import { addStringToArray, arrayContainsString } from "../helpers";
 import * as jwt_decode from "jwt-decode";
 import { UserAccount } from "../models/UserAccount";
+import { LabNote } from "../models/LabNote";
 
 class ProjectsController {
   constructor() { }
 
+  private getLabNotes = function(projectID)
+  {let labNotes = null;
+    getLabNotesForProject(projectID).then(function(result){
+      labNotes = result;
+    });
+    return labNotes;
+  }
+
   public featured = async (req: Request, res: Response) => {
     let featuredProjects = new Array();
     let allProjects = await getFeaturedProjects();
-    allProjects.forEach((project) => {
-      if (
-        (project.totalPledged < project.goal ||
-          project.totalPledged === undefined) &&
-        featuredProjects.length < 4
-      ) {
-        featuredProjects.push(project); // This code is now necessary because if a project has reached its goal, it should not feature.
+    for (let index = 0; index < allProjects.length; index++)
+    {
+      let project = allProjects[index];
+      if (project.totalPledged < project.goal ||
+        project.totalPledged === undefined &&
+      featuredProjects.length < 4
+    )
+      {
+      let projectObject = {};
+      projectObject["projectName"] = project.projectName;
+      projectObject["projectDescription"] = project.projectDescription;
+      projectObject["labNotes"] = await getLabNotesForProject(project._id);
+      projectObject["fullName"] = project.fullName;
+      projectObject["university"] = project.university;
+      projectObject["link"] = project.link;
+      projectObject["goal"] = project.goal;
+      projectObject["totalPledged"] = project.totalPledged;
+      projectObject["statusName"] = project.statusName;
+      featuredProjects.push(projectObject);
       }
-    });
-    res.send(featuredProjects);
+      }
+   res.send(featuredProjects);
   };
 
   public subFieldsByFieldName = async (req: Request, res: Response) => {
@@ -100,10 +122,20 @@ class ProjectsController {
       fullName: req.body.teamDescription[0].name,
       statusName: req.body.statusName,
       link: link,
-      backers: new Array<String>(),
-      labNotes: labNotes
-    });
+      backers: new Array<String>()
+      });
     await project.save();
+    if (req.body.labNotes !== undefined)
+    {
+      let labNoteObject = req.body.labNotes;
+      let labNote = new LabNote({
+        labCommentary: labNoteObject.labCommentary,
+        date: labNoteObject.date.replace(whitespaceRegex, ''),
+        media: labNoteObject.media,
+        projectID: project._id
+      });
+      await labNote.save();
+    }
     UserAccount.findByIdAndUpdate(req.body.userID, {projectScientistID: req.body.projectScientistID}, 
       function(err,result){
         if (err)

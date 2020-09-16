@@ -5,6 +5,7 @@ import { SubField } from "./models/Subfield";
 import { addStringToArray, arrayContainsString } from "./helpers";
 import { UserAccount } from "./models/UserAccount";
 import { ProjectBacker } from "./models/ProjectBacker";
+import {LabNote} from "./models/LabNote"
 
 mongoose
   .connect(
@@ -251,6 +252,23 @@ export const getProjectBackers = async function(projectID: String): Promise<any>
     rejecter = reject;
   });
   ProjectBacker.find({projectID: projectID}, function (err, docs) {
+    if (err) {
+      console.log(err);
+      rejecter(null);
+    }
+    resolver(docs);
+  });
+  return promise; 
+}
+
+export const getLabNotesForProject = async function(projectID: String): Promise<any>
+{
+  let resolver, rejecter;
+  const promise = new Promise((resolve, reject) => {
+    resolver = resolve;
+    rejecter = reject;
+  });
+  LabNote.find({projectID: projectID}, function (err, docs) {
     if (err) {
       console.log(err);
       rejecter(null);

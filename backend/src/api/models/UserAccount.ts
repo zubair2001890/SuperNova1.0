@@ -50,10 +50,6 @@ export const UserAccount = model(
     fieldName: {
       type: String,
     },
-    id: {
-      type: String,
-      required: true,
-    },
     email: {
       type: String,
       required: true,
