@@ -11,9 +11,17 @@ const useStyles = makeStyles((theme) => ({
     paddingRight: theme.spacing(2),
     paddingTop: 92,
     paddingBottom: 92,
+    [theme.breakpoints.down('sm')]: {
+      paddingTop: 40,
+      paddingBottom: 40,
+    },
   },
   mockAppBarLayout: {
     ...theme.mixins.appBar,
+    [theme.breakpoints.down('sm')]: {
+      height: 58,
+      padding: 0,
+    },
   },
   pageHeader: {
     height: 370,
@@ -21,17 +29,31 @@ const useStyles = makeStyles((theme) => ({
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
     backgroundSize: "cover",
+    [theme.breakpoints.down('sm')]: {
+      height: 113,
+    },
   },
   pageTitle: {
     position: "relative",
     top: 20,
     color: "white",
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 18,
+      lineHeight: 0,
+    },
   },
   subheadingVerticalMargin: {
     margin: "68px 0",
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 14,
+      margin: 0,
+    },
   },
   subheadingTextVerticalMargin: {
     paddingBottom: 48,
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 12,
+    },
   },
 }));
 
