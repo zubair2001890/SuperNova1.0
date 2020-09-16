@@ -146,7 +146,6 @@ export default function App() {
               <Route path={paths.payment}>
                 <Payment />
               </Route>
-              {/* <Route path={`${paths.checkout}/:project/:option`}> */}
               <Route path={paths.checkout}>
                 <CheckoutForm />
               </Route>
