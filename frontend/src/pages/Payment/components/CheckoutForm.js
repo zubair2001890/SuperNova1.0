@@ -212,7 +212,6 @@ class CheckoutForm extends Component {
           <FormControl
             fullWidth
             className={classes.rememberCardCheckbox}
-            required={true}
           >
             <FormControlLabel
               control={
