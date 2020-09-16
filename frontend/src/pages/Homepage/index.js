@@ -47,3 +47,10 @@ export default () => {
     </div>
   );
 };
+
+
+
+// document.addEventListener('scroll',function(e) {
+//   var newPos = (window.scrollY*-1)/2
+//   document.body.style.backgroundPosition = "center "+newPos+"px";
+// });
