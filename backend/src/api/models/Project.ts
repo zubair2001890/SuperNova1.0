@@ -22,7 +22,7 @@ export const Project = model(
       maxlength: 255,
     },
     labNotes: {
-      type: String,
+      type: Array,
       required: false,
     },
     fullName: {
