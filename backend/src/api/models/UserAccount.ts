@@ -54,5 +54,9 @@ export const UserAccount = model(
       type: String,
       required: true,
     },
+    isAdmin: {
+      type: Boolean,
+      required: false
+    }
   })
 )
