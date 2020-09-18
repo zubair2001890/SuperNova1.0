@@ -8,6 +8,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 //media queries
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+import useWindowScrollY from "../../../../hooks/useWindowScrollY";
 
 import LeftDrawer from "./components/LeftDrawer";
 import AvatarDropdown from "./components/Avatar";
@@ -19,7 +20,8 @@ import logoWhite from "./assets/logo-white.svg";
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
-    backgroundColor: "transparent",
+    // backgroundColor: "transparent",
+    backgroundColor: (props) => props.darkTheme ? "transparent" : "white",
     color: (props) =>
       props.darkTheme ? theme.palette.common.white : theme.palette.common.black,
     zIndex: theme.zIndex.snackbar,
@@ -88,6 +90,10 @@ const useStyles = makeStyles((theme) => ({
 const getInitialLogoSrc = (darkTheme) => (darkTheme ? logoWhite : logoBlack);
 
 export default function Header({ darkTheme = true }) {
+  const scrollY = useWindowScrollY();
+  if (scrollY > 0) {
+    darkTheme = false;
+  }
   const classes = useStyles({ darkTheme });
   const [drawerState, setDrawerState] = useState({
     left: false,
@@ -138,7 +144,7 @@ export default function Header({ darkTheme = true }) {
         open={drawerState.left}
         onDrawerClose={toggleDrawer("left", false)}
       />
-      <AppBar position="absolute" elevation={0} className={classes.appBar}>
+      <AppBar position="fixed" elevation={0} className={classes.appBar}>
         <Toolbar className={classes.toolBar}>
           <IconButton
             edge="start"
