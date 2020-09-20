@@ -91,6 +91,28 @@ export const getProjectsByFieldName = async function (
   return promise;
 };
 
+export const getProjectsBySubfieldName = async function (
+  subfieldName: String
+): Promise<any> {
+  let resolver, rejecter;
+  const promise = new Promise((resolve, reject) => {
+    resolver = resolve;
+    rejecter = reject;
+  });
+  Project.find({ subfieldName: subfieldName }, function (err, docs) {
+    if (err) {
+      console.log(err);
+      rejecter(null);
+    }
+    if (docs) {
+      resolver(docs);
+    } else {
+      resolver([]);
+    }
+  });
+  return promise;
+};
+
 export const getProjectsBySubfieldID = async function (subfieldID: Number) {
   let resolver, rejecter;
   const promise = new Promise((resolve, reject) => {
@@ -112,7 +134,7 @@ export const getProjectsBySubfieldID = async function (subfieldID: Number) {
 };
 
 export const getProjectsByProjectScientistID = async function (
-  projectScientistID: Number
+  projectScientistID: String
 ) {
   let resolver, rejecter;
   const promise = new Promise((resolve, reject) => {
@@ -145,10 +167,6 @@ export const getProjectByProjectID = function (
     rejecter = reject;
   });
   Project.findById(projectID, function (err, docs) {
-    if (err) {
-      console.log(err);
-      rejecter(null);
-    }
     if (err) {
       console.log(err);
       rejecter(null);
@@ -224,3 +242,20 @@ export const addAmountPledged = async function (
   });
   projectBacker.save();
 };
+
+export const getProjectBackers = async function(projectID: String): Promise<any>
+{
+  let resolver, rejecter;
+  const promise = new Promise((resolve, reject) => {
+    resolver = resolve;
+    rejecter = reject;
+  });
+  ProjectBacker.find({projectID: projectID}, function (err, docs) {
+    if (err) {
+      console.log(err);
+      rejecter(null);
+    }
+    resolver(docs);
+  });
+  return promise; 
+}
