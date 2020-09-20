@@ -143,10 +143,10 @@ export default function App() {
               <Route path={paths.exploreSubField}>
                 <ExploreSubField />
               </Route>
-              <Route path={paths.payment}>
+              <Route path={`${paths.exploreSubField}/:_id/payment`} exact>
                 <Payment />
               </Route>
-              <Route path={`${paths.checkout}/:project/:option`}>
+              <Route path={`${paths.exploreSubField}/:_id/payment${paths.checkout}`} exact>
                 <CheckoutForm />
               </Route>
               <Route path={paths.error404}>
