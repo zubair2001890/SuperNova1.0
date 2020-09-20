@@ -10,7 +10,7 @@ export const LabNote = model('LabNote', new Schema({
     },
     media: {
         type: String,
-        required: true,
+        required: false,
         minlength: 1,
         maxlength: 2000
     },
@@ -20,4 +20,10 @@ export const LabNote = model('LabNote', new Schema({
         minlength: 1,
         maxlength: 8
     },
+    projectID: {
+        type: String,
+        required: true,
+        minlength: 1,
+        maxlength: 200
+    }
 }));
