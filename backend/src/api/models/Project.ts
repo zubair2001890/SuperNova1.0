@@ -41,11 +41,7 @@ export const Project = model(
       type: Number,
       requred: true,
     },
-    backers: {
-      type: Array,
-      requred: true,
-    },
-    statusName: {
+   statusName: {
       type: String,
       requred: true,
     },
@@ -88,8 +84,4 @@ export const Project = model(
       type: Array,
       required: true,
     },
-    isAdmin: {
-      type: Boolean,
-      required: false
-    }
   }));
