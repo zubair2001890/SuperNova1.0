@@ -6,8 +6,8 @@ import { AppBar, IconButton, Toolbar, Button } from "@material-ui/core";
 import { Menu as MenuIcon, Close as CloseIcon } from "@material-ui/icons";
 import { useAuth0 } from "@auth0/auth0-react";
 //media queries
-import { useTheme } from '@material-ui/core/styles';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { useTheme } from "@material-ui/core/styles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 import useWindowScrollY from "../../../../hooks/useWindowScrollY";
 
 import LeftDrawer from "./components/LeftDrawer";
@@ -17,19 +17,23 @@ import logoRed from "./assets/logo-red.svg";
 import logoBlack from "./assets/logo-black.svg";
 import logoWhite from "./assets/logo-white.svg";
 
-
 const useStyles = makeStyles((theme) => ({
-  appBar: {
-    // backgroundColor: "transparent",
-    backgroundColor: (props) => props.darkTheme ? "transparent" : "white",
-    color: (props) =>
-      props.darkTheme ? theme.palette.common.white : theme.palette.common.black,
+  appBarDark: {
+    backgroundColor: "transparent",
+    color: theme.palette.common.white,
     zIndex: theme.zIndex.snackbar,
+    animation: "whiteToBlack 0.5s",
+  },
+  appBarLight: {
+    backgroundColor: "white",
+    color: theme.palette.common.black,
+    zIndex: theme.zIndex.snackbar,
+    animation: "blackToWhite 0.5s",
   },
   toolBar: {
     ...theme.mixins.appBar,
     position: "relative",
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down("sm")]: {
       height: 56,
       padding: 0,
       flexDirection: "row-reverse",
@@ -38,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
   },
   toggleBtn: {
     animation: "slideFadeUp 1.5s ease 2s backwards",
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down("sm")]: {
       margin: 0,
       paddingTop: 0,
       paddingBottom: 0,
@@ -74,49 +78,50 @@ const useStyles = makeStyles((theme) => ({
     "& > *:not(:last-child)": {
       marginRight: theme.spacing(4),
     },
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down("sm")]: {
       margin: 0,
     },
   },
   appBarRightLink: {
     ...theme.mixins.navLinkPrimary,
     fontSize: 24,
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down("sm")]: {
       fontSize: 18,
     },
   },
 }));
 
-const getInitialLogoSrc = (darkTheme) => (darkTheme ? logoWhite : logoBlack);
+const getInitialLogoSrc = (dark) => (dark ? logoWhite : logoBlack);
 
 export default function Header({ darkTheme = true }) {
+  const [dark, setDark] = useState(darkTheme);
   const scrollY = useWindowScrollY();
-  if (scrollY > 0) {
-    darkTheme = false;
-  }
-  const classes = useStyles({ darkTheme });
+  const classes = useStyles({ dark });
   const [drawerState, setDrawerState] = useState({
     left: false,
   });
 
   const [logoImg, setLogoImg] = useState(null);
 
-  const {
-    loginWithRedirect,
-    isAuthenticated,
-  } = useAuth0();
+  const { loginWithRedirect, isAuthenticated } = useAuth0();
   //media queries
   const theme = useTheme();
-  const matchesMediaQuery = useMediaQuery(theme.breakpoints.down('sm'));
+  const matchesMediaQuery = useMediaQuery(theme.breakpoints.down("sm"));
 
   useEffect(() => {
     setLogoImg(
       <img
-        src={getInitialLogoSrc(darkTheme)}
+        src={getInitialLogoSrc(dark)}
         className={clsx(classes.logo, classes.logoFadeIn)}
         alt="supernova logo"
       />
     );
+
+    if (scrollY > 0) {
+      setDark(false);
+    } else {
+      setDark(true);
+    }
 
     // Example for an authorized backend request
     // if (isAuthenticated) {
@@ -125,7 +130,7 @@ export default function Header({ darkTheme = true }) {
     //     scope: "read:current_user",
     //   }).then(res => dispatch(sendUpdateAccount({ data: { test: 'all' }, authToken: res })));
     // }
-  }, [darkTheme, classes.logo, classes.logoFadeIn]);
+  }, [dark, classes.logo, classes.logoFadeIn, scrollY]);
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (
@@ -144,7 +149,11 @@ export default function Header({ darkTheme = true }) {
         open={drawerState.left}
         onDrawerClose={toggleDrawer("left", false)}
       />
-      <AppBar position="fixed" elevation={0} className={classes.appBar}>
+      <AppBar
+        position="fixed"
+        elevation={0}
+        className={`${dark ? classes.appBarDark : classes.appBarLight}`}
+      >
         <Toolbar className={classes.toolBar}>
           <IconButton
             edge="start"
@@ -175,7 +184,7 @@ export default function Header({ darkTheme = true }) {
             onMouseOut={() => {
               setLogoImg(
                 <img
-                  src={getInitialLogoSrc(darkTheme)}
+                  src={getInitialLogoSrc(dark)}
                   className={classes.logo}
                   alt="supernova logo"
                 />
@@ -185,15 +194,17 @@ export default function Header({ darkTheme = true }) {
             {logoImg}
           </RouterLink>
           <div className={classes.appBarRight}>
-          {matchesMediaQuery ? null : <Button 
-              color="inherit"
-              component={RouterLink}
-              to={paths.explore}
-              size="large"
-              className={classes.appBarRightLink}
-            >
-              EXPLORE
-            </Button>}
+            {matchesMediaQuery ? null : (
+              <Button
+                color="inherit"
+                component={RouterLink}
+                to={paths.explore}
+                size="large"
+                className={classes.appBarRightLink}
+              >
+                EXPLORE
+              </Button>
+            )}
             {isAuthenticated ? (
               <AvatarDropdown />
             ) : (

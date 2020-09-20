@@ -67,6 +67,24 @@
   }
 }
 
+@keyframes blackToWhite {
+  from {
+    background-color: transparent;
+  }
+  to {
+    background-color: white;
+  }
+}
+
+@keyframes whiteToBlack {
+  from {
+    background-color: white;
+  }
+  to {
+    background-color: transparent;
+  }
+}
+
 html,
 body {
   /* reset userAgent stylesheet */
