@@ -84,7 +84,7 @@ const useStyles = makeStyles((theme) => ({
   },
   appBarRightLink: {
     ...theme.mixins.navLinkPrimary,
-    fontSize: 24,
+    fontSize: 20,
     [theme.breakpoints.down("sm")]: {
       fontSize: 18,
     },
