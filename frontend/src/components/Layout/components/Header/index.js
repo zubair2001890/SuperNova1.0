@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import clsx from "clsx";
 import { Link as RouterLink } from "react-router-dom";
+import { useSelector } from "react-redux";
+import {
+  selectDarkTheme,
+} from "../../../../store/slices/page";
 import { makeStyles } from "@material-ui/core/styles";
 import { AppBar, IconButton, Toolbar, Button } from "@material-ui/core";
 import { Menu as MenuIcon, Close as CloseIcon } from "@material-ui/icons";
@@ -19,7 +23,7 @@ import logoWhite from "./assets/logo-white.svg";
 
 const useStyles = makeStyles((theme) => ({
   appBarDark: {
-    backgroundColor: "transparent",
+    backgroundColor: "black",
     color: theme.palette.common.white,
     zIndex: theme.zIndex.snackbar,
     transition: "background-color 0.5s",
@@ -93,13 +97,14 @@ const useStyles = makeStyles((theme) => ({
 
 const getInitialLogoSrc = (dark) => (dark ? logoWhite : logoBlack);
 
-export default function Header({ darkTheme = true }) {
-  const [dark, setDark] = useState(darkTheme);
+export default function Header({ darkTheme = false }) {
+  const [dark, setDark] = useState(true);
   const scrollY = useWindowScrollY();
-  const classes = useStyles({ dark });
+  const classes = useStyles();
   const [drawerState, setDrawerState] = useState({
     left: false,
   });
+  let isDark = useSelector(selectDarkTheme);
 
   const [logoImg, setLogoImg] = useState(null);
 
@@ -117,13 +122,11 @@ export default function Header({ darkTheme = true }) {
       />
     );
 
-    if (scrollY > 0) {
+    if (scrollY > 0 && isDark === false) {
       setDark(false);
     } else {
       setDark(true);
     }
-
-    console.log(`Page height: ${document.body.scrollHeight}`);
 
     // Example for an authorized backend request
     // if (isAuthenticated) {
@@ -132,7 +135,7 @@ export default function Header({ darkTheme = true }) {
     //     scope: "read:current_user",
     //   }).then(res => dispatch(sendUpdateAccount({ data: { test: 'all' }, authToken: res })));
     // }
-  }, [dark, classes.logo, classes.logoFadeIn, scrollY]);
+  }, [dark, isDark, classes.logo, classes.logoFadeIn, scrollY]);
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (

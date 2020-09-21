@@ -1,4 +1,6 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { setDarkTheme as setPageDarkTheme } from "../../../store/slices/page";
 import { makeStyles, Typography, Avatar, Tooltip } from "@material-ui/core";
 import ProjectCard from "../../../components/ProjectCard";
 import FundsProgress from "../../../components/ProjectCard/components/FundsProgress";
@@ -57,13 +59,20 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default ({ projectsData }) => {
+  const dispatch = useDispatch();
   const classes = useStyles();
   return (
     <div
       className={classes.sectionContainer}
       ref={(el) => {
         if (!el) return;
-        console.log(el.getBoundingClientRect().top);
+        let positionOnPage = el.getBoundingClientRect().top;
+        if (positionOnPage <= 80) {
+          dispatch(setPageDarkTheme(true));
+        }
+        else {
+          dispatch(setPageDarkTheme(false));
+        }
       }}
     >
       <Typography variant="h2" className={classes.sectionTitle}>
