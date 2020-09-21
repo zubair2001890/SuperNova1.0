@@ -49,8 +49,14 @@ export default () => {
 };
 
 
-
+// Potential solution for parallax:
 // document.addEventListener('scroll',function(e) {
 //   var newPos = (window.scrollY*-1)/2
 //   document.body.style.backgroundPosition = "center "+newPos+"px";
 // });
+
+
+// Notes on how to change header colour when it intersects projects section:
+// Use `ref` in <Projects /> to get `getBoundingClientRect().top`, i.e. how far away it is from the top of the viewport
+// Create some sort of global state, maybe Context or Redux, that tracks whether or not the projects section is at the top of the viewport
+// If the projects section is at the top of the viewport, i.e. `getBoundingClientRect().top === 0`, change the `dark` state of the header

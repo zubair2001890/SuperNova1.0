@@ -22,13 +22,13 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "transparent",
     color: theme.palette.common.white,
     zIndex: theme.zIndex.snackbar,
-    animation: "whiteToBlack 0.5s",
+    transition: "background-color 0.5s",
   },
   appBarLight: {
     backgroundColor: "white",
     color: theme.palette.common.black,
     zIndex: theme.zIndex.snackbar,
-    animation: "blackToWhite 0.5s",
+    transition: "background-color 0.5s",
   },
   toolBar: {
     ...theme.mixins.appBar,
@@ -122,6 +122,8 @@ export default function Header({ darkTheme = true }) {
     } else {
       setDark(true);
     }
+
+    console.log(`Page height: ${document.body.scrollHeight}`);
 
     // Example for an authorized backend request
     // if (isAuthenticated) {

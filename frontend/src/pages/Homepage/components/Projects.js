@@ -59,7 +59,13 @@ const useStyles = makeStyles((theme) => ({
 export default ({ projectsData }) => {
   const classes = useStyles();
   return (
-    <div className={classes.sectionContainer}>
+    <div
+      className={classes.sectionContainer}
+      ref={(el) => {
+        if (!el) return;
+        console.log(el.getBoundingClientRect().top);
+      }}
+    >
       <Typography variant="h2" className={classes.sectionTitle}>
         FEATURED PROJECTS
       </Typography>
