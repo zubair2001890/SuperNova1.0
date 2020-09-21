@@ -3,9 +3,13 @@ import useStyles from "./FieldPage/exploreFieldPageStyles";
 import FieldPage from "./FieldPage";
 import paths from "../constants/paths";
 import MasterConstellation from "../components/Constellations/MasterConstellation";
-import { constellationStylesDesktop } from "../components/Constellations/constellationStyles";
+import {
+  constellationStylesDesktop,
+  constellationStylesIPad,
+} from "../components/Constellations/constellationStyles";
 
-function SlideOne(props) {
+// Grouped Slides
+function SlideOneGroup(props) {
   console.log(props.item);
   return (
     <>
@@ -28,7 +32,7 @@ function SlideOne(props) {
   );
 }
 
-function SlideTwo(props) {
+function SlideTwoGroup(props) {
   return (
     <>
       <MasterConstellation
@@ -40,12 +44,56 @@ function SlideTwo(props) {
   );
 }
 
+//Individual Slides
+
+function SlideOne(props) {
+  return (
+    <MasterConstellation
+      subfield={props.item.name1}
+      path={paths.exploreSubField}
+      constellationStyles={constellationStylesIPad.constellation1}
+    />
+  );
+}
+
+function SlideThree(props) {
+  return (
+    <MasterConstellation
+      subfield={props.item.name3}
+      path={paths.exploreSubField}
+      constellationStyles={constellationStylesIPad.constellation3}
+    />
+  );
+}
+
+function SlideSeven(props) {
+  return (
+    <MasterConstellation
+      subfield={props.item.name7}
+      path={paths.exploreSubField}
+      constellationStyles={constellationStylesIPad.constellation7}
+    />
+  );
+}
+
+function SlideNine(props) {
+  return (
+    <MasterConstellation
+      subfield={props.item.name9}
+      path={paths.exploreSubField}
+      constellationStyles={constellationStylesIPad.constellation9}
+    />
+  );
+}
+
 export default () => {
   const classes = useStyles();
   const backgroundImageURL =
     "url(" +
     require("./FieldPage/assets/FP-chemistry_/FP-chemistry_.png") +
     ")";
+  const symbolImageURL =
+    "url(" + require("./FieldPage/assets/FP-chemistry_/Symbol.png") + ")";
 
   var items = [
     {
@@ -60,18 +108,35 @@ export default () => {
 
   const content = [
     <div className={classes.carouselSlide}>
+      {<SlideOneGroup item={items[0]} titleStyle={classes.fieldTitle} />}
+    </div>,
+    <div className={classes.carouselSlide}>
+      {<SlideTwoGroup item={items[1]} titleStyle={classes.fieldTitle} />}
+    </div>,
+  ];
+
+  const content1 = [
+    <div className={classes.carouselSlide}>
       {<SlideOne item={items[0]} titleStyle={classes.fieldTitle} />}
     </div>,
     <div className={classes.carouselSlide}>
-      {<SlideTwo item={items[1]} titleStyle={classes.fieldTitle} />}
+      {<SlideThree item={items[1]} titleStyle={classes.fieldTitle} />}
+    </div>,
+    <div className={classes.carouselSlide}>
+      {<SlideSeven item={items[0]} titleStyle={classes.fieldTitle} />}
+    </div>,
+    <div className={classes.carouselSlide}>
+      {<SlideNine item={items[0]} titleStyle={classes.fieldTitle} />}
     </div>,
   ];
 
   return (
     <>
       <FieldPage
+        symbolImag={symbolImageURL}
         title="CHEMISTRY"
         content={content}
+        content1={content1}
         bImageURL={backgroundImageURL}
       />
     </>

@@ -5,6 +5,7 @@ import { setDarkTheme as setPageDarkTheme } from "../../store/slices/page";
 import HeaderCarousel from "../../components/HeaderCarousel";
 import useStyles from "./exploreFieldPageStyles";
 import Media from "react-media";
+import { Link } from "react-router-dom";
 
 export default (props) => {
   const classes = useStyles();
@@ -20,13 +21,30 @@ export default (props) => {
   }, [dispatch]);
 
   const content = props.content;
+  const content1 = props.content1;
+  const symbolImageURL = props.symbolImag;
 
   return (
     <>
       <div className={classes.pageContainer}>
         <div className={classes.pageHeader}>
           <div className={classes.mockAppBarLayout} />
-          <div className={classes.carouselContainer} style={{ backgroundImage: backgroundImageURL }}>
+          <div
+            className={classes.carouselContainer}
+            style={{ backgroundImage: backgroundImageURL }}
+          >
+            <Media
+              query="(min-width: 1200px)"
+              render={() => (
+                <Link to="/explore">
+                  <Typography variant="h6" className={classes.displayLink}>
+                    <div className={classes.arrow}></div>
+                    <div className={classes.backLink}>Back to Master Page</div>
+                  </Typography>
+                </Link>
+              )}
+            />
+
             <Media
               query="(min-width: 1200px)"
               render={() => (
@@ -35,21 +53,44 @@ export default (props) => {
                   content={content}
                 />
               )}
-            />{" "}
+            />
+
+            <Media
+              query="(max-width: 1200px)"
+              render={() => (
+                <HeaderCarousel
+                  className={classes.carousel}
+                  content={content1}
+                />
+              )}
+            />
+
             <Media
               query="(min-width: 600px)"
               render={() => (
-                <Typography variant="h2" className={classes.fieldTitle}>
-                  {props.title}
-                </Typography>
+                <div>
+                  <Typography variant="h6" className={classes.fieldTitle}>
+                    {props.title}
+                  </Typography>
+                  <div
+                    style={{ backgroundImage: symbolImageURL }}
+                    className={classes.symbol}
+                  ></div>
+                </div>
               )}
             />
             <Media
               query="(max-width: 600px)"
               render={() => (
-                <Typography variant="h5" className={classes.fieldTitle}>
-                  {props.title}
-                </Typography>
+                <div className={classes.titleSymbol}>
+                  <div
+                    style={{ backgroundImage: symbolImageURL }}
+                    className={classes.symbol}
+                  ></div>
+                  <Typography variant="h6" className={classes.fieldTitle}>
+                    {props.title}
+                  </Typography>
+                </div>
               )}
             />
           </div>

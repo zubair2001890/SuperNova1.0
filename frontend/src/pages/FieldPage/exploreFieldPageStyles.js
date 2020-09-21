@@ -42,8 +42,51 @@ const useStyles = makeStyles((theme) => ({
     color: "white",
     textAlign: "center",
     top: "50%",
+    fontWeight: "bold",
+    fontSize: "1.8rem",
     left: "50%",
     transform: "translate(-50%, -50%)",
+    "@media  (max-width: 1200px)": {
+      fontSize: "1.5rem",
+      width: "80%",
+      fontWeight: "bold",
+      top: "22%",
+    },
+    "@media  (max-width: 600px)": {
+      fontSize: "1.0rem",
+      width: "80%",
+      fontWeight: "bold",
+      top: "25%",
+    },
+  },
+  displayLink: {
+    position: "absolute",
+    width: "20%",
+    height: "auto",
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    top: "15%",
+    zIndex: "10",
+    left: "0",
+    padding: "48px",
+  },
+  backLink: {
+    width: "100%",
+    color: "white",
+    paddingLeft: "5px",
+    flexDirection: "row",
+    top: "15%",
+    fontWeight: "light",
+    fontSize: "0.9rem",
+  },
+  arrow: {
+    width: "30px",
+    height: "30px",
+    backgroundImage:
+      "url(" + require("../../components/HeaderCarousel/arrow.svg") + ")",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "100%",
   },
   center: {
     margin: "0 auto",
@@ -62,6 +105,28 @@ const useStyles = makeStyles((theme) => ({
   },
   subheadingParagraph: {
     paddingBottom: 48,
+  },
+
+  symbol: {
+    position: "absolute",
+    width: "40%",
+    height: "150px",
+    top: "30%",
+    margin: "auto",
+    left: "0",
+    right: "0",
+    backgroundRepeat: "no-repeat",
+    backgroundPositionX: "center",
+    backgroundPositionY: "top",
+    backgroundSize: "30%",
+    "@media  (max-width: 1200px)": {
+      top: "20%",
+      backgroundSize: "30%",
+    },
+    "@media  (max-width: 600px)": {
+      top: "25%",
+      backgroundSize: "50%",
+    },
   },
 }));
 
