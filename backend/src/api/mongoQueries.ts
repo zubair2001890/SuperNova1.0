@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 import { Project } from "./models/Project";
-import { SubField } from "./models/Subfield";
+import { Subfield } from "./models/Subfield";
 import { addStringToArray, arrayContainsString } from "./helpers";
 import { UserAccount } from "./models/UserAccount";
 import { ProjectBacker } from "./models/ProjectBacker";
@@ -53,7 +53,7 @@ export const getAllSubfields = function (fieldName: String): Promise<any> {
     resolver = resolve;
     rejecter = reject;
   });
-  SubField.find({ fieldName: fieldName }, "subfieldID subfieldName", function (
+  Subfield.find({ fieldName: fieldName }, "subfieldID subfieldName", function (
     err,
     docs
   ) {
@@ -244,29 +244,19 @@ export const addAmountPledged = async function (
   projectBacker.save();
 };
 
-<<<<<<< HEAD
 export const getProjectBackers = async function (projectID: String): Promise<any> {
-=======
-export const getProjectBackers = async function(projectID: String): Promise<any>
-{
->>>>>>> 0a3258b9f2821ef0cc54ef8ae60f71e4f5e1e55c
   let resolver, rejecter;
   const promise = new Promise((resolve, reject) => {
     resolver = resolve;
     rejecter = reject;
   });
-<<<<<<< HEAD
   ProjectBacker.find({ projectID: projectID }, function (err, docs) {
-=======
-  ProjectBacker.find({projectID: projectID}, function (err, docs) {
->>>>>>> 0a3258b9f2821ef0cc54ef8ae60f71e4f5e1e55c
     if (err) {
       console.log(err);
       rejecter(null);
     }
     resolver(docs);
   });
-<<<<<<< HEAD
   return promise;
 }
 
@@ -284,7 +274,4 @@ export const getLabNotesForProject = async function (projectID: String): Promise
     resolver(docs);
   });
   return promise;
-=======
-  return promise; 
->>>>>>> 0a3258b9f2821ef0cc54ef8ae60f71e4f5e1e55c
 }

@@ -1,7 +1,7 @@
 import { model } from "mongoose";
 import {Schema} from "mongoose";
 
-export const SubField = model('SubField', new Schema({
+export const Subfield = model('Subfield', new Schema({
     subfieldName : {
         type: String,
         required: true,

@@ -44,7 +44,7 @@ class ProjectsController {
 
   public subFieldsByFieldName = async (req: Request, res: Response) => {
     let fieldName = req.params.field_name;
-    const subFields = getAllSubfields(fieldName);
+    const subFields = await getAllSubfields(fieldName);
     res.send(subFields);
   };
 

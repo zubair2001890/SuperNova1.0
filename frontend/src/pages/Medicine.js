@@ -4,6 +4,7 @@ import FieldPage from "./FieldPage";
 import paths from "../constants/paths";
 import MasterConstellation from "../components/Constellations/MasterConstellation";
 import { constellationStylesDesktop } from "../components/Constellations/constellationStyles";
+import {getSubfields} from "../helpers/apiHelpers";
 
 function SlideOne(props) {
   return (
@@ -90,25 +91,26 @@ function SlideThree(props) {
 }
 
 export default () => {
+  let subfieldNames = getSubfields("Medicine");
   const classes = useStyles();
   const backgroundImageURL =
     "url(" + require("./FieldPage/assets/FP-medicine_/FP-medicine_.png") + ")";
 
   var items = [
     {
-      name1: "ANATOMY",
-      name7: "IMMUNOLOGY",
-      name9: "NEUROSCIENCE",
+      name1: subfieldNames[0],
+      name7: subfieldNames[5],
+      name9: subfieldNames[6],
     },
     {
-      name3: "CYTOLOGY",
-      name2: "EPIDEMIOLOGY",
-      name4: "EMBRYOLOGY",
+      name3: subfieldNames[1],
+      name2: subfieldNames[3],
+      name4: subfieldNames[2],
     },
     {
-      name8: "HISTOLOGY",
-      name5: "PHYSIOLOGY",
-      name6: "PATHOLOGY",
+      name8: subfieldNames[4],
+      name5: subfieldNames[8],
+      name6: subfieldNames[7],
     },
   ];
 
