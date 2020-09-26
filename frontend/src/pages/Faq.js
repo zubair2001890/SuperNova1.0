@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Typography, makeStyles } from "@material-ui/core";
 import { useDispatch } from "react-redux";
-import { setDarkTheme as setPageDarkTheme } from "../store/slices/page";
+import { setDarkTheme as setPageDarkTheme, setInitialHeaderTheme, setScrollHeaderTheme } from "../store/slices/page";
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
@@ -68,9 +68,11 @@ function Faq() {
 
   useEffect(() => {
     dispatch(setPageDarkTheme(true));
-    return () => {
-      dispatch(setPageDarkTheme(false));
-    };
+    dispatch(setInitialHeaderTheme("transparent"));
+    dispatch(setScrollHeaderTheme("black"));
+    // return () => {
+    //   dispatch(setPageDarkTheme(false));
+    // };
   }, [dispatch]);
 
   return (

@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { setDarkTheme as setPageDarkTheme } from "../../../store/slices/page";
+import { setDarkTheme as setPageDarkTheme, setScrollHeaderTheme } from "../../../store/slices/page";
 import { makeStyles, Typography, Avatar, Tooltip } from "@material-ui/core";
 import ProjectCard from "../../../components/ProjectCard";
 import FundsProgress from "../../../components/ProjectCard/components/FundsProgress";
@@ -68,10 +68,10 @@ export default ({ projectsData }) => {
         if (!el) return;
         let positionOnPage = el.getBoundingClientRect().top;
         if (positionOnPage <= 80) {
-          dispatch(setPageDarkTheme(true));
+          dispatch(setScrollHeaderTheme("black"));
         }
         else {
-          dispatch(setPageDarkTheme(false));
+          dispatch(setScrollHeaderTheme("white"));
         }
       }}
     >

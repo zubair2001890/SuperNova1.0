@@ -1,4 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import {
+  setInitialHeaderTheme,
+  setScrollHeaderTheme,
+} from "../store/slices/page";
 import useStyles from "./FieldPage/exploreFieldPageStyles";
 import FieldPage from "./FieldPage";
 import paths from "../constants/paths";
@@ -84,6 +89,7 @@ function SlideThree(props) {
 
 export default () => {
   const classes = useStyles();
+  const dispatch = useDispatch();
   const backgroundImageURL =
     "url(" +
     require("./FieldPage/assets/FP-mathematics_/FP-mathematics_.png") +
@@ -117,6 +123,11 @@ export default () => {
       {<SlideThree item={items[2]} titleStyle={classes.fieldTitle} />}
     </div>,
   ];
+
+  useEffect(() => {
+    dispatch(setInitialHeaderTheme("transparent"));
+    dispatch(setScrollHeaderTheme("black"));
+  });
 
   return (
     <>

@@ -1,7 +1,11 @@
 import React, { useEffect } from "react";
 import { Typography, makeStyles } from "@material-ui/core";
 import { useDispatch } from "react-redux";
-import { setDarkTheme as setPageDarkTheme } from "../store/slices/page";
+import {
+  setDarkTheme as setPageDarkTheme,
+  setInitialHeaderTheme,
+  setScrollHeaderTheme,
+} from "../store/slices/page";
 
 const useStyles = makeStyles((theme) => ({
   center: {
@@ -11,14 +15,14 @@ const useStyles = makeStyles((theme) => ({
     paddingRight: theme.spacing(2),
     paddingTop: 92,
     paddingBottom: 92,
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down("sm")]: {
       paddingTop: 40,
       paddingBottom: 40,
     },
   },
   mockAppBarLayout: {
     ...theme.mixins.appBar,
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down("sm")]: {
       height: 58,
       padding: 0,
     },
@@ -29,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
     backgroundSize: "cover",
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down("sm")]: {
       height: 113,
     },
   },
@@ -37,14 +41,14 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
     top: 20,
     color: "white",
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down("sm")]: {
       fontSize: 18,
       lineHeight: 0,
     },
   },
   subheadingVerticalMargin: {
     margin: "68px 0",
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down("sm")]: {
       fontSize: 14,
       margin: 0,
       paddingBottom: 35,
@@ -52,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
   },
   subheadingTextVerticalMargin: {
     paddingBottom: 48,
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down("sm")]: {
       fontSize: 12,
     },
   },
@@ -64,9 +68,11 @@ function Contact() {
 
   useEffect(() => {
     dispatch(setPageDarkTheme(true));
-    return () => {
-      dispatch(setPageDarkTheme(false));
-    };
+    dispatch(setInitialHeaderTheme("transparent"));
+    dispatch(setScrollHeaderTheme("black"));
+    // return () => {
+    //   dispatch(setPageDarkTheme(false));
+    // };
   }, [dispatch]);
   return (
     <>

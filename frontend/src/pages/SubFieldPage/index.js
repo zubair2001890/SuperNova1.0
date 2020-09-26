@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Typography } from "@material-ui/core";
 import { useDispatch } from "react-redux";
-import { setDarkTheme as setPageDarkTheme } from "../../store/slices/page";
+import { setDarkTheme as setPageDarkTheme, setInitialHeaderTheme, setScrollHeaderTheme } from "../../store/slices/page";
 import HeaderCarousel from "../../components/HeaderCarousel";
 import useStyles from "./exploreSubFieldPageStyles";
 import InteractiveConstellation from "../../components/InteractiveConstellation";
@@ -13,6 +13,8 @@ export default (props) => {
 
   useEffect(() => {
     dispatch(setPageDarkTheme(true));
+    dispatch(setInitialHeaderTheme("transparent"));
+    dispatch(setScrollHeaderTheme("black"));
     return () => {
       dispatch(setPageDarkTheme(false));
     };

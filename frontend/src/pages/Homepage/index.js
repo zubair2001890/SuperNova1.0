@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { makeStyles } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
-import { setDarkTheme as setPageDarkTheme } from "../../store/slices/page";
+import { setDarkTheme as setPageDarkTheme, setInitialHeaderTheme, setScrollHeaderTheme } from "../../store/slices/page";
 import useWindowScrollY from "../../hooks/useWindowScrollY";
 import Intro from "./components/Intro";
 import SlidingParagraphs from "./components/SlidingParagraphs";
@@ -31,12 +31,14 @@ export default () => {
   const projectsData = useSelector(selectProjectsData);
 
   useEffect(() => {
-    dispatch(setPageDarkTheme(true));
+    dispatch(setPageDarkTheme(1));
+    dispatch(setInitialHeaderTheme("transparent"));
+    dispatch(setScrollHeaderTheme("white"));
     dispatch(fetchProjects());
     dispatch(fetchFeaturedProject());
-    return () => {
-      dispatch(setPageDarkTheme(false));
-    };
+    // return () => {
+    //   dispatch(setPageDarkTheme(2));
+    // };
   }, [dispatch]);
 
   return (

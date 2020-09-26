@@ -3,7 +3,8 @@ import clsx from "clsx";
 import { Link as RouterLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import {
-  selectDarkTheme,
+  selectInitialHeaderTheme,
+  selectScrollHeaderTheme,
 } from "../../../../store/slices/page";
 import { makeStyles } from "@material-ui/core/styles";
 import { AppBar, IconButton, Toolbar, Button } from "@material-ui/core";
@@ -22,13 +23,19 @@ import logoBlack from "./assets/logo-black.svg";
 import logoWhite from "./assets/logo-white.svg";
 
 const useStyles = makeStyles((theme) => ({
-  appBarDark: {
+  appBarTransparent: {
+    backgroundColor: "transparent",
+    color: theme.palette.common.white,
+    zIndex: theme.zIndex.snackbar,
+    transition: "background-color 0.5s",
+  },
+  appBarBlack: {
     backgroundColor: "black",
     color: theme.palette.common.white,
     zIndex: theme.zIndex.snackbar,
     transition: "background-color 0.5s",
   },
-  appBarLight: {
+  appBarWhite: {
     backgroundColor: "white",
     color: theme.palette.common.black,
     zIndex: theme.zIndex.snackbar,
@@ -95,16 +102,20 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const getInitialLogoSrc = (dark) => (dark ? logoWhite : logoBlack);
+const getInitialLogoSrc = (dark) =>
+  dark === "transparent" ? logoWhite : dark === "black" ? logoWhite : logoBlack;
 
-export default function Header({ darkTheme = false }) {
-  const [dark, setDark] = useState(true);
+export default function Header() {
+  // console.log(`Initial header theme: ${useSelector(selectInitialHeaderTheme)}`);
+  // console.log(`Scroll header theme: ${useSelector(selectScrollHeaderTheme)}`);
+  const initialHeaderTheme = useSelector(selectInitialHeaderTheme);
+  const scrollHeaderTheme = useSelector(selectScrollHeaderTheme);
+  const [dark, setDark] = useState(initialHeaderTheme);
   const scrollY = useWindowScrollY();
   const classes = useStyles();
   const [drawerState, setDrawerState] = useState({
     left: false,
   });
-  let isDark = useSelector(selectDarkTheme);
 
   const [logoImg, setLogoImg] = useState(null);
 
@@ -112,6 +123,7 @@ export default function Header({ darkTheme = false }) {
   //media queries
   const theme = useTheme();
   const matchesMediaQuery = useMediaQuery(theme.breakpoints.down("sm"));
+
 
   useEffect(() => {
     setLogoImg(
@@ -122,10 +134,10 @@ export default function Header({ darkTheme = false }) {
       />
     );
 
-    if (scrollY > 0 && isDark === false) {
-      setDark(false);
+    if (scrollY > 0) {
+      setDark(scrollHeaderTheme);
     } else {
-      setDark(true);
+      setDark(initialHeaderTheme);
     }
 
     // Example for an authorized backend request
@@ -135,7 +147,7 @@ export default function Header({ darkTheme = false }) {
     //     scope: "read:current_user",
     //   }).then(res => dispatch(sendUpdateAccount({ data: { test: 'all' }, authToken: res })));
     // }
-  }, [dark, isDark, classes.logo, classes.logoFadeIn, scrollY]);
+  }, [dark, classes.logo, classes.logoFadeIn, scrollY, initialHeaderTheme, scrollHeaderTheme]);
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (
@@ -157,7 +169,14 @@ export default function Header({ darkTheme = false }) {
       <AppBar
         position="fixed"
         elevation={0}
-        className={`${dark ? classes.appBarDark : classes.appBarLight}`}
+        // className={`${dark ? classes.appBarBlack : classes.appBarWhite}`}
+        className={`${
+          dark === "transparent"
+            ? classes.appBarTransparent
+            : dark === "black"
+            ? classes.appBarBlack
+            : classes.appBarWhite
+        }`}
       >
         <Toolbar className={classes.toolBar}>
           <IconButton
@@ -228,3 +247,27 @@ export default function Header({ darkTheme = false }) {
     </>
   );
 }
+
+// Use window.location.pathname to decide the behaviour for each page.
+// Create a couple of arrays, containing the pathnames of pages that require identical header behaviour.
+// Create a conditional that checks the pathname to decide which header behaviour to use.
+// Same goes for homepage, except it won't be in an array because it is an exception.
+// Also, for the homepage projects section, create another state (something like headerThemeOverride) to specifically change the header theme at that point.
+// Incorporate this header theme override into the aforementioned conditionals.
+// On every page, headerThemeOverride is set to false
+
+// Nope, ignore the above, do the following instead:
+// In the Redux store, create two states: initialHeaderTheme, scrollHeaderTheme.
+// On every single page, update these two states.
+// In the header file, use these two states in the scroll conditional to decide what header theme to use.
+// In the homepage projects section, update scrollHeaderTheme specifically to use a white header.
+
+// It might be worth considering a hybrid approach.
+// All the standard/simple pages would follow the first approach and be stored in arrays, though the two states in the second approach should be used and would be decided by the header.
+// Pages with exceptions/dynamic routes would decide their own header states, which would be read by the header to change the theme accordingly.
+
+// But then again, the second approach might just be the simplest of all
+
+// Other notes:
+// The header should not be changing the Redux state, it should only read the Redux state.
+// The Redux state will be set by each component.

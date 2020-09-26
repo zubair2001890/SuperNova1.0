@@ -1,5 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { setInitialHeaderTheme, setScrollHeaderTheme } from "../../store/slices/page";
 import { makeStyles, Typography, Button } from "@material-ui/core";
 import { Link as RouterLink } from "react-router-dom";
 import paths from "../../constants/paths";
@@ -52,6 +54,12 @@ const useStyles = makeStyles(() => ({
 
 export default function Links() {
   const classes = useStyles();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setInitialHeaderTheme("transparent"));
+    dispatch(setScrollHeaderTheme("transparent"));
+  })
 
   return (
     <>

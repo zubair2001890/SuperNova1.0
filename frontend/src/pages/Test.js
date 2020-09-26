@@ -1,7 +1,11 @@
 import React, { useEffect } from "react";
 import { Typography, makeStyles } from "@material-ui/core";
 import { useDispatch } from "react-redux";
-import { setDarkTheme as setPageDarkTheme } from "../store/slices/page";
+import {
+  setDarkTheme as setPageDarkTheme,
+  setInitialHeaderTheme,
+  setScrollHeaderTheme,
+} from "../store/slices/page";
 
 const useStyles = makeStyles((theme) => ({
   center: {
@@ -41,9 +45,11 @@ function Team() {
 
   useEffect(() => {
     dispatch(setPageDarkTheme(true));
-    return () => {
-      dispatch(setPageDarkTheme(false));
-    };
+    dispatch(setInitialHeaderTheme("transparent"));
+    dispatch(setScrollHeaderTheme("black"));
+    // return () => {
+    //   dispatch(setPageDarkTheme(false));
+    // };
   }, [dispatch]);
   return (
     <>

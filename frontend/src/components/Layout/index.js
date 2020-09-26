@@ -31,7 +31,7 @@ export default ({ children }) => {
       {pageMounted && pageParticles && (
         <Particles darkTheme={pageDarkTheme} className={classes.particles} />
       )}
-      <Header darkTheme={pageDarkTheme} />
+      <Header />
       {children}
       <Footer />
     </>
