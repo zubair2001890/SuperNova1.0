@@ -111,7 +111,7 @@ function renderProject(classes) {
             src={project.projectImage}
           />
           <p className={classes.subtitle}>
-            {project.firstName} {project.lastName} <br />
+            {project.fullName}<br />
             {project.university}
           </p>
           <FundsProgress
