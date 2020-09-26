@@ -16,7 +16,7 @@ import {
 } from "@material-ui/icons";
 import clsx from "clsx";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
-import useMediaQuery from '@material-ui/core/useMediaQuery';
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 import paths from "../../../constants/paths";
 
 const useStyles = makeStyles((theme) => ({
@@ -40,14 +40,14 @@ const useStyles = makeStyles((theme) => ({
   regularLink: {
     ...theme.mixins.navLinkSecondary,
     color: "white",
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down("sm")]: {
       fontSize: 10,
     },
   },
   boldLink: {
     color: "white",
     ...theme.mixins.navLinkPrimary,
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down("sm")]: {
       fontSize: 12,
     },
   },
@@ -59,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: theme.spacing(4),
     paddingBottom: theme.spacing(1),
     justifyContent: "space-around",
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down("sm")]: {
       paddingTop: theme.spacing(2),
     },
   },
@@ -75,7 +75,7 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: "avaMeridian",
     fontSize: "2vw",
     letterSpacing: 2.97,
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down("sm")]: {
       fontSize: "3vw",
       display: "flex",
       justifyContent: "center",
@@ -96,11 +96,13 @@ function Footer(props) {
   const classes = useStyles();
   //media queries
   const theme = useTheme();
-  const matchesMediaQuery = useMediaQuery(theme.breakpoints.down('sm'));
+  const matchesMediaQuery = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
     <div className={classes.footer}>
-      {["/login", "/loginincorrect", "/createaccount"].includes(props.location.pathname) ? (
+      {["/login", "/loginincorrect", "/createaccount"].includes(
+        props.location.pathname
+      ) ? (
         <>
           <Grid container className={classes.loginGridRow}>
             <Grid item xs={3} className={classes.whiteLineContainer}>
@@ -138,7 +140,9 @@ function Footer(props) {
         </>
       )}
 
-      {["/login", "/loginincorrect", "/createaccount"].includes(props.location.pathname) ? null : (
+      {["/login", "/loginincorrect", "/createaccount"].includes(
+        props.location.pathname
+      ) ? null : (
         <>
           <Grid container className={classes.gridRow}>
             <Grid item xs={4} className={classes.gridItem}>
@@ -168,8 +172,12 @@ function Footer(props) {
                 EXPLORE
               </MaterialLink>
             </Grid>{" "}
-          </Grid> 
-          <Grid container spacing={matchesMediaQuery ? 0 : 2} className={classes.gridRow}>
+          </Grid>
+          <Grid
+            container
+            spacing={matchesMediaQuery ? 0 : 2}
+            className={classes.gridRow}
+          >
             <Grid item xs={4} className={classes.gridItem}>
               <MaterialLink
                 component={RouterLink}

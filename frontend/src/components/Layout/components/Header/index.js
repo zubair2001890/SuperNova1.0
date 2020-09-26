@@ -31,6 +31,10 @@ const useStyles = makeStyles((theme) => ({
   },
   appBarBlack: {
     backgroundColor: "black",
+    backgroundImage: "url(" + require("../assets/header.png") + ")",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center",
+    backgroundSize: "cover",
     color: theme.palette.common.white,
     zIndex: theme.zIndex.snackbar,
     transition: "background-color 0.5s",
