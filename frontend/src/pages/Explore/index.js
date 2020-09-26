@@ -3,7 +3,6 @@ import { Link as RouterLink } from "react-router-dom";
 import { Typography, makeStyles } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 import {
-  setDarkTheme as setPageDarkTheme,
   setInitialHeaderTheme,
   setScrollHeaderTheme,
 } from "../../store/slices/page";
@@ -317,12 +316,8 @@ export default () => {
   ];
 
   useEffect(() => {
-    // dispatch(setPageDarkTheme(true));
     dispatch(setInitialHeaderTheme("transparent"));
     dispatch(setScrollHeaderTheme("black"));
-    // return () => {
-    //   dispatch(setPageDarkTheme(false))
-    // }
   }, [dispatch]);
 
   return (

@@ -106,8 +106,6 @@ const getInitialLogoSrc = (dark) =>
   dark === "transparent" ? logoWhite : dark === "black" ? logoWhite : logoBlack;
 
 export default function Header() {
-  // console.log(`Initial header theme: ${useSelector(selectInitialHeaderTheme)}`);
-  // console.log(`Scroll header theme: ${useSelector(selectScrollHeaderTheme)}`);
   const initialHeaderTheme = useSelector(selectInitialHeaderTheme);
   const scrollHeaderTheme = useSelector(selectScrollHeaderTheme);
   const [dark, setDark] = useState(initialHeaderTheme);
@@ -123,7 +121,6 @@ export default function Header() {
   //media queries
   const theme = useTheme();
   const matchesMediaQuery = useMediaQuery(theme.breakpoints.down("sm"));
-
 
   useEffect(() => {
     setLogoImg(
@@ -147,7 +144,14 @@ export default function Header() {
     //     scope: "read:current_user",
     //   }).then(res => dispatch(sendUpdateAccount({ data: { test: 'all' }, authToken: res })));
     // }
-  }, [dark, classes.logo, classes.logoFadeIn, scrollY, initialHeaderTheme, scrollHeaderTheme]);
+  }, [
+    dark,
+    classes.logo,
+    classes.logoFadeIn,
+    scrollY,
+    initialHeaderTheme,
+    scrollHeaderTheme,
+  ]);
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (
@@ -169,7 +173,6 @@ export default function Header() {
       <AppBar
         position="fixed"
         elevation={0}
-        // className={`${dark ? classes.appBarBlack : classes.appBarWhite}`}
         className={`${
           dark === "transparent"
             ? classes.appBarTransparent
@@ -247,27 +250,3 @@ export default function Header() {
     </>
   );
 }
-
-// Use window.location.pathname to decide the behaviour for each page.
-// Create a couple of arrays, containing the pathnames of pages that require identical header behaviour.
-// Create a conditional that checks the pathname to decide which header behaviour to use.
-// Same goes for homepage, except it won't be in an array because it is an exception.
-// Also, for the homepage projects section, create another state (something like headerThemeOverride) to specifically change the header theme at that point.
-// Incorporate this header theme override into the aforementioned conditionals.
-// On every page, headerThemeOverride is set to false
-
-// Nope, ignore the above, do the following instead:
-// In the Redux store, create two states: initialHeaderTheme, scrollHeaderTheme.
-// On every single page, update these two states.
-// In the header file, use these two states in the scroll conditional to decide what header theme to use.
-// In the homepage projects section, update scrollHeaderTheme specifically to use a white header.
-
-// It might be worth considering a hybrid approach.
-// All the standard/simple pages would follow the first approach and be stored in arrays, though the two states in the second approach should be used and would be decided by the header.
-// Pages with exceptions/dynamic routes would decide their own header states, which would be read by the header to change the theme accordingly.
-
-// But then again, the second approach might just be the simplest of all
-
-// Other notes:
-// The header should not be changing the Redux state, it should only read the Redux state.
-// The Redux state will be set by each component.

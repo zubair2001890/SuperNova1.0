@@ -29,8 +29,6 @@ const useStyles = makeStyles((theme) => ({
 export default function Links() {
   const classes = useStyles();
   const dispatch = useDispatch();
-  dispatch(setInitialHeaderTheme("black"));
-  dispatch(setScrollHeaderTheme("black"));
 
   useEffect(() => {
     dispatch(setInitialHeaderTheme("black"));

@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { makeStyles } from "@material-ui/core";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import { selectDarkTheme, selectParticles } from "../../store/slices/page";
+import { selectParticles } from "../../store/slices/page";
 import Particles from "./components/Particles";
 
 const useStyles = makeStyles((theme) => ({
@@ -17,7 +17,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default ({ children }) => {
   const classes = useStyles();
-  const pageDarkTheme = useSelector(selectDarkTheme);
   const pageParticles = useSelector(selectParticles);
   const [pageMounted, setPageMounted] = useState(false);
 
@@ -29,7 +28,7 @@ export default ({ children }) => {
   return (
     <>
       {pageMounted && pageParticles && (
-        <Particles darkTheme={pageDarkTheme} className={classes.particles} />
+        <Particles className={classes.particles} />
       )}
       <Header />
       {children}

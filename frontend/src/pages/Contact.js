@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { Typography, makeStyles } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 import {
-  setDarkTheme as setPageDarkTheme,
   setInitialHeaderTheme,
   setScrollHeaderTheme,
 } from "../store/slices/page";
@@ -67,12 +66,8 @@ function Contact() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(setPageDarkTheme(true));
     dispatch(setInitialHeaderTheme("transparent"));
     dispatch(setScrollHeaderTheme("black"));
-    // return () => {
-    //   dispatch(setPageDarkTheme(false));
-    // };
   }, [dispatch]);
   return (
     <>

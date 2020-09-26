@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { setDarkTheme as setPageDarkTheme, setScrollHeaderTheme } from "../../../store/slices/page";
+import { setScrollHeaderTheme } from "../../../store/slices/page";
 import { makeStyles, Typography, Avatar, Tooltip } from "@material-ui/core";
 import ProjectCard from "../../../components/ProjectCard";
 import FundsProgress from "../../../components/ProjectCard/components/FundsProgress";

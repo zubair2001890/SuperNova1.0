@@ -1,7 +1,10 @@
 import React, { useEffect } from "react";
 import { Typography } from "@material-ui/core";
 import { useDispatch } from "react-redux";
-import { setDarkTheme as setPageDarkTheme, setInitialHeaderTheme, setScrollHeaderTheme } from "../../store/slices/page";
+import {
+  setInitialHeaderTheme,
+  setScrollHeaderTheme,
+} from "../../store/slices/page";
 import HeaderCarousel from "../../components/HeaderCarousel";
 import useStyles from "./exploreFieldPageStyles";
 import Media from "react-media";
@@ -13,12 +16,8 @@ export default (props) => {
   const backgroundImageURL = props.bImageURL;
 
   useEffect(() => {
-    dispatch(setPageDarkTheme(true));
     dispatch(setInitialHeaderTheme("transparent"));
     dispatch(setScrollHeaderTheme("black"));
-    // return () => {
-    //   dispatch(setPageDarkTheme(false));
-    // };
   }, [dispatch]);
 
   const content = props.content;
@@ -28,7 +27,10 @@ export default (props) => {
       <div className={classes.pageContainer}>
         <div className={classes.pageHeader}>
           <div className={classes.mockAppBarLayout} />
-          <div className={classes.carouselContainer} style={{ backgroundImage: backgroundImageURL }}>
+          <div
+            className={classes.carouselContainer}
+            style={{ backgroundImage: backgroundImageURL }}
+          >
             <Media
               query="(min-width: 1200px)"
               render={() => (
