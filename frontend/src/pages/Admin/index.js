@@ -1,9 +1,7 @@
 import React, { Component, useEffect } from "react";
 import Layout from "./Layout/index";
 import { makeStyles } from "@material-ui/core";
-import { fetchPendingProjects} from "../../store/slices/middlewareAPI/middlewareAPI";
-import { useDispatch, useSelector } from "react-redux";
-import {selectData as selectPendingProjectsData} from "../../store/slices/pendingProjects"  
+import {ProjectsList} from "./components/ProjectsList"  
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -24,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default () => {
   const classes = useStyles();
-  const pendingProjects = [];
+  const pendingProjects = ["This", "Is", "Some", "Test", "Data"];
   return (
     <Layout title="Admin">
       <ProjectsList pendingProjects={pendingProjects}/>

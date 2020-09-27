@@ -46,6 +46,22 @@ export const getFeaturedProjects = async function (): Promise<any> {
   return promise;
 };
 
+export const getPendingProjects = async function (): Promise<any> {
+  let resolver, rejecter;
+  const promise = new Promise((resolve, reject) => {
+    resolver = resolve;
+    rejecter = reject;
+  });
+  Project.find({statusName: "Pending"}, function (err, docs) {
+    if (err) {
+      console.log(err);
+      rejecter(null);
+    }
+    resolver(docs);
+  });
+  return promise;
+};
+
 export const getAllSubfields = function (fieldName: String): Promise<any> {
   let resolver, rejecter;
   const promise = new Promise((resolve, reject) => {

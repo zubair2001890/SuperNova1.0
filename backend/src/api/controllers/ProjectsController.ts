@@ -6,6 +6,7 @@ import {
   getProjectsByFieldName,
   getProjectByProjectID,
   getFeaturedProjects,
+  getPendingProjects,
   getAllSubfields,
   getProfileByID,
 } from "../mongoQueries";
@@ -191,31 +192,7 @@ class ProjectsController {
   }// The deleteProjectByAdmin function ends here.
 
   public pendingProjects = async(req: Request, res: Response) => {
-    console.log("pendingProjects function called");
-    const userId = jwt_decode(
-      req.header("Authorization").replace("Bearer ", "")
-    ).sub;
-    console.log(userId);
-    let userProfile = null;
-    try {
-      userProfile = await getProfileByID(userId);
-    //if (userProfile.isAdmin) {
-        Project.find({projectStatus: "Pending"}, function (err, docs) {
-          if (err) {
-            console.log(err);
-          }
-          res.send(docs);
-        });
-      //} // Ends the if block for if isAdmin()
-      /*else {
-        console.log("An unauthorised user tried to view the pending projects");
-        throw new Error("This user does not have admin privileges");
-      }
-      */
-    }
-    catch (err) {
-      console.log(err);
-    }
-  }
+      res.send(await getPendingProjects()); 
+   }
   }
 export default ProjectsController;

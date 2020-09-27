@@ -1,7 +1,8 @@
-import Component from "react";
+import React, {Component} from "react";
+export const ProjectsList = ({pendingProjects}) => {
+    return <div>{pendingProjects}</div>;
+}
 
-class ProjectsList extends Component {
-    render() {
-        return <div>{this.props.pendingProjects.toString()}</div>;
-}
-}
+
+        
+
