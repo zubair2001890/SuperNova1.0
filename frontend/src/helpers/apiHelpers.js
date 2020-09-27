@@ -11,7 +11,7 @@ export const getDataSync = function (url) {
 }
 
 export const getSubfields = function (subfieldName) {
-    let subfields = getDataSync(process.env.REACT_APP_BACKEND_URL + "/api/public/subfield/Medicine");
+    let subfields = getDataSync(process.env.REACT_APP_BACKEND_URL + "/api/public/subfield/" + subfieldName);
   let subfieldNames = [];
   for (let index = 0; index < subfields.length; index++)
   {
