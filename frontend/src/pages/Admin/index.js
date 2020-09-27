@@ -24,16 +24,10 @@ const useStyles = makeStyles((theme) => ({
 
 export default () => {
   const classes = useStyles();
-  const dispatch = useDispatch();
-  const pendingProjectsData = useSelector(selectPendingProjectsData);
-
-  useEffect(() => {
-    dispatch(fetchPendingProjects());
-  }, [dispatch]);
-  
+  const pendingProjects = [];
   return (
     <Layout title="Admin">
-      <ProjectsList pendingProjects={pendingProjectsData}/>
+      <ProjectsList pendingProjects={pendingProjects}/>
     </Layout>
   );
 }
