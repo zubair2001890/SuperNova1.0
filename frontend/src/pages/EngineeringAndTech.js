@@ -4,6 +4,7 @@ import FieldPage from "./FieldPage";
 import paths from "../constants/paths";
 import MasterConstellation from "../components/Constellations/MasterConstellation";
 import { constellationStylesDesktop } from "../components/Constellations/constellationStyles";
+import {getSubfields} from "../helpers/apiHelpers";
 
 function SlideOne(props) {
   return (
@@ -91,24 +92,25 @@ function SlideThree(props) {
 
 export default () => {
   const classes = useStyles();
+  let subfieldNames = getSubfields("Engineering and Technology");
   const backgroundImageURL =
     "url(" + require("./FieldPage/assets/FP-engrtech/FP-engrtech.png") + ")";
 
   var items = [
     {
-      name1: "CIVIL ENGINEERING",
-      name7: "ELECTRICAL ENGINEERING",
-      name9: "MECHANICAL ENGINEERING",
+      name1: subfieldNames[0],
+      name7: subfieldNames[3],
+      name9: subfieldNames[6],
     },
     {
-      name3: "CHEMICAL ENGINEERING",
-      name2: "MEDICAL ENGINEERING",
-      name4: "MATERIAL ENGINEERING",
+      name3: subfieldNames[1],
+      name2: subfieldNames[7],
+      name4: subfieldNames[5],
     },
     {
-      name8: "ENVIRONMENTAL ENGINEERING",
-      name5: "NANOTECHNOLOGY",
-      name6: "INDUSTRIAL BIOTECHNOLOGY",
+      name8: subfieldNames[2],
+      name5: subfieldNames[8],
+      name6: subfieldNames[4],
     },
   ];
 

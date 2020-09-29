@@ -4,6 +4,7 @@ import FieldPage from "./FieldPage";
 import paths from "../constants/paths";
 import MasterConstellation from "../components/Constellations/MasterConstellation";
 import { constellationStylesDesktop } from "../components/Constellations/constellationStyles";
+import {getSubfields} from "../helpers/apiHelpers";
 
 function SlideOne(props) {
   return (
@@ -77,22 +78,23 @@ function SlideThree(props) {
 
 export default () => {
   const classes = useStyles();
+  let subfieldNames = getSubfields("Computer Science");
   const backgroundImageURL =
     "url(" + require("./FieldPage/assets/FP-physics/FP-physics.png") + ")";
 
   var items = [
     {
-      name1: "MECHANICS",
-      name7: "THERMODYNAMICS AND STATISTICAL MECHANICS",
-      name9: "ELECTROMAGNETISM AND PHOTONICS",
+      name1: subfieldNames[3],
+      name7: subfieldNames[6],
+      name9: subfieldNames[1],
     },
     {
-      name3: "QUANTUM MECHANICS, ATOMICS PHYSICS AND MOLECULAR PHYSICS",
-      name2: "CONDENSED MATTER PHYSICS",
-      name4: "OPTICS",
+      name3: subfieldNames[5],
+      name2: subfieldNames[0],
+      name4: subfieldNames[4],
     },
     {
-      name8: "HIGH-ENERGY PARTICLE PHYSICS AND NUCLEAR PHYSICS",
+      name8: subfieldNames[2],
     },
   ];
 

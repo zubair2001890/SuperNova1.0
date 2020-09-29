@@ -21,13 +21,6 @@ export const Project = model(
       minlength: 1,
       maxlength: 255,
     },
-<<<<<<< HEAD
-=======
-    labNotes: {
-      type: Array,
-      required: false,
-    },
->>>>>>> 0a3258b9f2821ef0cc54ef8ae60f71e4f5e1e55c
     fullName: {
       type: String,
       required: true,

@@ -4,6 +4,7 @@ import FieldPage from "./FieldPage";
 import paths from "../constants/paths";
 import MasterConstellation from "../components/Constellations/MasterConstellation";
 import { constellationStylesDesktop } from "../components/Constellations/constellationStyles";
+import {getSubfields} from "../helpers/apiHelpers";
 
 function SlideOne(props) {
   return (
@@ -91,6 +92,7 @@ function SlideThree(props) {
 
 export default () => {
   const classes = useStyles();
+  let subfieldNames = getSubfields("Computer Science");
   const backgroundImageURL =
     "url(" +
     require("./FieldPage/assets/FP-computer_Sciences_/FP-computer_Sciences_.png") +
@@ -98,19 +100,19 @@ export default () => {
 
   var items = [
     {
-      name1: "THEORY OF COMPUTATION",
-      name7: "ALGORITHMS AND DATA STRUCTURES",
-      name9: "AI, MACHINE LEARNING AND ROBOTICS",
+      name1: subfieldNames[8],
+      name7: subfieldNames[0],
+      name9: subfieldNames[1],
     },
     {
-      name3: "COMMUNICATION AND SECURITY",
-      name2: "COMPUTER GRAPHICS",
-      name4: "COMPUTER ARCHITECTURE",
+      name3: subfieldNames[2],
+      name2: subfieldNames[5],
+      name4: subfieldNames[4],
     },
     {
-      name8: "CONCURRENT, PARALLEL AND DISTRIBUTED SYSTEMS",
-      name5: "COMPUTATIONAL SCIENCES",
-      name6: "SOFTWARE ENGINEERING",
+      name8: subfieldNames[6],
+      name5: subfieldNames[3],
+      name6: subfieldNames[7],
     },
   ];
 
