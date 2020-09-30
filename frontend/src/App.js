@@ -5,12 +5,13 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import Layout from "./components/Layout";
 import paths from "./constants/paths";
 import theme from "./theme";
+import Loading from "./pages/Loading";
 
 const Homepage = lazy(() => import("./pages/Homepage"));
 const Login = lazy(() => import("./pages/Login"));
 const CreateAccount = lazy(() => import("./pages/CreateAccount"));
 const ForgotPassword = lazy(() => import("./pages/ForgotPassword"));
-const Error404 = lazy(() => import("./pages/Error404"));
+const Error404 = lazy(() => import("./pages/Error404/Error404"));
 const Faq = lazy(() => import("./pages/Faq"));
 const Mission = lazy(() => import("./pages/Mission"));
 const Terms = lazy(() => import("./pages/Terms"));
@@ -47,7 +48,7 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
-        <Suspense fallback={<p>Loading...</p>}>
+        <Suspense fallback={<Loading />}>
           <ScrollToTop />
           <Layout>
             <Switch>
@@ -141,10 +142,10 @@ export default function App() {
               <Route path={paths.exploreSubField}>
                 <ExploreSubField />
               </Route>
-              <Route path={paths.payment}>
+              <Route path={`${paths.exploreSubField}/:_id/payment`} exact>
                 <Payment />
               </Route>
-              <Route path={`${paths.checkout}/:project/:option`}>
+              <Route path={`${paths.exploreSubField}/:_id/payment${paths.checkout}`} exact>
                 <CheckoutForm />
               </Route>
               <Route path={paths.error404}>

@@ -4,6 +4,7 @@ import FieldPage from "./FieldPage";
 import paths from "../constants/paths";
 import MasterConstellation from "../components/Constellations/MasterConstellation";
 import { constellationStylesDesktop } from "../components/Constellations/constellationStyles";
+import {getSubfields} from "../helpers/apiHelpers";
 
 function SlideOne(props) {
   return (
@@ -84,6 +85,7 @@ function SlideThree(props) {
 
 export default () => {
   const classes = useStyles();
+  let subfieldNames = getSubfields("Mathematics and Statistics");
   const backgroundImageURL =
     "url(" +
     require("./FieldPage/assets/FP-mathematics_/FP-mathematics_.png") +
@@ -91,18 +93,18 @@ export default () => {
 
   var items = [
     {
-      name1: "NUMBER THEORY",
-      name7: "ALGEBRA",
-      name9: "COMBINATORICS",
+      name1: subfieldNames[5],
+      name7: subfieldNames[0],
+      name9: subfieldNames[3],
     },
     {
-      name3: "GEOMETRY",
-      name2: "ANALYSIS",
-      name4: "TOPOLOGY",
+      name3: subfieldNames[4],
+      name2: subfieldNames[1],
+      name4: subfieldNames[6],
     },
     {
-      name8: "APPLIED MATHEMATICS",
-      name5: "STATISTICS",
+      name8: subfieldNames[2],
+      name5: subfieldNames[7],
     },
   ];
 

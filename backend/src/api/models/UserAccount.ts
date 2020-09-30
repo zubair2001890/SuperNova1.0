@@ -44,19 +44,19 @@ export const UserAccount = model(
       maxlength: 2000, // 2,000 characters is an arbitrary number, I thought it should be enough.
     },
     projectScientistID: {
-      type: Number,
+      type: String,
       required: false,
     },
     fieldName: {
       type: String,
     },
-    id: {
-      type: String,
-      required: true,
-    },
     email: {
       type: String,
       required: true,
     },
+    isAdmin: {
+      type: Boolean,
+      required: false
+    }
   })
 )

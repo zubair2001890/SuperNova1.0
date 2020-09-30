@@ -36,11 +36,10 @@ app.get('*', (req, res, next) => {
     let path = require('path');
     let fs = require('fs');
     let indexPath = path.resolve(__dirname, 'website', 'index.html');
-    if (fs.existsSync(indexPath))
-    {
+    if (fs.existsSync(indexPath)) {
       res.sendFile(indexPath);
     }
-   } else {
+  } else {
     next()
   }
 })

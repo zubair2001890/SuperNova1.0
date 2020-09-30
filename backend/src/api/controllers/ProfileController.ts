@@ -68,6 +68,10 @@ class ProfileController {
     res.json(user || {});
   };
 
+  public getProfileByEmail = async (req: Request, res: Response) => {
+    res.json(await UserAccount.findOne({email: req.params.email}));
+  }
+
   public upload = async (req: Request, res: Response) => {
     const userId = jwt_decode(
       req.header("Authorization").replace("Bearer ", "")
