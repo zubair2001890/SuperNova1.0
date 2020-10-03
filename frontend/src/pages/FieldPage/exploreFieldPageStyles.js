@@ -61,7 +61,7 @@ const useStyles = makeStyles((theme) => ({
   },
   displayLink: {
     position: "absolute",
-    width: "20%",
+    width: "15%",
     height: "auto",
     display: "flex",
     flexDirection: "row",
@@ -72,7 +72,7 @@ const useStyles = makeStyles((theme) => ({
     padding: "48px",
   },
   backLink: {
-    width: "100%",
+    width: "200px",
     color: "white",
     paddingLeft: "5px",
     flexDirection: "row",
@@ -109,7 +109,7 @@ const useStyles = makeStyles((theme) => ({
 
   symbol: {
     position: "absolute",
-    width: "40%",
+    width: "250px",
     height: "150px",
     top: "30%",
     margin: "auto",
@@ -118,7 +118,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundRepeat: "no-repeat",
     backgroundPositionX: "center",
     backgroundPositionY: "top",
-    backgroundSize: "30%",
+    backgroundSize: "70%",
     "@media  (max-width: 1200px)": {
       top: "20%",
       backgroundSize: "30%",

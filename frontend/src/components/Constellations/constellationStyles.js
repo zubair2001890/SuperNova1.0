@@ -22,7 +22,7 @@ export const constellationStylesDesktop = {
       backgroundSize: "cover",
       transition: "transform .4s",
       "&:hover": {
-        transform: "scale(1.3)",
+        transform: "scale(1.2)",
         backgroundImage:
           "url(" + require("./assets/constellation1hoverstate.png") + ")",
       },
@@ -66,7 +66,7 @@ export const constellationStylesDesktop = {
       backgroundSize: "cover",
       transition: "transform .4s",
       "&:hover": {
-        transform: "scale(1.3)",
+        transform: "scale(1.2)",
         backgroundImage:
           "url(" + require("./assets/constellation2hoverstate.png") + ")",
       },
@@ -110,7 +110,7 @@ export const constellationStylesDesktop = {
       backgroundSize: "cover",
       transition: "transform .4s",
       "&:hover": {
-        transform: "scale(1.3)",
+        transform: "scale(1.2)",
         backgroundImage:
           "url(" + require("./assets/constellation3hoverstate.png") + ")",
       },
@@ -154,7 +154,7 @@ export const constellationStylesDesktop = {
       backgroundSize: "cover",
       transition: "transform .4s",
       "&:hover": {
-        transform: "scale(1.3)",
+        transform: "scale(1.2)",
         backgroundImage:
           "url(" + require("./assets/constellation4hoverstate.png") + ")",
       },
@@ -199,7 +199,7 @@ export const constellationStylesDesktop = {
       backgroundSize: "cover",
       transition: "transform .4s",
       "&:hover": {
-        transform: "scale(1.3)",
+        transform: "scale(1.2)",
         backgroundImage:
           "url(" + require("./assets/constellation5hoverstate.png") + ")",
       },
@@ -243,7 +243,7 @@ export const constellationStylesDesktop = {
       backgroundSize: "cover",
       transition: "transform .4s",
       "&:hover": {
-        transform: "scale(1.3)",
+        transform: "scale(1.2)",
         backgroundImage:
           "url(" + require("./assets/constellation6hoverstate.png") + ")",
       },
@@ -286,7 +286,7 @@ export const constellationStylesDesktop = {
       backgroundSize: "cover",
       transition: "transform .4s",
       "&:hover": {
-        transform: "scale(1.3)",
+        transform: "scale(1.2)",
         backgroundImage:
           "url(" + require("./assets/constellation7hoverstate.png") + ")",
       },
@@ -331,7 +331,7 @@ export const constellationStylesDesktop = {
       backgroundSize: "cover",
       transition: "transform .4s",
       "&:hover": {
-        transform: "scale(1.3)",
+        transform: "scale(1.2)",
         backgroundImage:
           "url(" + require("./assets/constellation8hoverstate.png") + ")",
       },
@@ -374,7 +374,7 @@ export const constellationStylesDesktop = {
       backgroundSize: "cover",
       transition: "transform .4s",
       "&:hover": {
-        transform: "scale(1.3)",
+        transform: "scale(1.2)",
         backgroundImage:
           "url(" + require("./assets/constellation9hoverstate.png") + ")",
       },
