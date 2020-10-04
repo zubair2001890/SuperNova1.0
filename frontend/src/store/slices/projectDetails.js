@@ -48,6 +48,7 @@ export const fetchProject = (projectId) => async (dispatch) => {
 export const selectData = (state) => state.project.data;
 export const selectLoading = (state) => state.project.loading;
 export const selectError = (state) => state.project.error;
+export const selectAccount = (state) => { console.log(state); return state.account };
 
 export default projectSlice.reducer;
 

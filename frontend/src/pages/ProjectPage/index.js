@@ -16,6 +16,7 @@ import PropTypes from "prop-types";
 import {
   fetchProject,
   selectData as selectProjectData,
+  selectAccount as selectUserData,
 } from "../../store/slices/projectDetails";
 import LoginPage from "../../pages/Login";
 
@@ -222,7 +223,7 @@ const TabIndex = (index) => {
 };
 
 const formatStartDate = (dateStarted) => {
-  const dateObject = new Date(dateStarted);
+  const dateObject = new Date(Number(dateStarted));
   let day = dateObject.getDate();
   let month = dateObject.getMonth() + 1;
   const year = dateObject.getFullYear();
@@ -234,7 +235,7 @@ const formatStartDate = (dateStarted) => {
 };
 
 const formatPostedTime = (timePosted) => {
-  const dateObject = new Date(timePosted);
+  const dateObject = new Date(Number(timePosted));
   let day = dateObject.getDate();
   let month = dateObject.getMonth() + 1;
   const year = dateObject.getFullYear();
@@ -250,13 +251,19 @@ const formatPostedTime = (timePosted) => {
 };
 
 export default () => {
-  const { isAuthenticated } = useAuth0();
+  const { isAuthenticated, user } = useAuth0();
+  // TODO: the hardcoded values and debugging statements need to be removed
+  console.log(user)
   const classes = useStyles();
   const dispatch = useDispatch();
   const [value, setValue] = useState(0);
-  const { id: projectId } = useParams();
+  // const { id: projectId } = useParams();
+  const projectId = '5f6525ed9021170759e3b66d';
   const projectData = useSelector(selectProjectData);
+  const userData = useSelector(selectUserData);
+  console.log('userData: ', userData)
 
+  console.log(projectData)
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
