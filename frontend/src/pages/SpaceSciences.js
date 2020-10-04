@@ -4,6 +4,7 @@ import FieldPage from "./FieldPage";
 import paths from "../constants/paths";
 import MasterConstellation from "../components/Constellations/MasterConstellation";
 import { constellationStylesDesktop } from "../components/Constellations/constellationStyles";
+import {getSubfields} from "../helpers/apiHelpers";
 
 function SlideOne(props) {
   return (
@@ -91,6 +92,7 @@ function SlideThree(props) {
 
 export default () => {
   const classes = useStyles();
+  let subfieldNames = getSubfields("Space Sciences");
   const backgroundImageURL =
     "url(" +
     require("./FieldPage/assets/FP-SPace_Sciences/FP-SPace_Sciences.png") +
@@ -98,19 +100,19 @@ export default () => {
 
   var items = [
     {
-      name1: "OBSERVATIONAL ASTRONOMY",
-      name7: "THEORETICAL ASTRONOMY",
-      name9: "ASTROPHYSICS",
+      name1: subfieldNames[4],
+      name7: subfieldNames[8],
+      name9: subfieldNames[1],
     },
     {
-      name3: "PLANETARY SCIENCE",
-      name2: "GALACTIC ASTRONOMY",
-      name4: "STELLAR ASTRONOMY",
+      name3: subfieldNames[5],
+      name2: subfieldNames[3],
+      name4: subfieldNames[7],
     },
     {
-      name8: "EXTRAGALACTIC ASTRONOMY",
-      name5: "AERONAUTICS AND ASTRONAUTICS",
-      name6: "PHYSICAL COSMOLOGY",
+      name8: subfieldNames[2],
+      name5: subfieldNames[0],
+      name6: subfieldNames[6],
     },
   ];
 

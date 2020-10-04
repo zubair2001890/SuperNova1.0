@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 import { Project } from "./models/Project";
-import { SubField } from "./models/Subfield";
+import { Subfield } from "./models/Subfield";
 import { addStringToArray, arrayContainsString } from "./helpers";
 import { UserAccount } from "./models/UserAccount";
 import { ProjectBacker } from "./models/ProjectBacker";
@@ -53,7 +53,7 @@ export const getAllSubfields = function (fieldName: String): Promise<any> {
     resolver = resolve;
     rejecter = reject;
   });
-  SubField.find({ fieldName: fieldName }, "subfieldID subfieldName", function (
+  Subfield.find({ fieldName: fieldName }, "subfieldID subfieldName", function (
     err,
     docs
   ) {
