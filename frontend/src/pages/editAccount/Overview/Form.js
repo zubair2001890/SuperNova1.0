@@ -120,7 +120,7 @@ const submit = (getAccessTokenSilently, user, fetchAccount) => async (
   values
 ) => {
   await updateAccount(getAccessTokenSilently, values);
-  await fetchAccount(user.sub);
+  //await fetchAccount(user.sub);
 };
 
 const getInitialValues = (account) => ({

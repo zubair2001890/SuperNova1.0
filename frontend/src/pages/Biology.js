@@ -1,29 +1,61 @@
 import React from "react";
-import Constellation from "../components/Constellation";
 import useStyles from "./FieldPage/exploreFieldPageStyles";
 import FieldPage from "./FieldPage";
 import paths from "../constants/paths";
+import MasterConstellation from "../components/Constellations/MasterConstellation";
+import { constellationStylesDesktop } from "../components/Constellations/constellationStyles";
+import {getSubfields} from "../helpers/apiHelpers";
 
-function Item(props) {
+function SlideOne(props) {
   return (
     <>
-      <Constellation
-        subfield={props.item.name2}
-        top="calc(60% - 20px)"
-        left="calc(10% + 50px)"
-        path={paths.exploreSubField}
-        />
-      <Constellation
+      <MasterConstellation
         subfield={props.item.name1}
-        top="calc(5% + 10px)"
-        left="calc(15% + 50px)"
+        left="calc(50% - 276px/2 - 240px)"
+        top="calc(50% - 147px/2 - 174.5px)"
+        constellationStyles={constellationStylesDesktop.constellation1}
+      />
+      <MasterConstellation
+        subfield={props.item.name7}
+        left="calc(50% - 243px/2 - 401.5px)"
+        top="calc(50% - 322px/2 + 206px)"
         path={paths.exploreSubField}
-        />
-      <Constellation
+        constellationStyles={constellationStylesDesktop.constellation7}
+      />
+      <MasterConstellation
+        subfield={props.item.name9}
+        left="calc(50% - 310px/2 + 390px)"
+        top="calc(50% - 206px/2 + 251px)"
+        path={paths.exploreSubField}
+        constellationStyles={constellationStylesDesktop.constellation9}
+      />
+    </>
+  );
+}
+
+function SlideTwo(props) {
+  return (
+    <>
+      <MasterConstellation
         subfield={props.item.name3}
-        top="calc(50%)"
-        left="calc(60%)"
+        left="calc(50% - 167px/2 - 410.5px)"
+        top="calc(50% - 299px/2 - 0px)"
         path={paths.exploreSubField}
+        constellationStyles={constellationStylesDesktop.constellation3}
+      />
+      <MasterConstellation
+        subfield={props.item.name2}
+        left="calc(50% - 237px/2 + 19.5px)"
+        top="calc(50% - 181px/2 + 251.5px)"
+        path={paths.exploreSubField}
+        constellationStyles={constellationStylesDesktop.constellation2}
+      />
+      <MasterConstellation
+        subfield={props.item.name4}
+        left="calc(50% - 275px/2 + 350px)"
+        top="calc(50% - 187px/2 - 100px)"
+        path={paths.exploreSubField}
+        constellationStyles={constellationStylesDesktop.constellation4}
       />
     </>
   );
@@ -31,40 +63,39 @@ function Item(props) {
 
 export default () => {
   const classes = useStyles();
+  let subfieldNames = getSubfields("Biology");
+  const backgroundImageURL =
+    "url(" + require("./FieldPage/assets/FP-biology_/FP-biology_.png") + ")";
 
   var items = [
     {
-      name1: "BIOLOGY 1",
-      name2: "BIOLOGY 2",
-      name3: "BIOLOGY 3",
+      name1: subfieldNames[5],
+      name7: subfieldNames[4],
+      name9: subfieldNames[3],
     },
     {
-      name1: "BIOLOGY 4",
-      name2: "BIOLOGY 5",
-      name3: "BIOLOGY 6",
-    },
-    {
-      name1: "BIOLOGY 7",
-      name2: "BIOLOGY 8",
-      name3: "BIOLOGY 9",
+      name3: subfieldNames[0],
+      name2: subfieldNames[1],
+      name4: subfieldNames[2],
     },
   ];
 
   const content = [
     <div className={classes.carouselSlide}>
-      {<Item item={items[0]} titleStyle={classes.fieldTitle} />}
+      {<SlideOne item={items[0]} titleStyle={classes.fieldTitle} />}
     </div>,
     <div className={classes.carouselSlide}>
-      {<Item item={items[1]} titleStyle={classes.fieldTitle} />}
-    </div>,
-    <div className={classes.carouselSlide}>
-      {<Item item={items[2]} titleStyle={classes.fieldTitle} />}
+      {<SlideTwo item={items[1]} titleStyle={classes.fieldTitle} />}
     </div>,
   ];
 
   return (
     <>
-      <FieldPage title="BIOLOGY" content={content} />
+      <FieldPage
+        title="BIOLOGY"
+        content={content}
+        bImageURL={backgroundImageURL}
+      />
     </>
   );
 };

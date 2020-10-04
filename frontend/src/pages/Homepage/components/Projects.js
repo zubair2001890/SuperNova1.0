@@ -1,7 +1,12 @@
 import React from "react";
-import { makeStyles, Typography, CircularProgress } from "@material-ui/core";
+import {
+  makeStyles,
+  Typography,
+  Avatar,
+  Tooltip,
+} from "@material-ui/core";
 import ProjectCard from "../../../components/ProjectCard";
-import Body from "../../../components/ProjectCard/components/Body";
+import FundsProgress from "../../../components/ProjectCard/components/FundsProgress";
 
 const useStyles = makeStyles(() => ({
   sectionContainer: { minHeight: "100vh" },
@@ -21,7 +26,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export default ({ projectsData, projectsLoading }) => {
+export default ({ projectsData}) => {
   const classes = useStyles();
   return (
     <div className={classes.sectionContainer}>
@@ -29,7 +34,6 @@ export default ({ projectsData, projectsLoading }) => {
         FEATURED PROJECTS
       </Typography>
       <div className={classes.projectCardsGrid}>
-        {projectsLoading && <CircularProgress color="secondary" />}
         {projectsData && projectsData.map(renderProject(classes))}
       </div>
     </div>
@@ -43,7 +47,34 @@ function renderProject(classes) {
       headerUrl={project.projectImage}
       className={classes.card}
       id={project._id}
-      body={<Body project={project} />}
+      body={
+        <div className={classes.cardBody}>
+          <p className={classes.projectTitle}>
+            {project.projectName.length < maxTitleLength ? (
+              project.projectName
+            ) : (
+                <Tooltip title={project.projectName} placement="top">
+                  <span>
+                    {project.projectName.slice(0, maxTitleLength - 3) + "..."}
+                  </span>
+                </Tooltip>
+              )}
+          </p>
+          <Avatar
+            className={classes.avatar}
+            alt="Researcher Avatar"
+            src={project.projectImage}
+          />
+          <p className={classes.subtitle}>
+            {project.fullName}<br />
+            {project.university}
+          </p>
+          <FundsProgress
+            fundsRaised={project.totalPledged}
+            fundsGoal={project.goal}
+          />
+        </div>
+      }
     />
   );
 }
