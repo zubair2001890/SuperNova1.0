@@ -7,6 +7,8 @@ import {
   constellationStylesDesktop,
   constellationStylesIPad,
 } from "../components/Constellations/constellationStyles";
+import {getSubfields} from "../helpers/apiHelpers";
+
 
 // Grouped Slides
 function SlideOneGroup(props) {
@@ -171,6 +173,7 @@ function SlideNine(props) {
 
 export default () => {
   const classes = useStyles();
+  let subfieldNames = getSubfields("Social Sciences");
   const backgroundImageURL =
     "url(" +
     require("./FieldPage/assets/FP-social_Sciences/FP-social_Sciences.png") +
@@ -181,19 +184,19 @@ export default () => {
 
   var items = [
     {
-      name1: "ANTHROPOLOGY",
-      name7: "ECONOMICS",
-      name9: "LINGUISTICS",
+      name1: subfieldNames[0],
+      name7: subfieldNames[2],
+      name9: subfieldNames[5],
     },
     {
-      name3: "PSYCHOLOGY",
-      name2: "ARCHAEOLOGY",
-      name4: "SOCIOLOGY",
+      name3: subfieldNames[7],
+      name2: subfieldNames[1],
+      name4: subfieldNames[8],
     },
     {
-      name8: "HISTORY",
-      name5: "LAW",
-      name6: "POLITICS",
+      name8: subfieldNames[3],
+      name5: subfieldNames[4],
+      name6: subfieldNames[6],
     },
   ];
 

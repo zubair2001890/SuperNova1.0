@@ -8,9 +8,10 @@ import {
   constellationStylesIPad,
 } from "../components/Constellations/constellationStyles";
 
+import {getSubfields} from "../helpers/apiHelpers";
+
 // Grouped Slides
 function SlideOneGroup(props) {
-  console.log(props.item);
   return (
     <>
       <MasterConstellation
@@ -87,6 +88,7 @@ function SlideNine(props) {
 }
 
 export default () => {
+  let subfieldNames = getSubfields("Chemistry");
   const classes = useStyles();
   const backgroundImageURL =
     "url(" +
@@ -97,12 +99,12 @@ export default () => {
 
   var items = [
     {
-      name1: "ORGANIC CHEMISTRY",
-      name7: "INORGANIC CHEMISTRY",
-      name9: "PHYSICAL CHEMISTRY",
+      name1: subfieldNames[2],
+      name7: subfieldNames[1],
+      name9: subfieldNames[3],
     },
     {
-      name3: "ANALYTICAL CHEMISTRY",
+      name3: subfieldNames[0],
     },
   ];
 

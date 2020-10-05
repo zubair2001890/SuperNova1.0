@@ -7,6 +7,8 @@ import {
   constellationStylesDesktop,
   constellationStylesIPad,
 } from "../components/Constellations/constellationStyles";
+import {getSubfields} from "../helpers/apiHelpers";
+
 
 // Grouped Slides
 function SlideOneGroup(props) {
@@ -168,6 +170,7 @@ function SlideNine(props) {
 
 export default () => {
   const classes = useStyles();
+  let subfieldNames = getSubfields("Earth Sciences");
   const backgroundImageURL =
     "url(" +
     require("./FieldPage/assets/FP-earth_Sciences_/FP-earth_Sciences_.png") +
@@ -177,18 +180,18 @@ export default () => {
 
   var items = [
     {
-      name1: "GEOLOGY",
-      name7: "PHYSICAL GEOGRAPHY",
-      name9: "GEOPHYSICS",
+      name1: subfieldNames[2],
+      name7: subfieldNames[6],
+      name9: subfieldNames[3],
     },
     {
-      name3: "GEOCHEMISTRY",
-      name2: "SOIL SCIENCE",
-      name4: "HYDROLOGY AND OCEANOLOGY",
+      name3: subfieldNames[1],
+      name2: subfieldNames[7],
+      name4: subfieldNames[5],
     },
     {
-      name8: "GLACIOLOGY",
-      name5: "ATMOSPHERIC SCIENCES",
+      name8: subfieldNames[4],
+      name5: subfieldNames[0],
     },
   ];
 

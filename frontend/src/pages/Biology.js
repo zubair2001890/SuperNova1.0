@@ -7,6 +7,8 @@ import {
   constellationStylesDesktop,
   constellationStylesIPad,
 } from "../components/Constellations/constellationStyles";
+import {getSubfields} from "../helpers/apiHelpers";
+
 
 // Grouped Slides
 function SlideOneGroup(props) {
@@ -122,6 +124,7 @@ function SlideNine(props) {
 
 export default () => {
   const classes = useStyles();
+  let subfieldNames = getSubfields("Biology");
   const backgroundImageURL =
     "url(" + require("./FieldPage/assets/FP-biology_/FP-biology_.png") + ")";
   const symbolImageURL =
@@ -129,14 +132,14 @@ export default () => {
 
   var items = [
     {
-      name1: "ZOOLOGY",
-      name7: "MICROBIOLOGY",
-      name9: "GENETICS",
+      name1: subfieldNames[5],
+      name7: subfieldNames[4],
+      name9: subfieldNames[3],
     },
     {
-      name3: "BIOCHEMISTRY",
-      name2: "BOTANY",
-      name4: "ECOLOGY",
+      name3: subfieldNames[0],
+      name2: subfieldNames[1],
+      name4: subfieldNames[2],
     },
   ];
 
