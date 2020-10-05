@@ -3,30 +3,29 @@ import useStyles from "./FieldPage/exploreFieldPageStyles";
 import FieldPage from "./FieldPage";
 import paths from "../constants/paths";
 import MasterConstellation from "../components/Constellations/MasterConstellation";
-import { constellationStylesDesktop } from "../components/Constellations/constellationStyles";
+import {
+  constellationStylesDesktop,
+  constellationStylesIPad,
+} from "../components/Constellations/constellationStyles";
+
 import {getSubfields} from "../helpers/apiHelpers";
 
-function SlideOne(props) {
+// Grouped Slides
+function SlideOneGroup(props) {
   return (
     <>
       <MasterConstellation
         subfield={props.item.name1}
-        left="calc(50% - 276px/2 - 300px)"
-        top="calc(50% - 147px/2 - 144.5px)"
         path={paths.exploreSubField}
         constellationStyles={constellationStylesDesktop.constellation1}
       />
       <MasterConstellation
         subfield={props.item.name7}
-        left="calc(50% - 243px/2 - 431.5px)"
-        top="calc(50% - 322px/2 + 196px)"
         path={paths.exploreSubField}
         constellationStyles={constellationStylesDesktop.constellation7}
       />
       <MasterConstellation
         subfield={props.item.name9}
-        left="calc(50% - 310px/2 + 300px)"
-        top="calc(50% - 206px/2 + 211px)"
         path={paths.exploreSubField}
         constellationStyles={constellationStylesDesktop.constellation9}
       />
@@ -34,17 +33,57 @@ function SlideOne(props) {
   );
 }
 
-function SlideTwo(props) {
+function SlideTwoGroup(props) {
   return (
     <>
       <MasterConstellation
         subfield={props.item.name3}
-        left="calc(50% - 167px/2 - 470.5px)"
-        top="calc(50% - 299px/2 - 30.5px)"
         path={paths.exploreSubField}
         constellationStyles={constellationStylesDesktop.constellation3}
       />
     </>
+  );
+}
+
+//Individual Slides
+
+function SlideOne(props) {
+  return (
+    <MasterConstellation
+      subfield={props.item.name1}
+      path={paths.exploreSubField}
+      constellationStyles={constellationStylesIPad.constellation1}
+    />
+  );
+}
+
+function SlideThree(props) {
+  return (
+    <MasterConstellation
+      subfield={props.item.name3}
+      path={paths.exploreSubField}
+      constellationStyles={constellationStylesIPad.constellation3}
+    />
+  );
+}
+
+function SlideSeven(props) {
+  return (
+    <MasterConstellation
+      subfield={props.item.name7}
+      path={paths.exploreSubField}
+      constellationStyles={constellationStylesIPad.constellation7}
+    />
+  );
+}
+
+function SlideNine(props) {
+  return (
+    <MasterConstellation
+      subfield={props.item.name9}
+      path={paths.exploreSubField}
+      constellationStyles={constellationStylesIPad.constellation9}
+    />
   );
 }
 
@@ -55,6 +94,8 @@ export default () => {
     "url(" +
     require("./FieldPage/assets/FP-chemistry_/FP-chemistry_.png") +
     ")";
+  const symbolImageURL =
+    "url(" + require("./FieldPage/assets/FP-chemistry_/Symbol.png") + ")";
 
   var items = [
     {
@@ -69,18 +110,35 @@ export default () => {
 
   const content = [
     <div className={classes.carouselSlide}>
+      {<SlideOneGroup item={items[0]} titleStyle={classes.fieldTitle} />}
+    </div>,
+    <div className={classes.carouselSlide}>
+      {<SlideTwoGroup item={items[1]} titleStyle={classes.fieldTitle} />}
+    </div>,
+  ];
+
+  const content1 = [
+    <div className={classes.carouselSlide}>
       {<SlideOne item={items[0]} titleStyle={classes.fieldTitle} />}
     </div>,
     <div className={classes.carouselSlide}>
-      {<SlideTwo item={items[1]} titleStyle={classes.fieldTitle} />}
+      {<SlideThree item={items[1]} titleStyle={classes.fieldTitle} />}
+    </div>,
+    <div className={classes.carouselSlide}>
+      {<SlideSeven item={items[0]} titleStyle={classes.fieldTitle} />}
+    </div>,
+    <div className={classes.carouselSlide}>
+      {<SlideNine item={items[0]} titleStyle={classes.fieldTitle} />}
     </div>,
   ];
 
   return (
     <>
       <FieldPage
+        symbolImag={symbolImageURL}
         title="CHEMISTRY"
         content={content}
+        content1={content1}
         bImageURL={backgroundImageURL}
       />
     </>
