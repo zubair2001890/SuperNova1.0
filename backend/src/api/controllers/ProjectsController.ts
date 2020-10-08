@@ -81,6 +81,7 @@ class ProjectsController {
 
   public projectByProjectID = async (req: Request, res: Response) => {
     let selectedProject = await getProjectByProjectID(req.params.project_id);
+    console.log('selectedProject', selectedProject);
     if (selectedProject.statusName !== "Active")
     {
       res.send({})

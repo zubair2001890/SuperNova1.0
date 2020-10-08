@@ -51,14 +51,13 @@ export const projectsSlice = createSlice({
 
 export const { setData, setLoading, setError } = projectsSlice.actions;
 
-// Can be removed?
-const fetchMockProjects = () => async (dispatch) => {
+const fetchProjectList = () => async (dispatch) => {
   dispatch(setLoading(true));
   const projects = await getFeaturedProjects();
   dispatch(setData(projects));
 };
 
-export { fetchMockProjects as fetchProjects };
+export { fetchProjectList as fetchProjects };
 
 export const selectData = (state) => state.projects.data;
 export const selectLoading = (state) => state.projects.loading;
