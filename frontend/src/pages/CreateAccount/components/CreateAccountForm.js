@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme, emptyField) => ({
     marginBottom: theme.spacing(2),
   },
   nameInput: {
-    marginTop: emptyField => !emptyField && theme.spacing(12),
+    marginTop: (emptyField) => !emptyField && theme.spacing(12),
     marginBottom: theme.spacing(3),
     paddingLeft: theme.spacing(6),
     paddingRight: theme.spacing(1),
@@ -94,7 +94,9 @@ export default (props) => {
         </InputLabel>
 
         <Input
-          onChange={(e) => props.onUsernameChange(e.target.value)}
+          onChange={useCallback((e) => props.onUsernameChange(e.target.value), [
+            props,
+          ])}
           id="standard-adornment-full-name"
           type="text"
           value={props.username}
@@ -121,7 +123,9 @@ export default (props) => {
         </InputLabel>
 
         <Input
-          onChange={(e) => props.onEmailChange(e.target.value)}
+          onChange={useCallback((e) => props.onEmailChange(e.target.value), [
+            props,
+          ])}
           id="standard-adornment-email"
           type="email"
           value={props.email}
@@ -153,7 +157,9 @@ export default (props) => {
 
         <Input
           fullWidth
-          onChange={(e) => props.onPasswordChange(e.target.value)}
+          onChange={useCallback((e) => props.onPasswordChange(e.target.value), [
+            props,
+          ])}
           id="standard-adornment-password"
           type={showPassword ? "text" : "password"}
           value={props.password}
