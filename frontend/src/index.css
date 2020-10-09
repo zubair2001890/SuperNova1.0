@@ -67,21 +67,12 @@
   }
 }
 
-@keyframes blackToWhite {
+@keyframes fadeInHeaderBackground {
   from {
-    background-color: transparent;
+    opacity: 0;
   }
   to {
-    background-color: white;
-  }
-}
-
-@keyframes whiteToBlack {
-  from {
-    background-color: white;
-  }
-  to {
-    background-color: transparent;
+    opacity: 1;
   }
 }
 

@@ -38,6 +38,7 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.common.white,
     zIndex: theme.zIndex.snackbar,
     transition: "background-color 0.5s",
+    animation: "fadeInHeaderBackground 0.5s",
   },
   appBarWhite: {
     backgroundColor: "white",
