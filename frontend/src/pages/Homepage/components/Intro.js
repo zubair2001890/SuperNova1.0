@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.common.white,
     animation: "slideFadeUp 1.5s ease 1s backwards",
     fontSize: 100,
-    "@media (max-width:1000px)": {
+    [theme.breakpoints.down("sm")]: {
       fontSize: 70,
     },
   },
@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
     animation: "slideFadeUp 1.5s ease 2s backwards",
     fontSize: 45,
     textAlign: "center",
-    "@media (max-width:1000px)": {
+    [theme.breakpoints.down("sm")]: {
       fontSize: 30,
     },
   },
@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     animation: "slideFadeUp 1.5s ease 2s backwards",
     fontSize: 35,
-    "@media (max-width:1000px)": {
+    [theme.breakpoints.down("sm")]: {
       fontSize: 20,
     },
   },
