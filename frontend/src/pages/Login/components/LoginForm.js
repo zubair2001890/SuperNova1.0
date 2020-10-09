@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 
 import { makeStyles } from "@material-ui/core/styles";
 import { Link as RouterLink } from "react-router-dom";
@@ -73,7 +73,11 @@ export default (props) => {
         </Typography>
       </MaterialLink>
 
-      {props.incorrectDetails && <Typography className={classes.errorMessage}>Incorrect email or password</Typography>}
+      {props.incorrectDetails && (
+        <Typography className={classes.errorMessage}>
+          Incorrect email or password
+        </Typography>
+      )}
 
       <FormControl fullWidth className={classes.emailInput}>
         <InputLabel className={classes.root} htmlFor="standard-adornment-email">
@@ -81,7 +85,9 @@ export default (props) => {
         </InputLabel>
 
         <Input
-          onChange={e => props.onEmailChange(e.target.value)}
+          onChange={useCallback((e) => props.onEmailChange(e.target.value), [
+            props,
+          ])}
           id="standard-adornment-email"
           type="email"
           value={props.email}
@@ -106,7 +112,9 @@ export default (props) => {
 
         <Input
           fullWidth
-          onChange={e => props.onPasswordChange(e.target.value)}
+          onChange={useCallback((e) => props.onPasswordChange(e.target.value), [
+            props,
+          ])}
           id="standard-adornment-password"
           type={showPassword ? "text" : "password"}
           value={props.password}
@@ -128,7 +136,11 @@ export default (props) => {
         />
       </FormControl>
 
-      <Button component={RouterLink} className={classes.forgotPasswordButton} to={paths.forgotPassword}>
+      <Button
+        component={RouterLink}
+        className={classes.forgotPasswordButton}
+        to={paths.forgotPassword}
+      >
         Forgot your password?
       </Button>
     </>
