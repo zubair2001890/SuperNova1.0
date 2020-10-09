@@ -40,7 +40,6 @@ const updateProfileImage = async (file, token) => {
   if (file.size > 100000000) //I.e. 100MB
   {
     throw new Error("The image is too large.");
-    return;
   }
   const s3 = new AWS.S3({
     accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY_ID,
