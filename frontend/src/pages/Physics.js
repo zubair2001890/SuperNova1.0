@@ -147,7 +147,7 @@ function SlideNine(props) {
 
 export default () => {
   const classes = useStyles();
-  let subfieldNames = getSubfields("Computer Science");
+  let subfieldNames = getSubfields("Physics");
   const backgroundImageURL =
     "url(" + require("./FieldPage/assets/FP-physics/FP-physics.png") + ")";
 
