@@ -105,14 +105,6 @@ export default function Header({ darkTheme = true }) {
         alt="supernova logo"
       />
     );
-
-    // Example for an authorized backend request
-    // if (isAuthenticated) {
-    //   getAccessTokenSilently({
-    //     audience: `https://${process.env.REACT_APP_AUTH0_DOMAIN}/api/v2/`,
-    //     scope: "read:current_user",
-    //   }).then(res => dispatch(sendUpdateAccount({ data: { test: 'all' }, authToken: res })));
-    // }
   }, [darkTheme, classes.logo, classes.logoFadeIn]);
 
   const toggleDrawer = (anchor, open) => (event) => {
