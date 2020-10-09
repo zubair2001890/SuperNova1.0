@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -70,7 +70,9 @@ export default (props) => {
         </InputLabel>
 
         <Input
-          onChange={(e) => props.onEmailChange(e.target.value)}
+          onChange={useCallback((e) => props.onEmailChange(e.target.value), [
+            props,
+          ])}
           id="standard-adornment-email"
           type="email"
           value={props.email}
