@@ -26,8 +26,6 @@ const useStyles = makeStyles((theme) => ({
   appBarTransparent: {
     backgroundColor: "transparent",
     color: theme.palette.common.white,
-    zIndex: theme.zIndex.snackbar,
-    transition: "background-color 0.5s",
   },
   appBarBlack: {
     backgroundColor: "black",
@@ -36,13 +34,13 @@ const useStyles = makeStyles((theme) => ({
     backgroundPosition: "center",
     backgroundSize: "cover",
     color: theme.palette.common.white,
-    zIndex: theme.zIndex.snackbar,
-    transition: "background-color 0.5s",
     animation: "fadeInHeaderBackground 0.5s",
   },
   appBarWhite: {
     backgroundColor: "white",
     color: theme.palette.common.black,
+  },
+  appBar: {
     zIndex: theme.zIndex.snackbar,
     transition: "background-color 0.5s",
   },
@@ -141,14 +139,6 @@ export default function Header() {
     } else {
       setDark(initialHeaderTheme);
     }
-
-    // Example for an authorized backend request
-    // if (isAuthenticated) {
-    //   getAccessTokenSilently({
-    //     audience: `https://${process.env.REACT_APP_AUTH0_DOMAIN}/api/v2/`,
-    //     scope: "read:current_user",
-    //   }).then(res => dispatch(sendUpdateAccount({ data: { test: 'all' }, authToken: res })));
-    // }
   }, [
     dark,
     classes.logo,
@@ -178,13 +168,11 @@ export default function Header() {
       <AppBar
         position="fixed"
         elevation={0}
-        className={`${
-          dark === "transparent"
-            ? classes.appBarTransparent
-            : dark === "black"
-            ? classes.appBarBlack
-            : classes.appBarWhite
-        }`}
+        className={clsx(classes.appBar, {
+          [classes.appBarTransparent]: dark == "transparent",
+          [classes.appBarBlack]: dark == "black",
+          [classes.appBarWhite]: dark == "white",
+        })}
       >
         <Toolbar className={classes.toolBar}>
           <IconButton
