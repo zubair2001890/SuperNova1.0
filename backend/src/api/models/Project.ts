@@ -21,10 +21,6 @@ export const Project = model(
       minlength: 1,
       maxlength: 255,
     },
-    labNotes: {
-      type: String,
-      required: false,
-    },
     fullName: {
       type: String,
       required: true,
@@ -45,11 +41,7 @@ export const Project = model(
       type: Number,
       requred: true,
     },
-    backers: {
-      type: Array,
-      requred: true,
-    },
-    statusName: {
+   statusName: {
       type: String,
       requred: true,
     },
@@ -92,8 +84,4 @@ export const Project = model(
       type: Array,
       required: true,
     },
-    isAdmin: {
-      type: Boolean,
-      required: false
-    }
   }));
