@@ -2,22 +2,26 @@ import React from "react";
 import { makeStyles } from "@material-ui/core";
 import { NavLink } from "react-router-dom";
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   link: {
     font: "Bold 20px/24px Montserrat",
+    fontSize: 13,
     textDecoration: "none",
     color: "black",
     marginBottom: "2.25rem",
     display: "block",
     textTransform: "uppercase",
     letterSpacing: "1.8px",
-    paddingRight: "1.5rem",
   },
   "link--active": {
     color: "#FF0000",
   },
   item: {
     listStyle: "none",
+    [theme.breakpoints.down("xs")]: {
+      paddingRight: "1rem",
+      height: "1.5rem",
+    },
   },
 }));
 

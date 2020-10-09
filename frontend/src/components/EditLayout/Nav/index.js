@@ -5,12 +5,25 @@ import Item from "./Item";
 const useStyles = makeStyles((theme) => ({
   nav: {
     marginBottom: "4rem",
-    [theme.breakpoints.up("md")]: {
+    [theme.breakpoints.down("xs")]: {
+      display: "flex",
+    },
+    [theme.breakpoints.up("sm")]: {
       borderRight: "2px solid black",
     },
   },
   list: {
+    [theme.breakpoints.down("xs")]: {
+      width: "100%",
+      display: "grid",
+      gridAutoFlow: "row",
+      gridTemplateColumns: "repeat(3, 1fr)",
+      justifyItems: "center",
+      paddingBottom: "1rem",
+      borderBottom: "2px solid black"
+    },
     paddingLeft: "0",
+    paddingRight: "0.5rem"
   },
 }));
 

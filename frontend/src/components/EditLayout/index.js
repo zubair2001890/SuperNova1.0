@@ -20,13 +20,15 @@ const styles = (theme) => {
     },
     container: {
       marginTop: "7rem",
-      [theme.breakpoints.up("md")]: {
+      [theme.breakpoints.up("sm")]: {
         display: "flex",
+      },
+      [theme.breakpoints.up("md")]: {
         justifyContent: "start",
       },
     },
     content: {
-      [theme.breakpoints.up("md")]: {
+      [theme.breakpoints.up("sm")]: {
         padding: "0 5.125rem",
       },
     },

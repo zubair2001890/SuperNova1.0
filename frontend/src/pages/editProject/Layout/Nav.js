@@ -2,6 +2,8 @@ import BaseNav from "../../../components/EditLayout/Nav";
 import { withRouter } from "react-router-dom";
 import React from "react";
 import paths from "../../../constants/paths";
+import { useTheme } from "@material-ui/core/styles";
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 const addIdToPath = (id) => ({ to, children }) => ({
   children,
@@ -12,22 +14,24 @@ const addIdsToPaths = (id, links) => links.map(addIdToPath(id));
 
 function Nav({ match }) {
   const { projects } = paths;
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up('sm'));
   const links = [
     {
       to: projects.home,
-      children: "Overview",
+      children: matches ? "Basic Info" : "Basic",
     },
     {
       to: projects.about,
-      children: "About Project",
+      children: matches ? "About Project" : "About",
     },
     {
       to: projects.team,
-      children: "Team",
+      children: "Scientists",
     },
     {
       to: projects.timeline,
-      children: "Timeline & Budget",
+      children: matches ? "Timeline & Budget": "Timeline",
     },
     {
       to: projects.methods,

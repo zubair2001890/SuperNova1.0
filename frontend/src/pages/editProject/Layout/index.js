@@ -48,10 +48,10 @@ const styles = (theme) => ({
     fontSize: "2.5rem",
   },
   content: {
-    maxWidth: "60rem",
-    [theme.breakpoints.up("lg")]: {
-      width: "60rem",
-    },
+      width: "100%",
+      '& form': {
+        width: "100%"
+      }
   },
 });
 

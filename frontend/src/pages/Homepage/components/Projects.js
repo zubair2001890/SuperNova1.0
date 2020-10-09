@@ -8,6 +8,8 @@ import {
 import ProjectCard from "../../../components/ProjectCard";
 import FundsProgress from "../../../components/ProjectCard/components/FundsProgress";
 
+const maxTitleLength = 45;
+
 const useStyles = makeStyles(() => ({
   sectionContainer: { minHeight: "100vh" },
   sectionTitle: {
