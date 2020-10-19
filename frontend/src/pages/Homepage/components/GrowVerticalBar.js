@@ -6,7 +6,7 @@ const useStyles = makeStyles((theme) => {
   return {
     container: {
       display: "inline-block",
-      height: 60,
+      height: 26,
       width: 50,
       position: "relative",
     },
@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme) => {
       transform: "translateX(-50%)",
       height: "100%",
       transition: "height", // TODO: add proper transition ?
+      zIndex: 0,
     },
   };
 });

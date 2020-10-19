@@ -5,7 +5,7 @@ import IntersectionObserver from "../../../components/IntersectionObserver";
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    maxWidth: 1200,
+    maxWidth: 1300,
     marginLeft: "auto",
     marginRight: "auto",
   },
@@ -21,6 +21,10 @@ const useStyles = makeStyles((theme) => ({
   paragraph: {
     color: theme.palette.common.white,
     fontSize: 30,
+    "@media (max-width:1000px)": {
+      fontSize: 25,
+    },
+    fontWeight: 500,
     letterSpacing: 2.5,
   },
   slideFadeLeft: {

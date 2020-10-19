@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect }  from "react";
+import { useDispatch } from "react-redux";
+import { setInitialHeaderTheme, setScrollHeaderTheme } from "../store/slices/page";
 import useStyles from "./FieldPage/exploreFieldPageStyles";
 import FieldPage from "./FieldPage";
 import paths from "../constants/paths";
@@ -124,6 +126,7 @@ function SlideNine(props) {
 
 export default () => {
   const classes = useStyles();
+  const dispatch = useDispatch();
   let subfieldNames = getSubfields("Biology");
   const backgroundImageURL =
     "url(" + require("./FieldPage/assets/FP-biology_/FP-biology_.png") + ")";
@@ -172,6 +175,11 @@ export default () => {
       {<SlideNine item={items[0]} titleStyle={classes.fieldTitle} />}
     </div>,
   ];
+
+  useEffect(() => {
+    dispatch(setInitialHeaderTheme("transparent"));
+    dispatch(setScrollHeaderTheme("black"));
+  })
 
   return (
     <>

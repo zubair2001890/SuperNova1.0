@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { setInitialHeaderTheme, setScrollHeaderTheme } from "../store/slices/page";
 import useStyles from "./FieldPage/exploreFieldPageStyles";
 import FieldPage from "./FieldPage";
 import paths from "../constants/paths";
@@ -7,8 +9,8 @@ import {
   constellationStylesDesktop,
   constellationStylesIPad,
 } from "../components/Constellations/constellationStyles";
-
 import {getSubfields} from "../helpers/apiHelpers";
+
 
 // Grouped Slides
 function SlideOneGroup(props) {
@@ -90,6 +92,7 @@ function SlideNine(props) {
 export default () => {
   let subfieldNames = getSubfields("Chemistry");
   const classes = useStyles();
+  const dispatch = useDispatch();
   const backgroundImageURL =
     "url(" +
     require("./FieldPage/assets/FP-chemistry_/FP-chemistry_.png") +
@@ -131,6 +134,11 @@ export default () => {
       {<SlideNine item={items[0]} titleStyle={classes.fieldTitle} />}
     </div>,
   ];
+
+  useEffect(() => {
+    dispatch(setInitialHeaderTheme("transparent"));
+    dispatch(setScrollHeaderTheme("black"));
+  })
 
   return (
     <>

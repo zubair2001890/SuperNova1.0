@@ -1,4 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import {
+  setInitialHeaderTheme,
+  setScrollHeaderTheme,
+} from "../../store/slices/page";
 import FormCard from "../../components/FormCard/index";
 import { makeStyles } from "@material-ui/core/styles";
 import LoginForm from "./components/LoginForm";
@@ -23,11 +28,17 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Links() {
   const classes = useStyles();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setInitialHeaderTheme("black"));
+    dispatch(setScrollHeaderTheme("black"));
+  });
 
   return (
     <Grid item className={classes.container}>
       <FormCard
-      loginType="forgotpassword"
+        loginType="forgotpassword"
         headerChildren={
           <>
             <Typography variant="h4" component="h1" align="center">

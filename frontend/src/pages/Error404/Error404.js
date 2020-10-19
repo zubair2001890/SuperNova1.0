@@ -1,5 +1,10 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import {
+  setInitialHeaderTheme,
+  setScrollHeaderTheme,
+} from "../../store/slices/page";
 import { makeStyles, Typography, Button } from "@material-ui/core";
 import { Link as RouterLink } from "react-router-dom";
 import paths from "../../constants/paths";
@@ -47,11 +52,17 @@ const useStyles = makeStyles(() => ({
   button: {
     fontSize: 16,
     fontWeight: "bold",
-  }
+  },
 }));
 
 export default function Links() {
   const classes = useStyles();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setInitialHeaderTheme("transparent"));
+    dispatch(setScrollHeaderTheme("transparent"));
+  });
 
   return (
     <>
@@ -59,10 +70,22 @@ export default function Links() {
         <Typography variant="h1" className={classes.title}>
           Oops!
         </Typography>
-        <Typography variant="h2" className={classes.subtitle}>404 - Page not found</Typography>
-        <Typography variant="h3" className={classes.description}>The page you were looking for might have been removed, had its name changed or is temporarily unavailable.</Typography>
+        <Typography variant="h2" className={classes.subtitle}>
+          404 - Page not found
+        </Typography>
+        <Typography variant="h3" className={classes.description}>
+          The page you were looking for might have been removed, had its name
+          changed or is temporarily unavailable.
+        </Typography>
         <div className={classes.buttonContainer}>
-          <Button variant="contained" className={classes.button} component={RouterLink} to={paths.home}>HOMEPAGE</Button>
+          <Button
+            variant="contained"
+            className={classes.button}
+            component={RouterLink}
+            to={paths.home}
+          >
+            HOMEPAGE
+          </Button>
         </div>
       </div>
     </>

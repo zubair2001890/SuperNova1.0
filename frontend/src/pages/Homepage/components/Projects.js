@@ -1,19 +1,22 @@
 import React from "react";
-import {
-  makeStyles,
-  Typography,
-  Avatar,
-  Tooltip,
-} from "@material-ui/core";
+import { useDispatch } from "react-redux";
+import { setScrollHeaderTheme } from "../../../store/slices/page";
+import { makeStyles, Typography, Avatar, Tooltip } from "@material-ui/core";
 import ProjectCard from "../../../components/ProjectCard";
 import FundsProgress from "../../../components/ProjectCard/components/FundsProgress";
 
 const maxTitleLength = 45;
 
 const useStyles = makeStyles((theme) => ({
-  sectionContainer: { minHeight: "100vh" },
+  sectionContainer: {
+    minHeight: "calc(100vh - 200px)",
+    backgroundColor: "white",
+    padding: "100px 0px",
+    opacity: 1,
+    zIndex: 100,
+  },
   sectionTitle: {
-    color: "white",
+    color: "black",
     textAlign: "center",
     letterSpacing: "0.09em",
     marginBottom: "10rem",
@@ -55,10 +58,23 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default ({ projectsData}) => {
+export default ({ projectsData }) => {
+  const dispatch = useDispatch();
   const classes = useStyles();
   return (
-    <div className={classes.sectionContainer}>
+    <div
+      className={classes.sectionContainer}
+      ref={(el) => {
+        if (!el) return;
+        let positionOnPage = el.getBoundingClientRect().top;
+        if (positionOnPage <= 80) {
+          dispatch(setScrollHeaderTheme("black"));
+        }
+        else {
+          dispatch(setScrollHeaderTheme("white"));
+        }
+      }}
+    >
       <Typography variant="h2" className={classes.sectionTitle}>
         FEATURED PROJECTS
       </Typography>
@@ -82,12 +98,12 @@ function renderProject(classes) {
             {project.projectName.length < maxTitleLength ? (
               project.projectName
             ) : (
-                <Tooltip title={project.projectName} placement="top">
-                  <span>
-                    {project.projectName.slice(0, maxTitleLength - 3) + "..."}
-                  </span>
-                </Tooltip>
-              )}
+              <Tooltip title={project.projectName} placement="top">
+                <span>
+                  {project.projectName.slice(0, maxTitleLength - 3) + "..."}
+                </span>
+              </Tooltip>
+            )}
           </p>
           <Avatar
             className={classes.avatar}
