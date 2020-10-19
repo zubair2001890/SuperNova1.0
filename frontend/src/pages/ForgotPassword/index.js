@@ -1,4 +1,9 @@
-import React, { useState, useContext } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { useDispatch } from "react-redux";
+import {
+  setInitialHeaderTheme,
+  setScrollHeaderTheme,
+} from "../../store/slices/page";
 import FormCard from "../../components/FormCard/index";
 import { makeStyles } from "@material-ui/core/styles";
 import ForgotPasswordForm from "./components/ForgotPasswordForm";
@@ -50,9 +55,15 @@ export default function Links() {
     } else {
       setInvalidEmail(false);
       e.preventDefault();
-      auth.changePassword(params.realm, email, setSuccessful)
+      auth.changePassword(params.realm, email, setSuccessful);
     }
   };
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setInitialHeaderTheme("black"));
+    dispatch(setScrollHeaderTheme("black"));
+  });
 
   return (
     <Grid item className={classes.container}>

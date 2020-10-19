@@ -1,4 +1,9 @@
-import React, { useState, useContext } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { useDispatch } from "react-redux";
+import {
+  setInitialHeaderTheme,
+  setScrollHeaderTheme,
+} from "../../store/slices/page";
 import FormCard from "../../components/FormCard/index";
 import { makeStyles } from "@material-ui/core/styles";
 import { ReactComponent as GoogleLogo } from "../assets/google-plus.svg";
@@ -75,6 +80,12 @@ export default function Links() {
   const toggleChecked = () => {
     setIsChecked(!isChecked);
   };
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setInitialHeaderTheme("black"));
+    dispatch(setScrollHeaderTheme("black"));
+  });
 
   return (
     <Grid item className={classes.container}>

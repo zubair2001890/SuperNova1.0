@@ -1,7 +1,10 @@
 import React, { useEffect } from "react";
 import { Typography } from "@material-ui/core";
 import { useDispatch } from "react-redux";
-import { setDarkTheme as setPageDarkTheme } from "../../store/slices/page";
+import {
+  setInitialHeaderTheme,
+  setScrollHeaderTheme,
+} from "../../store/slices/page";
 import HeaderCarousel from "../../components/HeaderCarousel";
 import useStyles from "./exploreFieldPageStyles";
 import Media from "react-media";
@@ -14,10 +17,8 @@ export default (props) => {
   const backgroundImageURL = props.bImageURL;
 
   useEffect(() => {
-    dispatch(setPageDarkTheme(true));
-    return () => {
-      dispatch(setPageDarkTheme(false));
-    };
+    dispatch(setInitialHeaderTheme("transparent"));
+    dispatch(setScrollHeaderTheme("black"));
   }, [dispatch]);
 
   const content = props.content;

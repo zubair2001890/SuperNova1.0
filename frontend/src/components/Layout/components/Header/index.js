@@ -4,11 +4,17 @@ import { Link as RouterLink } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import { AppBar, IconButton, Toolbar, Button } from "@material-ui/core";
 import { Menu as MenuIcon, Close as CloseIcon } from "@material-ui/icons";
+import { useSelector } from "react-redux";
+import {
+  selectInitialHeaderTheme,
+  selectScrollHeaderTheme,
+} from "../../../../store/slices/page";
 import { AuthContext } from "../../../../AuthContext";
 
 //media queries
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import useWindowScrollY from "../../../../hooks/useWindowScrollY";
 
 import LeftDrawer from "./components/LeftDrawer";
 import AvatarDropdown from "./components/Avatar";
@@ -18,17 +24,32 @@ import logoBlack from "./assets/logo-black.svg";
 import logoWhite from "./assets/logo-white.svg";
 
 const useStyles = makeStyles((theme) => ({
-  appBar: {
+  appBarTransparent: {
     backgroundColor: "transparent",
-    color: (props) =>
-      props.darkTheme ? theme.palette.common.white : theme.palette.common.black,
+    color: theme.palette.common.white,
+  },
+  appBarBlack: {
+    backgroundColor: "black",
+    backgroundImage: "url(" + require("../assets/header.png") + ")",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center",
+    backgroundSize: "cover",
+    color: theme.palette.common.white,
+    animation: "fadeInHeaderBackground 0.5s",
+  },
+  appBarWhite: {
+    backgroundColor: "white",
+    color: theme.palette.common.black,
+  },
+  appBar: {
     zIndex: theme.zIndex.snackbar,
+    transition: "background-color 0.5s",
   },
   toolBar: {
     ...theme.mixins.appBar,
     position: "relative",
     [theme.breakpoints.down("sm")]: {
-      height: 58,
+      height: 56,
       padding: 0,
       flexDirection: "row-reverse",
       justifyContent: "space-between",
@@ -38,6 +59,8 @@ const useStyles = makeStyles((theme) => ({
     animation: "slideFadeUp 1.5s ease 2s backwards",
     [theme.breakpoints.down("sm")]: {
       margin: 0,
+      paddingTop: 0,
+      paddingBottom: 0,
     },
   },
   logoContainer: {
@@ -76,17 +99,23 @@ const useStyles = makeStyles((theme) => ({
   },
   appBarRightLink: {
     ...theme.mixins.navLinkPrimary,
+    fontSize: 20,
     [theme.breakpoints.down("sm")]: {
-      fontSize: 12,
+      fontSize: 18,
     },
   },
 }));
 
-const getInitialLogoSrc = (darkTheme) => (darkTheme ? logoWhite : logoBlack);
+const getInitialLogoSrc = (dark) =>
+  dark === "transparent" ? logoWhite : dark === "black" ? logoWhite : logoBlack;
 
-export default function Header({ darkTheme = true }) {
+export default function Header() {
   const auth = useContext(AuthContext);
-  const classes = useStyles({ darkTheme });
+  const scrollY = useWindowScrollY();
+  const classes = useStyles();
+  const initialHeaderTheme = useSelector(selectInitialHeaderTheme);
+  const scrollHeaderTheme = useSelector(selectScrollHeaderTheme);
+  const [dark, setDark] = useState(initialHeaderTheme);
   const [drawerState, setDrawerState] = useState({
     left: false,
   });
@@ -100,12 +129,25 @@ export default function Header({ darkTheme = true }) {
   useEffect(() => {
     setLogoImg(
       <img
-        src={getInitialLogoSrc(darkTheme)}
+        src={getInitialLogoSrc(dark)}
         className={clsx(classes.logo, classes.logoFadeIn)}
         alt="supernova logo"
       />
     );
-  }, [darkTheme, classes.logo, classes.logoFadeIn]);
+
+    if (scrollY > 0) {
+      setDark(scrollHeaderTheme);
+    } else {
+      setDark(initialHeaderTheme);
+    }
+  }, [
+    dark,
+    classes.logo,
+    classes.logoFadeIn,
+    scrollY,
+    initialHeaderTheme,
+    scrollHeaderTheme,
+  ]);
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (
@@ -124,7 +166,15 @@ export default function Header({ darkTheme = true }) {
         open={drawerState.left}
         onDrawerClose={toggleDrawer("left", false)}
       />
-      <AppBar position="absolute" elevation={0} className={classes.appBar}>
+      <AppBar
+        position="fixed"
+        elevation={0}
+        className={clsx(classes.appBar, {
+          [classes.appBarTransparent]: dark == "transparent",
+          [classes.appBarBlack]: dark == "black",
+          [classes.appBarWhite]: dark == "white",
+        })}
+      >
         <Toolbar className={classes.toolBar}>
           <IconButton
             edge="start"
@@ -155,7 +205,7 @@ export default function Header({ darkTheme = true }) {
             onMouseOut={() => {
               setLogoImg(
                 <img
-                  src={getInitialLogoSrc(darkTheme)}
+                  src={getInitialLogoSrc(dark)}
                   className={classes.logo}
                   alt="supernova logo"
                 />

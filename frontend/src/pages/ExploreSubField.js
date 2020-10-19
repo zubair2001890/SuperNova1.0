@@ -8,6 +8,7 @@ import {
   fetchProjects,
   selectData as selectProjectsData,
 } from "../store/slices/projects";
+import { setInitialHeaderTheme, setScrollHeaderTheme } from "../store/slices/page";
 
 const Biology1 = (props) => {
   const dispatch = useDispatch();
@@ -16,6 +17,8 @@ const Biology1 = (props) => {
 
   useEffect(() => {
     dispatch(fetchProjects());
+    dispatch(setInitialHeaderTheme("transparent"));
+    dispatch(setScrollHeaderTheme("black"));
   }, [dispatch]);
 
   const content = [
