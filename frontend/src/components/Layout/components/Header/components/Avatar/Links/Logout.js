@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import NavItem from "./NavItem";
-import { useAuth0 } from "@auth0/auth0-react";
+import { AuthContext } from "../../../../../../../AuthContext";
 
 export default function Logout() {
-  const { logout } = useAuth0();
+  const auth = useContext(AuthContext);
   return (
-    <NavItem Component="button" onClick={logout}>
+    <NavItem Component="button" onClick={auth.logout}>
       Logout
     </NavItem>
   );

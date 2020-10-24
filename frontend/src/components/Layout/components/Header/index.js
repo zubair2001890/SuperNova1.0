@@ -1,15 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import clsx from "clsx";
 import { Link as RouterLink } from "react-router-dom";
+import { makeStyles } from "@material-ui/core/styles";
+import { AppBar, IconButton, Toolbar, Button } from "@material-ui/core";
+import { Menu as MenuIcon, Close as CloseIcon } from "@material-ui/icons";
 import { useSelector } from "react-redux";
 import {
   selectInitialHeaderTheme,
   selectScrollHeaderTheme,
 } from "../../../../store/slices/page";
-import { makeStyles } from "@material-ui/core/styles";
-import { AppBar, IconButton, Toolbar, Button } from "@material-ui/core";
-import { Menu as MenuIcon, Close as CloseIcon } from "@material-ui/icons";
-import { useAuth0 } from "@auth0/auth0-react";
+import { AuthContext } from "../../../../AuthContext";
+
 //media queries
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
@@ -109,18 +110,18 @@ const getInitialLogoSrc = (dark) =>
   dark === "transparent" ? logoWhite : dark === "black" ? logoWhite : logoBlack;
 
 export default function Header() {
+  const auth = useContext(AuthContext);
+  const scrollY = useWindowScrollY();
+  const classes = useStyles();
   const initialHeaderTheme = useSelector(selectInitialHeaderTheme);
   const scrollHeaderTheme = useSelector(selectScrollHeaderTheme);
   const [dark, setDark] = useState(initialHeaderTheme);
-  const scrollY = useWindowScrollY();
-  const classes = useStyles();
   const [drawerState, setDrawerState] = useState({
     left: false,
   });
 
   const [logoImg, setLogoImg] = useState(null);
 
-  const { loginWithRedirect, isAuthenticated } = useAuth0();
   //media queries
   const theme = useTheme();
   const matchesMediaQuery = useMediaQuery(theme.breakpoints.down("sm"));
@@ -225,12 +226,13 @@ export default function Header() {
                 EXPLORE
               </Button>
             )}
-            {isAuthenticated ? (
+            {auth.isAuthenticated() ? (
               <AvatarDropdown />
             ) : (
               <Button
                 color="inherit"
-                onClick={loginWithRedirect}
+                component={RouterLink}
+                to={paths.login}
                 size="large"
                 className={classes.appBarRightLink}
               >

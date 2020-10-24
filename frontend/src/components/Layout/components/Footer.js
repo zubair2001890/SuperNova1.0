@@ -100,7 +100,7 @@ function Footer(props) {
 
   return (
     <div className={classes.footer}>
-      {["/login", "/loginincorrect", "/createaccount"].includes(
+      {["/login", "/createaccount", "/forgotpassword"].includes(
         props.location.pathname
       ) ? (
         <>
@@ -140,7 +140,7 @@ function Footer(props) {
         </>
       )}
 
-      {["/login", "/loginincorrect", "/createaccount"].includes(
+      {["/login", "/createaccount", "/forgotpassword"].includes(
         props.location.pathname
       ) ? null : (
         <>

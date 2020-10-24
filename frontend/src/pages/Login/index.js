@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useDispatch } from "react-redux";
 import {
   setInitialHeaderTheme,
@@ -13,13 +13,16 @@ import { Button, Grid, IconButton, Typography } from "@material-ui/core";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import TwitterIcon from "@material-ui/icons/Twitter";
 
+import params from "../../auth0-params.json";
+import { AuthContext } from "../../AuthContext";
+
 const useStyles = makeStyles((theme) => ({
   container: {
     minHeight: "calc(100vh - 80px)",
     paddingTop: theme.spacing(32),
+    paddingBottom: theme.spacing(2),
     margin: "auto auto",
     width: 436,
-    maxHeight: 472,
   },
   socialIcons: {
     color: "white",
@@ -31,7 +34,20 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Links() {
+  const auth = useContext(AuthContext);
   const classes = useStyles();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [incorrect, setIncorrect] = useState(false);
+
+  const handleIncorrect = (isInvalid) => {
+    setIncorrect(isInvalid);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    auth.login(params.realm, email, password, handleIncorrect);
+  };
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -61,10 +77,18 @@ export default function Links() {
             </Grid>
           </>
         }
-        bodyChildren={<LoginForm />}
+        bodyChildren={
+          <LoginForm
+            email={email}
+            password={password}
+            onEmailChange={(e) => setEmail(e)}
+            onPasswordChange={(e) => setPassword(e)}
+            incorrectDetails={incorrect}
+          />
+        }
         footerChildren={
           <>
-            <Button fullWidth size="large">
+            <Button fullWidth size="large" onClick={handleSubmit}>
               <Typography variant="h5">SIGN IN</Typography>
             </Button>
           </>

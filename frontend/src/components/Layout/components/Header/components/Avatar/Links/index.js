@@ -33,7 +33,7 @@ const useStyles = makeStyles(() => {
       backgroundColor: "white",
       padding: `0 ${paddingRight} 1rem`,
       minWidth: "10rem",
-      marginTop: 0,
+      marginTop: 10,
       borderRadius: "0.25rem",
       display: "flex",
       flexDirection: "column",

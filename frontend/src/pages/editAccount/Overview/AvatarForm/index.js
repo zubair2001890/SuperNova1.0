@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import icon from "./icon.png";
 import { connect } from "react-redux";
 import { post, put } from "axios";
-import { useAuth0 } from "@auth0/auth0-react";
+import { AuthContext } from "../../../../AuthContext";
 import { makeStyles } from "@material-ui/core";
 import { postUpdateAccount } from "../../../../store/slices/middlewareAPI/fetchAPI";
 import { getPictureUrl } from "../../../../helpers/imageUrl";
@@ -40,7 +40,6 @@ const updateProfileImage = async (file, token) => {
   if (file.size > 100000000) //I.e. 100MB
   {
     throw new Error("The image is too large.");
-    return;
   }
   const s3 = new AWS.S3({
     accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY_ID,
@@ -131,7 +130,10 @@ const useStyles = makeStyles((theme) => {
 });
 
 function AvatarForm({ account, fetchAccount }) {
-  const { getAccessTokenSilently, user } = useAuth0();
+  const auth = useContext(AuthContext);
+  const getAccessTokenSilently = auth.getAccessToken;
+  const user = auth.getUserInfo();
+  const fullPictureUrl = getPictureUrl(account.imageURL);
   const classes = useStyles();
   const fetchAccountWithSub = () => fetchAccount(user.sub);
   return (

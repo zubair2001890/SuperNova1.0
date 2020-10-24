@@ -5,7 +5,6 @@ const useStyles = makeStyles((theme) => ({
     ...theme.mixins.appBar,
   },
   pageHeader: {
-    height: 1080,
     width: "100%",
     height: "100vh",
     maxHeight: 1080,
@@ -17,7 +16,6 @@ const useStyles = makeStyles((theme) => ({
   carouselContainer: {
     position: "absolute",
     width: "100%",
-    height: 1080,
     top: 0,
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
@@ -32,7 +30,6 @@ const useStyles = makeStyles((theme) => ({
   },
   carouselSlide: {
     position: "relative",
-    height: 1080,
     top: 0,
     height: "100vh",
     maxHeight: 1080,

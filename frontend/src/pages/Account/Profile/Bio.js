@@ -13,11 +13,11 @@ const styles = {
 
 export class Bio extends Component {
   render() {
-    const { account, classes } = this.props;
+    const { classes, user } = this.props;
     return (
       <section className={classes.bio}>
         <p>Bio:</p>
-        <p>{account.bio || "No biography"}</p>
+        <p>{user.bio || "No biography"}</p>
       </section>
     );
   }

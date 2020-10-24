@@ -1,6 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { setInitialHeaderTheme, setScrollHeaderTheme } from "../store/slices/page";
+import {
+  setInitialHeaderTheme,
+  setScrollHeaderTheme,
+} from "../store/slices/page";
 import useStyles from "./FieldPage/exploreFieldPageStyles";
 import FieldPage from "./FieldPage";
 import paths from "../constants/paths";
@@ -9,8 +12,7 @@ import {
   constellationStylesDesktop,
   constellationStylesIPad,
 } from "../components/Constellations/constellationStyles";
-import {getSubfields} from "../helpers/apiHelpers";
-
+import { getSubfields } from "../helpers/apiHelpers";
 
 // Grouped Slides
 function SlideOneGroup(props) {
@@ -149,8 +151,8 @@ function SlideNine(props) {
 
 export default () => {
   const classes = useStyles();
+  let subfieldNames = getSubfields("Physics");
   const dispatch = useDispatch();
-  let subfieldNames = getSubfields("Computer Science");
   const backgroundImageURL =
     "url(" + require("./FieldPage/assets/FP-physics/FP-physics.png") + ")";
 
@@ -212,7 +214,7 @@ export default () => {
   useEffect(() => {
     dispatch(setInitialHeaderTheme("transparent"));
     dispatch(setScrollHeaderTheme("black"));
-  })
+  });
 
   return (
     <>

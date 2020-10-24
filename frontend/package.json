@@ -17,6 +17,7 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "auth0": "^2.27.1",
+    "auth0-js": "^9.13.4",
     "aws-sdk": "^2.733.0",
     "axios": "^0.19.2",
     "clsx": "^1.1.1",

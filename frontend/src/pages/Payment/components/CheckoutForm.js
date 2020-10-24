@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router";
+import { AuthContext } from "../../../AuthContext";
 import { Link as RouterLink } from "react-router-dom";
 import {
   withStyles,
@@ -9,7 +10,6 @@ import {
   FormControlLabel,
   Checkbox,
 } from "@material-ui/core";
-import { withAuth0 } from "@auth0/auth0-react";
 import {
   Elements,
   ElementsConsumer,
@@ -111,13 +111,15 @@ const styles = (theme) => ({
 });
 
 class CheckoutForm extends Component {
+  static contextType = AuthContext;
   handleError = (error) => {
     console.error(error);
   };
 
   fetchIntent = async () => {
-    const { auth0, match } = this.props;
-    const { getAccessTokenSilently } = auth0;
+    const auth = this.context;
+    const { match } = this.props;
+    const getAccessTokenSilently = auth.getAccessToken;
     const { project, option } = match.params;
     const token = await getAccessTokenSilently();
     return postSendPayment({ projectID: project, optionKey: option }, token);
@@ -193,7 +195,9 @@ class CheckoutForm extends Component {
               <Typography variant="body2">Reward</Typography>
             </div>
             <div className={classes.rewardDescription}>
-              <Typography variant="body2">{this.props.location.state.description}</Typography>
+              <Typography variant="body2">
+                {this.props.location.state.description}
+              </Typography>
             </div>
             <div className={classes.amountPledged}>
               <Typography variant="body2">£{price}.00</Typography>
@@ -209,10 +213,7 @@ class CheckoutForm extends Component {
         </div>
         <form className={classes.form} onSubmit={this.handleSubmit}>
           <CardSection />
-          <FormControl
-            fullWidth
-            className={classes.rememberCardCheckbox}
-          >
+          <FormControl fullWidth className={classes.rememberCardCheckbox}>
             <FormControlLabel
               control={
                 <Checkbox
@@ -248,11 +249,7 @@ class CheckoutForm extends Component {
 
 const FormWithRouter = withRouter(CheckoutForm);
 
-const FormWithAuthentication = withAuth0(FormWithRouter);
-
-const StyledForm = withStyles(styles, { withTheme: true })(
-  FormWithAuthentication
-);
+const StyledForm = withStyles(styles, { withTheme: true })(FormWithRouter);
 
 const FormWithElementsProvider = (props) => {
   const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_KEY);

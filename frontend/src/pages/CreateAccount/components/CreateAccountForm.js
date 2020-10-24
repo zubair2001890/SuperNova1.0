@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useCallback } from "react";
 
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -18,7 +18,7 @@ import LockOpenIcon from "@material-ui/icons/LockOpen";
 import EmailIcon from "@material-ui/icons/Email";
 import PeopleIcon from "@material-ui/icons/People";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme, emptyField) => ({
   root: {
     color: theme.palette.common.gray,
     marginLeft: theme.spacing(6),
@@ -27,12 +27,24 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(6),
     marginBottom: theme.spacing(2),
   },
+  emptyFieldMessage: {
+    color: theme.palette.secondary.main,
+    fontSize: 16,
+    paddingLeft: theme.spacing(6),
+    marginTop: theme.spacing(10),
+    marginBottom: theme.spacing(2),
+  },
   nameInput: {
-    marginTop: theme.spacing(12),
+    marginTop: (emptyField) => !emptyField && theme.spacing(12),
     marginBottom: theme.spacing(3),
     paddingLeft: theme.spacing(6),
     paddingRight: theme.spacing(1),
     width: 360,
+  },
+  errorMessage: {
+    color: theme.palette.secondary.main,
+    fontSize: 16,
+    paddingLeft: theme.spacing(6),
   },
   emailInput: {
     marginTop: theme.spacing(3),
@@ -62,40 +74,32 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default () => {
-  const classes = useStyles();
-  const [values, setValues] = React.useState({
-    firstName: "",
-    password: "",
-    email: "",
-    showPassword: false,
-  });
-  const handleChange = (prop) => (event) => {
-    setValues({ ...values, [prop]: event.target.value });
-  };
+export default (props) => {
+  const classes = useStyles(props.emptyField);
+  const [showPassword, setShowPassword] = useState(false);
 
-  const handleClickShowPassword = () => {
-    setValues({ ...values, showPassword: !values.showPassword });
-  };
-
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
   return (
     <>
+      {props.emptyField && (
+        <Typography className={classes.emptyFieldMessage}>
+          All three fields are required.
+        </Typography>
+      )}
       <FormControl className={classes.nameInput}>
         <InputLabel
           className={classes.root}
-          htmlFor="standard-adornment-first-name"
+          htmlFor="standard-adornment-full-name"
         >
-          First Name
+          Full Name
         </InputLabel>
 
         <Input
-          onChange={handleChange("firstName")}
-          id="standard-adornment-first-name"
+          onChange={useCallback((e) => props.onUsernameChange(e.target.value), [
+            props,
+          ])}
+          id="standard-adornment-full-name"
           type="text"
-          value={values.firstName}
+          value={props.username}
           fullWidth
           endAdornment={
             <InputAdornment position="end">
@@ -107,16 +111,24 @@ export default () => {
         />
       </FormControl>
 
+      {props.invalidEmail && (
+        <Typography className={classes.errorMessage}>
+          Please enter a valid/new email address.
+        </Typography>
+      )}
+
       <FormControl fullWidth className={classes.emailInput}>
         <InputLabel className={classes.root} htmlFor="standard-adornment-email">
           Email
         </InputLabel>
 
         <Input
-          onChange={handleChange("email")}
+          onChange={useCallback((e) => props.onEmailChange(e.target.value), [
+            props,
+          ])}
           id="standard-adornment-email"
           type="email"
-          value={values.email}
+          value={props.email}
           fullWidth
           endAdornment={
             <InputAdornment position="end">
@@ -128,6 +140,13 @@ export default () => {
         />
       </FormControl>
 
+      {props.invalidPassword && (
+        <Typography className={classes.errorMessage}>
+          Password must be at least 8 characters and should contain
+          alphanumerical characters, including capitals.
+        </Typography>
+      )}
+
       <FormControl fullWidth className={classes.passwordInput}>
         <InputLabel
           className={classes.root}
@@ -138,19 +157,20 @@ export default () => {
 
         <Input
           fullWidth
-          onChange={handleChange("password")}
+          onChange={useCallback((e) => props.onPasswordChange(e.target.value), [
+            props,
+          ])}
           id="standard-adornment-password"
-          type={values.showPassword ? "text" : "password"}
-          value={values.password}
+          type={showPassword ? "text" : "password"}
+          value={props.password}
           endAdornment={
             <InputAdornment>
               <IconButton
                 edge="end"
                 aria-label="toggle password visibility"
-                onClick={handleClickShowPassword}
-                onMouseDown={handleMouseDownPassword}
+                onClick={() => setShowPassword(!showPassword)}
               >
-                {values.showPassword ? (
+                {showPassword ? (
                   <LockOpenIcon className={classes.icons} />
                 ) : (
                   <LockIcon className={classes.icons} />
@@ -160,7 +180,6 @@ export default () => {
           }
         />
       </FormControl>
-
       <FormControl
         fullWidth
         className={classes.termsAndConditionsCheckbox}
@@ -169,13 +188,19 @@ export default () => {
         <FormControlLabel
           control={
             <Checkbox
+              checked={props.isChecked}
+              onChange={props.onCheckboxChange}
               name="termsAndConditions"
-              style = {{
+              style={{
                 color: "#666666",
               }}
             />
           }
-          label={<Typography className={classes.termsAndConditionsText}>I have read and understood the terms and conditions</Typography>}
+          label={
+            <Typography className={classes.termsAndConditionsText}>
+              I have read and understood the terms and conditions
+            </Typography>
+          }
         />
       </FormControl>
     </>

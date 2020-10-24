@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useCallback } from "react";
 
 import { makeStyles } from "@material-ui/core/styles";
 import { Link as RouterLink } from "react-router-dom";
@@ -24,10 +24,14 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.common.gray,
     paddingLeft: theme.spacing(1),
   },
-  form: {
+  createAccountLink: {
     marginTop: theme.spacing(6),
     marginBottom: theme.spacing(2),
     color: theme.palette.common.black,
+  },
+  errorMessage: {
+    color: theme.palette.secondary.main,
+    fontSize: 16,
   },
   emailInput: {
     marginTop: theme.spacing(2),
@@ -52,29 +56,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default () => {
+export default (props) => {
   const classes = useStyles();
-  const [values, setValues] = React.useState({
-    password: "",
-    email: "",
-    showPassword: false,
-  });
-  const handleChange = (prop) => (event) => {
-    setValues({ ...values, [prop]: event.target.value });
-  };
+  const [showPassword, setShowPassword] = useState(false);
 
-  const handleClickShowPassword = () => {
-    setValues({ ...values, showPassword: !values.showPassword });
-  };
-
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
   return (
     <>
       <MaterialLink component={RouterLink} to={paths.createAccount}>
         <Typography
-          className={classes.form}
+          className={classes.createAccountLink}
           variant="subtitle2"
           component="h1"
           align="center"
@@ -83,16 +73,24 @@ export default () => {
         </Typography>
       </MaterialLink>
 
+      {props.incorrectDetails && (
+        <Typography className={classes.errorMessage}>
+          Incorrect email or password
+        </Typography>
+      )}
+
       <FormControl fullWidth className={classes.emailInput}>
         <InputLabel className={classes.root} htmlFor="standard-adornment-email">
           Email
         </InputLabel>
 
         <Input
-          onChange={handleChange("email")}
+          onChange={useCallback((e) => props.onEmailChange(e.target.value), [
+            props,
+          ])}
           id="standard-adornment-email"
           type="email"
-          value={values.email}
+          value={props.email}
           fullWidth
           endAdornment={
             <InputAdornment position="end">
@@ -114,19 +112,20 @@ export default () => {
 
         <Input
           fullWidth
-          onChange={handleChange("password")}
+          onChange={useCallback((e) => props.onPasswordChange(e.target.value), [
+            props,
+          ])}
           id="standard-adornment-password"
-          type={values.showPassword ? "text" : "password"}
-          value={values.password}
+          type={showPassword ? "text" : "password"}
+          value={props.password}
           endAdornment={
             <InputAdornment>
               <IconButton
                 edge="end"
                 aria-label="toggle password visibility"
-                onClick={handleClickShowPassword}
-                onMouseDown={handleMouseDownPassword}
+                onClick={() => setShowPassword(!showPassword)}
               >
-                {values.showPassword ? (
+                {showPassword ? (
                   <LockOpenIcon className={classes.icons} />
                 ) : (
                   <LockIcon className={classes.icons} />
@@ -137,7 +136,11 @@ export default () => {
         />
       </FormControl>
 
-      <Button component={RouterLink} className={classes.forgotPasswordButton} to={paths.forgotPassword}>
+      <Button
+        component={RouterLink}
+        className={classes.forgotPasswordButton}
+        to={paths.forgotPassword}
+      >
         Forgot your password?
       </Button>
     </>

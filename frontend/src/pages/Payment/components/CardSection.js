@@ -13,8 +13,6 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: theme.spacing(4),
   },
   regularInput: {
-    border: "none",
-    width: "calc(100% - 2px)",
     fontSize: 16,
     padding: "12px 0px 12px 12px",
     border: "1px solid",
@@ -80,7 +78,11 @@ export default function CardSection() {
         <label>
           <div className={clsx(classes.label, classes.cardNumberRow)}>
             <div>Card number</div>
-            <img src={paymentIcons} className={classes.paymentIconsImage} />
+            <img
+              src={paymentIcons}
+              alt=""
+              className={classes.paymentIconsImage}
+            />
           </div>
         </label>
         <div className={classes.inputField}>

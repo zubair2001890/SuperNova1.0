@@ -7,7 +7,7 @@ import Avatar from "./Avatar";
 import Bio from "./Bio";
 import Edit from "./Edit";
 import Stats from "./Stats";
-import { withAuth0 } from "@auth0/auth0-react";
+import { AuthContext } from "../../../AuthContext";
 
 const styles = (theme) => ({
   header: {
@@ -18,9 +18,11 @@ const styles = (theme) => ({
 });
 
 export class Profile extends Component {
+  static contextType = AuthContext;
   render() {
-    const { classes, auth0 } = this.props;
-    const { user } = auth0;
+    const auth = this.context;
+    const { classes } = this.props;
+    const user = auth.getUserInfo();
     return (
       <Layout title="About Me:">
         <div className={classes.header}>
@@ -39,6 +41,4 @@ const StyledPage = withStyles(styles, { withTheme: true })(Profile);
 
 const mapStateToProps = ({ user }) => ({ user });
 
-const WithAuth = withAuth0(StyledPage);
-
-export default connect(mapStateToProps)(WithAuth);
+export default connect(mapStateToProps)(StyledPage);

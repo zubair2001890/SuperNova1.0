@@ -14,14 +14,10 @@ const styles = {
 
 export class Avatar extends Component {
   render() {
-    const {
-      classes,
-      user: { given_name },
-      account: { imageURL },
-    } = this.props;
-    const fullPictureUrl = getPictureUrl(imageURL);
+    const { classes, user } = this.props;
+    const fullPictureUrl = getPictureUrl(user.picture);
     return (
-      <img src={fullPictureUrl} alt={given_name} className={classes.avatar} />
+      <img src={fullPictureUrl} alt={user.nickname} className={classes.avatar} />
     );
   }
 }
