@@ -42,9 +42,8 @@ const Chemistry = lazy(() => import("./pages/Chemistry"));
 const Medicine = lazy(() => import("./pages/Medicine"));
 const ExploreSubField = lazy(() => import("./pages/ExploreSubField"));
 const Payment = lazy(() => import("./pages/Payment"));
-const CheckoutForm = lazy(() =>
-  import("./pages/Payment/components/CheckoutForm")
-);
+const CheckoutForm = lazy(() => import("./pages/Payment/components/CheckoutForm"));
+const Admin = lazy(() => import("./pages/Admin/index"));
 
 export default function App() {
   const auth = useContext(AuthContext);
@@ -158,6 +157,9 @@ export default function App() {
               </Route>
               <Route path={paths.error404}>
                 <Error404 />
+              </Route>
+              <Route path={paths.admin}>
+                <Admin />
               </Route>
               <Redirect to={paths.error404} />
             </Switch>

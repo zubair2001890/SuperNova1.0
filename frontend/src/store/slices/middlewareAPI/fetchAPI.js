@@ -119,3 +119,9 @@ export const postSendPayment = async (data, authToken, projectID) =>
     data,
     authToken
   );
+
+  export const getPendingProjects = async(authToken) =>
+  await fetchGet(
+    `${process.env.REACT_APP_BACKEND_URL}/api/private/getpendingprojects`,
+    authToken
+  );

@@ -9,4 +9,5 @@ export default (publicApi: Express.Router, privateApi: Express.Router) => {
     privateApi.route('/upload').post(profileController.upload);
     privateApi.route('/getallusers').get(profileController.getAllUsers);
     publicApi.route('/profile/:profile_sub').get(profileController.getProfile);
+    publicApi.route('/profile/getprofilebyemail/:email').get(profileController.getProfileByEmail);
     }

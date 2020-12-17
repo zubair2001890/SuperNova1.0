@@ -18,4 +18,20 @@ export const getSubfields = function (subfieldName) {
     subfieldNames.push(subfields[index].subfieldName.toUpperCase());
   }
   return subfieldNames;
-}    
+}
+
+export const getPendingProjects = function() {
+  return getDataSync(process.env.REACT_APP_BACKEND_URL + "/api/public/getpendingprojects");
+}
+
+export const getUserObject = function(email) {
+  return getDataSync(process.env.REACT_APP_BACKEND_URL + "/api/public/profile/getprofilebyemail/" + email);
+}
+
+export const getResponseFromProjectDeletion = function(projectID) {
+  return getDataSync(process.env.REACT_APP_BACKEND_URL + "/api/public/deleteprojectbyadmin/" + projectID);
+}
+
+export const getResponseFromProjectApproval = function(projectID) {
+  return getDataSync(process.env.REACT_APP_BACKEND_URL + "/api/public/updateprojectstatus/" + projectID);
+}

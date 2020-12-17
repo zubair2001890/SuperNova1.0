@@ -36,4 +36,5 @@ export default {
   exploreSubField: "/explore/exploresubfield",
   payment: "/payment",
   checkout: "/checkout",
+  admin: "/admin"
 };

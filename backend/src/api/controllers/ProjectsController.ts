@@ -7,6 +7,7 @@ import {
   getProjectsBySubfieldName,
   getProjectByProjectID,
   getFeaturedProjects,
+  getPendingProjects,
   getAllSubfields,
   getProfileByID,
   getProjectBackers,
@@ -19,14 +20,6 @@ import { LabNote } from "../models/LabNote";
 
 class ProjectsController {
   constructor() { }
-
-  private getLabNotes = function (projectID) {
-    let labNotes = null;
-    getLabNotesForProject(projectID).then(function (result) {
-      labNotes = result;
-    });
-    return labNotes;
-  }
 
   public featured = async (req: Request, res: Response) => {
     let featuredProjects = new Array();
@@ -71,7 +64,6 @@ class ProjectsController {
       projects = await this.generateProjectsArrayIncludingLabNotes(projects);
     } else if (req.query.project_id !== undefined) {
       projects = await getProjectByProjectID(req.query.project_id.toString());
-      projects = await this.projectWithLabNotes(projects);
       if (projects.statusName !== "Active") {
         projects = {};
       }
@@ -81,13 +73,11 @@ class ProjectsController {
 
   public projectByProjectID = async (req: Request, res: Response) => {
     let selectedProject = await getProjectByProjectID(req.params.project_id);
-    if (selectedProject.statusName !== "Active")
-    {
+    if (selectedProject.statusName !== "Active") {
       res.send({})
     }
-    else
-    {
-    res.send(await this.projectWithLabNotes(selectedProject));
+    else {
+      res.send(await this.projectWithLabNotes(selectedProject));
     }
   };
 
@@ -220,84 +210,53 @@ class ProjectsController {
   }; // The deleteProjectByScientist function ends here.
 
   public updateProjectStatus = async (req: Request, res: Response) => {
-    const userId = jwt_decode(
-      req.header("Authorization").replace("Bearer ", "")
-    ).sub;
-    let userProfile = null;
-    try {
-      userProfile = await getProfileByID(userId);
-      if (userProfile.isAdmin) {
-        Project.findByIdAndUpdate(
-          req.params.project_id,
-          { statusName: req.body.statusName },
-          function (err, result) {
-            if (err) {
-              console.log(err);
-            }
-          }
-        ); // findByIdAndUpdate block ends here.
-        res.send({});
-      } // Ends the if block.
-      else {
-        throw new Error(
-          "This user is not an admin user and therefore cannot update the project status."
-        );
+    Project.findByIdAndUpdate(
+      req.params.project_id,
+      { statusName: "Active" },{useFindAndModify: false},
+      function (err, result) {
+        if (err) {
+          console.log(err);
+        }
+        if (result === undefined) {
+          res.json({
+            status: 400,
+            message: "Project not found."
+          });
+        }
+        else
+        {
+          res.json({
+            status: 200,
+            message: "Project approved successfully."
+          });
+        }
       }
+    ); // findByIdAndUpdate block ends here.
     }
-    catch (err) {
-      console.log(err);
-    }
-  }
 
   public deleteProjectByAdmin = async (req: Request, res: Response) => {
-    const userId = jwt_decode(
-      req.header("Authorization").replace("Bearer ", "")
-    ).sub;
-    let userProfile = null;
-    try {
-      userProfile = await getProfileByID(userId);
-      if (userProfile.isAdmin) {
-        Project.findByIdAndDelete(req.params.project_id, function (err, output) {
-          if (err) {
-            console.log(err);
-          }
-        });
-      } // Ends the if block for if isAdmin()
-      else {
-        throw new Error("This user does not have admin privileges");
+    Project.findByIdAndDelete(req.params.project_id, function (err, result) {
+      if (err) {
+        console.log(err);
       }
+      if (result === undefined)
+      {
+      res.json({
+        status: 400,
+        message: "Project not found."
+      });
     }
-    catch (err) {
-      console.log(err);
+    else {
+      res.json({
+        status: 200,
+        message: "Project deleted successfully."
+      });
     }
-  }// The deleteProjectByAdmin function ends here.
+  }); 
+} // The deleteProjectByAdmin function ends here}
 
   public pendingProjects = async (req: Request, res: Response) => {
-    const userId = jwt_decode(
-      req.header("Authorization").replace("Bearer ", "")
-    ).sub;
-    let userProfile = null;
-    try {
-      userProfile = await getProfileByID(userId);
-      if (userProfile.isAdmin) {
-        Project.find({ projectStatus: "Pending" }, function (err, docs) {
-          if (err) {
-            console.log(err);
-          }
-          res.send(docs);
-        });
-      } // Ends the if block for if isAdmin()
-      else {
-        throw new Error("This user does not have admin privileges");
-      }
-    }
-    catch (err) {
-      console.log(err);
-    }
-  }
-
-  public projectBackers = async (req: Request, res: Response) => {
-    res.send(await getProjectBackers(req.query.project_id.toString()));
+    res.send(await getPendingProjects());
   }
 }
 export default ProjectsController;

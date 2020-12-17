@@ -9,7 +9,7 @@ import { LabNote } from "./models/LabNote"
 
 mongoose
   .connect(
-    "mongodb://uoovwklzznl5qbd3vnmc:CKB9CbXz4cbJrrrCskwU@bosn1sg8zx8aq8n-mongodb.services.clever-cloud.com:27017/bosn1sg8zx8aq8n"
+    "mongodb://uoovwklzznl5qbd3vnmc:CKB9CbXz4cbJrrrCskwU@bosn1sg8zx8aq8n-mongodb.services.clever-cloud.com:27017/bosn1sg8zx8aq8n",{useNewUrlParser: true, useUnifiedTopology: true}
   )
   .then(() => console.log("Now connected to MongoDB!"))
   .catch((err) => console.error("Something went wrong", err));
@@ -44,6 +44,22 @@ export const getFeaturedProjects = async function (): Promise<any> {
     resolver(docs);
   });
   projectsQuery.sort({ totalPledged: -1 });
+  return promise;
+};
+
+export const getPendingProjects = async function (): Promise<any> {
+  let resolver, rejecter;
+  const promise = new Promise((resolve, reject) => {
+    resolver = resolve;
+    rejecter = reject;
+  });
+  Project.find({statusName: "Pending"}, function (err, docs) {
+    if (err) {
+      console.log(err);
+      rejecter(null);
+    }
+    resolver(docs);
+  });
   return promise;
 };
 
